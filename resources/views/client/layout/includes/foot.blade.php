@@ -1,6 +1,9 @@
 <script src="{{asset('assets/js/jquery.js')}}"></script> 
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/knob.js')}}"></script>
+
+
 <!--Revolution Slider-->
 <script src="{{asset('assets/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
 <script src="{{asset('assets/plugins/revolution/js/jquery.themepunch.tools.min.js')}}"></script>

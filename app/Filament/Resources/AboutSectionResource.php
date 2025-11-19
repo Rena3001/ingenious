@@ -3,18 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AboutSectionResource\Pages;
-use App\Filament\Resources\AboutSectionResource\RelationManagers;
 use App\Models\AboutSection;
+use App\Models\Translation;
 use Filament\Forms;
 use Filament\Forms\Form;
-use App\Models\Translation;
-use Filament\Resources\Resource;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Repeater;
+use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AboutSectionResource extends Resource
 {
@@ -27,6 +24,8 @@ class AboutSectionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
+
+            // Bölmə növü seçimi
             Forms\Components\Select::make('type')
                 ->label('Bölmə növü')
                 ->options([
@@ -37,6 +36,7 @@ class AboutSectionResource extends Resource
                 ->required()
                 ->reactive(),
 
+            // Dillər üzrə mətn sahələri
             Tabs::make('LangTabs')->tabs([
                 Tabs\Tab::make('AZ')->schema([
                     Forms\Components\TextInput::make('title_az')->label('Başlıq (AZ)'),
@@ -55,12 +55,24 @@ class AboutSectionResource extends Resource
                 ]),
             ])->columnSpanFull(),
 
+            // Düymə tərcüməsi yalnız about_section_three üçün
             Forms\Components\Select::make('button_key')
                 ->label('Düymə tərcümə açarı (yalnız About üçün)')
                 ->options(Translation::pluck('key', 'key')->toArray())
                 ->visible(fn ($get) => $get('type') === 'about_section_three'),
 
-            // Mission üçün alt hissə
+            // 🔥 HƏR İKİ BÖLMƏ ÜÇÜN BACKGROUND ŞƏKİL
+            Forms\Components\FileUpload::make('background_image')
+                ->label('Arxa fon şəkli')
+                ->directory('about')
+                ->image()
+                ->columnSpanFull()
+                ->visible(fn ($get) => in_array($get('type'), [
+                    'about_section_three',
+                    'our_standards'
+                ])),
+
+            // Our Mission üçün Repeater
             Repeater::make('missionItems')
                 ->relationship('missionItems')
                 ->label('Mission alt blokları')
@@ -69,7 +81,8 @@ class AboutSectionResource extends Resource
                     Forms\Components\TextInput::make('icon')
                         ->label('İkon class (məs: flaticon-target-2)')
                         ->required(),
-                    Tabs::make('LangTabs')->tabs([
+
+                    Tabs::make('MissionLangTabs')->tabs([
                         Tabs\Tab::make('AZ')->schema([
                             Forms\Components\TextInput::make('title_az')->label('Başlıq (AZ)'),
                             Forms\Components\Textarea::make('text_az')->label('Mətn (AZ)'),
@@ -86,6 +99,7 @@ class AboutSectionResource extends Resource
                 ])
                 ->orderable(),
 
+            // Status
             Forms\Components\Toggle::make('is_active')
                 ->label('Aktivdir')
                 ->default(true),
@@ -118,4 +132,3 @@ class AboutSectionResource extends Resource
         ];
     }
 }
-

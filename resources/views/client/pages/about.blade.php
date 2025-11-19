@@ -64,7 +64,7 @@ $about = \App\Models\AboutSection::with('missionItems')->where('is_active', true
 </section>
 @endif
 
-
+ 
 <!-- ========================= -->
 <!-- OUR STANDARDS -->
 <!-- ========================= -->
@@ -136,117 +136,12 @@ $about = \App\Models\AboutSection::with('missionItems')->where('is_active', true
 
 
 <!-- Team Section -->
-<section class="team-section">
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <h2>OUR PEOPLE</h2>
-            <div class="text">Praesent dictum, nulla sit amet mattis cursus, purus lectus fermentum sapien, a pharetra mi orci eu velit. Vestibulum feugiat aliquam vehicula. Donec eu dolor eget tortor accumsan convallis ac tincidunt metus. Praesent iaculis egestas nisl, vitae dictum ante ornare vel.</div>
-        </div>
+@include('components.team')
 
-        <div class="row">
-            <!-- Team Block -->
-            <div class="team-block col-lg-3 col-md-6 col-sm-12">
-                <div class="image-box">
-                    <figure class="image"><img src="images/resource/team-1.jpg" alt=""></figure>
-                    <div class="overlay-box">
-                        <div class="text">Interdum eros feugiat velit porttitor quis dui</div>
-                        <ul class="social-icon">
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h4><a href="#">John Wood</a></h4>
-            </div>
-
-            <!-- Team Block -->
-            <div class="team-block col-lg-3 col-md-6 col-sm-12">
-                <div class="image-box">
-                    <figure class="image"><img src="images/resource/team-2.jpg" alt=""></figure>
-                    <div class="overlay-box">
-                        <div class="text">Interdum eros feugiat velit porttitor quis dui</div>
-                        <ul class="social-icon">
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h4><a href="#">Anna Doe</a></h4>
-            </div>
-
-            <!-- Team Block -->
-            <div class="team-block col-lg-3 col-md-6 col-sm-12">
-                <div class="image-box">
-                    <figure class="image"><img src="images/resource/team-3.jpg" alt=""></figure>
-                    <div class="overlay-box">
-                        <div class="text">Interdum eros feugiat velit porttitor quis dui</div>
-                        <ul class="social-icon">
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h4><a href="#">Peter White</a></h4>
-            </div>
-
-            <!-- Team Block -->
-            <div class="team-block col-lg-3 col-md-6 col-sm-12">
-                <div class="image-box">
-                    <figure class="image"><img src="images/resource/team-4.jpg" alt=""></figure>
-                    <div class="overlay-box">
-                        <div class="text">Interdum eros feugiat velit porttitor quis dui</div>
-                        <ul class="social-icon">
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h4><a href="#">Alex Black</a></h4>
-            </div>
-        </div>
-        <div class="btn-box text-center">
-            <a href="#" class="theme-btn btn-style-three large">Load More</a>
-        </div>
-    </div>
-</section>
 <!-- End Our People -->
 
 <!--Clients Section-->
-<section class="clients-section">
-    <div class="auto-container">
-        <!--Sponsors carousel-->
-        <ul class="sponsors-carousel owl-carousel owl-theme">
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure>
-            </li>
-        </ul>
-    </div>
-</section>
+@include('components.client')
 <!--End Clients Section-->
 
 @endsection
