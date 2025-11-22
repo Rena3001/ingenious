@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index($locale)
     {
         $services = Service::first();// bütün xidmətlər
-        $locale = app()->getLocale();
+        app()->setLocale($locale);
         $contact = ContactPage::first();
         
         return view('client.pages.services', compact('services','locale','contact'));

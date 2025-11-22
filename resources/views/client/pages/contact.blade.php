@@ -1,182 +1,227 @@
 @extends('client.layout.master')
-@section('page_title', "Contact")
+@section('page_title', __('Contact Us'))
 @section('content')
 
- <!--Page Title-->
-    <section class="page-title">
-        <div class="cws-image-bg" style="background-image: url(images/background/37.jpg)">
-            <div class="cws-overlay-bg"></div>
-        </div>
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
 
-        <div class="auto-container">
-            <h1>Contacts</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Contacts</li>
-            </ul>
-        </div>
-    </section>
-    <!--End Page Title-->
+<!--Page Title-->
+<section class="page-title">
+    <div class="cws-image-bg" style="background-image: url('{{ asset('assets/images/background/37.jpg') }}')">
+        <div class="cws-overlay-bg"></div>
+    </div>
 
-    <!-- Features Section Six  -->
-    <section class="feaures-section-six">
-        <!-- Background Layers -->
-        <div class="background-layers">
-            <div class="cws-image-bg"></div>
-        </div>
+    <div class="auto-container">
+        <h1>{{ Translation::getValue('contact_title', $locale) }}</h1>
 
-        <div class="auto-container">
-            <div class="row">
-                <!-- Feature BLock Nine -->
-                <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon flaticon-shopping-cart-2"></span>
-                        </div>
-                        <h4>Orders</h4>
-                    </div>
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ route('home',['locale' => $locale]) }}">
+                    {{ Translation::getValue('breadcrumb_home', $locale) }}
+                </a>
+            </li>
+            <li>{{ Translation::getValue('contact_title', $locale) }}</li>
+        </ul>
+    </div>
+</section>
+<!--End Page Title-->
+
+
+
+<!-- Features Section Six  -->
+<section class="feaures-section-six">
+    <div class="background-layers">
+        <div class="cws-image-bg"></div>
+    </div>
+
+    <div class="auto-container">
+        <div class="row">
+
+            <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="icon-box"><span class="icon flaticon-shopping-cart-2"></span></div>
+                    <h4>{{ Translation::getValue('contact_orders', $locale) }}</h4>
                 </div>
+            </div>
 
-                <!-- Feature BLock Nine -->
-                <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon flaticon-browser-2"></span>
-                        </div>
-                        <h4>Your Project</h4>
-                    </div>
+            <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="icon-box"><span class="icon flaticon-browser-2"></span></div>
+                    <h4>{{ Translation::getValue('contact_project', $locale) }}</h4>
                 </div>
+            </div>
 
-                <!-- Feature BLock Nine -->
-                <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon flaticon-headset-2"></span>
-                        </div>
-                        <h4>Support</h4>
-                    </div>
+            <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="icon-box"><span class="icon flaticon-headset-2"></span></div>
+                    <h4>{{ Translation::getValue('contact_support', $locale) }}</h4>
                 </div>
+            </div>
 
-                <!-- Feature BLock Nine -->
-                <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon flaticon-devices-1"></span>
+            <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="icon-box"><span class="icon flaticon-devices-1"></span></div>
+                    <h4>{{ Translation::getValue('contact_partner', $locale) }}</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End Features Section Six -->
+
+
+
+<!-- Contact Map Section -->
+<section class="contact-map-section">
+
+    <!-- Background Layers -->
+    <div class="background-layers">
+        <div class="cws-image-bg">
+            <div class="cws-triangle-overlay"></div>
+        </div>
+    </div>
+
+    <!-- XRİTƏ (DOĞRU YER) -->
+    <div class="map-outer">
+        {!! $settings->map_iframe !!}
+    </div>
+
+    <div class="auto-container">
+        <div class="row">
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 offset-6">
+                <div class="inner-column">
+
+                    <div class="sec-title">
+                        <h2>{{ Translation::getValue('contact_how_to_reach', $locale) }}</h2>
+
+                        <div class="text">
+                            {{ Translation::getValue('contact_reach_desc', $locale) }}
                         </div>
-                        <h4>Become a Partner</h4>
                     </div>
+
+                    <h4>{{ Translation::getValue('our_company', $locale) }}</h4>
+
+                    <div class="contact-info row">
+
+                        <div class="contact-block col-lg-6 col-md-6 col-sm-12">
+                            <div class="inner">
+                                <span class="icon fa fa-map-signs"></span>
+                                <h5>{{ Translation::getValue('contact_address', $locale) }}</h5>
+                                <p>{{ $settings->address }}</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-block col-lg-6 col-md-6 col-sm-12">
+                            <div class="inner">
+                                <span class="icon fa fa-phone"></span>
+                                <h5>{{ Translation::getValue('contact_details', $locale) }}</h5>
+                                <p>{{ $settings->phone }}</p>
+                                <p>{{ $settings->email }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-    </section>
-    <!--End Features Section Six -->
+    </div>
 
-    <!-- Contact Map Section -->
-    <section class="contact-map-section">
-        <!-- Background Layers -->
-        <div class="background-layers">
-            <div class="cws-image-bg">
-                <div class="cws-triangle-overlay"></div>
-                <div class="map-outer">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12609.73108660754!2d-122.47279800000001!3d37.803331!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808586e6302615a1%3A0x86bd130251757c00!2sStorey%20Ave%2C%20San%20Francisco%2C%20CA%2094129!5e0!3m2!1sen!2sus!4v1577174486999!5m2!1sen!2sus" height="450" style="border:0; width:100%;"></iframe>
+</section>
+
+<!-- End Contact Map Section -->
+
+
+
+<!-- Contact Form Section -->
+<section class="contact-form-section">
+    <div class="background-layers">
+        <div class="cws-image-bg"></div>
+        <div class="cws-triangle-overlay top-left"></div>
+        <div class="cws-triangle-overlay top-right"></div>
+    </div>
+
+    <div class="auto-container">
+        <div class="row">
+
+            <!-- Left text -->
+            <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="sec-title light">
+                        <h2>{{ Translation::getValue('contact_title', $locale) }}</h2>
+                        <div class="text">
+                            {{ Translation::getValue('contact_description', $locale) }}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Right Form -->
+            <div class="form-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="default-form contact-form-two">
 
-        <div class="auto-container">
-            <div class="row">
-                <div class="content-column col-lg-6 col-md-12 col-sm-12 offset-6">
-                    <div class="inner-column">
-                        <div class="sec-title">
-                            <h2>HOW TO REACH US</h2>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis accumsan mi nec elementum. Nulla ante metus, varius non condimentum id, molestie nec tellus. Fusce odio nulla, consectetur in sagittis eget.</div>
-                        </div>
-                        <h4>Ingenious Portugal</h4>
-                        <div class="contact-info row">
-                            <div class="contact-block col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner">
-                                    <span class="icon fa fa-map-signs"></span>
-                                    <h5>Address</h5>
-                                    <p>250 Bisca 11 st Fl.</p> 
-                                    <p>Florida 33148, Miami</p>
+                        <form action="{{ route('contact.submit',['locale' => $locale]) }}" method="POST">
+                            @csrf
+
+                            <div class="row mid-spacing">
+
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                    <label>{{ Translation::getValue('contact_name', $locale) }}</label>
+                                    <input type="text" name="username" required>
+                                    @error('username')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
+
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                    <label>{{ Translation::getValue('contact_email', $locale) }}</label>
+                                    <input type="email" name="email" required>
+                                    @error('email')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <label>{{ Translation::getValue('contact_message', $locale) }}</label>
+                                    <textarea name="contact_message" required></textarea>
+                                    @error('contact_message')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 text-center">
+                                    <button class="theme-btn btn-style-one" type="submit">
+                                        {{ Translation::getValue('contact_button', $locale) }}
+                                    </button>
+                                </div>
+
+                                @if(session('success'))
+                                    <div class="alert alert-success col-12 mt-3">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger col-12 mt-3">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                             </div>
 
-                            <div class="contact-block col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner">
-                                    <span class="icon fa fa-phone"></span>
-                                    <h5>Contact Details</h5>
-                                    <p>(+123) – 456 – 7890</p>
-                                    <p>ingenious@mail.com</p>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
+
         </div>
-    </section>
-    <!-- End Contact Map Section -->
-
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-        <!-- Background Layers -->
-        <div class="background-layers">
-            <div class="cws-image-bg"></div>
-            <div class="cws-triangle-overlay top-left"></div>
-            <div class="cws-triangle-overlay top-right"></div>
-        </div>
-
-        <div class="auto-container">
-            <div class="row">
-                <!-- Content Column -->
-                <div class="content-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="sec-title light">
-                            <h2>Contact Us</h2>
-                            <div class="text">Integer molestie molestie neque et cursus. Curabitur diam felis, ultricies non mauris tempor, interdum fringilla mauris. Nunc vitae sodales nisl, at accumsan odio. Vestibulum interdum velit id magna dictum.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form Column -->
-                <div class="form-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="default-form contact-form-two">
-                            <form action="#" method="post" id="email-form">
-
-                                <div class="row mid-spacing">
-                                    <div class="form-group mb-0 col-lg-12">
-                                        <div class="response"></div>
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <label> Your Name (required)</label>
-                                        <input type="text" name="username" class="username">
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <label>Email (required)</label>
-                                        <input type="email" name="email" class="email">
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <label>Message</label>
-                                        <textarea name="contact_message"></textarea>
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 text-center">
-                                        <button class="theme-btn btn-style-one" type="button" id="submit" name="submit-form">Send Request</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Contact Form Section -->
+    </div>
+</section>
+<!-- End Contact Form Section -->
 
 @endsection

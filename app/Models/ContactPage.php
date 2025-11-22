@@ -15,5 +15,6 @@ class ContactPage extends Model
         'button_text_az','button_text_en','button_text_ru',
         'button_link',
         'background',
+        
     ];
 }

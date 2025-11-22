@@ -22,7 +22,7 @@
 
              <ul class="page-breadcrumb">
                  <li>
-                     <a href="{{ route('home') }}">
+                     <a href="{{ route('home',['locale' => $locale]) }}">
                          {{ Translation::getValue('breadcrumb_home', $locale) }}
                      </a>
                  </li>
@@ -197,7 +197,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('contact.submit') }}" method="POST" id="email-form">
+                        <form action="{{ route('contact.submit',['locale' => $locale]) }}" method="POST" id="email-form">
                             @csrf
 
                             <div class="form-group">

@@ -5,6 +5,7 @@
 @section('content')
 
 @php
+use App\Models\Translation;
 $locale = app()->getLocale();
 $about = \App\Models\AboutSection::with('missionItems')->where('is_active', true)->get()->keyBy('type');
 @endphp
@@ -17,10 +18,12 @@ $about = \App\Models\AboutSection::with('missionItems')->where('is_active', true
     </div>
 
     <div class="auto-container">
-        <h1>About Us</h1>
+        <h1>{{ Translation::getValue('about', $locale) }}</h1>
         <ul class="page-breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li>About Us</li>
+            <li><a href="{{ route('home',['locale' => $locale]) }}">
+                {{ Translation::getValue('breadcrumb_home', $locale) }}</a>
+            </li>
+            <li>{{ Translation::getValue('about', $locale) }}</li>
         </ul>
     </div>
 </section>

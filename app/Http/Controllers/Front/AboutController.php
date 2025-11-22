@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function index()
+    public function index($locale)
     {
-        $locale = app()->getLocale();
+        app()->setLocale($locale);
+
         $about = AboutSection::with('missionItems')
                 ->where('is_active', true)
                 ->get()

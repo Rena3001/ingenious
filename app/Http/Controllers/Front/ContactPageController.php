@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
 use App\Models\ContactPage;
+use App\Models\Setting;
 use App\Models\Translation;
 use Illuminate\Http\Request;
 
 class ContactPageController extends Controller
 {
-    public function index()
+    public function index($locale)
     {
-        $contact = ContactPage::first();
+        app()->setLocale($locale);
 
-        return view('client.pages.contact', compact('contact'));
+        $contact = ContactPage::first(); 
+        $settings = Setting::first(); 
+         return view('client.pages.contact', compact('contact', 'locale','settings'));
     }
 
     public function submit(Request $request)

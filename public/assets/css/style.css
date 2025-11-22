@@ -96,6 +96,7 @@ Version: 1.0.0
 @import url('select2.min.css');
 @import url('odometer.css');
 @import url('jquery.fancybox.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
 /*** 
 
@@ -131,11 +132,13 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	font-family: 'Roboto', sans-serif;
+	font-family: 'Poppins', sans-serif !important;
 }
 
 a{
 	text-decoration:none;
 	cursor:pointer;
+	font-family: 'Poppins', sans-serif !important;
 }
 
 a:hover,
@@ -152,6 +155,11 @@ h1,h2,h3,h4,h5,h6 {
 	background:none;
 	line-height:1.2em;
 	font-family: 'Catamaran', sans-serif;
+	font-family: 'Poppins', sans-serif !important;
+}
+div{
+	font-family: 'Poppins', sans-serif !important;
+
 }
 
 section{
@@ -2843,6 +2851,10 @@ hr{
 
 .main-header .outer-box{
 	position: relative;
+	gap: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-header .search-box{
@@ -2860,6 +2872,41 @@ hr{
     font-size: 19px;
     line-height: 40px;
 }
+
+
+
+.language-switcher {
+    float: left;
+    margin-right: 20px;
+}
+
+.language-switcher .lang-list {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.language-switcher .lang-list li a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.language-switcher .lang-list li.active a {
+    color: #00e4ff;
+}
+.language-switcher-mobile {
+    padding: 15px 20px;
+}
+
+.language-switcher-mobile .lang-list li a {
+    color: #fff;
+}
+
 
 /*** 
 
@@ -7922,6 +7969,49 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 ==================================================================
 
 ***/
+/* Container */
+.image-box {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover overlay */
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+
+/* Mouse hover aktivləşdirir */
+.image-box:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* Buy now button styling */
+.hover-overlay .buy-now {
+    background: #ffffff;
+    padding: 10px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s ease-in-out;
+}
+
+/* Hover effekt — çox zövqlü */
+.hover-overlay .buy-now:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
 
 .products-section{
 	position: relative;

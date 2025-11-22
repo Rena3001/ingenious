@@ -29,4 +29,8 @@ class AboutMissionItem extends Model
         $locale = $locale ?? app()->getLocale();
         return $this->{'text_'.$locale};
     }
+    public function getTranslation($field, $locale)
+    {
+        return $this->{$field . '_' . $locale};
+    }
 }

@@ -21,7 +21,7 @@
         <h1>{{ Translation::getValue('page_services_title', $locale) }}</h1>
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{ route('home') }}">
+                <a href="{{ route('home',['locale' => $locale]) }}">
                     {{ Translation::getValue('breadcrumb_home', $locale) }}
                 </a>
             </li>
@@ -43,7 +43,7 @@
     @endphp
 @else
     @php
-    $locale = app()->getLocale();
+    $locale = app()->getLocale(); 
     $icons = $services->icons ?? []; // artıq array-dir
     $list = $services->section2_list ?? [];
     $bg = $services->section2_background ? asset($services->section2_background) : 'images/background/34.jpg';
@@ -148,7 +148,7 @@
         </div>
     </section>
 
-    <!-- End Fluid Section One -->
+    <!-- End Fluid Section One --> 
 
     <!-- Skills Section -->
     <section class="skills-section">
@@ -216,7 +216,7 @@
 
         <!-- CONTACT FORM -->
         <div class="default-form contact-form">
-           <form action="{{ route('contact.submit') }}" method="post">
+           <form action="{{ route('contact.submit',['locale' => $locale]) }}" method="post">
             @csrf
 
             <div class="form-group">

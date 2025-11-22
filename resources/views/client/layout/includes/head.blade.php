@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>@yield('title', 'Ingenious')</title>
+<title>@yield('title', __('your_title'))</title>
 
 <!-- Stylesheets -->
 <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
@@ -12,6 +12,7 @@
 
 <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
 <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

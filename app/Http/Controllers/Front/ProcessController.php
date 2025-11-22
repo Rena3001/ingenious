@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class ProcessController extends Controller
 {
-    public function index()
+    public function index($locale)
     {
-        $locale = app()->getLocale();
+        app()->setLocale($locale);
+
 
         // Process section admin-dən gəlir
         $process = Process::first();

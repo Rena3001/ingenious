@@ -1,7 +1,11 @@
 <?php $__env->startSection('page_title', 'Ingenious'); ?>
 
 <?php $__env->startSection('content'); ?>
-
+<?php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+    $icons = $services->icons ?? []; // artıq array-dir
+?>
 
 <section class="main-slider">
     <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_one_wrapper" data-source="gallery">
@@ -114,244 +118,184 @@
 <!--End Main Slider-->
 
 <!-- About Section -->
-<section class="about-section">
-    <!-- Background Layers -->
-    <div class="background-layers">
-        <div class="cws-triangle-overlay"></div>
-        <div class="cws-image-bg" style="background-image: url(images/background/1.jpg)"></div>
-    </div>
-
+<?php if(isset($about['our_mission'])): ?>
+ <section class="our-mission">
     <div class="auto-container">
+        <div class="sec-title text-center">
+            <h2><?php echo e($about['our_mission']->getTitle($locale)); ?></h2>
+            <div class="text">
+                <?php echo e($about['our_mission']->getShortDesc($locale)); ?>
+
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <div class="sec-title">
-                    <h2>SMART HOME</h2>
-                    <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis accumsan mi nec elementum. Nulla ante metus, varius non condimentum id, molestie nec tellus.</div>
-                </div>
-
-                <div class="row">
-                    <!-- Feature Block -->
-                    <div class="feature-block col-lg-4 col-md-4 col-sm-12">
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <svg class="icon" viewBox="0 0 30 30">
-                                    <path d="M21.8,8.2h-3.4c-0.4,0-0.7,0.3-0.7,0.7s0.3,0.7,0.7,0.7h2.7v17.8H8.9V9.6h2.7c0.4,0,0.7-0.3,0.7-0.7 S12,8.2,11.6,8.2H8.2c-0.4,0-0.7,0.3-0.7,0.7v19.2c0,0.4,0.3,0.7,0.7,0.7h13.6c0.4,0,0.7-0.3,0.7-0.7V8.9 C22.5,8.5,22.2,8.2,21.8,8.2z M16.7,4.7h-3.4c-0.4,0-0.7,0.3-0.7,0.7c0,0.4,0.3,0.7,0.7,0.7h3.4c0.4,0,0.7-0.3,0.7-0.7 C17.4,5,17.1,4.7,16.7,4.7z M11.6,2.6h6.8c0.4,0,0.7-0.3,0.7-0.7s-0.3-0.7-0.7-0.7h-6.8c-0.4,0-0.7,0.3-0.7,0.7S11.2,2.6,11.6,2.6 z M15.7,8.9c0-0.4-0.3-0.7-0.7-0.7s-0.7,0.3-0.7,0.7s0.3,0.7,0.7,0.7C15.4,9.6,15.7,9.3,15.7,8.9z M10.9,17.6 c0,2.3,1.8,4.2,4.1,4.2c2.2,0,4.1-1.9,4.1-4.2s-1.8-4.2-4.1-4.2C12.8,13.4,10.9,15.3,10.9,17.6z M15,14.8c1.5,0,2.7,1.3,2.7,2.8 s-1.2,2.8-2.7,2.8s-2.7-1.3-2.7-2.8C12.3,16.1,13.5,14.8,15,14.8z"></path>
-                                </svg>
-                            </div>
-                            <h5>Managed <br>Centrally</h5>
-                        </div>
-                    </div>
-
-                    <!-- Feature Block -->
-                    <div class="feature-block col-lg-4 col-md-4 col-sm-12">
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <svg class="icon 1.svg" viewBox="0 0 30 30">
-                                    <path d="M24.2,3.5h-18c-2,0-3.6,1.6-3.6,3.6v13.5c0,2,1.6,3.6,3.6,3.6h8.3V27h-3.6c-0.4,0-0.7,0.3-0.7,0.7 c0,0.4,0.3,0.7,0.7,0.7h8.5c0.4,0,0.7-0.3,0.7-0.7c0-0.4-0.3-0.7-0.7-0.7h-3.6v-2.9h8.4c2,0,3.6-1.6,3.6-3.6V7.1 C27.8,5.1,26.2,3.5,24.2,3.5z M26.5,20.5c0,1.2-1,2.3-2.3,2.3h-18c-1.3,0-2.3-1-2.3-2.3v-0.7h22.6C26.5,19.8,26.5,20.5,26.5,20.5z M26.5,18.5H3.9V7.1c0-1.2,1-2.3,2.3-2.3h18c1.3,0,2.3,1,2.3,2.3V18.5z M15.2,8.2c-2.1,0-4.2,0.8-5.7,2.3c-0.3,0.3-0.3,0.7,0,1 c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2c1.3-1.2,2.9-1.9,4.7-1.9s3.5,0.7,4.7,1.9c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2 c0.2-0.2,0.2-0.7,0-0.9C19.4,9,17.4,8.2,15.2,8.2z M15.2,11.2c-1.1,0-2.1,0.4-2.9,1.2c-0.1,0.1-0.2,0.3-0.2,0.5s0.1,0.4,0.2,0.5 c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2c0.5-0.5,1.2-0.8,2-0.8c0.7,0,1.4,0.3,2,0.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2 c0.1-0.1,0.2-0.3,0.2-0.5s-0.1-0.4-0.2-0.5C17.4,11.7,16.3,11.2,15.2,11.2z M15.2,14.3c-0.5,0-0.9,0.4-0.9,0.9 c0,0.2,0.1,0.4,0.3,0.6c0.2,0.2,0.4,0.3,0.6,0.3c0.5,0,0.9-0.4,0.9-0.9C16,14.7,15.7,14.3,15.2,14.3z"></path>
-                                </svg>
-                            </div>
-                            <h5>Wirelessly <br>Connects</h5>
-                        </div>
-                    </div>
-
-                    <!-- Feature Block -->
-                    <div class="feature-block col-lg-4 col-md-4 col-sm-12">
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <svg class="icon 1.svg" viewBox="0 0 30 30">
-                                    <path d="M23.7,3.6c0-1.4-1.2-2.6-2.6-2.6H9.4C7.9,1,6.8,2.2,6.8,3.6v22.8C6.8,27.8,8,29,9.4,29h11.7 c1.4,0,2.6-1.2,2.6-2.6L23.7,3.6z M8,3.6c0-0.7,0.6-1.3,1.4-1.3h11.7c0.7,0,1.4,0.6,1.4,1.3v2.3H8V3.6z M22.5,26.4 c0,0.7-0.6,1.4-1.4,1.4H9.4c-0.8,0-1.4-0.6-1.4-1.4v-1.5h14.5V26.4z M8,23.6V7.1h14.5v16.5H8z M16.5,3.5h-2.6 c-0.3,0-0.6,0.3-0.6,0.6s0.3,0.6,0.6,0.6h2.6c0.3,0,0.6-0.3,0.6-0.6S16.9,3.5,16.5,3.5z M17.1,10.5h-3.7c-1.6,0-2.9,1.3-2.9,2.8 V17c0,1.6,1.3,2.8,2.9,2.8h0.2c0.3,0,0.6-0.3,0.6-0.6c0-0.3-0.3-0.6-0.6-0.6h-0.2c-0.9,0-1.6-0.7-1.6-1.6v-3.7 c0-0.9,0.7-1.6,1.6-1.6h3.7c0.9,0,1.6,0.7,1.6,1.6V17c0,0.9-0.7,1.6-1.6,1.6h-0.4c-0.3,0-0.6,0.3-0.6,0.6c0,0.3,0.3,0.6,0.6,0.6 h0.4c1.6,0,2.9-1.3,2.9-2.8v-3.7C19.9,11.8,18.7,10.5,17.1,10.5z M17.1,16.4c0.1-0.1,0.2-0.3,0.2-0.4c0-0.2-0.1-0.3-0.2-0.4 l-1.4-1.4c-0.2-0.2-0.6-0.2-0.9,0l-1.4,1.4c-0.1,0.1-0.2,0.3-0.2,0.4c0,0.2,0.1,0.3,0.2,0.4c0.2,0.2,0.6,0.2,0.9,0l0.3-0.3v4.1 c0,0.3,0.3,0.6,0.6,0.6s0.6-0.3,0.6-0.6V16l0.4,0.4C16.4,16.6,16.8,16.6,17.1,16.4z"></path>
-                                </svg>
-                            </div>
-                            <h5>Smart <br>Applications</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Btn Box -->
-                <div class="btn-box">
-                    <a href="#" class="theme-btn large btn-style-one">Request A Free Brochure</a>
+            <?php $__currentLoopData = $about['our_mission']->missionItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="mission-block col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <span class="icon <?php echo e($item->icon); ?>"></span>
+                    <h4><?php echo e($item->getTitle($locale)); ?></h4>
+                    <p><?php echo e($item->getText($locale)); ?></p>
                 </div>
             </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
+
 <!-- End About Section -->
 
 
 <!-- Services Section -->
-<section class="services-section">
-    <div class="cws-background-image" style="background-image: url(images/background/3.jpg)"></div>
-
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <h2>INTELLIGENT AUTOMATION</h2>
+  <section class="services-section-three">
+        <!-- Background Layers -->
+        <div class="background-layers">
+            <div class="cws-image-bg" style="background-image: url(images/background/29.jpg)">
+                <div class="cws-overlay-bg"></div>
+            </div>
+            <div class="cws-triangle-overlay bottom-right"></div>
         </div>
 
-        <div class="row">
-            <!-- Service Block -->
-            <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <div class="icon-box"><span class="icon flaticon-alarm"></span></div>
-                        <figure class="image"><img src="images/resource/service-1.jpg" alt=""></figure>
-                        <div class="overlay">
-                            <div class="desc">Et quam neque ultricies. Ornare donec quis sociis wisi ut nunc, vestibulum diam cras.</div>
-                        </div>
-                    </div>
-                    <div class="lower-content">
-                        <h4>Movement</h4>
-                        <div class="text">Ligula mus mi, vitae pharetra urna. Nunc consectetuer fermentum proin pede metus faucibus magna eget.</div>
-                        <div class="btn-box"><a href="#" class="theme-btn btn-style-two">Explore</a></div>
+        <div class="auto-container">
+
+            <?php if($services): ?>
+                <!-- Başlıq və açıqlama -->
+                <div class="sec-title text-center">
+                    <h2><?php echo e($services->{"title_$locale"}); ?></h2>
+
+                    <div class="text">
+                        <?php echo e($services->{"description_$locale"}); ?>
+
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
+            <div class="row">
 
-            <!-- Service Block -->
-            <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <div class="icon-box"><span class="icon flaticon-plug-2"></span></div>
-                        <figure class="image"><img src="images/resource/service-2.jpg" alt=""></figure>
-                        <div class="overlay">
-                            <div class="desc">Et quam neque ultricies. Ornare donec quis sociis wisi ut nunc, vestibulum diam cras.</div>
+                <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="service-block-four col-lg-3 col-md-6 col-sm-12">
+                        <div class="inner-box">
+
+                            <div class="icon-box">
+                                <span class="icon <?php echo e($icon['icon']); ?>"></span>
+                            </div>
+
+                            <?php if(!empty($icon["icon_title_$locale"])): ?>
+                                <h4><?php echo e($icon["icon_title_$locale"]); ?></h4>
+                            <?php endif; ?>
+
                         </div>
                     </div>
-                    <div class="lower-content">
-                        <h4>Temperature</h4>
-                        <div class="text">Ligula mus mi, vitae pharetra urna. Nunc consectetuer fermentum proin pede metus faucibus magna eget.</div>
-                        <div class="btn-box"><a href="#" class="theme-btn btn-style-two">Explore</a></div>
-                    </div>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
             </div>
 
-
-            <!-- Service Block -->
-            <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <div class="icon-box"><span class="icon flaticon-unlocked"></span></div>
-                        <figure class="image"><img src="images/resource/service-3.jpg" alt=""></figure>
-                        <div class="overlay">
-                            <div class="desc">Et quam neque ultricies. Ornare donec quis sociis wisi ut nunc, vestibulum diam cras.</div>
-                        </div>
-                    </div>
-                    <div class="lower-content">
-                        <h4>Door Contacts</h4>
-                        <div class="text">Ligula mus mi, vitae pharetra urna. Nunc consectetuer fermentum proin pede metus faucibus magna eget.</div>
-                        <div class="btn-box"><a href="#" class="theme-btn btn-style-two">Explore</a></div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 <!--End Services Section -->
 
-<!-- How to Use -->
-<section class="how-to-use">
-    <!-- Background Layers -->
-    <div class="background-layers">
-        <div class="cws-triangle-overlay top-right"></div>
-        <div class="cws-image-bg style-three" style="background-image: url(images/background/4.jpg)">
-            <div class="cws-overlay-bg bg-green half-left"></div>
-        </div>
-        <div class="cws-triangle-overlay bottom-right"></div>
-    </div>
 
-    <div class="auto-container">
-        <div class="row">
-            <!-- Content COlumn -->
-            <div class="content-column col-lg-6 col-md-6 col-sm-12">
-                <div class="inner-column">
-                    <div class="sec-title light text-right">
-                        <h2>SIMPLE TO USE</h2>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis accumsan mi nec elementum. Nulla ante metus, varius non condimentum id, molestie nec tellus. Fusce odio nulla, consectetur in sagittis.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Control Image -->
-        <figure class="control-image"><img src="images/resource/home-control.png" alt="" /></figure>
-    </div>
-</section>
-<!-- End How to Use -->
 
 <!-- Callback Section -->
 <section class="callback-section">
-    <div class="cws-background-image" style="background-image: url(images/background/5.png)"></div>
+    <div class="cws-background-image" 
+         style="background-image: url('<?php echo e(asset('assets/images/background/5.png')); ?>')"></div>
+
     <div class="auto-container">
         <div class="row">
             <div class="col-lg-6 col-md-12">
+
+                <!-- Section Title -->
                 <div class="sec-title">
-                    <h3>Make Smart Home Project</h3>
-                    <div class="text">We’re here to answer any questions you might have about living in a Smart Home. We can also help you find an Ingenious partner in your area.</div>
+                    <h3><?php echo e(Translation::getValue('callback_title', $locale)); ?></h3>
+                    <div class="text">
+                        <?php echo e(Translation::getValue('callback_description', $locale)); ?>
+
+                    </div>
                 </div>
 
+                <!-- Callback / Contact Form -->
                 <div class="default-form callback-form">
-                    <form action="#" method="post" id="email-form">
+
+                    <form action="<?php echo e(route('contact.submit', ['locale' => $locale])); ?>" method="POST">
+
+                        <?php echo csrf_field(); ?>
+
                         <div class="form-group mb-0">
-                            <div class="response"></div>
+                            <?php if(session('success')): ?>
+                                <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+                            <?php endif; ?>
+                            <?php if(session('error')): ?>
+                                <div class="alert alert-danger"><?php echo e(session('error')); ?></div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-group">
-                            <label> Your Name (required)</label>
-                            <input type="text" name="username" class="username">
+                            <label><?php echo e(Translation::getValue('contact_name', $locale)); ?></label>
+                            <input type="text" name="username" required>
+                            <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <small class="text-danger"><?php echo e($message); ?></small>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group">
-                            <label>Email (required)</label>
-                            <input type="email" name="email" class="email">
+                            <label><?php echo e(Translation::getValue('contact_email', $locale)); ?></label>
+                            <input type="email" name="email" required>
+                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <small class="text-danger"><?php echo e($message); ?></small>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="contact_message"></textarea>
+                            <label><?php echo e(Translation::getValue('contact_message', $locale)); ?></label>
+                            <textarea name="contact_message" required></textarea>
+                            <?php $__errorArgs = ['contact_message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <small class="text-danger"><?php echo e($message); ?></small>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group">
-                            <button class="theme-btn btn-style-three" type="button" id="submit" name="submit-form">Send</button>
+                            <button class="theme-btn btn-style-three" type="submit">
+                                <?php echo e(Translation::getValue('contact_button_text', $locale)); ?>
+
+                            </button>
                         </div>
+
                     </form>
+
                 </div>
+
             </div>
         </div>
     </div>
 </section>
+
 <!--End Reservation Section -->
 
 <!--Clients Section-->
-<section class="clients-section">
-    <div class="auto-container">
-        <!--Sponsors carousel-->
-        <ul class="sponsors-carousel owl-carousel owl-theme">
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure>
-            </li>
-            <li class="slide-item">
-                <figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure>
-            </li>
-        </ul>
-    </div>
-</section>
+<?php echo $__env->make('components.client', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 <!--End Clients Section-->
 
 <?php $__env->stopSection(); ?>

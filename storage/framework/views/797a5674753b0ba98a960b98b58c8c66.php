@@ -22,4 +22,19 @@
 <script src="<?php echo e(asset('assets/js/owl.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/wow.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/appear.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script><?php /**PATH C:\laragon\www\ingenious\resources\views/client/layout/includes/foot.blade.php ENDPATH**/ ?>
+<script src="<?php echo e(asset('assets/js/isotope.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/jquery-ui.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/mixitup.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/odometer.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/select2.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/sticky_sidebar.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
+<script>
+    function changeLang(lang) {
+        let current = window.location.pathname;   // /az/about   or   /en/products/3
+        let newUrl = '/' + lang + current.substring(3);
+
+        window.location.href = newUrl;
+    }
+</script><?php /**PATH C:\laragon\www\ingenious\resources\views/client/layout/includes/foot.blade.php ENDPATH**/ ?>

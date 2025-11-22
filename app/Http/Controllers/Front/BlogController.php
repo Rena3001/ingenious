@@ -3,18 +3,27 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Blog;
+use App\Models\Translation;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index($locale)
     {
-        return view('client.pages.blog');
+        $blogs = Blog::latest()->get();
+        app()->setLocale($locale);
+
+
+        return view('client.pages.blog', compact('blogs', 'locale'));
     }
 
-    public function show($id)
+    public function show($locale,$id)
     {
-        // Logic to show a specific blog post
-        return view('client.pages.blog-detail', ['id' => $id]);
+        $blog = Blog::findOrFail($id);
+         app()->setLocale($locale);
+
+
+        return view('client.pages.blog-detail', compact('blog'));
     }
+
 }

@@ -1,72 +1,129 @@
- <!-- Main Footer -->
-<footer class="main-footer" style="background-image: url(images/background/6.jpg);">
+<?php
+use App\Models\Translation;
+use App\Models\Setting;
+use App\Models\Blog;
+
+$locale = app()->getLocale();
+$settings = Setting::first();
+$latestPost = Blog::orderBy('created_at', 'desc')->first();
+?>
+
+<footer class="main-footer" style="background-image: url(<?php echo e(asset('assets/images/background/6.jpg')); ?>);">
+    <div class="auto-container">
+
+        <div class="widgets-section">
+            <div class="row">
+
+                
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget about-widget">
+                        <h4 class="widget-title">
+                            <?php echo e(Translation::getValue('footer_about_title', $locale)); ?>
+
+                        </h4>
+
+                        <div class="widget-content">
+                            <div class="text">
+                                <?php echo e(Translation::getValue('footer_about_text', $locale)); ?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget recent-posts">
+                        <h4 class="widget-title">
+                            <?php echo e(Translation::getValue('footer_latest_posts_title', $locale)); ?>
+
+                        </h4>
+
+                        <?php if($latestPost): ?>
+                        <div class="widget-content">
+                            <article class="post">
+                                <div class="thumb">
+                                    <a href="<?php echo e(route('blog.detail', ['locale' => $locale, 'id' => $latestPost->id])); ?>">
+                                        <img src="<?php echo e(asset('storage/' . $latestPost->image)); ?>" alt="">
+                                    </a>
+                                </div>
+
+                                <h5>
+                                    <a href="<?php echo e(route('blog.detail', ['locale' => $locale, 'id' => $latestPost->id])); ?>">
+                                        <?php echo e($latestPost->getTranslation('title', $locale)); ?>
+
+                                    </a>
+                                </h5>
+
+                                <div class="text">
+                                    <?php echo e(\Illuminate\Support\Str::limit($latestPost->getTranslation('description', $locale), 180)); ?>
+
+                                </div>
+                            </article>
+                        </div>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+
+                
+                <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer-widget contact-widget">
+                        <h4 class="widget-title">
+                            <?php echo e(Translation::getValue('footer_contacts_title', $locale)); ?>
+
+                        </h4>
+
+                        <div class="widget-content">
+                            <ul class="contact-list">
+
+                                <li>
+                                    <i class="far fa-envelope"></i>
+                                    <a href="mailto:<?php echo e($settings->email); ?>"><?php echo e($settings->email); ?></a>
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:<?php echo e($settings->phone); ?>"><?php echo e($settings->phone); ?></a>
+                                </li>
+
+                                <li>
+                                    <div class="social-icon">
+                                        <?php if($settings->facebook): ?>
+                                            <a href="<?php echo e($settings->facebook); ?>"><i class="fab fa-facebook-f"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($settings->twitter): ?>
+                                            <a href="<?php echo e($settings->twitter); ?>"><i class="fab fa-twitter"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($settings->instagram): ?>
+                                            <a href="<?php echo e($settings->instagram); ?>"><i class="fab fa-instagram"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($settings->linkedin): ?>
+                                            <a href="<?php echo e($settings->linkedin); ?>"><i class="fab fa-linkedin-in"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($settings->telegram): ?>
+                                            <a href="<?php echo e($settings->telegram); ?>"><i class="fa fa-signal"></i></a>
+                                        <?php endif; ?>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
         <div class="auto-container">
-            <!--Widgets Section-->
-            <div class="widgets-section">
-                <div class="row">
-                    <!--Footer Column-->
-                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
-                        <div class="footer-widget about-widget">
-                            <h4 class="widget-title">INGENIOUS</h4>
-                            <div class="widget-content">
-                                <div class="text">Etiam id scelerisque est, vel scelerisque elit. Etiam vitae consequat dui. Suspendisse in porta felis, a varius elit. Sed nec fringilla mauris. Pellentesque habitant morbi.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
-                        <div class="footer-widget recent-posts">
-                            <h4 class="widget-title">LATEST POSTS</h4>
-                             <!--Footer Column-->
-                            <div class="widget-content">
-                                <article class="post">
-                                    <div class="thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a></div>
-                                    <h5><a href="blog-detail.html">Magna arcu</a></h5>
-                                    <span class="cat">Alarm</span>
-                                    <div class="text">Vitae est et arcu semper, moll</div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Footer Column-->
-                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
-                        <div class="footer-widget contact-widget">
-                            <h4 class="widget-title">OUR CONTACTS</h4>
-                            <div class="widget-content">
-                                <ul class="contact-list">
-                                    <li>
-                                        <i class="far fa-envelope"></i>
-                                        <a href="mialto:Ingenious@gmail.com">Ingenious@gmail.com</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-phone"></i> 
-                                        <a href="#">(+123) 456 - 7890</a>
-                                    </li>
-                                    <li>
-                                       <div class="social-icon">
-                                           <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                           <a href="#"><i class="fab fa-twitter"></i></a>
-                                           <a href="#"><i class="fab fa-instagram"></i></a>
-                                           <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                           <a href="#"><i class="fa fa-signal"></i></a>
-                                       </div> 
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> 
-                    </div>
-                </div>
+            <div class="copyright-text">
+                <p><?php echo e(Translation::getValue('footer_about_title', $locale)); ?> © <?php echo e(date('Y')); ?></p>
             </div>
         </div>
-        
-        <!--Footer Bottom-->
-        <div class="footer-bottom">
-            <div class="auto-container">
-                <div class="copyright-text">
-                    <p><a href="index.html">Ingenious</a> - Smart Home Automation WordPress Theme</p>
-                </div>
-            </div>
-        </div>
+    </div>
 </footer>
-<!-- End Main Footer --><?php /**PATH C:\laragon\www\ingenious\resources\views/components/front-footer-component.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ingenious\resources\views/components/front-footer-component.blade.php ENDPATH**/ ?>

@@ -20,7 +20,7 @@
         <h1><?php echo e(Translation::getValue('page_services_title', $locale)); ?></h1>
         <ul class="page-breadcrumb">
             <li>
-                <a href="<?php echo e(route('home')); ?>">
+                <a href="<?php echo e(route('home',['locale' => $locale])); ?>">
                     <?php echo e(Translation::getValue('breadcrumb_home', $locale)); ?>
 
                 </a>
@@ -43,7 +43,7 @@
     ?>
 <?php else: ?>
     <?php
-    $locale = app()->getLocale();
+    $locale = app()->getLocale(); 
     $icons = $services->icons ?? []; // artıq array-dir
     $list = $services->section2_list ?? [];
     $bg = $services->section2_background ? asset($services->section2_background) : 'images/background/34.jpg';
@@ -150,7 +150,7 @@
         </div>
     </section>
 
-    <!-- End Fluid Section One -->
+    <!-- End Fluid Section One --> 
 
     <!-- Skills Section -->
     <section class="skills-section">
@@ -220,7 +220,7 @@
 
         <!-- CONTACT FORM -->
         <div class="default-form contact-form">
-           <form action="<?php echo e(route('contact.submit')); ?>" method="post">
+           <form action="<?php echo e(route('contact.submit',['locale' => $locale])); ?>" method="post">
             <?php echo csrf_field(); ?>
 
             <div class="form-group">

@@ -1,111 +1,150 @@
 <header class="main-header">
-        <!-- Main box -->
-        <div class="main-box">
-            <div class="menu-box">
-                <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title="" srcset="images/logo-white-big.png 2x"></a></div>
 
-                <!--Nav Box-->
-                <div class="nav-outer">
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="">
-                                    <a href="index.html"><span>Home</span></a>
-                                </li>
-                                <li class="dropdown has-mega-menu">
-                                    <a href="about-us.html"><span>About Us</span></a>
-                                    <div class="mega-menu" data-width="200px">
-                                        <div class="mega-menu-bar row">
-                                            <div class="column col-lg-12 col-md-12 col-sm-12">
-                                                <h3>About</h3>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="services.html">Our Services</a></li>
-                                                    <li><a href="process.html">Our Process</a></li>
-                                                </ul>
-                                            </div>
+    <?php
+    use App\Models\Setting;
+    use App\Models\Translation;
+
+    $settings = Setting::first();
+    $locale = app()->getLocale();
+
+    // Məs: "ru/about" → ["ru", "about"]
+    $segments = request()->segments();
+
+    // Locale-dən sonrakı hissə
+    $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
+    ?>
+
+
+    <!-- Main box -->
+    <div class="main-box">
+        <div class="menu-box">
+
+            <!-- Logo -->
+            <div class="logo">
+                <a href="<?php echo e(route('home', ['locale' => $locale])); ?>">
+                    <img src="<?php echo e(asset('storage/' . $settings->logo)); ?>"
+                        alt="logo"
+                        srcset="<?php echo e(asset('storage/' . $settings->logo_white)); ?> 2x">
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-outer">
+
+                <nav class="main-menu navbar-expand-md navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <ul class="navigation clearfix">
+
+                            <li>
+                                <a href="<?php echo e(route('home', ['locale' => $locale])); ?>">
+                                    <?php echo e(Translation::getValue('menu_home', $locale)); ?>
+
+                                </a>
+                            </li>
+
+                            <li class="dropdown has-mega-menu">
+                                <a href="<?php echo e(route('about', ['locale' => $locale])); ?>">
+                                    <?php echo e(Translation::getValue('menu_about', $locale)); ?>
+
+                                </a>
+
+                                <div class="mega-menu" data-width="200px">
+                                    <div class="mega-menu-bar row">
+                                        <div class="column col-lg-12">
+
+                                            <h3><?php echo e(Translation::getValue('menu_about', $locale)); ?></h3>
+
+                                            <ul>
+                                                <li><a href="<?php echo e(route('about', ['locale' => $locale])); ?>">
+                                                        <?php echo e(Translation::getValue('menu_about', $locale)); ?>
+
+                                                    </a></li>
+
+                                                <li><a href="<?php echo e(route('services', ['locale' => $locale])); ?>">
+                                                        <?php echo e(Translation::getValue('menu_services', $locale)); ?>
+
+                                                    </a></li>
+
+                                                <li><a href="<?php echo e(route('process', ['locale' => $locale])); ?>">
+                                                        <?php echo e(Translation::getValue('menu_process', $locale)); ?>
+
+                                                    </a></li>
+                                            </ul>
+
                                         </div>
                                     </div>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="shop.html"><span>SHOP</span></a>
-                                    <ul class="from-right">
-                                        <li><a href="shop-single.html">Product Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                                <a href="blog-checkboard.html"><span>Blog</span></a>
-                                                <ul class="from-right">
-                                                    <li><a href="blog-post-image.html">Blog-detail</a></li>
-                                                </ul>
-                                </li>
-                                <li><a href="contact.html">Contacts</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <!-- Main Menu End-->
+                                </div>
+                            </li>
 
-                    <div class="outer-box clearfix">
-                        <!-- Search Btn -->
-                        <div class="search-box">
-                            <button class="search-btn"><i class="fa fa-search"></i></button>
-                        </div>
+                            <li><a href="<?php echo e(route('products', ['locale' => $locale])); ?>">
+                                    <?php echo e(Translation::getValue('menu_shop', $locale)); ?>
+
+                                </a></li>
+
+                            <li><a href="<?php echo e(route('blog', ['locale' => $locale])); ?>">
+                                    <?php echo e(Translation::getValue('menu_blog', $locale)); ?>
+
+                                </a></li>
+
+                            <li><a href="<?php echo e(route('contact', ['locale' => $locale])); ?>">
+                                    <?php echo e(Translation::getValue('menu_contact', $locale)); ?>
+
+                                </a></li>
+
+                        </ul>
+
                     </div>
-                </div>
-            </div>
-        </div>
+                </nav>
 
-        <!-- Sticky Header  -->
-        <div class="sticky-header">
-            <div class="outer-box">
-                <!--Logo-->
-                <div class="logo">
-                    <a href="#" title="Sticky Logo"><img src="<?php echo e(asset('assets/images/sticky-logo.png')); ?>" alt="Sticky Logo"></a>
-                </div>
 
-                <!--Nav Outer-->
-                <div class="nav-outer">
-                    <!-- Main Menu -->
-                    <nav class="main-menu">
-                        <!--Keep This Empty / Menu will come through Javascript-->
-                    </nav><!-- Main Menu End-->
-                </div>
-            </div>
-        </div><!-- End Sticky Menu -->
-
-        <!-- Mobile Header -->
-        <div class="mobile-header">
-            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title="" srcset="<?php echo e(asset('assets/images/logo-white-big.png')); ?> 2x"></a></div>
-
-            <!--Nav Box-->
-            <div class="nav-outer clearfix">
-                <!--Keep This Empty / Menu will come through Javascript-->
-            </div>
-        </div>
-
-        <!-- Mobile Menu  -->
-        <div class="mobile-menu">            
-            <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="" title="" srcset="images/logo-white-big.png 2x"></a></div> 
-                <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            </nav>
-        </div><!-- End Mobile Menu -->
-
-        <!-- Header Search -->
-        <div class="search-popup">
-            <span class="search-back-drop"></span>
-            
-            <div class="search-inner">
-                <button class="close-search"><span class="fa fa-times"></span></button>
-                <form method="post" action="blog-showcase.html">
-                    <div class="form-group">
-                        <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                <!-- Search + Language -->
+                <div class="outer-box clearfix">
+                    <!-- Search Btn -->
+                    <div class="search-box">
+                        <button class="search-btn" data-target=".search-popup">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
-                </form>
+                    <!-- LANGUAGE SWITCHER -->
+                    <div class="language-switcher">
+                        <ul class="lang-list">
+
+                            <li class="<?php echo e($locale == 'az' ? 'active' : ''); ?>">
+                                <a href="/az<?php echo e($cleanPath); ?>">AZ</a>
+                            </li>
+
+                            <li class="<?php echo e($locale == 'en' ? 'active' : ''); ?>">
+                                <a href="/en<?php echo e($cleanPath); ?>">EN</a>
+                            </li>
+
+                            <li class="<?php echo e($locale == 'ru' ? 'active' : ''); ?>">
+                                <a href="/ru<?php echo e($cleanPath); ?>">RU</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
             </div>
         </div>
-        <!-- End Header Search -->
+    </div>
+    <div class="search-popup">
+        <span class="search-back-drop"></span>
+
+        <div class="search-inner">
+            <button class="close-search"><span class="fa fa-times"></span></button>
+
+            <form method="GET" action="<?php echo e(route('products', ['locale' => $locale])); ?>">
+                <div class="form-group">
+                    <input type="search" name="search" placeholder="<?php echo e(Translation::getValue('search_placeholder', $locale)); ?>" required="">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </header><?php /**PATH C:\laragon\www\ingenious\resources\views/components/front-header-component.blade.php ENDPATH**/ ?>

@@ -41,4 +41,9 @@ class AboutSection extends Model
     {
         return \App\Models\Translation::getValue($this->button_key, $locale);
     }
+
+    public function getTranslation($field, $locale)
+    {
+        return $this->{$field . '_' . $locale};
+    }
 }

@@ -126,8 +126,13 @@ class ServicesResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('text_az')->label('Mətni (AZ)')->required(),
                                 Forms\Components\TextInput::make('text_en')->label('Text (EN)'),
-                                Forms\Components\TextInput::make('text_ru')->label('Текст (RU)'),
+
+                                Forms\Components\Textarea::make('text_ru')
+                                    ->label('Текст (RU)')
+                                    ->rows(2)
+                                    ->maxLength(null),
                             ])
+
                             ->default([])
                             ->reorderable()
                             ->columnSpanFull(),
