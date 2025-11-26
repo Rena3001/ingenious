@@ -37,6 +37,15 @@ class TranslationResource extends Resource
                 Tabs\Tab::make('RU')->schema([
                     Forms\Components\TextInput::make('value_ru')->label('Текст (RU)'),
                 ]),
+                // 🇩🇪 DE
+                Tabs\Tab::make('DE')->schema([
+                    Forms\Components\TextInput::make('value_de')->label('Text (DE)'),
+                ]),
+
+                // 🇪🇸 ES
+                Tabs\Tab::make('ES')->schema([
+                    Forms\Components\TextInput::make('value_es')->label('Texto (ES)'),
+                ]),
             ])->columnSpanFull(),
         ]);
     }
@@ -49,6 +58,9 @@ class TranslationResource extends Resource
                 Tables\Columns\TextColumn::make('value_az')->label('AZ'),
                 Tables\Columns\TextColumn::make('value_en')->label('EN'),
                 Tables\Columns\TextColumn::make('value_ru')->label('RU'),
+                Tables\Columns\TextColumn::make('value_de')->label('DE'),
+                Tables\Columns\TextColumn::make('value_es')->label('ES'),
+
             ])
             ->searchable()
             ->actions([

@@ -43,6 +43,16 @@ class CategoryResource extends Resource
                     Forms\Components\TextInput::make('name_ru')
                         ->label('Название категории (RU)'),
                 ]),
+                Forms\Components\Tabs\Tab::make('DE')->schema([
+                    Forms\Components\TextInput::make('name_de')
+                        ->label('Kategorie (DE)'),
+                ]),
+
+                // 🇪🇸 ES TAB
+                Forms\Components\Tabs\Tab::make('ES')->schema([
+                    Forms\Components\TextInput::make('name_es')
+                        ->label('Categoría (ES)'),
+                ]),
 
             ])->columnSpanFull(),
 

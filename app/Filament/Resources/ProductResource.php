@@ -56,6 +56,25 @@ class ProductResource extends Resource
                         ->label('Описание (RU)')
                         ->rows(3),
                 ]),
+                // 🇩🇪 DE TAB
+                Forms\Components\Tabs\Tab::make('DE')->schema([
+                    Forms\Components\TextInput::make('name_de')
+                        ->label('Name (DE)'),
+
+                    Forms\Components\Textarea::make('description_de')
+                        ->label('Beschreibung (DE)')
+                        ->rows(3),
+                ]),
+
+                // 🇪🇸 ES TAB
+                Forms\Components\Tabs\Tab::make('ES')->schema([
+                    Forms\Components\TextInput::make('name_es')
+                        ->label('Nombre (ES)'),
+
+                    Forms\Components\Textarea::make('description_es')
+                        ->label('Descripción (ES)')
+                        ->rows(3),
+                ]),
             ])->columnSpanFull(),
 
             Forms\Components\TextInput::make('price')
@@ -92,7 +111,7 @@ class ProductResource extends Resource
 
             Tables\Columns\TextColumn::make('amazon_link')
                 ->label('Amazon link')
-                ->url(fn ($record) => $record->amazon_link)
+                ->url(fn($record) => $record->amazon_link)
                 ->openUrlInNewTab()
                 ->toggleable(),
         ]);

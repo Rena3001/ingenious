@@ -13,11 +13,11 @@ use App\Http\Controllers\Front\ContactPageController;
 Route::get('/', function () {
     return redirect('/az');
 });
-
+ 
 // LOCALE GROUP
 Route::group([
     'prefix' => '{locale}',
-    'where' => ['locale' => 'az|en|ru']
+    'where' => ['locale' => 'az|en|ru|de|es'],
 ], function () {
 
     // HOME

@@ -41,6 +41,19 @@ class StepResource extends Resource
                             Forms\Components\Textarea::make('description_ru'),
                             Forms\Components\TextInput::make('button_text_ru'),
                         ]),
+                        // 🇩🇪 ALMAN DİLİ
+                        Forms\Components\Tabs\Tab::make('DE')->schema([
+                            Forms\Components\TextInput::make('title_de')->label('Titel (DE)'),
+                            Forms\Components\Textarea::make('description_de')->label('Beschreibung (DE)'),
+                            Forms\Components\TextInput::make('button_text_de')->label('Button Text (DE)'),
+                        ]),
+
+                        // 🇪🇸 İSPAN DİLİ
+                        Forms\Components\Tabs\Tab::make('ES')->schema([
+                            Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
+                            Forms\Components\Textarea::make('description_es')->label('Descripción (ES)'),
+                            Forms\Components\TextInput::make('button_text_es')->label('Texto del botón (ES)'),
+                        ]),
                     ])
                     ->columnSpanFull(),
 

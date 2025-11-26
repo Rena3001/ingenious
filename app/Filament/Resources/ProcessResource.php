@@ -19,7 +19,7 @@ class ProcessResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-   public static function form(Form $form): Form
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -41,6 +41,19 @@ class ProcessResource extends Resource
                                 Forms\Components\TextInput::make('title_ru')->label('Заголовок (RU)'),
                                 Forms\Components\Textarea::make('description_ru')->label('Описание (RU)'),
                             ]),
+                        // 🇩🇪 ALMAN DİLİ
+                        Forms\Components\Tabs\Tab::make('DE')
+                            ->schema([
+                                Forms\Components\TextInput::make('title_de')->label('Titel (DE)'),
+                                Forms\Components\Textarea::make('description_de')->label('Beschreibung (DE)'),
+                            ]),
+
+                        // 🇪🇸 İSPAN DİLİ
+                        Forms\Components\Tabs\Tab::make('ES')
+                            ->schema([
+                                Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
+                                Forms\Components\Textarea::make('description_es')->label('Descripción (ES)'),
+                            ]),
                     ])
                     ->columnSpanFull(),
             ]);
@@ -57,6 +70,11 @@ class ProcessResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title_ru')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('title_de')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title_es')
+                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

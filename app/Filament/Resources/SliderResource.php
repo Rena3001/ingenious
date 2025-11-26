@@ -55,6 +55,29 @@ class SliderResource extends Resource
                         ->label('Текст (RU)')
                         ->rows(3),
                 ]),
+
+                // 🇩🇪 ALMAN DİLİ
+                Tabs\Tab::make('DE')->schema([
+                    Forms\Components\TextInput::make('title_de')
+                        ->label('Titel (DE)')
+                        ->maxLength(255),
+
+                    Forms\Components\Textarea::make('description_de')
+                        ->label('Beschreibung (DE)')
+                        ->rows(3),
+                ]),
+
+                // 🇪🇸 İSPAN DİLİ
+                Tabs\Tab::make('ES')->schema([
+                    Forms\Components\TextInput::make('title_es')
+                        ->label('Título (ES)')
+                        ->maxLength(255),
+
+                    Forms\Components\Textarea::make('description_es')
+                        ->label('Descripción (ES)')
+                        ->rows(3),
+                ]),
+
             ])->columnSpanFull(),
 
             Forms\Components\FileUpload::make('image')

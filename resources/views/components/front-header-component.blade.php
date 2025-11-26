@@ -113,6 +113,11 @@
                             <li class="{{ $locale == 'ru' ? 'active' : '' }}">
                                 <a href="/ru{{ $cleanPath }}">RU</a>
                             </li>
+                            <li class="{{ $locale == 'de' ? 'active' : '' }}">
+                                <a href="/de{{ $cleanPath }}">DE</a>
+                            </li>
+                            <li class="{{ $locale == 'es' ? 'active' : '' }}">
+                                <a href="/es{{ $cleanPath }}">ES</a>
 
                         </ul>
                     </div>

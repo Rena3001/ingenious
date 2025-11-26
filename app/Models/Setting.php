@@ -15,18 +15,22 @@ class Setting extends Model
         'contact_title_az',
         'contact_title_en',
         'contact_title_ru',
+        'contact_title_de',
+        'contact_title_es',
 
         'contact_desc_az',
         'contact_desc_en',
         'contact_desc_ru',
-        'logo','logo_white',
+        'contact_desc_de',
+        'contact_desc_es',
 
-                // Social links
+        'logo',
+        'logo_white',
+
         'facebook',
         'instagram',
         'linkedin',
         'twitter',
         'telegram',
-
     ];
 }

@@ -53,13 +53,26 @@ class AboutSectionResource extends Resource
                     Forms\Components\RichEditor::make('content_ru')->label('Текст (RU)'),
                     Forms\Components\Textarea::make('short_desc_ru')->label('Краткое описание (RU)'),
                 ]),
+                /* 🇩🇪 ALMAN DİLİ */
+                Tabs\Tab::make('DE')->schema([
+                    Forms\Components\TextInput::make('title_de')->label('Titel (DE)'),
+                    Forms\Components\RichEditor::make('content_de')->label('Text (DE)'),
+                    Forms\Components\Textarea::make('short_desc_de')->label('Kurzbeschreibung (DE)'),
+                ]),
+
+                /* 🇪🇸 İSPAN DİLİ */
+                Tabs\Tab::make('ES')->schema([
+                    Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
+                    Forms\Components\RichEditor::make('content_es')->label('Texto (ES)'),
+                    Forms\Components\Textarea::make('short_desc_es')->label('Descripción corta (ES)'),
+                ]),
             ])->columnSpanFull(),
 
             // Düymə tərcüməsi yalnız about_section_three üçün
             Forms\Components\Select::make('button_key')
                 ->label('Düymə tərcümə açarı (yalnız About üçün)')
                 ->options(Translation::pluck('key', 'key')->toArray())
-                ->visible(fn ($get) => $get('type') === 'about_section_three'),
+                ->visible(fn($get) => $get('type') === 'about_section_three'),
 
             // 🔥 HƏR İKİ BÖLMƏ ÜÇÜN BACKGROUND ŞƏKİL
             Forms\Components\FileUpload::make('background_image')
@@ -67,7 +80,7 @@ class AboutSectionResource extends Resource
                 ->directory('about')
                 ->image()
                 ->columnSpanFull()
-                ->visible(fn ($get) => in_array($get('type'), [
+                ->visible(fn($get) => in_array($get('type'), [
                     'about_section_three',
                     'our_standards'
                 ])),
@@ -76,7 +89,7 @@ class AboutSectionResource extends Resource
             Repeater::make('missionItems')
                 ->relationship('missionItems')
                 ->label('Mission alt blokları')
-                ->visible(fn ($get) => $get('type') === 'our_mission')
+                ->visible(fn($get) => $get('type') === 'our_mission')
                 ->schema([
                     Forms\Components\TextInput::make('icon')
                         ->label('İkon class (məs: flaticon-target-2)')
@@ -94,6 +107,18 @@ class AboutSectionResource extends Resource
                         Tabs\Tab::make('RU')->schema([
                             Forms\Components\TextInput::make('title_ru')->label('Заголовок (RU)'),
                             Forms\Components\Textarea::make('text_ru')->label('Текст (RU)'),
+                        ]),
+
+                        /* 🇩🇪 ALMAN DİLİ */
+                        Tabs\Tab::make('DE')->schema([
+                            Forms\Components\TextInput::make('title_de')->label('Titel (DE)'),
+                            Forms\Components\Textarea::make('text_de')->label('Text (DE)'),
+                        ]),
+
+                        /* 🇪🇸 İSPAN DİLİ */
+                        Tabs\Tab::make('ES')->schema([
+                            Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
+                            Forms\Components\Textarea::make('text_es')->label('Texto (ES)'),
                         ]),
                     ]),
                 ])

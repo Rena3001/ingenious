@@ -34,21 +34,31 @@ class SettingsResource extends Resource
                     Forms\Components\TextInput::make('contact_title_az')->label('Title (AZ)'),
                     Forms\Components\TextInput::make('contact_title_en')->label('Title (EN)'),
                     Forms\Components\TextInput::make('contact_title_ru')->label('Title (RU)'),
+                    // 🇩🇪 DE
+                    Forms\Components\TextInput::make('contact_title_de')->label('Title (DE)'),
+
+                    // 🇪🇸 ES
+                    Forms\Components\TextInput::make('contact_title_es')->label('Title (ES)'),
+
 
                     Forms\Components\Textarea::make('contact_desc_az')->label('Description (AZ)'),
                     Forms\Components\Textarea::make('contact_desc_en')->label('Description (EN)'),
                     Forms\Components\Textarea::make('contact_desc_ru')->label('Description (RU)'),
-                ]),
-                Forms\Components\FileUpload::make('logo')
-                    ->label('Logo (Dark)')
-                    ->directory('settings')
-                    ->image(),
+                    Forms\Components\Textarea::make('contact_desc_de')->label('Description (DE)'),
 
-                Forms\Components\FileUpload::make('logo_white')
-                    ->label('Logo (White)')
-                    ->directory('settings')
-                    ->image(),
-                Forms\Components\Section::make('Social Media Links')
+                    // 🇪🇸 ES
+                    Forms\Components\Textarea::make('contact_desc_es')->label('Description (ES)'),
+                ]),
+            Forms\Components\FileUpload::make('logo')
+                ->label('Logo (Dark)')
+                ->directory('settings')
+                ->image(),
+
+            Forms\Components\FileUpload::make('logo_white')
+                ->label('Logo (White)')
+                ->directory('settings')
+                ->image(),
+            Forms\Components\Section::make('Social Media Links')
                 ->schema([
                     Forms\Components\TextInput::make('facebook')->label('Facebook URL'),
                     Forms\Components\TextInput::make('instagram')->label('Instagram URL'),

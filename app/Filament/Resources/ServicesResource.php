@@ -46,6 +46,11 @@ class ServicesResource extends Resource
                                 Forms\Components\TextInput::make('icon_title_az')->label('Icon Başlığı (AZ)'),
                                 Forms\Components\TextInput::make('icon_title_en')->label('Icon Title (EN)'),
                                 Forms\Components\TextInput::make('icon_title_ru')->label('Icon Title (RU)'),
+                                // 🇩🇪
+                                Forms\Components\TextInput::make('icon_title_de')->label('Icon Titel (DE)'),
+
+                                // 🇪🇸
+                                Forms\Components\TextInput::make('icon_title_es')->label('Icon Título (ES)'),
                             ])
                             ->default([])
                             ->reorderable()
@@ -79,6 +84,21 @@ class ServicesResource extends Resource
 
                                         Forms\Components\Textarea::make('description_ru')
                                             ->label('Описание (RU)'),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('DE')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_de')
+                                            ->label('Titel (DE)'),
+
+                                        Forms\Components\Textarea::make('description_de')
+                                            ->label('Beschreibung (DE)'),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('ES')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_es')
+                                            ->label('Título (ES)'),
+                                        Forms\Components\Textarea::make('description_es')
+                                            ->label('Descripción (ES)'),
                                     ]),
                             ])
                             ->columnSpanFull(),
@@ -117,6 +137,20 @@ class ServicesResource extends Resource
                                         Forms\Components\Textarea::make('section2_description_ru')
                                             ->label('Section 2 Описание (RU)'),
                                     ]),
+                                // 🇩🇪
+                                Forms\Components\Tabs\Tab::make('DE')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('section2_title_de')->label('Section 2 Titel (DE)'),
+                                        Forms\Components\Textarea::make('section2_description_de')->label('Section 2 Beschreibung (DE)'),
+                                    ]),
+
+                                // 🇪🇸
+                                Forms\Components\Tabs\Tab::make('ES')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('section2_title_es')->label('Section 2 Título (ES)'),
+                                        Forms\Components\Textarea::make('section2_description_es')->label('Section 2 Descripción (ES)'),
+                                    ]),
+
                             ])
                             ->columnSpanFull(),
 
@@ -127,11 +161,18 @@ class ServicesResource extends Resource
                                 Forms\Components\TextInput::make('text_az')->label('Mətni (AZ)')->required(),
                                 Forms\Components\TextInput::make('text_en')->label('Text (EN)'),
 
+                                // 🇩🇪
+                                Forms\Components\TextInput::make('text_de')->label('Text (DE)'),
+
+                                // 🇪🇸
+                                Forms\Components\TextInput::make('text_es')->label('Texto (ES)'),
+
                                 Forms\Components\Textarea::make('text_ru')
                                     ->label('Текст (RU)')
                                     ->rows(2)
                                     ->maxLength(null),
                             ])
+
 
                             ->default([])
                             ->reorderable()
@@ -156,6 +197,18 @@ class ServicesResource extends Resource
                                 Forms\Components\Tabs\Tab::make('RU')->schema([
                                     Forms\Components\TextInput::make('section2_button_text_ru')
                                         ->label('Текст кнопки (RU)'),
+                                ]),
+
+                                // 🇩🇪
+                                Forms\Components\Tabs\Tab::make('DE')->schema([
+                                    Forms\Components\TextInput::make('section2_button_text_de')
+                                        ->label('Schaltflächentext (DE)'),
+                                ]),
+
+                                // 🇪🇸
+                                Forms\Components\Tabs\Tab::make('ES')->schema([
+                                    Forms\Components\TextInput::make('section2_button_text_es')
+                                        ->label('Texto del botón (ES)'),
                                 ]),
                             ])
                             ->columnSpanFull(),
@@ -209,6 +262,22 @@ class ServicesResource extends Resource
                                         Forms\Components\Textarea::make('section3_description_ru')
                                             ->label('Section 3 Описание (RU)'),
                                     ]),
+                                // 🇩🇪
+                                Forms\Components\Tabs\Tab::make('DE')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('section3_title_de')
+                                            ->label('Section 3 Titel (DE)'),
+                                        Forms\Components\Textarea::make('section3_description_de')
+                                            ->label('Section 3 Beschreibung (DE)'),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('ES')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('section3_title_es')
+                                            ->label('Section 3 Título (ES)'),
+                                        Forms\Components\Textarea::make('section3_description_es')
+                                            ->label('Section 3 Descripción (ES)'),
+                                    ]),
+
                             ])
                             ->columnSpanFull(),
 
@@ -232,6 +301,13 @@ class ServicesResource extends Resource
 
                                 Forms\Components\TextInput::make('title_ru')
                                     ->label('Заголовок (RU)'),
+                                // 🇩🇪
+                                Forms\Components\TextInput::make('text_de')
+                                    ->label('Text (DE)'),
+
+                                // 🇪🇸
+                                Forms\Components\TextInput::make('text_es')
+                                    ->label('Texto (ES)'),
                             ])
                             ->default([])
                             ->reorderable()

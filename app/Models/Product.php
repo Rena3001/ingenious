@@ -8,16 +8,26 @@ class Product extends Model
 {
     protected $fillable = [
         'category_id',
+
+        // Names
         'name_az',
         'name_en',
         'name_ru',
+        'name_de',
+        'name_es',
+
+        // Descriptions
         'description_az',
         'description_en',
         'description_ru',
+        'description_de',
+        'description_es',
+
         'price',
         'image',
         'amazon_link'
     ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -31,5 +41,4 @@ class Product extends Model
     {
         return $this->hasMany(Review::class)->where('approved', true);
     }
-
 }

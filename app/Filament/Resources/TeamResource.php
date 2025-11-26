@@ -74,6 +74,18 @@ class TeamResource extends Resource
                             ->label('Описание (RU)')
                             ->rows(3),
                     ]),
+                    Tabs\Tab::make('DE')->schema([
+                        Forms\Components\TextInput::make('name_de')->label('Name (DE)'),
+                        Forms\Components\TextInput::make('position_de')->label('Position (DE)'),
+                        Forms\Components\Textarea::make('desc_de')->label('Beschreibung (DE)')->rows(3),
+                    ]),
+
+                    // 🇪🇸 ES
+                    Tabs\Tab::make('ES')->schema([
+                        Forms\Components\TextInput::make('name_es')->label('Nombre (ES)'),
+                        Forms\Components\TextInput::make('position_es')->label('Posición (ES)'),
+                        Forms\Components\Textarea::make('desc_es')->label('Descripción (ES)')->rows(3),
+                    ]),
                 ])
                 ->columnSpanFull(),
 
@@ -97,7 +109,7 @@ class TeamResource extends Resource
                 ->label('Aktiv')
                 ->default(true),
         ])
-        ->columns(2);
+            ->columns(2);
     }
 
     public static function table(Table $table): Table
@@ -120,14 +132,14 @@ class TeamResource extends Resource
                 ->label('Sıra')
                 ->sortable(),
         ])
-        ->defaultSort('sort', 'asc')
-        ->actions([
-            Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make(),
-        ])
-        ->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+            ->defaultSort('sort', 'asc')
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getPages(): array

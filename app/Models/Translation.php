@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Translation extends Model
 {
     protected $fillable = [
-        'key', 'value_az', 'value_en', 'value_ru',
+        'key',
+        'value_az',
+        'value_en',
+        'value_ru',
+        'value_de',
+        'value_es',
     ];
+
 
     public static function getValue(string $key, string $locale = null): string
     {

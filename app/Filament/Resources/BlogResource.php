@@ -18,18 +18,27 @@ class BlogResource extends Resource
         return $form->schema([
 
             Forms\Components\Section::make("Title")
-            ->schema([
-                Forms\Components\TextInput::make('title_az')->label('Title AZ')->required(),
-                Forms\Components\TextInput::make('title_en')->label('Title EN')->required(),
-                Forms\Components\TextInput::make('title_ru')->label('Title RU')->required(),
-            ]),
+                ->schema([
+                    Forms\Components\TextInput::make('title_az')->label('Title AZ')->required(),
+                    Forms\Components\TextInput::make('title_en')->label('Title EN')->required(),
+                    Forms\Components\TextInput::make('title_ru')->label('Title RU')->required(),
+                    Forms\Components\TextInput::make('title_de')->label('Title DE'),
+
+                    /* 🇪🇸 İSPAN DİLİ */
+                    Forms\Components\TextInput::make('title_es')->label('Title ES'),
+                ]),
 
             Forms\Components\Section::make("Description")
-            ->schema([
-                Forms\Components\Textarea::make('description_az')->label('Description AZ')->required(),
-                Forms\Components\Textarea::make('description_en')->label('Description EN')->required(),
-                Forms\Components\Textarea::make('description_ru')->label('Description RU')->required(),
-            ]),
+                ->schema([
+                    Forms\Components\Textarea::make('description_az')->label('Description AZ')->required(),
+                    Forms\Components\Textarea::make('description_en')->label('Description EN')->required(),
+                    Forms\Components\Textarea::make('description_ru')->label('Description RU')->required(),
+                    /* 🇩🇪 ALMAN DİLİ */
+                    Forms\Components\Textarea::make('description_de')->label('Description DE'),
+
+                    /* 🇪🇸 İSPAN DİLİ */
+                    Forms\Components\Textarea::make('description_es')->label('Description ES'),
+                ]),
 
             Forms\Components\FileUpload::make('image')
                 ->label('Image')
