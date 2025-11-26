@@ -50,4 +50,9 @@ class User extends Authenticatable
 {
     return true;
 }
+
+public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return true; // TEST üçün hər user panelə girə bilər
+    }
 }
