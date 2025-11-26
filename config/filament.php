@@ -103,5 +103,8 @@ return [
 ],
 
 
+'middleware' => [
+    'auth',
+],
 
 ];
