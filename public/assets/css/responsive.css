@@ -527,6 +527,9 @@
 	.sidebar .search-widget{
 		padding-bottom: 20px;
 	}
+	.search-box{
+		margin-right: 20px;
+	}
 
 	.sidebar-page-container .content-side{
 		order: 0;

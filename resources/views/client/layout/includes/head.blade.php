@@ -8,7 +8,16 @@
 <link href="{{asset('assets/plugins/revolution/css/navigation.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
 
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-<link href="{{asset('assets/css/responsive')}}" rel="stylesheet">
+<link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/flaticon.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/jquery-ui.min.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/jquery.fancybox.min.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/jquery.modal.min.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/fontawesome-all.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/odometer.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/owl.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet">
 
 <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
 <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
@@ -21,3 +30,9 @@
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 
 @stack('styles')
+@push('styles')
+<style>
+/* MOBIL ÖLÇÜLƏRDƏ DESKTOP HEADER-İN TƏKRARLANAN HİSSƏLƏRİNİ GİZLƏDİR */
+
+</style>
+@endpush

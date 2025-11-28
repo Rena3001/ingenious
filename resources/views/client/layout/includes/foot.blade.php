@@ -20,10 +20,9 @@
 <!--Revolution Slider-->
 <script src="{{asset('assets/js/jquery.fancybox.js')}}"></script>
 <script src="{{asset('assets/js/owl.js')}}"></script>
-<script src="{{asset('assets/js/wow.js')}}"></script>
+<script src="{{asset('assets/js/wow.js')}}"></script> 
 <script src="{{asset('assets/js/appear.js')}}"></script>
 <script src="{{asset('assets/js/isotope.js') }}"></script>
-<script src="{{asset('assets/js/script.js')}}"></script>
 <script src="{{asset('assets/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('assets/js/mixitup.js')}}"></script>
 <script src="{{asset('assets/js/odometer.min.js')}}"></script>

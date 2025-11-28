@@ -1,19 +1,14 @@
 <header class="main-header">
 
     @php
-    use App\Models\Setting;
-    use App\Models\Translation;
+        use App\Models\Setting;
+        use App\Models\Translation;
 
-    $settings = Setting::first();
-    $locale = app()->getLocale();
-
-    // Məs: "ru/about" → ["ru", "about"]
-    $segments = request()->segments();
-
-    // Locale-dən sonrakı hissə
-    $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
+        $settings = Setting::first();
+        $locale = app()->getLocale();
+        $segments = request()->segments();
+        $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
     @endphp
-
 
     <!-- Main box -->
     <div class="main-box">
@@ -23,8 +18,8 @@
             <div class="logo">
                 <a href="{{ route('home', ['locale' => $locale]) }}">
                     <img src="{{ asset('storage/' . $settings->logo) }}"
-                        alt="logo"
-                        srcset="{{ asset('storage/' . $settings->logo_white) }} 2x">
+                         alt="logo"
+                         srcset="{{ asset('storage/' . $settings->logo_white) }} 2x">
                 </a>
             </div>
 
@@ -50,9 +45,7 @@
                                 <div class="mega-menu" data-width="200px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
-
                                             <h3>{{ Translation::getValue('menu_about', $locale) }}</h3>
-
                                             <ul>
                                                 <li><a href="{{ route('about', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('menu_about', $locale) }}
@@ -66,7 +59,6 @@
                                                         {{ Translation::getValue('menu_process', $locale) }}
                                                     </a></li>
                                             </ul>
-
                                         </div>
                                     </div>
                                 </div>
@@ -89,16 +81,17 @@
                     </div>
                 </nav>
 
-
                 <!-- Search + Language -->
                 <div class="outer-box clearfix">
+
                     <!-- Search Btn -->
                     <div class="search-box">
                         <button class="search-btn" data-target=".search-popup">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                    <!-- LANGUAGE SWITCHER -->
+
+                    <!-- Language Switcher -->
                     <div class="language-switcher">
                         <ul class="lang-list">
 
@@ -113,11 +106,14 @@
                             <li class="{{ $locale == 'ru' ? 'active' : '' }}">
                                 <a href="/ru{{ $cleanPath }}">RU</a>
                             </li>
+
                             <li class="{{ $locale == 'de' ? 'active' : '' }}">
                                 <a href="/de{{ $cleanPath }}">DE</a>
                             </li>
+
                             <li class="{{ $locale == 'es' ? 'active' : '' }}">
                                 <a href="/es{{ $cleanPath }}">ES</a>
+                            </li>
 
                         </ul>
                     </div>
@@ -127,6 +123,42 @@
             </div>
         </div>
     </div>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="logo">
+            <a href="{{ route('home', ['locale' => $locale]) }}">
+                <img src="{{ asset('storage/' . $settings->logo) }}" alt="" srcset="{{ asset('storage/' . $settings->logo) }}">
+            </a>
+        </div>
+
+        <div class="nav-outer clearfix">
+            <!-- Menu JS auto injection -->
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <!-- Mobile Menu -->
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <div class="close-btn"><span class="fa fa-times"></span></div>
+
+    <nav class="menu-box">
+
+        <div class="nav-logo">
+            <a href="{{ route('home', ['locale' => $locale]) }}">
+                <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
+            </a>
+        </div>
+
+        <!-- JS automatically injects menu here -->
+        <div class="menu-outer"></div>
+
+    </nav>
+</div>
+
+
+    <!-- Search Popup -->
     <div class="search-popup">
         <span class="search-back-drop"></span>
 
