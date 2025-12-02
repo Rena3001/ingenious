@@ -8,12 +8,13 @@ use App\Http\Controllers\Front\ProcessController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactPageController;
+use App\Http\Controllers\Front\OverviewController;
 
 // Root redirect → default language
 Route::get('/', function () {
     return redirect('/az');
 });
- 
+
 // LOCALE GROUP
 Route::group([
     'prefix' => '{locale}',
@@ -59,4 +60,7 @@ Route::group([
     // CONTACT SUBMIT FORM
     Route::post('/contact-submit', [ContactPageController::class, 'submit'])
         ->name('contact.submit');
+
+    Route::get('/overview/{slug}', [OverviewController::class, 'show'])
+        ->name('overview');
 });

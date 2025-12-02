@@ -36,4 +36,18 @@
 
         window.location.href = newUrl;
     }
+$('.roadmap-carousel').owlCarousel({
+    items: 1,
+    loop: true,
+    nav: true,          // 🔥 OXLARI AKTİV ETDİK
+    dots: true,
+    autoplay: false,
+    autoplayTimeout: 4500,
+    autoplayHoverPause: true,
+
+    navText: [
+        "<span class='roadmap-nav prev fa fa-angle-left'></span>",
+        "<span class='roadmap-nav next fa fa-angle-right'></span>"
+    ]
+});
 </script>

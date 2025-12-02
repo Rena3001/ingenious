@@ -17,7 +17,7 @@ class AboutSection extends Model
         'title_es',
 
         /* Content */
-        'content_az',
+        'content_az', 
         'content_en',
         'content_ru',
         'content_de',
@@ -30,7 +30,11 @@ class AboutSection extends Model
         'short_desc_de',
         'short_desc_es',
 
+
+        /* Button */
         'button_key',
+
+        /* Status */
         'is_active',
     ];
 

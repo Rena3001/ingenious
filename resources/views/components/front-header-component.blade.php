@@ -36,6 +36,9 @@
                                     {{ Translation::getValue('menu_home', $locale) }}
                                 </a>
                             </li>
+                            <li><a href="{{ route('products', ['locale' => $locale]) }}">
+                                    {{ Translation::getValue('menu_shop', $locale) }}
+                                </a></li>
 
                             <li class="dropdown has-mega-menu">
                                 <a href="{{ route('about', ['locale' => $locale]) }}">
@@ -64,12 +67,10 @@
                                 </div>
                             </li>
 
-                            <li><a href="{{ route('products', ['locale' => $locale]) }}">
-                                    {{ Translation::getValue('menu_shop', $locale) }}
-                                </a></li>
+                            
 
                             <li><a href="{{ route('blog', ['locale' => $locale]) }}">
-                                    {{ Translation::getValue('menu_blog', $locale) }}
+                                    {{ Translation::getValue('menu_news', $locale) }}
                                 </a></li>
 
                             <li><a href="{{ route('contact', ['locale' => $locale]) }}">
@@ -90,6 +91,27 @@
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
+                    <!-- <div class="cart-btn">
+                            <a href="shopping-cart.html"><i class="icon flaticon-shopping-cart-empty-side-view"></i> <span class="count">2</span></a>
+
+                            <div class="shopping-cart">
+                                <ul class="shopping-cart-items">
+                                    <li class="cart-item">
+                                        <img src="images/resource/item-thumb-1.jpg" alt="#" class="thumb" />
+                                        <span class="item-name">Night Security Cam 2Z1</span>
+                                        <span class="item-quantity">1 x <span class="item-amount">$84.00</span></span>
+                                        <a href="shop-single.html" class="product-detail"></a>
+                                        <button class="remove-item"><span class="fa fa-times"></span></button>
+                                    </li>
+                                </ul>
+
+                                <div class="cart-footer">
+                                    <div class="shopping-cart-total"><strong>Subtotal:</strong> $97.00</div>
+                                    <a href="cart.html" class="theme-btn">View Cart</a>
+                                    <a href="checkout.html" class="theme-btn">Checkout</a>
+                                </div>
+                            </div> 
+                        </div> -->
 
                     <!-- Language Switcher -->
                     <div class="language-switcher">

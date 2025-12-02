@@ -2358,6 +2358,12 @@ hr{
 	padding: 22px 20px;
 	max-width: 184px;
 }
+.logo-slider{
+	position: relative;
+    z-index: 9;
+    bottom: 100px;
+    left: 20px;
+}
 
 .main-header .menu-box{
     position: static;
@@ -5471,6 +5477,108 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 	opacity: .9;
 	box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
 }
+
+/***Overview Page***/
+
+
+.overview-page{
+	padding-bottom: 50px;
+}
+
+.roadmap-full-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.roadmap-slide {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+}
+
+.roadmap-slide .slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+
+.roadmap-slide .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 2;
+}
+
+.roadmap-slide .content {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    padding-top: 18vh;
+    max-width: 650px;
+}
+
+.roadmap-slide h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.roadmap-slide .subtitle {
+    font-size: 20px;
+    margin: 15px 0;
+    opacity: 0.9;
+	    color: wheat;
+}
+
+.roadmap-slide .desc {
+    font-size: 18px;
+    margin-bottom: 25px;
+    max-width: 600px;
+    opacity: 0.9;
+}
+
+.roadmap-full-slider .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.roadmap-full-slider .owl-nav .owl-prev,
+.roadmap-full-slider .owl-nav .owl-next {
+    pointer-events: auto;
+}
+
+.roadmap-nav {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    font-size: 42px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roadmap-nav:hover {
+    background: rgba(255,255,255,0.35);
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+}
+
 
 /*** 
 
