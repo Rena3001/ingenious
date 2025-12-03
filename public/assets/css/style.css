@@ -186,6 +186,20 @@ p,.text{
 	margin: 0;
 }
 
+.tp-caption.tp-resizeme.subtitle-text,
+.tp-caption.subtitle-text {
+    white-space: normal !important;
+    width: 100% !important;
+    max-width: 800px !important; /* uzunluğu məhdudlaşdırmaq üçün */
+    min-width: unset !important;
+    display: flex !important;
+    margin: 10px auto 0 auto !important;
+    text-align: center !important;
+    line-height: 1.5em !important;
+    letter-spacing: 0 !important;
+}
+
+
 ::-webkit-input-placeholder{color: inherit;}
 ::-moz-input-placeholder{color: inherit;}
 ::-ms-input-placeholder{color: inherit;}
@@ -2355,8 +2369,7 @@ hr{
 .main-header .logo{
 	position: relative;
 	z-index: 9;
-	padding: 22px 20px;
-	max-width: 184px;
+	max-width: 160px;
 }
 .logo-slider{
 	position: relative;
@@ -2409,7 +2422,7 @@ hr{
     line-height: 36px;
 	font-weight:600;
 	color:#ffffff;
-	padding: 0 19px;
+	padding: 0 16px;
 	text-transform: uppercase;
 	-webkit-transition:all 300ms ease;
 	-moz-transition:all 300ms ease;
@@ -2885,7 +2898,7 @@ hr{
     float: left;
     margin-right: 20px;
 }
-
+/* 
 .language-switcher .lang-list {
     display: flex;
     gap: 10px;
@@ -2911,8 +2924,21 @@ hr{
 
 .language-switcher-mobile .lang-list li a {
     color: #fff;
-}
+} */
 
+ .lang-dropdown {
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .lang-dropdown:focus {
+        outline: none;
+        border-color: #5bb98a;
+        box-shadow: 0 0 4px rgba(91, 185, 138, 0.4);
+    }
 
 /*** 
 
@@ -4155,6 +4181,13 @@ hr{
 	position: relative;
 	display: block;
     z-index: 1;
+}
+
+.slider_text_p{
+	font-size: 56px;
+	color: #ffffff;
+	margin-bottom: 15px;
+	font-weight: 400;
 }
 
 /*** 

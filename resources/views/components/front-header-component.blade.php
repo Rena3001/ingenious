@@ -1,13 +1,14 @@
 <header class="main-header">
 
     @php
-        use App\Models\Setting;
-        use App\Models\Translation;
+    use App\Models\Setting;
+    use App\Models\Translation;
 
-        $settings = Setting::first();
-        $locale = app()->getLocale();
-        $segments = request()->segments();
-        $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
+    $settings = Setting::first();
+    $locale = app()->getLocale();
+    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES'];
+    $segments = request()->segments();
+    $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
     @endphp
 
     <!-- Main box -->
@@ -18,8 +19,8 @@
             <div class="logo">
                 <a href="{{ route('home', ['locale' => $locale]) }}">
                     <img src="{{ asset('storage/' . $settings->logo) }}"
-                         alt="logo"
-                         srcset="{{ asset('storage/' . $settings->logo_white) }} 2x">
+                        alt="logo"
+                        srcset="{{ asset('storage/' . $settings->logo_white) }} 2x">
                 </a>
             </div>
 
@@ -67,7 +68,7 @@
                                 </div>
                             </li>
 
-                            
+
 
                             <li><a href="{{ route('blog', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_news', $locale) }}
@@ -114,30 +115,14 @@
                         </div> -->
 
                     <!-- Language Switcher -->
-                    <div class="language-switcher">
-                        <ul class="lang-list">
-
-                            <li class="{{ $locale == 'az' ? 'active' : '' }}">
-                                <a href="/az{{ $cleanPath }}">AZ</a>
-                            </li>
-
-                            <li class="{{ $locale == 'en' ? 'active' : '' }}">
-                                <a href="/en{{ $cleanPath }}">EN</a>
-                            </li>
-
-                            <li class="{{ $locale == 'ru' ? 'active' : '' }}">
-                                <a href="/ru{{ $cleanPath }}">RU</a>
-                            </li>
-
-                            <li class="{{ $locale == 'de' ? 'active' : '' }}">
-                                <a href="/de{{ $cleanPath }}">DE</a>
-                            </li>
-
-                            <li class="{{ $locale == 'es' ? 'active' : '' }}">
-                                <a href="/es{{ $cleanPath }}">ES</a>
-                            </li>
-
-                        </ul>
+                    <div class="language-switcher-select">
+                        <select id="langSwitcher" class="lang-dropdown">
+                            @foreach($languages as $code => $label)
+                            <option value="/{{ $code }}{{ $cleanPath }}" {{ $locale == $code ? 'selected' : '' }}>
+                                {{ $label }}
+                            </option>
+                            @endforeach
+                        </select>
                     </div>
 
                 </div>
@@ -161,23 +146,23 @@
 
     <!-- Mobile Menu -->
     <!-- Mobile Menu -->
-<div class="mobile-menu">
-    <div class="menu-backdrop"></div>
-    <div class="close-btn"><span class="fa fa-times"></span></div>
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><span class="fa fa-times"></span></div>
 
-    <nav class="menu-box">
+        <nav class="menu-box">
 
-        <div class="nav-logo">
-            <a href="{{ route('home', ['locale' => $locale]) }}">
-                <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
-            </a>
-        </div>
+            <div class="nav-logo">
+                <a href="{{ route('home', ['locale' => $locale]) }}">
+                    <img src="{{ asset('storage/' . $settings->logo) }}" alt="">
+                </a>
+            </div>
 
-        <!-- JS automatically injects menu here -->
-        <div class="menu-outer"></div>
+            <!-- JS automatically injects menu here -->
+            <div class="menu-outer"></div>
 
-    </nav>
-</div>
+        </nav>
+    </div>
 
 
     <!-- Search Popup -->

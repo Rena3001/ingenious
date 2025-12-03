@@ -57,18 +57,15 @@ $icons = $services->icons ?? []; // artıq array-dir
                     <!-- LAYER NR. 2 -->
                     @if($title)
                     <div class="tp-caption tp-resizeme"
-                        data-x="center" data-y="center" data-voffset="-100"
-                        data-width="['623']" data-height="['auto']"
+                       data-x="center" data-y="center" data-voffset="30"
                         data-type="text"
                         data-responsive_offset="on"
                         data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;",
                                            "to":"o:1;","ease":"Power2.easeInOut"},
                                            {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]'
-                        style="z-index:6; min-width:623px; max-width:623px; 
-                                   font-size:72px; line-height:72px; 
-                                   font-weight:800; color:#fff; 
-                                   font-family:Catamaran; text-transform:uppercase;">
-                        {{ $title }}
+                        style="z-index:7; font-size:24px; line-height:40px; 
+                                   font-weight:400; color:#fff; font-family:Catamaran;">
+                        {!! nl2br(e($title)) !!}
                     </div>
                     @endif
 

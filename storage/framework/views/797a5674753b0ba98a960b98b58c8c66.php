@@ -1,4 +1,4 @@
-<script src="<?php echo e(asset('assets/js/jquery.js')); ?>"></script> 
+<script src="<?php echo e(asset('assets/js/jquery.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/popper.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/knob.js')); ?>"></script>
@@ -23,7 +23,6 @@
 <script src="<?php echo e(asset('assets/js/wow.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/appear.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/isotope.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/jquery-ui.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/mixitup.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/odometer.min.js')); ?>"></script>
@@ -32,9 +31,27 @@
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script>
     function changeLang(lang) {
-        let current = window.location.pathname;   // /az/about   or   /en/products/3
+        let current = window.location.pathname; // /az/about   or   /en/products/3
         let newUrl = '/' + lang + current.substring(3);
 
         window.location.href = newUrl;
     }
+    $('.roadmap-carousel').owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true, // 🔥 OXLARI AKTİV ETDİK
+        dots: true,
+        autoplay: false,
+        autoplayTimeout: 4500,
+        autoplayHoverPause: true,
+
+        navText: [
+            "<span class='roadmap-nav prev fa fa-angle-left'></span>",
+            "<span class='roadmap-nav next fa fa-angle-right'></span>"
+        ]
+    });
+
+    document.getElementById('langSwitcher').addEventListener('change', function() {
+        window.location.href = this.value;
+    });
 </script><?php /**PATH C:\laragon\www\ingenious\resources\views/client/layout/includes/foot.blade.php ENDPATH**/ ?>
