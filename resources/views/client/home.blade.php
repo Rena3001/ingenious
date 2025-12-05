@@ -9,106 +9,161 @@ $icons = $services->icons ?? []; // artıq array-dir
 @endphp
 
 <section class="main-slider">
-
     <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_one_wrapper" data-source="gallery">
         <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
             <ul>
+
                 @foreach($sliders as $slider)
                 @php
                 $title = $slider->getTitle($locale);
                 $description = $slider->getDescription($locale);
                 $button_text = $slider->getButtonText($locale);
+                $button_url = $slider->button_url;
+                $bg_image = asset('storage/' . $slider->image);
                 @endphp
 
-                <li data-index="rs-{{ $loop->iteration }}" data-transition="zoomout" data-slotamount="default"
-                    data-hideafterloop="0" data-hideslideonmobile="off"
-                    data-easein="default" data-easeout="default"
-                    data-masterspeed="850" data-thumb=""
-                    data-delay="5999" data-rotate="0"
-                    data-saveperformance="off"
-                    data-title="Slide">
+                <li
+                    data-index="rs-{{ $loop->iteration }}"
+                    data-transition="zoomout"
+                    data-masterspeed="850"
+                    data-delay="6000"
+                    data-title="Slide"
+                    class="rev-slide">
 
-                    <!-- 🖼️ MAIN IMAGE (admin paneldən gəlir) -->
-                    <img src="{{ asset('storage/' . $slider->image) }}"
-                        alt="{{ $title ?? '' }}"
-                        title="Home"
-                        data-bgposition="center center"
-                        data-bgfit="cover"
-                        data-bgrepeat="no-repeat"
+                    <!-- BACKGROUND -->
+                    <img
+                        src="{{ $bg_image }}"
+                        alt="{{ $title }}"
                         class="rev-slidebg"
-                        data-no-retina>
+                        data-bgfit="cover"
+                        data-bgposition="center center"
+                        data-bgrepeat="no-repeat">
 
-                    <!-- LAYER NR. 1 -->
+                    <!-- DARK OVERLAY -->
                     <div class="tp-caption tp-resizeme"
-                        data-x="center" data-hoffset=""
-                        data-y="center" data-voffset=""
+                        data-x="center"
+                        data-y="center"
                         data-width="['full-proportional','full-proportional','full-proportional','full-proportional']"
                         data-height="['full-proportional','full-proportional','full-proportional','full-proportional']"
                         data-type="image"
                         data-basealign="slide"
                         data-responsive_offset="on"
-                        data-frames='[{"delay":10,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeOut"},
-                                          {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;","ease":"Power2.easeIn"}]'
-                        style="z-index:5;
-                                   background:linear-gradient(135deg, rgba(72,70,89,0.8) 0%, rgba(72,70,89,0.77) 16%, rgba(0,137,45,0.63) 85%, rgba(0,137,45,0.6) 100%);">
-                        <img src="{{ asset('assets/images/main-slider/pattern/1.png') }}" alt="" data-ww="full-proportional" data-hh="full-proportional" width="1920" height="1080" data-no-retina>
+                        data-frames='[
+         {"delay":10,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeOut"},
+         {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;","ease":"Power2.easeIn"}
+     ]'
+                        style="
+         z-index:5;
+         background: linear-gradient(
+              135deg,
+              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
+              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
+              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
+         );
+     ">
+                        <img src="{{ asset('assets/images/main-slider/pattern/1.png') }}" alt=""
+                            data-ww="full-proportional"
+                            data-hh="full-proportional"
+                            width="1920"
+                            height="1080"
+                            data-no-retina>
                     </div>
 
-                    <!-- LAYER NR. 2 -->
+
+                    <!-- TITLE -->
                     @if($title)
-                    <div class="tp-caption tp-resizeme"
-                       data-x="center" data-y="center" data-voffset="30"
-                        data-type="text"
-                        data-responsive_offset="on"
-                        data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;",
-                                           "to":"o:1;","ease":"Power2.easeInOut"},
-                                           {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]'
-                        style="z-index:7; font-size:24px; line-height:40px; 
-                                   font-weight:400; color:#fff; font-family:Catamaran;">
-                        {!! nl2br(e($title)) !!}
+                    @php
+                    $words = explode(' ', $title);
+                    $half = ceil(count($words) / 2);
+                    $line1 = implode(' ', array_slice($words, 0, $half));
+                    $line2 = implode(' ', array_slice($words, $half));
+                    @endphp
+                    <div class="tp-caption tp-resizeme slide-title"
+                        data-x="center"
+                        data-y="center"
+                        data-voffset="-80"
+                        data-frames='[
+                                {"delay":400,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
+                            ]'
+                        style="
+                                z-index:6;
+                                max-width: 900px;
+                                text-align:center !important;
+                                font-size:65px;
+                                font-weight:800;
+                                color:#fff;
+                                line-height:72px;
+                                text-transform:uppercase;
+                            ">
+                        <h1 class="slider-title-text">
+                            {{ $line1 }}<br>{{ $line2 }}
+                        </h1>
                     </div>
                     @endif
 
-                    <!-- LAYER NR. 3 -->
+                    <!-- DESCRIPTION -->
                     @if($description)
-                    <div class="tp-caption tp-resizeme"
-                        data-x="center" data-y="center" data-voffset="30"
-                        data-type="text"
-                        data-responsive_offset="on"
-                        data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;",
-                                           "to":"o:1;","ease":"Power2.easeInOut"},
-                                           {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]'
-                        style="z-index:7; font-size:24px; line-height:40px; 
-                                   font-weight:400; color:#fff; font-family:Catamaran;">
-                        {!! nl2br(e($description)) !!}
+                    @php
+                    $words = explode(' ', $description);
+                    $half = ceil(count($words) / 2);
+                    $line1 = implode(' ', array_slice($words, 0, $half));
+                    $line2 = implode(' ', array_slice($words, $half));
+                    @endphp
+                    <div class="tp-caption tp-resizeme slide-desc"
+                        data-x="center"
+                        data-y="center"
+                        data-voffset="60"
+                        data-frames='[
+        {"delay":500,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
+        {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
+    ]'
+                        style="
+        z-index:7;
+        max-width:750px;
+        text-align:center;
+        line-height:36px;
+    ">
+
+                        <p class="slider-desc-text" style="">
+                            {{ $line1 }}<br>{{ $line2 }}
+                        </p>
+
                     </div>
                     @endif
 
-                    <!-- LAYER NR. 4 -->
-                    @if($slider->button_url && $button_text)
-                    <a href="{{ $slider->button_url }}" style="color:#fff; text-decoration:none;">
-                        <div class="tp-caption rev-btn tp-resizeme"
-                            data-x="center" data-y="center" data-voffset="130"
-                            data-type="button"
-                            data-responsive_offset="on"
-                            data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;",
-                                           "to":"o:1;","ease":"Power2.easeInOut"},
-                                           {"delay":"wait","speed":300,"frame":"999","ease":"nothing"},
-                                           {"frame":"hover","speed":"300","ease":"Linear.easeNone",
-                                           "to":"o:1;rX:0;rY:0;rZ:0;z:0;",
-                                           "style":"c:rgba(255,108,58,1);bg:rgba(255,255,255,1);"}]'
-                            style="z-index:8; font-size:16px; font-weight:700; 
-                                   color:#fff; font-family:Catamaran;
-                                   background-color:rgba(255,108,58,1);
-                                   border-radius:30px; cursor:pointer;">
-                            {{ \App\Models\Translation::getValue($slider->button_key, app()->getLocale()) }}
+
+                    <!-- BUTTON -->
+                    @if($button_url && $button_text)
+                    <a href="{{ $button_url }}">
+                        <div class="tp-caption rev-btn tp-resizeme slide-btn"
+                            data-x="center"
+                            data-y="center"
+                            data-voffset="120"
+                            data-frames='[
+                                    {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
+                                    {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
+                                    {"frame":"hover","speed":300,"to":"bg:rgba(255,255,255,1);c:#ff6c3a;"}
+                                ]'
+                            style="
+                                    z-index:8;
+                                    padding:14px 35px;
+                                    background:#ff6c3a;
+                                    color:#fff;
+                                    font-size:17px;
+                                    font-weight:700;
+                                    border-radius:30px;
+                                    margin-top: 28px;
+                                ">
+                            {{ $button_text }}
                         </div>
                     </a>
                     @endif
+
                 </li>
                 @endforeach
-            </ul>
 
+            </ul>
         </div>
     </div>
 </section>
@@ -137,9 +192,9 @@ $icons = $services->icons ?? []; // artıq array-dir
                     <h2>{{ $about['home_about']->getTitle($locale) }}</h2>
 
                     @if($about['home_about']->getShortDesc($locale))
-                        <div class="text">
-                            {!! $about['home_about']->getShortDesc($locale) !!}
-                        </div>
+                    <div class="text">
+                        {!! $about['home_about']->getShortDesc($locale) !!}
+                    </div>
                     @endif
                 </div>
 
@@ -153,9 +208,9 @@ $icons = $services->icons ?? []; // artıq array-dir
                             <div class="icon-box">
                                 @if(Str::contains($item->icon, '<svg'))
                                     {!! $item->icon !!}
-                                @else
+                                    @else
                                     <i class="{{ $item->icon }}"></i>
-                                @endif
+                                    @endif
                             </div>
 
                             <h5>{!! $item->getTitle($locale) !!}</h5>
@@ -220,8 +275,8 @@ $icons = $services->icons ?? []; // artıq array-dir
         <div class="cws-triangle-overlay top-right"></div>
 
         <div class="cws-image-bg style-two"
-             style="background-image: url('{{ asset('assets/images/background/2.jpg') }}')">
-            <div class="cws-overlay-bg bg-green"></div>
+            style="background-image: url('{{ asset('assets/images/background/2.jpg') }}')">
+            <div class="cws-overlay-bg bg-blue"></div>
         </div>
 
         <div class="cws-triangle-overlay bottom-left"></div>
@@ -249,12 +304,12 @@ $icons = $services->icons ?? []; // artıq array-dir
                         <div class="image-box">
                             <figure class="image">
                                 <img src="{{ asset('storage/' . $product->image) }}"
-                                     alt="{{ $product->getTranslation('name', $locale) }}">
+                                    alt="{{ $product->getTranslation('name', $locale) }}">
                             </figure>
 
                             <div class="overlay">
                                 <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
-                                   class="lightbox-image" target="_blank">
+                                    class="lightbox-image" target="_blank">
                                 </a>
                             </div>
                         </div>
@@ -262,7 +317,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                         <div class="lower-content">
                             <h4>
                                 <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
-                                   target="_blank">
+                                    target="_blank">
                                     {{ $product->getTranslation('name', $locale) }}
                                 </a>
                             </h4>
@@ -292,7 +347,7 @@ $icons = $services->icons ?? []; // artıq array-dir
 @if(isset($roadmap) && count($roadmap) > 0)
 <section class="services-section"> {{-- İNKİŞAF XƏRİTƏSİ --}}
     <div class="cws-background-image"
-         style="background-image: url('{{ asset('assets/images/background/3.jpg') }}')"></div>
+        style="background-image: url('{{ asset('assets/images/background/3.jpg') }}')"></div>
 
     <div class="auto-container">
         <div class="sec-title text-center">
@@ -312,14 +367,14 @@ $icons = $services->icons ?? []; // artıq array-dir
                         <div class="icon-box">
                             @if(Str::contains($item->icon, '<svg'))
                                 {!! $item->icon !!}
-                            @else
+                                @else
                                 <span class="icon {{ $item->icon }}"></span>
-                            @endif
+                                @endif
                         </div>
 
                         <figure class="image">
                             <img src="{{ asset('storage/' . $item->image) }}"
-                                 alt="{{ $item->getTranslation('title', $locale) }}">
+                                alt="{{ $item->getTranslation('title', $locale) }}">
                         </figure>
 
                         <div class="overlay">
@@ -335,8 +390,8 @@ $icons = $services->icons ?? []; // artıq array-dir
 
                         <div class="btn-box">
                             <a href="{{ url($locale . '/' . $item->button_link) }}"
-                               class="theme-btn btn-style-two">
-                               {{ $item->getButtonText($locale) }}
+                                class="theme-btn btn-style-two">
+                                {{ $item->getButtonText($locale) }}
                             </a>
                         </div>
                     </div>
@@ -358,7 +413,7 @@ $icons = $services->icons ?? []; // artıq array-dir
     <div class="background-layers">
         <div class="cws-triangle-overlay top-right"></div>
         <div class="cws-image-bg style-three" style="background-image: url(images/background/4.jpg)">
-            <div class="cws-overlay-bg bg-green half-left"></div>
+            <div class="cws-overlay-bg bg-blue half-left"></div>
         </div>
         <div class="cws-triangle-overlay bottom-right"></div>
     </div>

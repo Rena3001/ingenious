@@ -1191,14 +1191,14 @@ hr.thick{
 	display: inline-block;
 	text-align: center;
 	white-space: nowrap;
-    color: #59ab66;
+    color: #1B5E8A;
     letter-spacing: 1px;
 	font-size: 14px;
 	border-radius: 30px;
     background-color: transparent;
     font-weight: 500;
     padding: 7px 15px 5px;
-    border: 3px solid #59ab66;
+    border: 3px solid #1B5E8A;
     min-width: 150px;
     line-height: 20px;
     text-transform: uppercase;
@@ -1206,7 +1206,7 @@ hr.thick{
 
 .btn-style-two:hover{
     color: #ffffff;
-    background-color: #59ab66;
+    background-color: #1B5E8A;
 
 }
 
@@ -1220,16 +1220,16 @@ hr.thick{
 	font-size: 14px;
     color: #ffffff;
 	border-radius: 30px;
-    background-color: #59ab66;
+    background-color: #1B5E8A;
     font-weight: 500;
     padding: 7px 15px 5px;
-    border: 3px solid #59ab66;
+    border: 3px solid #1B5E8A;
     min-width: 150px;
     line-height: 20px;
 }
 
 .btn-style-three:hover{
-    color: #59ab66;
+    color: #1B5E8A;
     background-color: #ffffff;
 }
 
@@ -4105,8 +4105,13 @@ hr{
 	background-size: cover;
 }
 
-.cws-overlay-bg.bg-green{
-	background-color: rgba(83,151,96,0.9);
+.cws-overlay-bg.bg-blue{
+	background: linear-gradient(
+              135deg,
+              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
+              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
+              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
+         );
 }
 
 /*** 
@@ -4182,14 +4187,46 @@ hr{
 	display: block;
     z-index: 1;
 }
-
-.slider_text_p{
-	font-size: 56px;
-	color: #ffffff;
-	margin-bottom: 15px;
-	font-weight: 400;
+.slide-title{
+	 text-align:center !important;
+	 
 }
+.slider-title-text {
+    max-width: 900px;
+    text-align: center;
+    margin: 0 auto;
 
+    /* gradient */
+    background: linear-gradient(90deg, #ffffff, #f3d8a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* 2 SƏTR MƏCBURİ */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;      /* 2 sətirlik limit */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.slider-desc-text {
+    font-size: 22px;
+    color: #fff;
+    max-width: 750px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.4;
+	margin-left: -119px !important;
+    /* Avtomatik iki sətir */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* 2 sətir */
+    -webkit-box-orient: vertical;
+	width: 800px !important;
+	text-align: center !important;
+}
+.rev-btn{
+	margin-top: 28px !important;
+}
 /*** 
 
 ====================================================================
@@ -6257,7 +6294,12 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 .portfolio-section .cws-triangle-overlay.top-right{
 	clip-path: polygon(50% 60px, 100% 0%, 100% 120px);
     -webkit-clip-path: polygon(50% 60px, 100% 0%, 100% 120px);
-    background: #51945d;
+    background: linear-gradient(
+              135deg,
+              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
+              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
+              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
+         );
 }
 
 .portfolio-section .cws-triangle-overlay.bottom-left{
@@ -6311,7 +6353,12 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 }
 
 .portfolio-block .overlay{
-	background-color: rgba(86,168,99,0.7);
+	background: linear-gradient(
+              135deg,
+              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
+              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
+              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
+         );
 	opacity: 0;
 	visibility: hidden;
 	transition: all 300ms ease;
@@ -7362,7 +7409,7 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 	height: 100px;
 	width: 100px;
 	z-index: 9;
-	background-color: #539760;
+	background-color: #1B5E8A;
 	border:6px solid #ffffff;
 	border-radius: 50%;
 	display: flex;
@@ -7431,7 +7478,7 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
     width: 150%;
     height: 150%;
     opacity: 0.5;
-    background-color: #59ab66;
+    background-color: #1B5E8A;
     -webkit-transform: rotate(5deg);
     transform: rotate(5deg);
     opacity: 0.9; 
@@ -7605,8 +7652,8 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 }
 
 .service-block-four .inner-box:hover .icon-box{
-	background: #539760;
-	border-color: #539760;
+	background: #1B5E8A;
+	border-color: #1B5E8A;
 	color: #ffffff;
 	-webkit-transform: translateY(10px);
 	transform: translateY(10px);
@@ -9442,7 +9489,12 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 .clients-section{
 	position: relative;
 	padding: 50px 0;
-	background-color: #539760;
+	background: linear-gradient(
+              135deg,
+              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
+              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
+              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
+         );
 }
 
 .clients-section.bg-purple{
@@ -10713,7 +10765,7 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 
 .widget-title:after{
 	width: 24px;
-	background-color: #59ab66;
+	background-color: #1B5E8A;
     -webkit-transition: all .25s linear;
     -moz-transition: all .25s linear;
     -ms-transition: all .25s linear;
