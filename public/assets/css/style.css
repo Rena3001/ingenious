@@ -2137,9 +2137,9 @@ hr.thick{
 }
 
 /* Hex Default Color ( Green )*/
-.hex {background: #59ab66; box-shadow: 0 0 20px #59ab66, 0 0 20px #59ab66;}
-.hex:before {border-bottom: 8px solid #59ab66;}
-.hex:after {border-top: 8px solid #59ab66; }
+.hex {background: #1B5E8A; box-shadow: 0 0 20px #1B5E8A, 0 0 20px #1B5E8A;}
+.hex:before {border-bottom: 8px solid #1B5E8A;}
+.hex:after {border-top: 8px solid #1B5E8A; }
 
 .color-scheme-purple .hex {background: #6770b9; box-shadow: 0 0 20px #6770b9, 0 0 20px #6770b9;}
 .color-scheme-purple .hex:before {border-bottom: 8px solid #6770b9;}
