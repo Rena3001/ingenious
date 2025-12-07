@@ -4224,6 +4224,13 @@ hr{
 	width: 800px !important;
 	text-align: center !important;
 }
+@media screen and (max-width: 768px) {
+	.slider-desc-text {
+		margin-left: -209px !important;
+	}
+	
+}
+
 .rev-btn{
 	margin-top: 28px !important;
 }
