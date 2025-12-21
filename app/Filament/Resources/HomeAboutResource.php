@@ -27,6 +27,13 @@ class HomeAboutResource extends Resource
                 ->image()
                 ->columnSpanFull(),
 
+            Forms\Components\FileUpload::make('background_image')
+                ->label('Background Image')
+                ->directory('home-about')
+                ->image()
+                ->imageEditor(),
+
+
             Forms\Components\Toggle::make('is_active')
                 ->label('Aktivdir')
                 ->default(true),

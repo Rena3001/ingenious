@@ -58,6 +58,14 @@ class SettingsResource extends Resource
                 ->label('Logo (White)')
                 ->directory('settings')
                 ->image(),
+                Forms\Components\FileUpload::make('contact_background_image')
+    ->label('Contact Background Image')
+    ->directory('settings/contact')
+    ->image()
+    ->imageEditor()
+    ->imageResizeMode('cover')
+    ->maxSize(2048) // 2MB
+    ->helperText('Contact səhifəsi üçün background şəkil'),
             Forms\Components\Section::make('Social Media Links')
                 ->schema([
                     Forms\Components\TextInput::make('facebook')->label('Facebook URL'),

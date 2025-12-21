@@ -29,7 +29,7 @@ return new class extends Migration {
 
             // Status
             $table->boolean('is_active')->default(true);
-
+ 
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactPageController;
 use App\Http\Controllers\Front\OverviewController;
+use App\Http\Controllers\Front\SecurityOverviewController;
 
 // Root redirect → default language
 Route::get('/', function () {
@@ -63,4 +64,25 @@ Route::group([
 
     Route::get('/overview/{slug}', [OverviewController::class, 'show'])
         ->name('overview');
+
+
+
+
+
+
+    ///////TEZE///////////
+
+
+
+
+
+
+
+
+    Route::get('/security-overview', [SecurityOverviewController::class, 'index'])
+    ->name('security.overview');
+
+
+
+
 });

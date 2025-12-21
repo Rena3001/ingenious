@@ -38,10 +38,12 @@ class AboutSection extends Model
         'is_active',
     ];
 
-    public function missionItems()
-    {
-        return $this->hasMany(AboutMissionItem::class);
-    }
+   public function missionItems()
+{
+    return $this->hasMany(AboutMissionItem::class, 'about_section_id')
+        ->orderBy('sort');
+}
+
 
     public function getTitle($locale = null)
     {

@@ -180,8 +180,11 @@ $icons = $services->icons ?? []; // artıq array-dir
         <div class="cws-triangle-overlay"></div>
 
         <div class="cws-image-bg"
-            style="background-image: url('{{ asset('assets/images/background/1.jpg') }}')">
+            style="background-image: url('{{ $about['home_about']->background_image 
+        ? asset('storage/' . $about['home_about']->background_image) 
+        : asset('assets/images/background/1.jpg') }}')">
         </div>
+
     </div>
 
     <div class="auto-container">
@@ -224,7 +227,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <!-- Btn Box -->
                 @if($about['home_about']->button_key)
                 <div class="btn-box">
-                    <a href="#" class="theme-btn large btn-style-one">
+                    <a href="{{ route('services', ['locale' => $locale]) }}" class="theme-btn large btn-style-one">
                         {{ $about['home_about']->getButtonText($locale) }}
                     </a>
                 </div>
@@ -237,32 +240,6 @@ $icons = $services->icons ?? []; // artıq array-dir
 </section>
 @endif
 
-
-
-@if(isset($about['our_mission']))
-<section class="our-mission">
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <h2>{{ $about['our_mission']->getTitle($locale) }}</h2>
-            <div class="text">
-                {{ $about['our_mission']->getShortDesc($locale) }}
-            </div>
-        </div>
-
-        <div class="row">
-            @foreach($about['our_mission']->missionItems as $item)
-            <div class="mission-block col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <span class="icon {{ $item->icon }}"></span>
-                    <h4>{{ $item->getTitle($locale) }}</h4>
-                    <p>{{ $item->getText($locale) }}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
 
 <!-- End About Section -->
 
@@ -323,12 +300,13 @@ $icons = $services->icons ?? []; // artıq array-dir
                             </h4>
 
                             <div class="cat">
-                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}">{{ $product->getTranslation('category_name', $locale) ?? 'Product' }}</a>
+                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}">{{ $product->getTranslation('category_name', $locale) }}</a>
                             </div>
 
                             <div class="text">
-                                {!! $product->getTranslation('short_desc', $locale) !!}
-                            </div>
+    {!! \Illuminate\Support\Str::limit(strip_tags($product->getTranslation('description', $locale)), 90) !!}
+</div>
+
                         </div>
 
                     </div>
@@ -412,7 +390,7 @@ $icons = $services->icons ?? []; // artıq array-dir
     <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-triangle-overlay top-right"></div>
-        <div class="cws-image-bg style-three" style="background-image: url(images/background/4.jpg)">
+        <div class="cws-image-bg style-three" style="background-image: url('{{asset('storage/' . $homeAbout->background_image)}}')">
             <div class="cws-overlay-bg bg-blue half-left"></div>
         </div>
         <div class="cws-triangle-overlay bottom-right"></div>
@@ -437,59 +415,10 @@ $icons = $services->icons ?? []; // artıq array-dir
 <!-- End How to Use -->
 
 
-<!-- Services Section -->
-<section class="services-section-three">
-    <!-- Background Layers -->
-    <div class="background-layers">
-        <div class="cws-image-bg" style="background-image: url(images/background/29.jpg)">
-            <div class="cws-overlay-bg"></div>
-        </div>
-        <div class="cws-triangle-overlay bottom-right"></div>
-    </div>
-
-    <div class="auto-container">
-
-        @if($services)
-        <!-- Başlıq və açıqlama -->
-        <div class="sec-title text-center">
-            <h2>{{ $services->{"title_$locale"} }}</h2>
-
-            <div class="text">
-                {{ $services->{"description_$locale"} }}
-            </div>
-        </div>
-        @endif
-
-        <div class="row">
-
-            @foreach($icons as $icon)
-            <div class="service-block-four col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-
-                    <div class="icon-box">
-                        <span class="icon {{ $icon['icon'] }}"></span>
-                    </div>
-
-                    @if(!empty($icon["icon_title_$locale"]))
-                    <h4>{{ $icon["icon_title_$locale"] }}</h4>
-                    @endif
-
-                </div>
-            </div>
-            @endforeach
-
-        </div>
-
-    </div>
-</section>
-<!--End Services Section -->
-
-
-
 <!-- Callback Section -->
 <section class="callback-section">
     <div class="cws-background-image"
-        style="background-image: url('{{ asset('assets/images/background/5.png') }}')"></div>
+        style="background-image: url('{{ asset('storage/' . $settings->contact_background_image) }}')"></div>
 
     <div class="auto-container">
         <div class="row">

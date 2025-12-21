@@ -9,7 +9,7 @@ class HomeAbout extends Model
     protected $fillable = [
         'title_az','title_en','title_ru','title_de','title_es',
         'desc_az','desc_en','desc_ru','desc_de','desc_es',
-        'image',
+        'image', 'background_image',
         'is_active',
     ];
 

@@ -85,7 +85,7 @@ Version: 1.0.0
 
 ***/
 
-@import url('../../css');
+/* @import url('../../css'); */
 
 @import url('flaticon.css');
 @import url('fontawesome-all.css');
@@ -207,7 +207,7 @@ p,.text{
 .auto-container{
 	position:static;
 	max-width:1200px;
-	padding:0px 15px;
+	padding:0px 100px;
 	margin:0 auto;
 }
 
@@ -6273,7 +6273,6 @@ clip-path: polygon(0% 120px, 50% 60px, 100% 0%, 100% 100%, 50% calc(100% - 60px)
 
 .app-download .download-btn a{
 	position: relative;
-	display: block;
 	margin-bottom: 35px;
 }
 

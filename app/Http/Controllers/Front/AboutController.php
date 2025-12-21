@@ -26,4 +26,7 @@ class AboutController extends Controller
             ->get();
         return view('client.pages.about', compact('about', 'locale','team','clients'));
     }
+    
+
+    
 }
