@@ -21,5 +21,22 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $this->call([
+            HomeApplianceSlideSeeder::class,
+            FeatureSectionSeeder::class,
+            FeatureItemSeeder::class,
+            AccordionSectionSeeder::class,
+            AccordionItemSeeder::class,
+            PortfolioSectionSeeder::class,
+            PortfolioItemSeeder::class,
+            FeatureSectionTwoSeeder::class,
+            FeatureSectionThreeSeeder::class,
+            ServiceItemSeeder::class,
+            FeatureSectionFourSeeder::class,
+            ElectricalEquipmentSliderSeeder::class,
+            ProductSectionSeeder::class,
+            CallToActionSeeder::class,
+        ]);
     }
 }

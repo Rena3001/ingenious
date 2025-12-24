@@ -27,6 +27,7 @@ class AppProductSection extends Model
         'icon_3_text_az','icon_3_text_en','icon_3_text_es',
         'icon_3_text_de','icon_3_text_fr','icon_3_text_ru','icon_3_text_zh',
 
-        'is_active'
+        'is_active',
+        'button_link',
     ];
 }

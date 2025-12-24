@@ -42,7 +42,11 @@ class AppProductSectionResource extends Resource
                     Forms\Components\TextInput::make('icon_3')
                         ->label('Icon 3 class')
                         ->placeholder('flaticon-security'),
-                ])->columns(3),
+                    Forms\Components\TextInput::make('button_link')
+                        ->label('Button Link')
+                        ->placeholder('https://example.com'),
+                ])->columns(4),
+
 
 
             Forms\Components\Section::make('Translations')
@@ -81,6 +85,7 @@ class AppProductSectionResource extends Resource
             Tables\Columns\ImageColumn::make('image')->label('Foto'),
             Tables\Columns\TextColumn::make('title_az')->label('Başlıq (AZ)'),
             Tables\Columns\IconColumn::make('is_active')->boolean(),
+
         ]);
     }
 

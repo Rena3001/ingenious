@@ -14,23 +14,22 @@ class ProductController extends Controller
     // ===============================
     // 📌 1. PRODUCT LIST
     // ===============================
-    public function index(Request $request, $locale)
+    public function index(Request $request)
     {
-
-        app()->setLocale($locale);
-
         $query = Product::query();
-         if ($request->search) {
-                $query->where(function($q) use ($request) {
-                    $q->where('name_az', 'LIKE', '%'.$request->search.'%')
-                    ->orWhere('name_en', 'LIKE', '%'.$request->search.'%')
-                    ->orWhere('name_ru', 'LIKE', '%'.$request->search.'%');
-                });
-            }
+
+        if ($request->search) {
+            $query->where(function($q) use ($request) {
+                $q->where('name_az', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('name_en', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('name_ru', 'LIKE', '%'.$request->search.'%');
+            });
+        }
+
         // Sorting
-        if ($request->orderby == 'price') {
+        if ($request->orderby === 'price') {
             $query->orderBy('price', 'asc');
-        } elseif ($request->orderby == 'price-desc') {
+        } elseif ($request->orderby === 'price-desc') {
             $query->orderBy('price', 'desc');
         } else {
             $query->orderBy('created_at', 'desc');
@@ -39,21 +38,24 @@ class ProductController extends Controller
         $products = $query->get();
         $categories = Category::withCount('products')->get();
 
-        return view('client.pages.products', compact('products', 'categories', 'locale')) ->with('search', $request->search);
+        return view('client.pages.products', [
+            'products'   => $products,
+            'categories' => $categories,
+            'locale'     => app()->getLocale(),
+            'search'     => $request->search,
+        ]);
     }
 
     // ===============================
     // 📌 2. CATEGORY PRODUCTS
     // ===============================
-    public function byCategory(Request $request, $locale, Category $category)
+    public function byCategory(Request $request, Category $category)
     {
-        app()->setLocale($locale);
-
         $query = Product::where('category_id', $category->id);
 
-        if ($request->orderby == 'price') {
+        if ($request->orderby === 'price') {
             $query->orderBy('price', 'asc');
-        } elseif ($request->orderby == 'price-desc') {
+        } elseif ($request->orderby === 'price-desc') {
             $query->orderBy('price', 'desc');
         } else {
             $query->orderBy('created_at', 'desc');
@@ -62,52 +64,59 @@ class ProductController extends Controller
         $products = $query->get();
         $categories = Category::withCount('products')->get();
 
-        return view('client.pages.products', compact('products', 'categories', 'locale'));
+        return view('client.pages.products', [
+            'products'   => $products,
+            'categories' => $categories,
+            'locale'     => app()->getLocale(),
+        ]);
     }
 
     // ===============================
     // 📌 3. PRODUCT DETAIL
     // ===============================
-    public function show($locale, Product $product)
+    public function show(Product $product)
     {
-        app()->setLocale($locale);
-
         $categories = Category::withCount('products')->get();
 
         $related = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->get();
 
-        return view('client.pages.product-detail', compact('product', 'categories', 'related', 'locale'));
+        return view('client.pages.product-detail', [
+            'product'    => $product,
+            'categories' => $categories,
+            'related'    => $related,
+            'locale'     => app()->getLocale(),
+        ]);
     }
 
     // ===============================
     // 📌 4. SUBMIT REVIEW
     // ===============================
-    public function storeReview(Request $request, $locale, Product $product)
+    public function storeReview(Request $request, Product $product)
     {
-        app()->setLocale($locale);
-
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            'name'    => 'required',
+            'email'   => 'required|email',
             'message' => 'required',
         ]);
 
         Review::create([
             'product_id' => $product->id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message,
-            'approved' => false,
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'message'    => $request->message,
+            'approved'   => false,
         ]);
 
-        // Multilingual success message
-        $message = Translation::getValue('review_submitted_message', $locale);
+        $message = Translation::getValue(
+            'review_submitted_message',
+            app()->getLocale()
+        );
 
         return redirect()->route('product.detail', [
-            'locale' => $locale,
-            'product' => $product->id
+            'locale'  => app()->getLocale(),
+            'product' => $product->id,
         ])->with('success', $message);
     }
 }

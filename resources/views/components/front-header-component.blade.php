@@ -6,7 +6,7 @@
 
     $settings = Setting::first();
     $locale = app()->getLocale();
-    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES'];
+    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES', 'fr' => 'FR', 'zh' => 'ZH'  ];
     $segments = request()->segments();
     $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
     @endphp

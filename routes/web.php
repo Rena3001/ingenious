@@ -8,8 +8,11 @@ use App\Http\Controllers\Front\ProcessController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactPageController;
+use App\Http\Controllers\Front\HomeApplianceController;
 use App\Http\Controllers\Front\OverviewController;
+use App\Http\Controllers\Front\ElectricalEquipmentController;
 use App\Http\Controllers\Front\SecurityOverviewController;
+use App\Http\Controllers\SubscribeController;
 
 // Root redirect → default language
 Route::get('/', function () {
@@ -19,7 +22,8 @@ Route::get('/', function () {
 // LOCALE GROUP
 Route::group([
     'prefix' => '{locale}',
-    'where' => ['locale' => 'az|en|ru|de|es'],
+    'where' => ['locale' => 'az|en|ru|de|es|fr|zh'],
+    'middleware' => 'applyLocale'
 ], function () {
 
     // HOME
@@ -82,7 +86,13 @@ Route::group([
     Route::get('/security-overview', [SecurityOverviewController::class, 'index'])
     ->name('security.overview');
 
+    Route::get('/home-appliances', [HomeApplianceController::class, 'index'])
+    ->name('home.appliances');
 
+    Route::post('/subscribe', [SubscribeController::class, 'store'])
+    ->name('subscribe.store');
 
+    Route::get('/electrical-equipment',[ElectricalEquipmentController::class,'index'])
+    ->name('electrical.equipment');
 
 });

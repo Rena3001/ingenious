@@ -676,12 +676,12 @@
 			}
             
             $.ajax({
-                url:"sendemail.php",
+                url:"{{ route('subscribe.store', ['locale' => $locale]) }}",
                 method:"POST",
                 data: $(form).serialize(),
-                beforeSend:function(){
-                    $('#email-form .response').html('<div class="text-info"><img src="images/icons/preloader.gif"> Loading...</div>');
-                },
+				beforeSend:function(){
+					$('#email-form .response').html('<div class="text-info"><img src="' + "{{ asset('assets/images/icons/preloader.gif') }}" + '"> ' + "{{Translation::getValue('loading', $locale)}}" + '</div>');
+				},
                 success:function(data){
                     $('form').trigger("reset");
                     $('#email-form .response').fadeIn().html(data);
@@ -697,39 +697,39 @@
 	}
 
 	//Subscribe Form
-	if($('#subscribe-form').length){
-		$('#subscribe-newslatters').click(function(){
+	// if($('#subscribe-form').length){
+	// 	$('#subscribe-newslatters').click(function(){
 			
-            var o = new Object();
-            var form = '#subscribe-form';
-			var email = $('#subscribe-form .email').val();
+    //         var o = new Object();
+    //         var form = '#subscribe-form';
+	// 		var email = $('#subscribe-form .email').val();
 			
-			if(email == '')
-			{
-				$('#subscribe-form .response').html('<div class="failed">Please enter your Email Address.</div>');
-				return false;
-			}
+	// 		if(email == '')
+	// 		{
+	// 			$('#subscribe-form .response').html('<div class="failed">{{Translation::getValue(\'please_enter_your_email_address\', $locale)}}</div>');
+	// 			return false;
+	// 		}
             
-            $.ajax({
-                url:"sendnewslatters.php",
-                method:"POST",
-                data: $(form).serialize(),
-                beforeSend:function(){
-                    $('#subscribe-form .response').html('<div class="text-info"><img src="images/icons/preloader.gif"> Loading...</div>');
-                },
-                success:function(data){
-                    $('form').trigger("reset");
-                    $('#subscribe-form .response').fadeIn().html(data);
-                    setTimeout(function(){
-                        $('#subscribe-form .response').fadeOut("slow");
-                    }, 5000);
-                },
-                error:function(){
-                    $('#subscribe-form .response').fadeIn().html(data);
-                }
-            });
-        });
-	}
+    //         $.ajax({
+    //             url:"{{ route('subscribe.store', ['locale' => $locale]) }}",
+    //             method:"POST",
+    //             data: $(form).serialize(),
+    //             beforeSend:function(){
+    //                 $('#subscribe-form .response').html('<div class="text-info"><img src="' + "{{ asset('assets/images/icons/preloader.gif') }}" + '"> ' + "{{Translation::getValue('loading', $locale)}}" + '</div>');
+    //             },
+    //             success:function(data){
+    //                 $('form').trigger("reset");
+    //                 $('#subscribe-form .response').fadeIn().html(data);
+    //                 setTimeout(function(){
+    //                     $('#subscribe-form .response').fadeOut("slow");
+    //                 }, 5000);
+    //             },
+    //             error:function(){
+    //                 $('#subscribe-form .response').fadeIn().html(data);
+    //             }
+    //         });
+    //     });
+	// }
 
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
