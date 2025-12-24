@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\ProcessController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\ConsumerElectronicsController;
 use App\Http\Controllers\Front\ContactPageController;
 use App\Http\Controllers\Front\HomeApplianceController;
 use App\Http\Controllers\Front\OverviewController;
@@ -94,5 +95,8 @@ Route::group([
 
     Route::get('/electrical-equipment',[ElectricalEquipmentController::class,'index'])
     ->name('electrical.equipment');
+
+    Route::get('/consumer-electronics',[ConsumerElectronicsController::class,'index'])
+    ->name('consumer.electronics');
 
 });

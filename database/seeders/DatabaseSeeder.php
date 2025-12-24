@@ -37,6 +37,16 @@ class DatabaseSeeder extends Seeder
             ElectricalEquipmentSliderSeeder::class,
             ProductSectionSeeder::class,
             CallToActionSeeder::class,
+            ConsumerElectronicsSliderSeeder::class,
+            ProductFeatureSectionSeeder::class,
+            ProductSupportSectionSeeder::class,
+            QualityConsumerEquipmentSectionSeeder::class,
+            EasySetupSectionSeeder::class,
+            LocalRecordingSeeder::class,
+            NightVisionSectionSeeder::class,
+            CallToActionTwoSeeder::class,
+            AboutSectionTwoSeeder::class,
+
         ]);
     }
 }

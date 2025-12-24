@@ -6,7 +6,7 @@
 
     $settings = Setting::first();
     $locale = app()->getLocale();
-    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES', 'fr' => 'FR', 'zh' => 'ZH'  ];
+    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES', 'fr' => 'FR', 'zh' => 'ZH' ];
     $segments = request()->segments();
     $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
     @endphp
@@ -32,10 +32,42 @@
 
                         <ul class="navigation clearfix">
 
-                            <li>
+                            <li class="dropdown has-mega-menu">
                                 <a href="{{ route('home', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_home', $locale) }}
                                 </a>
+                                <div class="mega-menu" data-width="200px">
+                                    <div class="mega-menu-bar row">
+                                        <div class="column col-lg-12">
+                                            <h3>{{ Translation::getValue('home', $locale) }}</h3>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('home', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('home', $locale) }}
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('security.overview', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('security_overview', $locale) }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('electrical_equipment', $locale) }}
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('consumer_electronics', $locale) }}
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li><a href="{{ route('products', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_shop', $locale) }}
@@ -76,7 +108,8 @@
 
                             <li><a href="{{ route('contact', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_contact', $locale) }}
-                                </a></li>
+                                </a>
+                            </li>
 
                         </ul>
 
