@@ -18,6 +18,8 @@
 <link href="{{asset('assets/css/owl.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
 <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">

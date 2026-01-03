@@ -1,5 +1,5 @@
 @extends('client.layout.master')
-@section('page_title', __('Security Overview'))
+@section('page_title', __('Consumer Electronics'))
 @section('content')
 @php
 $locale = app()->getLocale(); // en, es, de, fr, ru, zh

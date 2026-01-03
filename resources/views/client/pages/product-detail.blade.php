@@ -39,20 +39,40 @@ $locale = app()->getLocale();
     <div class="auto-container">
         <div class="row clearfix">
 
-            <!-- Content Side -->
+            <!-- ================= CONTENT SIDE ================= -->
             <div class="content-side col-lg-9 col-md-12 col-sm-12">
                 <div class="shop-single">
                     <div class="product-details">
 
-                        <!-- Basic Details -->
+                        <!-- ===== BASIC DETAILS ===== -->
                         <div class="basic-details">
                             <div class="row clearfix">
 
-                                <!-- PRODUCT IMAGE -->
+                                <!-- PRODUCT GALLERY -->
                                 <div class="image-column col-md-6 col-sm-12">
-                                    <figure class="image">
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="">
-                                    </figure>
+                                    <div class="product-gallery">
+
+                                        {{-- Main image --}}
+                                        <figure class="image mb-3">
+                                            <a href="{{ asset('storage/'.$product->image) }}" class="lightbox-image">
+                                                <img src="{{ asset('storage/'.$product->image) }}" alt="">
+                                            </a>
+                                        </figure>
+
+                                        {{-- Extra images (max 9 total recommended) --}}
+                                        @if($product->images && $product->images->count())
+                                            <div class="row clearfix">
+                                                @foreach($product->images as $img)
+                                                    <div class="col-4 mb-2">
+                                                        <a href="{{ asset('storage/'.$img->path) }}" class="lightbox-image">
+                                                            <img src="{{ asset('storage/'.$img->path) }}" class="img-fluid" alt="">
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+
+                                    </div>
                                 </div>
 
                                 <!-- PRODUCT INFO -->
@@ -61,212 +81,195 @@ $locale = app()->getLocale();
 
                                         <h4>{{ $product->getTranslation('name', $locale) }}</h4>
 
-                                        <div class="item-price">${{ $product->price }}</div>
+                                        {{-- MODEL CODE --}}
+                                        <div class="model-code mb-2">
+                                            <strong>{{Translation::getValue('model',$locale)}}:</strong> {{ $product->model_code }}
+                                        </div>
 
-                                        <div class="text">
+                                        {{-- PRICE --}}
+                                        <div class="item-price mb-3">
+                                            ${{ $product->amazon_price ?? $product->price }}
+                                        </div>
+
+                                        {{-- SHORT DESCRIPTION --}}
+                                        <div class="text mb-4">
                                             {{ $product->getTranslation('description', $locale) }}
                                         </div>
 
+                                        {{-- AMAZON CTA --}}
+                                        @if($product->amazon_link)
+                                            <a href="{{ $product->amazon_link }}"
+                                               target="_blank"
+                                               class="theme-btn btn-style-one bg-green">
+                                                {{ Translation::getValue('buy_on_amazon', $locale) }}
+                                            </a>
+                                        @endif
+
                                     </div>
 
-                                    <div class="other-options clearfix">
-                                        <ul class="product-meta">
-                                            <li>
-                                                {{ Translation::getValue('product_category', $locale) }}:
-
-                                                @if($product->category)
-                                                <a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => $product->category->id]) }}">
-                                                    {{ $product->category->getTranslation('name', $locale) }}
-                                                </a>
-                                                @else
-                                                <span>No Category</span>
-                                                @endif
-
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- AMAZON LINK -->
-                                    @if($product->amazon_link)
-                                    <a href="{{ $product->amazon_link }}" target="_blank" class="theme-btn btn-style-three">
-                                        {{ Translation::getValue('buy_on_amazon', $locale) }}
-                                    </a>
-                                    @endif
-
+                                    {{-- META --}}
+                                    <ul class="product-meta mt-4">
+                                        <li>
+                                            {{ Translation::getValue('product_category', $locale) }}:
+                                            <a href="{{ route('products.byCategory', ['locale'=>$locale,'category'=>$product->category->id]) }}">
+                                                {{ $product->category->getTranslation('name', $locale) }}
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
 
                             </div>
                         </div>
-                        <!-- End Basic Details -->
+                        <!-- ===== END BASIC DETAILS ===== -->
 
 
-                        <!-- Product Reviews -->
+                        <!-- ===== PRODUCT INFO TABS ===== -->
                         <div class="product-info-tabs">
                             <div class="prod-tabs tabs-box">
 
+                                <!-- TAB BUTTONS -->
                                 <ul class="tab-btns tab-buttons clearfix">
-                                    <li class="tab-btn active-btn" data-tab="#prod-reviews">
+                                    <li data-tab="#prod-desc" class="tab-btn active-btn">
+                                        {{ Translation::getValue('description', $locale) }}
+                                    </li>
+                                    <li data-tab="#prod-specs" class="tab-btn">
+                                        {{ Translation::getValue('specifications', $locale) }}
+                                    </li>
+                                    <li data-tab="#prod-reviews" class="tab-btn">
                                         {{ Translation::getValue('customer_reviews', $locale) }}
                                         ({{ $product->reviews->count() }})
                                     </li>
                                 </ul>
 
+                                <!-- TABS CONTENT -->
                                 <div class="tabs-content">
 
-                                    <div class="tab active-tab" id="prod-reviews">
+                                    <!-- DESCRIPTION TAB -->
+                                    <div class="tab active-tab" id="prod-desc">
+                                        <h2 class="title">{{ Translation::getValue('description', $locale) }}</h2>
+                                        <p>{{ $product->getTranslation('description', $locale) }}</p>
 
+                                        {{-- A+ CONTENT (optional images) --}}
+                                        @if($product->aPlusContents && $product->aPlusContents->count())
+                                            @foreach($product->aPlusContents as $content)
+                                                <div class="a-plus-block mt-4">
+                                                    <img src="{{ asset('storage/'.$content->image) }}" class="img-fluid mb-2">
+                                                    <p>{{ $content->getTranslation('text', $locale) }}</p>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+
+                                    <!-- SPECIFICATIONS TAB -->
+                                    <div class="tab" id="prod-specs">
+                                        <h2 class="title">{{ Translation::getValue('specifications', $locale) }}</h2>
+
+                                        <table class="table table-bordered">
+                                            @forelse($product->specs as $spec)
+                                                <tr>
+                                                    <th>{{ $spec->key }}</th>
+                                                    <td>{{ $spec->value }}</td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="2">No specifications available.</td>
+                                                </tr>
+                                            @endforelse
+                                        </table>
+                                    </div>
+
+                                    <!-- REVIEWS TAB -->
+                                    <div class="tab" id="prod-reviews">
                                         <h2 class="title">
-                                            {{ $product->reviews->count() }} {{ Translation::getValue('customer_reviews', $locale) }}
+                                            {{ $product->reviews->count() }}
+                                            {{ Translation::getValue('customer_reviews', $locale) }}
                                         </h2>
 
                                         <div class="comments-area">
                                             @forelse($product->reviews as $review)
-                                            <div class="comment-box">
-                                                <div class="comment">
-                                                    <div class="comment-inner">
-
-                                                        <div class="comment-info clearfix">
-                                                            <strong class="name">{{ $review->name }}</strong>
-                                                            <span class="date">{{ $review->created_at->format('M d, Y') }}</span>
-                                                        </div>
-
-                                                        <div class="text">{{ $review->message }}</div>
-
-                                                    </div>
+                                                <div class="comment-box">
+                                                    <strong>{{ $review->name }}</strong>
+                                                    <span class="date">{{ $review->created_at->format('M d, Y') }}</span>
+                                                    <p>{{ $review->message }}</p>
                                                 </div>
-                                            </div>
                                             @empty
-                                            <p>No reviews yet.</p>
+                                                <p>No reviews yet.</p>
                                             @endforelse
                                         </div>
 
-                                        <!-- Review Form -->
-                                        <div class="comment-form default-form mt-5">
-                                            <div class="sub-title">{{ Translation::getValue('add_review', $locale) }}</div>
+                                        {{-- REVIEW FORM --}}
+                                        <div class="comment-form default-form mt-4">
+                                            <form method="POST"
+                                                  action="{{ route('product.storeReview',['locale'=>$locale,'product'=>$product->id]) }}">
+                                                @csrf
 
-                                            <div class="form-outer">
-                                                <form method="POST" action="{{ route('product.storeReview', ['locale' => $locale, 'product' => $product->id]) }}">
+                                                <textarea name="message" required></textarea>
+                                                <input type="text" name="name" placeholder="Name" required>
+                                                <input type="email" name="email" placeholder="Email" required>
 
-                                                    @csrf
-
-                                                    <div class="col-lg-12 form-group">
-                                                        <div class="field-label">{{ Translation::getValue('your_review', $locale) }} *</div>
-                                                        <textarea name="message" required></textarea>
-                                                    </div>
-
-                                                    <div class="col-lg-6 form-group">
-                                                        <div class="field-label">{{ Translation::getValue('your_name', $locale) }} *</div>
-                                                        <input type="text" name="name" required>
-                                                    </div>
-
-                                                    <div class="col-lg-6 form-group">
-                                                        <div class="field-label">{{ Translation::getValue('your_email', $locale) }} *</div>
-                                                        <input type="email" name="email" required>
-                                                    </div>
-
-                                                    <div class="col-lg-12 form-group">
-                                                        <button type="submit" class="theme-btn btn-style-three">
-                                                            {{ Translation::getValue('submit', $locale) }}
-                                                        </button>
-                                                    </div>
-                                                </form>
-
-                                                @if(session('success'))
-                                                <div class="alert alert-success mt-3">
-                                                    {{ session('success') }}
-                                                </div>
-                                                @endif
-
-                                            </div>
-
+                                                <button type="submit" class="theme-btn btn-style-three">
+                                                    {{ Translation::getValue('submit', $locale) }}
+                                                </button>
+                                            </form>
                                         </div>
-
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                        <!-- End Product Reviews -->
+                        <!-- ===== END TABS ===== -->
 
 
-                        <!-- Related Products -->
+                        <!-- ===== RELATED PRODUCTS ===== -->
                         <div class="related-products">
                             <div class="sec-title">
                                 <h2>{{ Translation::getValue('related_products', $locale) }}</h2>
                             </div>
 
-                            <div class="row item-green">
-
+                            <div class="row">
                                 @foreach($related as $item)
-                                <div class="shop-item col-lg-4 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-
-                                        <div class="image-box">
+                                    <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                                        <div class="inner-box">
                                             <figure class="image">
-                                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $item->id]) }}">
-                                                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                                <a href="{{ route('product.detail',['locale'=>$locale,'product'=>$item->id]) }}">
+                                                    <img src="{{ asset('storage/'.$item->image) }}">
                                                 </a>
                                             </figure>
+                                            <h4 class="name">{{ $item->getTranslation('name',$locale) }}</h4>
+                                            <div class="price">${{ $item->amazon_price ?? $item->price }}</div>
                                         </div>
-
-                                        <div class="lower-content">
-                                            <h4 class="name">
-                                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $item->id]) }}">
-                                                    {{ $item->getTranslation('name', $locale) }}
-                                                </a>
-                                            </h4>
-
-                                            <div class="price">${{ $item->price }}</div>
-                                        </div>
-
                                     </div>
-                                </div>
                                 @endforeach
-
                             </div>
                         </div>
-                        <!-- End Related Products -->
+                        <!-- ===== END RELATED ===== -->
 
                     </div>
-
                 </div>
             </div>
-            <!-- End Content Side -->
+            <!-- ================= END CONTENT SIDE ================= -->
 
 
-            <!-- Sidebar -->
-            <div class="sidebar-side sticky-container col-lg-3 col-md-12 col-sm-12">
-                <aside class="sidebar theiaStickySidebar">
-                    <div class="sticky-sidebar">
-
-                        <!-- Category Widget -->
-                        <div class="sidebar-widget category-widget">
-                            <div class="widget-content">
-
-                                <h3 class="widget-title">
-                                    {{ Translation::getValue('categories_title', $locale) }}
-                                </h3>
-
-                                <ul class="categories-list">
-                                    @foreach($categories as $category)
-                                    <li>
-                                        <a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => $category->id]) }}">
-                                            {{ $category->getTranslation('name', $locale) }}
-                                            <span>({{ $category->products_count }})</span>
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-
-                            </div>
-                        </div>
-
-                    </div>
+            <!-- ================= SIDEBAR ================= -->
+            <div class="sidebar-side col-lg-3 col-md-12 col-sm-12">
+                <aside class="sidebar">
+                    <h3>{{ Translation::getValue('categories_title', $locale) }}</h3>
+                    <ul class="categories-list">
+                        @foreach($categories as $category)
+                            <li>
+                                <a href="{{ route('products.byCategory',['locale'=>$locale,'category'=>$category->id]) }}">
+                                    {{ $category->getTranslation('name',$locale) }}
+                                    <span>({{ $category->products_count }})</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </aside>
             </div>
 
         </div>
     </div>
 </div>
+
 
 @endsection

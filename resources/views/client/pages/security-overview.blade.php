@@ -35,7 +35,8 @@ use App\Models\Translation;
                         data-paddingright="[0,0,0,0]"
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
-                        style="z-index: 5;background:linear-gradient(45deg, rgba(72,61,96,0.8) 11%, rgba(72,61,96,0.79) 20%, rgba(0,89,112,0.70) 90%, rgba(0,89,112,0.7) 90%);"><img src="images/main-slider/pattern/1.png" alt="" data-ww="full-proportional" data-hh="full-proportional" width="1920" height="1080" data-no-retina>
+                        style="z-index: 5;background:linear-gradient(45deg, rgba(72,61,96,0.8) 11%, rgba(72,61,96,0.79) 20%, rgba(0,89,112,0.70) 90%, rgba(0,89,112,0.7) 90%);">
+                        <img src="{{asset('assets/images/main-slider/pattern/1.png')}}" alt="" data-ww="full-proportional" data-hh="full-proportional" width="1920" height="1080" data-no-retina>
                     </div>
 
                     <!-- LAYER NR. 2 -->
@@ -167,7 +168,10 @@ use App\Models\Translation;
 
 <!-- Security Package -->
 <section class="security-package"
-    style="background-image: url('{{ asset('storage/'.$package->background_image) }}');">
+    @if(!empty($package->background_image))
+    style="background-image: url('{{ asset('storage/'.$package->background_image) }}');"
+    @endif
+    >
 
     <div class="auto-container">
         <div class="row">
@@ -176,40 +180,54 @@ use App\Models\Translation;
             <div class="content-column col-lg-7 col-md-7 col-sm-12 order-2">
                 <div class="sec-title">
                     {{-- 8. MODEL ADI --}}
-                    <h2>{{ $package->getTitle($locale) }}</h2>
+                    <h2>{{ optional($package)->getTitle($locale) ?? 'Professional Security Package' }}</h2>
+
 
                     {{-- 8.1 MODEL AÇIQLAMA --}}
                     <div class="text">
-                        {{ $package->getDescription($locale) }}
+                        {{ optional($package)->getDescription($locale) ?? 'This security solution is designed to provide reliable protection, advanced monitoring, and seamless control for modern environments.' }}
                     </div>
+
                 </div>
 
                 {{-- 9. TEXNİKİ GÖSTƏRİCİLƏR BAŞLIĞI --}}
-                <h4>{{ $package->getFeaturesTitle($locale) }}</h4>
+                <h4>{{ optional($package)->getFeaturesTitle($locale) ?? 'Technical Specifications' }}</h4>
+
 
                 {{-- 9.1 TEXNİKİ SİYAHI --}}
                 <ul class="package-list clearfix">
-                    @foreach($package->features as $feature)
-                    <li>{{ $feature->getText($locale) }}</li>
+                    @foreach(optional($package)->features ?? [] as $feature)
+                    <li>{{ $feature->getText($locale) ?? 'Smart security feature' }}</li>
                     @endforeach
                 </ul>
 
                 {{-- 10. CTA BUTTON --}}
                 <div class="btn-box">
-                    <a href="{{ route('product.detail', [
-                            'locale' => app()->getLocale(),
-                            'product' => $package->product->id
-                        ]) }}"
+                    <a href="{{ 
+        optional(optional($package)->product)->id
+            ? route('product.detail', [
+                'locale'  => app()->getLocale(),
+                'product' => optional($package->product)->id
+            ])
+            : '#'
+    }}"
                         class="theme-btn btn-style-one large bg-purple">
-                        {{ Translation::getValue('installed_free', $locale) }}
+
+                        {{ Translation::getValue('installed_free', $locale) ?? 'Free Installation' }}
+
                     </a>
                 </div>
+
             </div>
 
             <!-- Image Column -->
             <div class="image-column col-lg-5 col-md-5 col-sm-12">
                 <figure class="image">
-                    <img src="{{ asset('storage/'.$package->model_image) }}" alt="">
+                    <img
+                        src="{{ asset('storage/'.optional($package)->model_image) 
+        ?? asset('assets/images/default/security-model.png') }}"
+                        alt="Security Model">
+
                 </figure>
             </div>
 
@@ -228,7 +246,8 @@ use App\Models\Translation;
         <div class="cws-triangle-overlay bg-purple-one"></div>
 
         <div class="cws-image-bg"
-            style="background-image: url({{ asset('storage/' . $highlight->background_image) }});">
+            style="background-image: url('{{ asset('storage/'.optional($highlight)->background_image) }}');">
+
             <div class="cws-overlay-bg bg-purple-left"></div>
             <div class="cws-overlay-bg bg-purple-right"></div>
         </div>
@@ -245,56 +264,102 @@ use App\Models\Translation;
                 <!-- 12. Məhsul adı -->
                 <div class="sec-title light">
                     <h2>
-                        {{ $highlight->{'title_' . app()->getLocale()} }}
+                        {{ $highlight->{'title_'.$locale} ?? 'Real-Time Security Response' }}
                     </h2>
+
                 </div>
 
                 <!-- 12.1 Qısa izah -->
                 <div class="text mb-40">
-                    {{ $highlight->{'description_' . app()->getLocale()} }}
+                    {{ $highlight->{'description_'.$locale} 
+        ?? 'Instant alerts, smart detection, and real-time monitoring to keep you protected at all times.' }}
                 </div>
+
 
                 <!-- 13–15 Feature List -->
                 <div class="feature-outer">
 
-                    @foreach($highlight->features as $feature)
+                    @php
+                    $fallbackFeatures = [
+                    [
+                    'icon' => 'fa fa-shield',
+                    'title' => 'Instant Security Alerts',
+                    'content' => 'Receive real-time notifications and alerts for every important security event.',
+                    ],
+                    [
+                    'icon' => 'fa fa-eye',
+                    'title' => 'Live Monitoring',
+                    'content' => 'Monitor your environment 24/7 with high accuracy and smart detection.',
+                    ],
+                    [
+                    'icon' => 'fa fa-lock',
+                    'title' => 'Advanced Protection',
+                    'content' => 'Multiple layers of security ensure complete and reliable protection.',
+                    ],
+                    ];
+                    @endphp
+
+                    @forelse(optional($highlight)->features ?? [] as $feature)
                     <div class="feature-block-three">
                         <div class="inner-box">
 
                             <!-- Icon -->
                             <div class="icon-box">
-                                <span class="icon {{ $feature->icon }}"></span>
+                                <span class="icon {{ $feature->icon ?? 'fa fa-shield' }}"></span>
                             </div>
 
-                            <!-- 13.1 / 14.1 / 15.1 -->
+                            <!-- Title -->
                             <h4>
-                                {{ $feature->{'title_' . app()->getLocale()} }}
+                                {{ $feature->{'title_'.app()->getLocale()} ?? 'Smart Security Feature' }}
                             </h4>
 
-                            <!-- 13.2 / 14.2 / 15.2 -->
+                            <!-- Content -->
                             <p>
-                                {!! nl2br(e($feature->{'content_' . app()->getLocale()})) !!}
+                                {{ $feature->{'content_'.app()->getLocale()} 
+                    ?? 'Advanced technology designed to keep your system secure and responsive.' }}
                             </p>
 
                         </div>
                     </div>
+                    @empty
+                    @foreach($fallbackFeatures as $item)
+                    <div class="feature-block-three">
+                        <div class="inner-box">
+
+                            <div class="icon-box">
+                                <span class="icon {{ $item['icon'] }}"></span>
+                            </div>
+
+                            <h4>{{ $item['title'] }}</h4>
+
+                            <p>{{ $item['content'] }}</p>
+
+                        </div>
+                    </div>
                     @endforeach
+                    @endforelse
+
 
                 </div>
 
                 <!-- 16 CTA Button -->
                 <div class="btn-box">
-                    <a href="{{ route('product.detail', [
-                        'locale' => app()->getLocale(),
-                        'product' => $highlight->product_id
-                    ]) }}"
+                    <a href="{{ 
+        optional($highlight)->product_id
+            ? route('product.detail', [
+                'locale'  => app()->getLocale(),
+                'product' => $highlight->product_id
+            ])
+            : '#'
+    }}"
                         class="theme-btn btn-style-one large bg-purple">
 
                         <i class="fa fa-arrow-right"></i>
-                        {{ Translation::getValue('go_to_product', $locale) }}
+                        {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
 
                     </a>
                 </div>
+
 
             </div>
         </div>
@@ -311,12 +376,13 @@ use App\Models\Translation;
         {{-- 17 — Məhsul adı --}}
         <div class="sec-title text-center">
             <h2>
-                {{ $qualityEquipment->{'title_'.$locale} }}
+                {{ $qualityEquipment->{'title_'.$locale} ?? 'High Quality Security Equipment' }}
             </h2>
 
             {{-- 17.1 — Qısa izah --}}
             <div class="text">
-                {{ $qualityEquipment->{'description_'.$locale} }}
+                {{ $qualityEquipment->{'description_'.$locale} 
+        ?? 'Built with premium materials to ensure durability, accuracy, and long-term performance.' }}
             </div>
         </div>
 
@@ -324,33 +390,60 @@ use App\Models\Translation;
         <div class="device-img text-center">
             <figure class="image">
                 <img
-                    src="{{ asset('storage/'.$qualityEquipment->hero_image) }}"
-                    alt="{{ $qualityEquipment->{'title_'.$locale} }}">
+                    src="{{ 
+        optional($qualityEquipment)->hero_image
+            ? asset('storage/'.optional($qualityEquipment)->hero_image)
+            : asset('assets/images/default/equipment-hero.png')
+    }}"
+                    alt="{{ 
+        optional($qualityEquipment)->{'title_'.$locale} 
+            ?? 'High Quality Security Equipment'
+    }}">
+
             </figure>
         </div>
 
         {{-- 19 — CTA --}}
-        @if($qualityEquipment->product)
+        @if(optional($qualityEquipment)->product)
         <div class="btn-box text-center">
             <a
-                href="{{ route('product.detail', ['locale'=>$locale, 'product'=>$qualityEquipment->product->id]) }}"
+                href="{{ route('product.detail', [
+                'locale'  => $locale,
+                'product' => $qualityEquipment->product->id
+            ]) }}"
                 class="theme-btn btn-style-one large bg-purple">
-                {{ Translation::getValue('go_to_product', $locale) }}
+                {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
             </a>
         </div>
         @endif
+
 
     </div>
 </section>
 <!-- End Quality Equipment -->
 
 
-<!-- Installation Service -->
+@php
+$installBg = optional($installationService)->background_image
+? asset('storage/'.optional($installationService)->background_image)
+: asset('assets/images/default/installation-bg.jpg');
+
+$installTitle = $installationService->{'title_'.$locale}
+?? 'Professional Installation Service';
+
+$installDesc = $installationService->{'description_'.$locale}
+?? 'Our expert team ensures fast, secure, and professional installation for all security solutions.';
+
+$installCta = optional($installationService)->cta_link ?? '#';
+@endphp
+
 <section class="installation-service">
     <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-triangle-overlay top-right"></div>
-        <div class="cws-image-bg style-five" style="background-image: url({{ asset('storage/'.$installationService->background_image) }});">
+
+        <div class="cws-image-bg style-five"
+            style="background-image: url('{{ $installBg }}');">
             <div class="cws-overlay-bg"></div>
             <div class="cws-triangle-overlay"></div>
         </div>
@@ -360,33 +453,81 @@ use App\Models\Translation;
         <div class="row">
             <div class="content-column col-md-6 col-sm-12 offset-6">
                 <div class="inner-column">
+
+                    <!-- Title -->
                     <div class="sec-title light">
-                        <h2>{{ $installationService->{'title_'.$locale} }}</h2>
-                        <div class="text">{{ $installationService->{'description_'.$locale} }}</div>
+                        <h2>{{ $installTitle }}</h2>
+                        <div class="text">{{ $installDesc }}</div>
                     </div>
-                    <!-- Services Icons -->
+
+                    <!-- Icons -->
                     <div class="services-icons row">
-                        @foreach($installationService->icons as $icon)
+                        @forelse(optional($installationService)->icons ?? [] as $icon)
                         <div class="service-icon col-lg-3 col-md-3 col-sm-12">
-                            <span class="icon {{ $icon->icon }}"></span>
+                            <span class="icon {{ $icon->icon ?? 'fa fa-tools' }}"></span>
                         </div>
-                        @endforeach
+                        @empty
+                        <div class="service-icon col-lg-3 col-md-3 col-sm-12">
+                            <span class="icon fa fa-tools"></span>
+                        </div>
+                        <div class="service-icon col-lg-3 col-md-3 col-sm-12">
+                            <span class="icon fa fa-cogs"></span>
+                        </div>
+                        <div class="service-icon col-lg-3 col-md-3 col-sm-12">
+                            <span class="icon fa fa-shield"></span>
+                        </div>
+                        @endforelse
                     </div>
-                    <div class="btn-box"><a href="{{$installationService->cta_link}}" class="theme-btn btn-style-one large bg-purple">{{ Translation::getValue('go_to_product', $locale) }}</a></div>
+
+                    <!-- CTA -->
+                    <div class="btn-box">
+                        <a href="{{ $installCta }}"
+                            class="theme-btn btn-style-one large bg-purple">
+                            {{ Translation::getValue('go_to_product', $locale) ?? 'Learn More' }}
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- End Installation Service -->
 
-<!-- Why Choose Us -->
+@php
+    $psBg = optional($productShowcase)->image
+        ? asset('storage/'.optional($productShowcase)->image)
+        : asset('assets/images/default/product-showcase-bg.jpg');
+
+    $psTitle = $productShowcase->{'title_'.$locale}
+        ?? 'Why Customers Choose Our Solutions';
+
+    $psDesc = $productShowcase->{'description_'.$locale}
+        ?? 'Smart design, reliable technology, and proven performance for modern security needs.';
+
+    $psButton = optional($productShowcase)->button_link ?? '#';
+
+    $icons = [
+        [
+            'img'  => optional($productShowcase)->icon_1,
+            'text' => $productShowcase->{'icon_1_text_'.$locale} ?? 'Smart Technology',
+        ],
+        [
+            'img'  => optional($productShowcase)->icon_2,
+            'text' => $productShowcase->{'icon_2_text_'.$locale} ?? 'Reliable Protection',
+        ],
+        [
+            'img'  => optional($productShowcase)->icon_3,
+            'text' => $productShowcase->{'icon_3_text_'.$locale} ?? 'Easy Integration',
+        ],
+    ];
+@endphp
 
 <section class="why-choose-us product-showcase">
 
     <!-- Background Layers -->
     <div class="background-layers">
-        <div class="cws-image-bg style-six" style="background-image: url({{ asset('storage/'.$productShowcase->image) }});">
+        <div class="cws-image-bg style-six"
+             style="background-image: url('{{ $psBg }}');">
             <div class="cws-overlay-bg bg-gradient"></div>
         </div>
         <div class="cws-triangle-overlay bottom-right"></div>
@@ -401,117 +542,107 @@ use App\Models\Translation;
 
                     <!-- Title -->
                     <div class="sec-title light">
-                        <h2>
-                            {{ $productShowcase->{'title_'.$locale} }}
-                        </h2>
-                        <div class="text">
-                            {{ $productShowcase->{'description_'.$locale} }}
-                        </div>
+                        <h2>{{ $psTitle }}</h2>
+                        <div class="text">{{ $psDesc }}</div>
                     </div>
 
                     <!-- ICON FEATURES -->
                     <div class="row pie-graphs">
-
-                        <!-- Icon 1 -->
-                        <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
-                            <div class="graph-outer icon-box">
-                                <img src="{{ asset('storage/'.$productShowcase->icon_1) }}"
-                                    alt=""
-                                    class="feature-icon">
+                        @foreach($icons as $item)
+                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
+                                <div class="graph-outer icon-box">
+                                    <img
+                                        src="{{ $item['img']
+                                            ? asset('storage/'.$item['img'])
+                                            : asset('assets/images/default/feature-icon.png') }}"
+                                        alt="{{ $item['text'] }}"
+                                        class="feature-icon">
+                                </div>
+                                <h4>{{ $item['text'] }}</h4>
                             </div>
-                            <h4>{{ $productShowcase->{'icon_1_text_'.$locale} }}</h4>
-                        </div>
-
-                        <!-- Icon 2 -->
-                        <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
-                            <div class="graph-outer icon-box">
-                                <img src="{{ asset('storage/'.$productShowcase->icon_2) }}"
-                                    alt=""
-                                    class="feature-icon">
-                            </div>
-                            <h4>{{ $productShowcase->{'icon_2_text_'.$locale} }}</h4>
-                        </div>
-
-                        <!-- Icon 3 -->
-                        <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
-                            <div class="graph-outer icon-box">
-                                <img src="{{ asset('storage/'.$productShowcase->icon_3) }}"
-                                    alt=""
-                                    class="feature-icon">
-                            </div>
-                            <h4>{{ $productShowcase->{'icon_3_text_'.$locale} }}</h4>
-                        </div>
-
+                        @endforeach
                     </div>
 
                     <!-- BUTTON -->
                     <div class="btn-box">
-                        <a href="{{ $productShowcase->button_link }}"
-                            class="theme-btn btn-style-one large">
-                            {{Translation::getValue('go_to_product', $locale)}}
+                        <a href="{{ $psButton }}"
+                           class="theme-btn btn-style-one large">
+                            {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
                         </a>
                     </div>
 
                 </div>
             </div>
 
-
         </div>
     </div>
 </section>
 
-<!-- End Why Choose Us -->
 
 
+
+@php
+    $appBg = optional($appProductSection)->image
+        ? asset('storage/'.optional($appProductSection)->image)
+        : asset('assets/images/default/app-bg.jpg');
+
+    $appTitle = $appProductSection->{'title_'.$locale}
+        ?? 'Smart Mobile Application';
+
+    $appDesc = $appProductSection->{'description_'.$locale}
+        ?? 'Manage your system easily with our modern and user-friendly mobile application.';
+
+    $appBtn = optional($appProductSection)->button_link ?? '#';
+
+    $appIcons = [
+        optional($appProductSection)->icon_1 ?? 'fa fa-mobile',
+        optional($appProductSection)->icon_2 ?? 'fa fa-bell',
+        optional($appProductSection)->icon_3 ?? 'fa fa-lock',
+    ];
+@endphp
 
 <!-- App Download -->
 <section class="app-download">
-    <div class="cws-background-image" style="background-image: url({{asset('storage/' . $appProductSection->image)}});"></div>
+    <div class="cws-background-image"
+         style="background-image: url('{{ $appBg }}');"></div>
+
     <div class="auto-container">
         <div class="row">
             <div class="content-column col-lg-6 offset-6 col-md-6 col-sm-12">
                 <div class="inner-column">
                     <div class="sec-title">
-                        <h2>{{ $appProductSection->{'title_'.$locale} }}</h2>
-                        <div class="text">{{ $appProductSection->{'description_'.$locale} }}</div>
+
+                        <!-- Title -->
+                        <h2>{{ $appTitle }}</h2>
+
+                        <!-- Description -->
+                        <div class="text">{{ $appDesc }}</div>
+
                         <!-- ICON FEATURES -->
                         <div class="row pie-graphs">
-
-                            <!-- Icon 1 -->
-                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
-                                <h3 class="m-0">
-                                    <span class="icon {{ $appProductSection->icon_1 }}"></span>
-                                </h3>
-                            </div>
-
-                            <!-- Icon 2 -->
-                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
-                                <h3 class="m-0">
-                                    <span class="icon {{ $appProductSection->icon_2 }}"></span>
-                                </h3>
-                            </div>
-
-                            <!-- Icon 3 -->
-                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
-                                <h3 class="m-0">
-                                    <span class="icon {{ $appProductSection->icon_3 }}"></span>
-                                </h3>
-                            </div>
-
+                            @foreach($appIcons as $icon)
+                                <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
+                                    <h3 class="m-0">
+                                        <span class="icon {{ $icon }}"></span>
+                                    </h3>
+                                </div>
+                            @endforeach
                         </div>
-
 
                         <!-- BUTTON -->
                         <div class="btn-box">
-                            <a href="{{ $appProductSection->button_link }}"
-                                class="theme-btn btn-style-one large">
-                                {{Translation::getValue('go_to_product', $locale)}}
+                            <a href="{{ $appBtn }}"
+                               class="theme-btn btn-style-one large">
+                                {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!-- End App Download -->
+
 @endsection

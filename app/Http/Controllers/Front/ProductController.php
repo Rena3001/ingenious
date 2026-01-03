@@ -74,8 +74,9 @@ class ProductController extends Controller
     // ===============================
     // 📌 3. PRODUCT DETAIL
     // ===============================
-    public function show(Product $product)
+    public function show(string $locale,Product $product)
     {
+        app()->setLocale($locale);
         $categories = Category::withCount('products')->get();
 
         $related = Product::where('category_id', $product->category_id)
@@ -116,7 +117,7 @@ class ProductController extends Controller
 
         return redirect()->route('product.detail', [
             'locale'  => app()->getLocale(),
-            'product' => $product->id,
+            'product' => $product->slug,
         ])->with('success', $message);
     }
 }

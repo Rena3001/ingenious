@@ -1,5 +1,5 @@
 @extends('client.layout.master')
-@section('page_title', "__('Technical Services')")
+@section('page_title', __('Home Appliances'))
 @section('content')
 
 @php
@@ -205,7 +205,7 @@ $locale = app()->getLocale();
     </div>
 </section>
 <!-- End Accordion Section -->
-
+ 
 <!-- Portfolio Section Two -->
 <section class="portfolio-section-two">
     <div class="container-fluid">
@@ -298,67 +298,82 @@ $locale = app()->getLocale();
 <!-- End Feature Section Two -->
 
 
+@php
+    $processTitle = $processSection->{'title_'.$locale}
+        ?? 'Our Simple Working Process';
+
+    $processDesc = $processSection->{'description_'.$locale}
+        ?? 'We follow a clear and efficient process to deliver the best results.';
+
+    $processBtn = optional($processSection)->button_link ?? '#';
+
+    $steps = [
+        [
+            'icon'  => optional($processSection)->icon_1 ?? 'fa fa-search',
+            'title' => Translation::getValue('step_1_title_'.$locale) ?? 'Analysis',
+            'desc'  => $processSection->{'step_1_desc_'.$locale}
+                        ?? 'We analyze your needs and requirements in detail.',
+        ],
+        [
+            'icon'  => optional($processSection)->icon_2 ?? 'fa fa-cogs',
+            'title' => Translation::getValue('step_2_title_'.$locale) ?? 'Planning',
+            'desc'  => $processSection->{'step_2_desc_'.$locale}
+                        ?? 'We prepare a clear and effective implementation plan.',
+        ],
+        [
+            'icon'  => optional($processSection)->icon_3 ?? 'fa fa-check-circle',
+            'title' => Translation::getValue('step_3_title_'.$locale) ?? 'Execution',
+            'desc'  => $processSection->{'step_3_desc_'.$locale}
+                        ?? 'We execute the plan and deliver reliable results.',
+        ],
+    ];
+@endphp
+
 <!-- Process Section -->
 <section class="process-section">
     <!-- Background Layers -->
     <div class="background-layers">
-        <div class="cws-image-bg" style="background-image: url(images/background/15.jpg)">
+        <div class="cws-image-bg" style="background-image: url('{{ asset('images/background/15.jpg') }}')">
             <div class="cws-overlay-bg"></div>
         </div>
     </div>
 
     <div class="auto-container">
         <div class="sec-title text-center">
-            <h2>{{ $processSection->{'title_' . $locale} }}</h2>
-            <div class="text">{{ $processSection->{'description_' . $locale} }}</div>
+            <h2>{{ $processTitle }}</h2>
+            <div class="text">{{ $processDesc }}</div>
         </div>
 
         <div class="row">
-            <!-- Process BLock -->
-            <div class="process-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box active">
-                    <div class="icon-box">
-                        <span class="process_line">
-                            <span class="process_line_active"></span>
-                            <span class="process_line_circle"></span>
-                        </span>
-                        <span class="icon {{ $processSection->icon_1 }}"></span>
-                    </div>
-                    <h4>{{Translation::getValue('step_1_title_' . $locale)}}</h4>
-                    <div class="text">{{ $processSection->{'step_1_desc_' . $locale} }}</div>
-                </div>
-            </div>
+            @foreach($steps as $index => $step)
+                <div class="process-block col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box {{ $index === 0 ? 'active' : '' }}">
+                        <div class="icon-box">
+                            @if($index < 2)
+                                <span class="process_line {{ $index === 1 ? 'hide-sm' : '' }}">
+                                    <span class="process_line_active"></span>
+                                    <span class="process_line_circle"></span>
+                                </span>
+                            @endif
+                            <span class="icon {{ $step['icon'] }}"></span>
+                        </div>
 
-            <!-- Process BLock -->
-            <div class="process-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <div class="icon-box">
-                        <span class="process_line hide-sm">
-                            <span class="process_line_active"></span>
-                            <span class="process_line_circle"></span>
-                        </span>
-                        <span class="icon {{ $processSection->icon_2 }}"></span>
+                        <h4>{{ $step['title'] }}</h4>
+                        <div class="text">{{ $step['desc'] }}</div>
                     </div>
-                    <h4>{{Translation::getValue('step_2_title_' . $locale)}}</h4>
-                    <div class="text">{{ $processSection->{'step_2_desc_' . $locale} }}</div>
                 </div>
-            </div>
-
-            <!-- Process BLock -->
-            <div class="process-block col-lg-4 col-md-6 col-sm-12">
-                <div class="inner-box">
-                    <div class="icon-box"><span class="icon {{ $processSection->icon_3 }}"></span></div>
-                    <h4>{{Translation::getValue('step_3_title_' . $locale)}}</h4>
-                    <div class="text">{{ $processSection->{'step_3_desc_' . $locale} }}</div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
-        <div class="btn-box text-center"><a href="{{$processSection->button_link}}" class="theme-btn large btn-style-one bg-sky">{{Translation::getValue('find_partner_button_' . $locale)}}</a></div>
+        <div class="btn-box text-center">
+            <a href="{{ $processBtn }}"
+               class="theme-btn large btn-style-one bg-sky">
+                {{ Translation::getValue('find_partner_button_'.$locale) ?? 'Find a Partner' }}
+            </a>
+        </div>
     </div>
 </section>
-<!--End Process Section -->
-
+<!-- End Process Section -->
 
 <!-- Subscribe Section -->
 <section class="subscribe-section">

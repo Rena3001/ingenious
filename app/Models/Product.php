@@ -15,6 +15,8 @@ class Product extends Model
         'name_ru',
         'name_de',
         'name_es',
+        'name_fr',
+        'name_zh',
 
         // Descriptions
         'description_az',
@@ -22,10 +24,29 @@ class Product extends Model
         'description_ru',
         'description_de',
         'description_es',
+        'description_fr',
+        'description_zh',
 
         'price',
         'image',
-        'amazon_link'
+        'amazon_link',
+        'model_code',
+        'slug',
+        'is_new',
+        'is_top_seller',
+        'is_active',
+        'amazon_price',
+        'currency',
+        'features',
+        'detail_page_url',
+    ];
+    protected $casts = [
+        'features' => 'array',
+        'is_new' => 'boolean',
+        'is_top_seller' => 'boolean',
+        'is_active' => 'boolean',
+        'price' => 'decimal:2',
+        'amazon_price' => 'decimal:2',
     ];
 
     public function category()
@@ -41,4 +62,29 @@ class Product extends Model
     {
         return $this->hasMany(Review::class)->where('approved', true);
     }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('sort_order');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(ProductVideo::class);
+    }
+
+    public function specs()
+    {
+        return $this->hasMany(ProductSpec::class);
+    }
+
+    public function aplusContents()
+    {
+        return $this->hasMany(ProductAplusContent::class)->orderBy('sort_order');
+    }
+    public function getRouteKeyName()
+{
+    return 'slug';
+}
+
 }

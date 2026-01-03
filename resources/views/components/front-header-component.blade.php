@@ -42,8 +42,8 @@
                                             <h3>{{ Translation::getValue('home', $locale) }}</h3>
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('home', ['locale' => $locale]) }}">
-                                                        {{ Translation::getValue('home', $locale) }}
+                                                    <a href="{{ route('home.appliances', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('home_appliances', $locale) }}
                                                     </a>
                                                 </li>
 
@@ -61,6 +61,11 @@
                                                 <li>
                                                     <a href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('consumer_electronics', $locale) }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('technical.services', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('technical_services', $locale) }}
                                                     </a>
                                                 </li>
 
@@ -87,12 +92,12 @@
                                                         {{ Translation::getValue('menu_about', $locale) }}
                                                     </a></li>
 
-                                                <li><a href="{{ route('services', ['locale' => $locale]) }}">
-                                                        {{ Translation::getValue('menu_services', $locale) }}
+                                                <li><a href="{{ route('partnership', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('menu_partnership', $locale) }}
                                                     </a></li>
 
-                                                <li><a href="{{ route('process', ['locale' => $locale]) }}">
-                                                        {{ Translation::getValue('menu_process', $locale) }}
+                                                <li><a href="{{ route('announcements', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('menu_announcements', $locale) }}
                                                     </a></li>
                                             </ul>
                                         </div>
@@ -102,7 +107,7 @@
 
 
 
-                            <li><a href="{{ route('blog', ['locale' => $locale]) }}">
+                            <li><a href="{{ route('news', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_news', $locale) }}
                                 </a></li>
 
@@ -205,9 +210,9 @@
         <div class="search-inner">
             <button class="close-search"><span class="fa fa-times"></span></button>
 
-            <form method="GET" action="{{ route('products', ['locale' => $locale]) }}">
+            <form method="GET" action="{{ url()->current() }}">
                 <div class="form-group">
-                    <input type="search" name="search" placeholder="{{ Translation::getValue('search_placeholder', $locale) }}" required="">
+                    <input type="search" name="search" value="{{ request('search') }}" placeholder="{{ Translation::getValue('search_placeholder', $locale) }}" required="">
                     <button type="submit">
                         <i class="fa fa-search"></i>
                     </button>

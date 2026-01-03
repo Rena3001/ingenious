@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductAplusContent;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -46,7 +47,37 @@ class DatabaseSeeder extends Seeder
             NightVisionSectionSeeder::class,
             CallToActionTwoSeeder::class,
             AboutSectionTwoSeeder::class,
-
+            TechnicalServicesSliderSeeder::class,
+            TechnicalIconsSeeder::class,
+            FaqSectionSeeder::class,
+            OurServicesSectionSeeder::class,
+            ProductVideoSectionsSeeder::class,
+            ProductVideoItemsSeeder::class,
+            WhyBamooneTestimonialsSeeder::class,
+            SupportResourcesSectionSeeder::class,
+            ShopSectionSeeder::class,
+            InstallationSectionSeeder::class,
+            InstallationStepSeeder::class,
+            ServicePackageSeeder::class,
+            ServicePackageSectionSeeder::class,
+            TechnicalContentSeeder::class,
+            SettingsSeeder::class,
+            GuideSeeder::class,
+            WarrantyMainSliderSeeder::class,
+            WarrantyFeatureSectionSeeder::class,
+            WarrantyAccordionSectionSeeder::class,
+            WarrantyFeatureSectionTwoSeeder::class,
+            WarrantyProcessSectionSeeder::class,
+            MainAboutPageSeeder::class,
+            ProductFeatureSectionSeeder::class,
+            ProductSectionSeeder::class,
+            ProductSupportSectionSeeder::class,
+            ProductVideoItemsSeeder::class,
+            ProductVideoSectionsSeeder::class,
+            ProductAplusContent::class,
+            PartnershipPageSeeder::class,
+            NewsSeeder::class,
+            AnnouncementSeeder::class
         ]);
     }
 }

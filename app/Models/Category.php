@@ -12,6 +12,8 @@ class Category extends Model
         'name_ru',
         'name_de',
         'name_es',
+        'name_fr',
+        'name_zh'
     ];
     public function products()
     {
@@ -21,5 +23,10 @@ class Category extends Model
     {
         $locale = $locale ?? app()->getLocale();
         return $this->{$field . '_' . $locale};
+    }
+
+    public function faqs()
+    {
+        return $this->hasMany(TechnicalContent::class);
     }
 }

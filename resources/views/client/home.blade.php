@@ -304,8 +304,8 @@ $icons = $services->icons ?? []; // artıq array-dir
                             </div>
 
                             <div class="text">
-    {!! \Illuminate\Support\Str::limit(strip_tags($product->getTranslation('description', $locale)), 90) !!}
-</div>
+                                {!! \Illuminate\Support\Str::limit(strip_tags($product->getTranslation('description', $locale)), 90) !!}
+                            </div>
 
                         </div>
 
