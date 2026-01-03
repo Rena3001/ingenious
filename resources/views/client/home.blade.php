@@ -390,9 +390,11 @@ $icons = $services->icons ?? []; // artıq array-dir
     <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-triangle-overlay top-right"></div>
+        @if($homeAbout && $homeAbout->background_image)
         <div class="cws-image-bg style-three" style="background-image: url('{{asset('storage/' . $homeAbout->background_image)}}')">
             <div class="cws-overlay-bg bg-blue half-left"></div>
         </div>
+        @endif
         <div class="cws-triangle-overlay bottom-right"></div>
     </div>
 
