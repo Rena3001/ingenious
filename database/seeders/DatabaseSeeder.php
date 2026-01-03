@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             ProductSupportSectionSeeder::class,
             ProductVideoItemsSeeder::class,
             ProductVideoSectionsSeeder::class,
-            ProductAplusContent::class,
+     
             PartnershipPageSeeder::class,
             NewsSeeder::class,
             AnnouncementSeeder::class
