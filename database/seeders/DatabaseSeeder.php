@@ -77,6 +77,7 @@ class DatabaseSeeder extends Seeder
             HomeAboutSeeder::class,
             HomeAboutMissionSeeder::class,
             RoadmapSeeder::class,
+            SliderSeeder::class,
             PartnershipPageSeeder::class,
             NewsSeeder::class,
             AnnouncementSeeder::class,

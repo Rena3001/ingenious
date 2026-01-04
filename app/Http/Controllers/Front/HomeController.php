@@ -14,7 +14,7 @@ use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
-{
+{ 
     public function index($locale)
     {
         app()->setLocale($locale);
