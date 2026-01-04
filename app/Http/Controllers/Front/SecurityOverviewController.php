@@ -19,7 +19,7 @@ class SecurityOverviewController extends Controller
     {
         $securitySliders = SecuritySlider::where('is_active', true)
             ->orderBy('order')
-            ->get();
+            ->get(); 
 
         $features = SecurityFeature::where('is_active', true)
             ->orderBy('order')

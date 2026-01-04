@@ -7,11 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class HomeAbout extends Model
 {
     protected $fillable = [
-        'title_az','title_en','title_ru','title_de','title_es',
-        'desc_az','desc_en','desc_ru','desc_de','desc_es',
-        'image', 'background_image',
+        'title_az',
+        'title_en',
+        'title_ru',
+        'title_de',
+        'title_es',
+        'desc_az',
+        'desc_en',
+        'desc_ru',
+        'desc_de',
+        'desc_es',
+        'image',
+        'background_image',
         'is_active',
     ];
+       public function missionItems()
+{
+    return $this->hasMany(AboutMissionItem::class, 'about_section_id')
+        ->orderBy('sort');
+}
 
     public function getTranslation($field, $locale = null)
     {
@@ -19,5 +33,20 @@ class HomeAbout extends Model
         $key = $field . "_" . $loc;
 
         return $this->$key ?? null;
+    }
+    public function getTitle(?string $locale = null): ?string
+    {
+        return $this->getTranslation('title', $locale);
+    }
+
+    public function getDesc(?string $locale = null): ?string
+    {
+        return $this->getTranslation('desc', $locale);
+    }
+
+    public function getShortDesc(?string $locale = null): ?string
+    {
+        $desc = $this->getDesc($locale);
+        return $desc ? substr($desc, 0, 100) : null;
     }
 }

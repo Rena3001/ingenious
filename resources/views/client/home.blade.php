@@ -17,7 +17,6 @@ $icons = $services->icons ?? []; // artıq array-dir
                 @php
                 $title = $slider->getTitle($locale);
                 $description = $slider->getDescription($locale);
-                $button_text = $slider->getButtonText($locale);
                 $button_url = $slider->button_url;
                 $bg_image = asset('storage/' . $slider->image);
                 @endphp
@@ -134,7 +133,7 @@ $icons = $services->icons ?? []; // artıq array-dir
 
 
                     <!-- BUTTON -->
-                    @if($button_url && $button_text)
+                    
                     <a href="{{ $button_url }}">
                         <div class="tp-caption rev-btn tp-resizeme slide-btn"
                             data-x="center"
@@ -155,10 +154,9 @@ $icons = $services->icons ?? []; // artıq array-dir
                                     border-radius:30px;
                                     margin-top: 28px;
                                 ">
-                            {{ $button_text }}
+                            {{ Translation::getValue('read_more',$locale) }}
                         </div>
                     </a>
-                    @endif
 
                 </li>
                 @endforeach
@@ -171,7 +169,7 @@ $icons = $services->icons ?? []; // artıq array-dir
 <!--End Main Slider-->
 
 
-@if(isset($about['home_about']))
+
 <!-- About Section -->
 <section class="about-section">
 
@@ -180,11 +178,12 @@ $icons = $services->icons ?? []; // artıq array-dir
         <div class="cws-triangle-overlay"></div>
 
         <div class="cws-image-bg"
-            style="background-image: url('{{ $about['home_about']->background_image 
-        ? asset('storage/' . $about['home_about']->background_image) 
-        : asset('assets/images/background/1.jpg') }}')">
+            style="background-image: url('{{ 
+                $homeAbout->background_image 
+                ? asset('storage/' . $homeAbout->background_image) 
+                : asset('assets/images/background/1.jpg') 
+            }}')">
         </div>
-
     </div>
 
     <div class="auto-container">
@@ -192,45 +191,44 @@ $icons = $services->icons ?? []; // artıq array-dir
             <div class="col-lg-6 col-md-12">
 
                 <div class="sec-title">
-                    <h2>{{ $about['home_about']->getTitle($locale) }}</h2>
+                    <h2>{{ $homeAbout->getTitle($locale) }}</h2>
 
-                    @if($about['home_about']->getShortDesc($locale))
-                    <div class="text">
-                        {!! $about['home_about']->getShortDesc($locale) !!}
-                    </div>
+                    @if($homeAbout->getShortDesc($locale))
+                        <div class="text">
+                            {!! $homeAbout->getShortDesc($locale) !!}
+                        </div>
                     @endif
                 </div>
 
                 <div class="row">
+                    @foreach($homeAbout->missionItems as $item)
+                        <!-- Feature Block -->
+                        <div class="feature-block col-lg-4 col-md-4 col-sm-12">
+                            <div class="inner-box">
 
-                    @foreach($about['home_about']->missionItems as $item)
-                    <!-- Feature Block -->
-                    <div class="feature-block col-lg-4 col-md-4 col-sm-12">
-                        <div class="inner-box">
-
-                            <div class="icon-box">
-                                @if(Str::contains($item->icon, '<svg'))
-                                    {!! $item->icon !!}
+                                <div class="icon-box">
+                                    @if(Str::contains($item->icon, '<svg'))
+                                        {!! $item->icon !!}
                                     @else
-                                    <i class="{{ $item->icon }}"></i>
+                                        <i class="{{ $item->icon }}"></i>
                                     @endif
+                                </div>
+
+                                <h5>{!! $item->getTitle($locale) !!}</h5>
+
                             </div>
-
-                            <h5>{!! $item->getTitle($locale) !!}</h5>
-
                         </div>
-                    </div>
                     @endforeach
-
                 </div>
 
                 <!-- Btn Box -->
-                @if($about['home_about']->button_key)
-                <div class="btn-box">
-                    <a href="{{ route('services', ['locale' => $locale]) }}" class="theme-btn large btn-style-one">
-                        {{ $about['home_about']->getButtonText($locale) }}
-                    </a>
-                </div>
+                @if($homeAbout->button_key)
+                    <div class="btn-box">
+                        <a href="{{ route('services', ['locale' => $locale]) }}"
+                           class="theme-btn large btn-style-one">
+                            {{ $homeAbout->getButtonText($locale) }}
+                        </a>
+                    </div>
                 @endif
 
             </div>
@@ -238,7 +236,7 @@ $icons = $services->icons ?? []; // artıq array-dir
     </div>
 
 </section>
-@endif
+
 
 
 <!-- End About Section -->
@@ -385,36 +383,56 @@ $icons = $services->icons ?? []; // artıq array-dir
 
 <!-- End Development Roadmap Section -->
 
+
 <!-- How to Use -->
 <section class="how-to-use">
-    <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-triangle-overlay top-right"></div>
-        @if($homeAbout && $homeAbout->background_image)
-        <div class="cws-image-bg style-three" style="background-image: url('{{asset('storage/' . $homeAbout->background_image)}}')">
+
+        <div class="cws-image-bg style-three"
+             style="background-image: url('{{ 
+                $homeAbout->background_image 
+                ? asset('storage/'.$homeAbout->background_image) 
+                : asset('assets/images/background/sample-bg.jpg') 
+             }}')">
             <div class="cws-overlay-bg bg-blue half-left"></div>
         </div>
-        @endif
+
         <div class="cws-triangle-overlay bottom-right"></div>
     </div>
 
     <div class="auto-container">
         <div class="row">
-            <!-- Content COlumn -->
             <div class="content-column col-lg-6 col-md-6 col-sm-12">
                 <div class="inner-column">
                     <div class="sec-title light text-right">
-                        <h2>{!! $homeAbout->getTranslation('title', $locale) !!}</h2>
-                        <div class="text">{!! $homeAbout->getTranslation('desc', $locale) !!}</div>
+                        <h2>
+                            {!! $homeAbout->getTranslation('title', $locale) 
+                                ?? '?? How to use this section' !!}
+                        </h2>
+
+                        <div class="text">
+                            {!! $homeAbout->getTranslation('desc', $locale) 
+                                ?? '?? This content will be filled from admin panel later.' !!}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Control Image -->
-        <figure class="control-image"><img src="{{asset('storage/' . $homeAbout->image)}}" alt="" /></figure>
+
+        <figure class="control-image">
+            <img src="{{ 
+                $homeAbout->image 
+                ? asset('storage/'.$homeAbout->image) 
+                : asset('assets/images/sample/how-to-use.png') 
+            }}" alt="">
+        </figure>
     </div>
 </section>
 <!-- End How to Use -->
+
+
+
 
 
 <!-- Callback Section -->

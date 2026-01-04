@@ -15,7 +15,8 @@ class ProductShowcaseResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
     protected static ?string $navigationLabel = 'Məhsul Blokları';
     protected static ?string $pluralLabel = 'Məhsul Blokları';
-    protected static ?string $navigationGroup = 'Sayt Kontenti';
+    protected static ?string $navigationGroup = 'Security Overview';
+
 
     public static function form(Forms\Form $form): Forms\Form
     {

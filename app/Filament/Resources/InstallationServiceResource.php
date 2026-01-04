@@ -19,7 +19,8 @@ use Filament\Forms\Components\Toggle;
 class InstallationServiceResource extends Resource
 {
     protected static ?string $model = InstallationService::class;
-    protected static ?string $navigationGroup = 'Website Content';
+    protected static ?string $navigationGroup = 'Security Overview';
+
     protected static ?string $navigationLabel = 'Installation Service';
 
     public static function form(Form $form): Form

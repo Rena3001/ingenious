@@ -18,7 +18,7 @@ use App\Models\Translation;
                     <!-- MAIN IMAGE -->
                     <img src="{{ asset('storage/' . $slider->image) }}" alt="" title="Interactive Security" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
-
+ 
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption   tp-resizeme"
                         id="slide-10-layer-38"

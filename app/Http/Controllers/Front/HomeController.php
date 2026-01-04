@@ -34,7 +34,7 @@ class HomeController extends Controller
         $roadmap = RoadmapItem::where('is_active', true)
             ->orderBy('order')
             ->get();
-        $homeAbout = HomeAbout::where('is_active', true)->first();
+        $homeAbout = HomeAbout::with('missionItems')->where('is_active', true)->first();
 
 
 

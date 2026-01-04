@@ -18,6 +18,8 @@ class SecurityFeatureResource extends Resource
     protected static ?string $model = SecurityFeature::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Security Overview';
+
 
     public static function form(Forms\Form $form): Forms\Form
 {

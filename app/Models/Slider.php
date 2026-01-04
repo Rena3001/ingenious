@@ -38,8 +38,4 @@ class Slider extends Model
         return $this->{'description_' . $locale};
     }
 
-    public function getButtonText(?string $locale = null): ?string
-    {
-        return \App\Models\Translation::getValue($this->button_key, $locale);
-    }
 }

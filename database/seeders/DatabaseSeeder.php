@@ -74,10 +74,13 @@ class DatabaseSeeder extends Seeder
             ProductSupportSectionSeeder::class,
             ProductVideoItemsSeeder::class,
             ProductVideoSectionsSeeder::class,
-     
+            HomeAboutSeeder::class,
+            HomeAboutMissionSeeder::class,
+            RoadmapSeeder::class,
             PartnershipPageSeeder::class,
             NewsSeeder::class,
-            AnnouncementSeeder::class
+            AnnouncementSeeder::class,
+            SecurityFeatureSeeder::class,
         ]);
     }
 }

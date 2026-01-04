@@ -22,7 +22,7 @@ class ProductHighlightResource extends Resource
     protected static ?string $model = ProductHighlight::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
-    protected static ?string $navigationGroup = 'Products';
+    protected static ?string $navigationGroup = 'Security Overview';
     protected static ?string $navigationLabel = 'Product Highlight';
 
     public static function form(Form $form): Form

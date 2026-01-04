@@ -110,7 +110,7 @@ $locale = app()->getLocale();
         <div class="cws-image-bg style-seven"
             style="background-image: url({{ asset('storage/' . $featureSection->background_image) }});">
             <div class="cws-overlay-bg"></div>
-        </div>
+        </div> 
     </div>
 
     <div class="auto-container">

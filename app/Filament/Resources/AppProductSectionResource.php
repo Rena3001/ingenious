@@ -14,7 +14,8 @@ class AppProductSectionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
     protected static ?string $navigationLabel = 'App Product Section';
-    protected static ?string $navigationGroup = 'Site Content';
+    protected static ?string $navigationGroup = 'Security Overview';
+
 
     public static function form(Forms\Form $form): Forms\Form
     {

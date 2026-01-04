@@ -62,10 +62,10 @@ Route::group([
         ->name('product.storeReview');
 
     // BLOG LIST
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    // Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
     // BLOG DETAIL (SLUG və ya ID — hansını istifadə edirsənsə onu seç!)
-    Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.detail');
+    // Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.detail');
 
     // CONTACT PAGE
     Route::get('/contact', [ContactPageController::class, 'index'])->name('contact');

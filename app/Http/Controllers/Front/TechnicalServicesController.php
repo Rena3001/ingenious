@@ -45,7 +45,7 @@ class TechnicalServicesController extends Controller
         $supportResourcesSection = SupportResourcesSection::where('is_active', true)->first();
 
         $shopSection = ShopSection::where('is_active', true)->first();
-        $categories = Category::where('is_active', true)
+        $categories = Category::where('is_active', true) 
             ->with(['products' => function ($query) {
                 $query->orderBy('created_at', 'desc');
             }])

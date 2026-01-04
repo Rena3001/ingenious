@@ -22,7 +22,8 @@ class QualityEquipmentSectionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
     protected static ?string $navigationLabel = 'Quality Equipment';
-    protected static ?string $navigationGroup = 'Website Content';
+    protected static ?string $navigationGroup = 'Security Overview';
+
 
     public static function form(Form $form): Form
     {
