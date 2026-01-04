@@ -112,7 +112,9 @@ $icons = $services->icons ?? []; // artıq array-dir
                     <div class="tp-caption tp-resizeme slide-desc"
                         data-x="center"
                         data-y="center"
+                        data-width="['750','750','90%','90%']"
                         data-voffset="60"
+                        data-hoffset="50"
                         data-frames='[
         {"delay":500,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
         {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
@@ -125,7 +127,7 @@ $icons = $services->icons ?? []; // artıq array-dir
     ">
 
                         <p class="slider-desc-text" style="">
-                            {{ $line1 }}<br>{{ $line2 }}
+                            {{ $description}}
                         </p>
 
                     </div>
@@ -133,12 +135,12 @@ $icons = $services->icons ?? []; // artıq array-dir
 
 
                     <!-- BUTTON -->
-                    
+
                     <a href="{{ $button_url }}">
                         <div class="tp-caption rev-btn tp-resizeme slide-btn"
                             data-x="center"
                             data-y="center"
-                            data-voffset="120"
+                            data-voffset="220"
                             data-frames='[
                                     {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
                                     {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
@@ -146,7 +148,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                                 ]'
                             style="
                                     z-index:8;
-                                    padding:14px 35px;
+                                    padding:6px 35px;
                                     background:#ff6c3a;
                                     color:#fff;
                                     font-size:17px;
@@ -194,41 +196,41 @@ $icons = $services->icons ?? []; // artıq array-dir
                     <h2>{{ $homeAbout->getTitle($locale) }}</h2>
 
                     @if($homeAbout->getShortDesc($locale))
-                        <div class="text">
-                            {!! $homeAbout->getShortDesc($locale) !!}
-                        </div>
+                    <div class="text">
+                        {!! $homeAbout->getShortDesc($locale) !!}
+                    </div>
                     @endif
                 </div>
 
                 <div class="row">
                     @foreach($homeAbout->missionItems as $item)
-                        <!-- Feature Block -->
-                        <div class="feature-block col-lg-4 col-md-4 col-sm-12">
-                            <div class="inner-box">
+                    <!-- Feature Block -->
+                    <div class="feature-block col-lg-4 col-md-4 col-sm-12">
+                        <div class="inner-box">
 
-                                <div class="icon-box">
-                                    @if(Str::contains($item->icon, '<svg'))
-                                        {!! $item->icon !!}
+                            <div class="icon-box">
+                                @if(Str::contains($item->icon, '<svg'))
+                                    {!! $item->icon !!}
                                     @else
-                                        <i class="{{ $item->icon }}"></i>
+                                    <i class="{{ $item->icon }}"></i>
                                     @endif
-                                </div>
-
-                                <h5>{!! $item->getTitle($locale) !!}</h5>
-
                             </div>
+
+                            <h5>{!! $item->getTitle($locale) !!}</h5>
+
                         </div>
+                    </div>
                     @endforeach
                 </div>
 
                 <!-- Btn Box -->
                 @if($homeAbout->button_key)
-                    <div class="btn-box">
-                        <a href="{{ route('services', ['locale' => $locale]) }}"
-                           class="theme-btn large btn-style-one">
-                            {{ $homeAbout->getButtonText($locale) }}
-                        </a>
-                    </div>
+                <div class="btn-box">
+                    <a href="{{ route('services', ['locale' => $locale]) }}"
+                        class="theme-btn large btn-style-one">
+                        {{ $homeAbout->getButtonText($locale) }}
+                    </a>
+                </div>
                 @endif
 
             </div>
@@ -390,7 +392,7 @@ $icons = $services->icons ?? []; // artıq array-dir
         <div class="cws-triangle-overlay top-right"></div>
 
         <div class="cws-image-bg style-three"
-             style="background-image: url('{{ 
+            style="background-image: url('{{ 
                 $homeAbout->background_image 
                 ? asset('storage/'.$homeAbout->background_image) 
                 : asset('assets/images/background/sample-bg.jpg') 
@@ -407,13 +409,13 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <div class="inner-column">
                     <div class="sec-title light text-right">
                         <h2>
-                            {!! $homeAbout->getTranslation('title', $locale) 
-                                ?? '?? How to use this section' !!}
+                            {!! $homeAbout->getTranslation('title', $locale)
+                            ?? '?? How to use this section' !!}
                         </h2>
 
                         <div class="text">
-                            {!! $homeAbout->getTranslation('desc', $locale) 
-                                ?? '?? This content will be filled from admin panel later.' !!}
+                            {!! $homeAbout->getTranslation('desc', $locale)
+                            ?? '?? This content will be filled from admin panel later.' !!}
                         </div>
                     </div>
                 </div>
