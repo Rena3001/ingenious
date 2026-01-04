@@ -3,16 +3,20 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class ApplyLocale
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $locale = $request->route('locale');
 
-        if ($locale && in_array($locale, ['az','en','ru','de','es','fr','zh'])) {
+        // Əgər URL-də locale varsa → onu istifadə et
+        if (in_array($locale, ['az', 'en', 'ru', 'de', 'es', 'fr', 'zh'])) {
             App::setLocale($locale);
+        } else {
+            App::setLocale('en'); // fallback
         }
 
         return $next($request);

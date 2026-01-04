@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'applyLocale' => \App\Http\Middleware\ApplyLocale::class,
+            'detectLocale'=> \App\Http\Middleware\DetectLocale::class,
 
         ]);
     })

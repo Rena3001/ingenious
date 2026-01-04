@@ -23,7 +23,7 @@ use App\Http\Controllers\SubscribeController;
 
 // Root redirect → default language
 Route::get('/', function () {
-    return redirect('/az');
+    return redirect('/'. app()->getLocale());
 });
 
 // LOCALE GROUP
