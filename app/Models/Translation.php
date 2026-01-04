@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Translation extends Model
 {
-    protected $fillable = [
+  protected $fillable = [
         'key',
         'value_az',
         'value_en',
         'value_ru',
         'value_de',
         'value_es',
+        'value_fr',
+        'value_zh',
     ];
 
 
@@ -20,7 +22,7 @@ class Translation extends Model
     {
         $locale = $locale ?? app()->getLocale();
         $column = 'value_' . $locale;
-
+ 
         $translation = static::where('key', $key)->first();
         return $translation?->$column ?? $key;
     }

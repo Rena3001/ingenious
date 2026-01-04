@@ -46,6 +46,17 @@ class TranslationResource extends Resource
                 Tabs\Tab::make('ES')->schema([
                     Forms\Components\TextInput::make('value_es')->label('Texto (ES)'),
                 ]),
+                // 🇫🇷 FRENCH
+                Tabs\Tab::make('FR')->schema([
+                    Forms\Components\TextInput::make('value_fr')
+                        ->label('Texte (FR)'),
+                ]),
+
+                // 🇨🇳 CHINESE
+                Tabs\Tab::make('ZH')->schema([
+                    Forms\Components\TextInput::make('value_zh')
+                        ->label('文本 (ZH)'),
+                ]),
             ])->columnSpanFull(),
         ]);
     }

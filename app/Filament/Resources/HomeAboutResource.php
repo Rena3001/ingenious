@@ -64,6 +64,16 @@ class HomeAboutResource extends Resource
                     Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
                     Forms\Components\RichEditor::make('desc_es')->label('Descripción (ES)'),
                 ]),
+                Forms\Components\Tabs\Tab::make('FR')->schema([
+                    Forms\Components\TextInput::make('title_fr')->label('Titre (FR)'),
+                    Forms\Components\RichEditor::make('desc_fr')->label('Description (FR)'),
+                ]),
+
+                Forms\Components\Tabs\Tab::make('ZH')->schema([
+                    Forms\Components\TextInput::make('title_zh')->label('标题 (ZH)'),
+                    Forms\Components\RichEditor::make('desc_zh')->label('描述 (ZH)'),
+                ]),
+
             ]),
         ]);
     }
@@ -74,8 +84,8 @@ class HomeAboutResource extends Resource
             Tables\Columns\TextColumn::make('title_az')->label('Başlıq'),
             Tables\Columns\BooleanColumn::make('is_active')->label('Status'),
         ])
-        ->actions([Tables\Actions\EditAction::make()])
-        ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Tables\Actions\EditAction::make()])
+            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

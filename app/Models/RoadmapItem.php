@@ -12,21 +12,32 @@ class RoadmapItem extends Model
         'image',
         'slug',
 
+        // TITLES
         'title_az',
         'title_en',
         'title_ru',
         'title_de',
         'title_es',
+        'title_fr',
+        'title_zh',
+
+        // SUBTITLES
         'subtitle_az',
         'subtitle_en',
         'subtitle_ru',
         'subtitle_de',
         'subtitle_es',
+        'subtitle_fr',
+        'subtitle_zh',
+
+        // DESCRIPTIONS
         'desc_az',
         'desc_en',
         'desc_ru',
         'desc_de',
         'desc_es',
+        'desc_fr',
+        'desc_zh',
 
         'button_link',
         'button_key',

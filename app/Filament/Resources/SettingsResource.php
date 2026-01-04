@@ -39,6 +39,12 @@ class SettingsResource extends Resource
 
                     // 🇪🇸 ES
                     Forms\Components\TextInput::make('contact_title_es')->label('Title (ES)'),
+                    // 🇫🇷 FR
+                    Forms\Components\TextInput::make('contact_title_fr')->label('Title (FR)'),
+
+                    // 🇨🇳 ZH
+                    Forms\Components\TextInput::make('contact_title_zh')->label('Title (ZH)'),
+
 
 
                     Forms\Components\Textarea::make('contact_desc_az')->label('Description (AZ)'),
@@ -48,6 +54,12 @@ class SettingsResource extends Resource
 
                     // 🇪🇸 ES
                     Forms\Components\Textarea::make('contact_desc_es')->label('Description (ES)'),
+                    // 🇫🇷 FR
+                    Forms\Components\Textarea::make('contact_desc_fr')->label('Description (FR)'),
+
+                    // 🇨🇳 ZH
+                    Forms\Components\Textarea::make('contact_desc_zh')->label('Description (ZH)'),
+
                 ]),
             Forms\Components\FileUpload::make('logo')
                 ->label('Logo (Dark)')
@@ -58,14 +70,14 @@ class SettingsResource extends Resource
                 ->label('Logo (White)')
                 ->directory('settings')
                 ->image(),
-                Forms\Components\FileUpload::make('contact_background_image')
-    ->label('Contact Background Image')
-    ->directory('settings/contact')
-    ->image()
-    ->imageEditor()
-    ->imageResizeMode('cover')
-    ->maxSize(2048) // 2MB
-    ->helperText('Contact səhifəsi üçün background şəkil'),
+            Forms\Components\FileUpload::make('contact_background_image')
+                ->label('Contact Background Image')
+                ->directory('settings/contact')
+                ->image()
+                ->imageEditor()
+                ->imageResizeMode('cover')
+                ->maxSize(2048) // 2MB
+                ->helperText('Contact səhifəsi üçün background şəkil'),
             Forms\Components\Section::make('Social Media Links')
                 ->schema([
                     Forms\Components\TextInput::make('facebook')->label('Facebook URL'),

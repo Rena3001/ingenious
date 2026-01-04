@@ -45,7 +45,8 @@ class AboutSectionResource extends Resource
 
                     Forms\Components\TextInput::make('title_az')
                         ->label('Başlıq (AZ)')
-                        ->default(fn($get) =>
+                        ->default(
+                            fn($get) =>
                             in_array($get('type'), ['about_section_three', 'home_about'])
                                 ? 'Haqqımızda'
                                 : null
@@ -62,7 +63,8 @@ class AboutSectionResource extends Resource
                 Tabs\Tab::make('EN')->schema([
                     Forms\Components\TextInput::make('title_en')
                         ->label('Title (EN)')
-                        ->default(fn($get) =>
+                        ->default(
+                            fn($get) =>
                             in_array($get('type'), ['about_section_three', 'home_about'])
                                 ? 'About Us'
                                 : null
@@ -79,7 +81,8 @@ class AboutSectionResource extends Resource
                 Tabs\Tab::make('RU')->schema([
                     Forms\Components\TextInput::make('title_ru')
                         ->label('Заголовок (RU)')
-                        ->default(fn($get) =>
+                        ->default(
+                            fn($get) =>
                             in_array($get('type'), ['about_section_three', 'home_about'])
                                 ? 'О Нас'
                                 : null
@@ -96,7 +99,8 @@ class AboutSectionResource extends Resource
                 Tabs\Tab::make('DE')->schema([
                     Forms\Components\TextInput::make('title_de')
                         ->label('Titel (DE)')
-                        ->default(fn($get) =>
+                        ->default(
+                            fn($get) =>
                             in_array($get('type'), ['about_section_three', 'home_about'])
                                 ? 'Über Uns'
                                 : null
@@ -113,7 +117,8 @@ class AboutSectionResource extends Resource
                 Tabs\Tab::make('ES')->schema([
                     Forms\Components\TextInput::make('title_es')
                         ->label('Título (ES)')
-                        ->default(fn($get) =>
+                        ->default(
+                            fn($get) =>
                             in_array($get('type'), ['about_section_three', 'home_about'])
                                 ? 'Sobre Nosotros'
                                 : null
@@ -125,6 +130,44 @@ class AboutSectionResource extends Resource
 
                     Forms\Components\Textarea::make('short_desc_es')->label('Descripción corta (ES)'),
                 ]),
+                // ================= FRENCH =================
+                Tabs\Tab::make('FR')->schema([
+                    Forms\Components\TextInput::make('title_fr')
+                        ->label('Titre (FR)')
+                        ->default(
+                            fn($get) =>
+                            in_array($get('type'), ['about_section_three', 'home_about'])
+                                ? 'À propos de nous'
+                                : null
+                        ),
+
+                    Forms\Components\RichEditor::make('content_fr')
+                        ->label('Texte (FR)')
+                        ->visible(fn($get) => $get('type') !== 'home_about'),
+
+                    Forms\Components\Textarea::make('short_desc_fr')
+                        ->label('Description courte (FR)'),
+                ]),
+
+                // ================= CHINESE =================
+                Tabs\Tab::make('ZH')->schema([
+                    Forms\Components\TextInput::make('title_zh')
+                        ->label('标题 (ZH)')
+                        ->default(
+                            fn($get) =>
+                            in_array($get('type'), ['about_section_three', 'home_about'])
+                                ? '关于我们'
+                                : null
+                        ),
+
+                    Forms\Components\RichEditor::make('content_zh')
+                        ->label('内容 (ZH)')
+                        ->visible(fn($get) => $get('type') !== 'home_about'),
+
+                    Forms\Components\Textarea::make('short_desc_zh')
+                        ->label('简短描述 (ZH)'),
+                ]),
+
 
             ])->columnSpanFull(),
 
@@ -132,7 +175,8 @@ class AboutSectionResource extends Resource
             Forms\Components\Select::make('button_key')
                 ->label('Düymə tərcümə açarı')
                 ->options(Translation::pluck('key', 'key')->toArray())
-                ->visible(fn($get) =>
+                ->visible(
+                    fn($get) =>
                     in_array($get('type'), ['about_section_three', 'home_about'])
                 ),
 
@@ -142,7 +186,8 @@ class AboutSectionResource extends Resource
                 ->directory('about')
                 ->image()
                 ->columnSpanFull()
-                ->visible(fn($get) =>
+                ->visible(
+                    fn($get) =>
                     in_array($get('type'), ['home_about', 'about_section_three', 'our_standards'])
                 ),
 
@@ -150,7 +195,8 @@ class AboutSectionResource extends Resource
             Repeater::make('missionItems')
                 ->relationship('missionItems')
                 ->label('Alt bloklar')
-                ->visible(fn($get) =>
+                ->visible(
+                    fn($get) =>
                     in_array($get('type'), ['home_about', 'our_standards'])
                 )
                 ->schema([
@@ -174,6 +220,17 @@ class AboutSectionResource extends Resource
                         Tabs\Tab::make('ES')->schema([
                             Forms\Components\TextInput::make('title_es')->label('Título (ES)'),
                         ]),
+                        Tabs\Tab::make('FR')->schema([
+                            Forms\Components\TextInput::make('title_fr')
+                                ->label('Titre (FR)'),
+                        ]),
+
+                        Tabs\Tab::make('ZH')->schema([
+                            Forms\Components\TextInput::make('title_zh')
+                                ->label('标题 (ZH)'),
+                        ]),
+
+
                     ]),
                 ])
                 ->orderable(),

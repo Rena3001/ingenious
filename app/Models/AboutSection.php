@@ -9,40 +9,45 @@ class AboutSection extends Model
     protected $fillable = [
         'type',
 
-        /* Titles */
+        // Titles
         'title_az',
         'title_en',
         'title_ru',
         'title_de',
         'title_es',
+        'title_fr',
+        'title_zh',
 
-        /* Content */
-        'content_az', 
+        // Content
+        'content_az',
         'content_en',
         'content_ru',
         'content_de',
         'content_es',
+        'content_fr',
+        'content_zh',
 
-        /* Short desc */
+        // Short desc
         'short_desc_az',
         'short_desc_en',
         'short_desc_ru',
         'short_desc_de',
         'short_desc_es',
+        'short_desc_fr',
+        'short_desc_zh',
 
-
-        /* Button */
+        // Button
         'button_key',
 
-        /* Status */
+        // Status
         'is_active',
     ];
 
-   public function missionItems()
-{
-    return $this->hasMany(AboutMissionItem::class, 'about_section_id')
-        ->orderBy('sort');
-}
+    public function missionItems()
+    {
+        return $this->hasMany(AboutMissionItem::class, 'about_section_id')
+            ->orderBy('sort');
+    }
 
 
     public function getTitle($locale = null)

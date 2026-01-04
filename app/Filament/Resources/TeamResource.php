@@ -86,6 +86,20 @@ class TeamResource extends Resource
                         Forms\Components\TextInput::make('position_es')->label('Posición (ES)'),
                         Forms\Components\Textarea::make('desc_es')->label('Descripción (ES)')->rows(3),
                     ]),
+                    // 🇫🇷 FRENCH
+                    Tabs\Tab::make('FR')->schema([
+                        Forms\Components\TextInput::make('name_fr')->label('Nom (FR)'),
+                        Forms\Components\TextInput::make('position_fr')->label('Poste (FR)'),
+                        Forms\Components\Textarea::make('desc_fr')->label('Description (FR)')->rows(3),
+                    ]),
+
+                    // 🇨🇳 CHINESE
+                    Tabs\Tab::make('ZH')->schema([
+                        Forms\Components\TextInput::make('name_zh')->label('姓名 (ZH)'),
+                        Forms\Components\TextInput::make('position_zh')->label('职位 (ZH)'),
+                        Forms\Components\Textarea::make('desc_zh')->label('描述 (ZH)')->rows(3),
+                    ]),
+
                 ])
                 ->columnSpanFull(),
 

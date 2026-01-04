@@ -11,18 +11,23 @@ class Setting extends Model
         'phone',
         'email',
         'map_iframe',
-
+     // Contact titles
         'contact_title_az',
         'contact_title_en',
         'contact_title_ru',
         'contact_title_de',
         'contact_title_es',
+        'contact_title_fr',
+        'contact_title_zh',
 
+        // Contact descriptions
         'contact_desc_az',
         'contact_desc_en',
         'contact_desc_ru',
         'contact_desc_de',
         'contact_desc_es',
+        'contact_desc_fr',
+        'contact_desc_zh',
 
         'logo',
         'logo_white',

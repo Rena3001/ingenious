@@ -70,6 +70,18 @@ class RoadmapItemResource extends Resource
                     Forms\Components\TextInput::make('subtitle_es')->label('Subtítulo (ES)'),
                     Forms\Components\RichEditor::make('desc_es')->label('Descripción (ES)'),
                 ]),
+                Tabs\Tab::make('FR')->schema([
+                    Forms\Components\TextInput::make('title_fr')->label('Titre (FR)'),
+                    Forms\Components\TextInput::make('subtitle_fr')->label('Sous-titre (FR)'),
+                    Forms\Components\RichEditor::make('desc_fr')->label('Description (FR)'),
+                ]),
+
+                Tabs\Tab::make('ZH')->schema([
+                    Forms\Components\TextInput::make('title_zh')->label('标题 (ZH)'),
+                    Forms\Components\TextInput::make('subtitle_zh')->label('副标题 (ZH)'),
+                    Forms\Components\RichEditor::make('desc_zh')->label('描述 (ZH)'),
+                ]),
+
             ])->columnSpanFull(),
 
             Forms\Components\TextInput::make('button_link')

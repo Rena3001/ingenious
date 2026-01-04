@@ -12,11 +12,16 @@ class Slider extends Model
         'title_ru',
         'title_de',
         'title_es',
+        'title_fr',
+        'title_zh',
+
         'description_az',
         'description_en',
         'description_ru',
         'description_de',
         'description_es',
+        'description_fr',
+        'description_zh',
         'button_key',
         'button_url',
         'image',
@@ -37,5 +42,4 @@ class Slider extends Model
         $locale = $locale ?? app()->getLocale();
         return $this->{'description_' . $locale};
     }
-
 }

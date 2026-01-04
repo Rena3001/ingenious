@@ -77,6 +77,28 @@ class SliderResource extends Resource
                         ->label('Descripción (ES)')
                         ->rows(3),
                 ]),
+                // 🇫🇷 FRENCH
+                Tabs\Tab::make('FR')->schema([
+                    Forms\Components\TextInput::make('title_fr')
+                        ->label('Titre (FR)')
+                        ->maxLength(255),
+
+                    Forms\Components\Textarea::make('description_fr')
+                        ->label('Description (FR)')
+                        ->rows(3),
+                ]),
+
+                // 🇨🇳 CHINESE
+                Tabs\Tab::make('ZH')->schema([
+                    Forms\Components\TextInput::make('title_zh')
+                        ->label('标题 (ZH)')
+                        ->maxLength(255),
+
+                    Forms\Components\Textarea::make('description_zh')
+                        ->label('描述 (ZH)')
+                        ->rows(3),
+                ]),
+
 
             ])->columnSpanFull(),
 
