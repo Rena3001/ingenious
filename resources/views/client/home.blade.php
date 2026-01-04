@@ -140,7 +140,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                         <div class="tp-caption rev-btn tp-resizeme slide-btn"
                             data-x="center"
                             data-y="center"
-                            data-voffset="220"
+                            data-voffset="250"
                             data-frames='[
                                     {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
                                     {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
