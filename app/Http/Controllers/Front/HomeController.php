@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutSection;
+use App\Models\Category;
 use App\Models\ContactPage;
 use App\Models\HomeAbout;
 use App\Models\Product;
@@ -35,7 +36,8 @@ class HomeController extends Controller
             ->orderBy('order')
             ->get();
         $homeAbout = HomeAbout::with('missionItems')->where('is_active', true)->first();
-
+        $categories = Category::withCount('products')->get();
+        
 
 
         return view('client.home', compact(
@@ -48,7 +50,9 @@ class HomeController extends Controller
             'contact',
             'products',
             'roadmap',
-            'homeAbout'
+            'homeAbout',
+            'categories'
+            
         ));
     }
 }

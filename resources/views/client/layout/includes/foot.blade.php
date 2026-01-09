@@ -54,4 +54,22 @@
     document.getElementById('langSwitcher').addEventListener('change', function() {
         window.location.href = this.value;
     });
+
+//lang//
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('langToggle');
+    const list = document.getElementById('langList');
+
+    // 👉 ƏN VACİB SƏTR
+    if (!toggle || !list) return;
+
+    toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        list.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function () {
+        list.classList.remove('show');
+    });
+});
 </script>

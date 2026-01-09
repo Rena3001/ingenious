@@ -2864,6 +2864,9 @@ hr {
 .main-menu .navigation > li.has-mega-menu {
     position: static;
 }
+.main-menu .navigation > li {
+    position: relative;
+}
 
 .main-menu .navigation > li > .mega-menu {
     position: absolute;
@@ -2890,6 +2893,15 @@ hr {
     -ms-box-shadow: 0px 7px 10px -1px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0px 7px 10px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 7px 10px -1px rgba(0, 0, 0, 0.2);
+}
+.mega-menu-home{
+    left: 40% !important;
+}
+.mega-menu-shop{
+    left: 50% !important;
+}
+.mega-menu-about{
+    left: 60% !important;
 }
 
 .main-menu .navigation > li:hover > .mega-menu {
@@ -3040,33 +3052,17 @@ hr {
     float: left;
     margin-right: 20px;
 }
-/* 
-.language-switcher .lang-list {
+.language-switcher-select {
     display: flex;
-    gap: 10px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
     align-items: center;
+    gap: 6px;
 }
 
-.language-switcher .lang-list li a {
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
+.lang-flag {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
 }
-
-.language-switcher .lang-list li.active a {
-    color: #00e4ff;
-}
-.language-switcher-mobile {
-    padding: 15px 20px;
-}
-
-.language-switcher-mobile .lang-list li a {
-    color: #fff;
-} */
 
 .lang-dropdown {
     padding: 6px 10px;

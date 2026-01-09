@@ -6,9 +6,7 @@
 
     $settings = Setting::first();
     $locale = app()->getLocale();
-    $languages = ['az' => 'AZ', 'en' => 'EN', 'ru' => 'RU', 'de' => 'DE', 'es' => 'ES', 'fr' => 'FR', 'zh' => 'ZH' ];
-    $segments = request()->segments();
-    $cleanPath = isset($segments[1]) ? '/' . implode('/', array_slice($segments, 1)) : '/';
+
     @endphp
 
     <!-- Main box -->
@@ -32,14 +30,14 @@
 
                         <ul class="navigation clearfix">
 
-                            <li class="dropdown has-mega-menu">
+                            <li class="dropdown has-mega-menu ">
                                 <a href="{{ route('home', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_home', $locale) }}
                                 </a>
-                                <div class="mega-menu" data-width="200px">
+                                <div class="mega-menu mega-menu-home" data-width="250px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
-                                            <h3>{{ Translation::getValue('home', $locale) }}</h3>
+
                                             <ul>
                                                 <li>
                                                     <a href="{{ route('home.appliances', ['locale' => $locale]) }}">
@@ -74,19 +72,39 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="{{ route('products', ['locale' => $locale]) }}">
-                                    {{ Translation::getValue('menu_shop', $locale) }}
-                                </a></li>
-
                             <li class="dropdown has-mega-menu">
+                                <a href="{{ route('products', ['locale' => $locale]) }}">
+                                    {{ Translation::getValue('menu_shop', $locale) }}
+                                </a>
+
+                                <div class="mega-menu mega-menu-shop" data-width="240px">
+                                    <div class="mega-menu-bar row">
+                                        <div class="column col-lg-12">
+                                            <ul>
+                                                @foreach($categories as $category)
+                                                <li>
+                                                    <a href="{{ route('products.byCategory', [
+                                                           'locale' => $locale,
+    'category' => $category->id
+                                                    ]) }}">
+                                                        {{ $category->{'name_'.$locale} ?? $category->name_az }}
+                                                    </a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="dropdown has-mega-menu ">
                                 <a href="{{ route('about', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_about', $locale) }}
                                 </a>
 
-                                <div class="mega-menu" data-width="200px">
+                                <div class="mega-menu mega-menu-about" data-width="200px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
-                                            <h3>{{ Translation::getValue('menu_about', $locale) }}</h3>
                                             <ul>
                                                 <li><a href="{{ route('about', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('menu_about', $locale) }}
@@ -154,14 +172,26 @@
 
                     <!-- Language Switcher -->
                     <div class="language-switcher-select">
-                        <select id="langSwitcher" class="lang-dropdown">
-                            @foreach($languages as $code => $label)
-                            <option value="/{{ $code }}{{ $cleanPath }}" {{ $locale == $code ? 'selected' : '' }}>
-                                {{ $label }}
+                        @php
+                        $currentLang = $languages->firstWhere('code', app()->getLocale());
+                        @endphp
+                        <img src="{{ $currentLang->flag }}" class="lang-flag">
+
+                        <select id="langSwitcher" class="lang-dropdown"
+                            onchange="location.href=this.value">
+                            @foreach($languages as $lang)
+
+                            <option value="/{{ $lang->code }}{{ $cleanPath }}"
+                            
+                                {{ app()->getLocale() === $lang->code ? 'selected' : '' }}>
+                        <img src="{{ $currentLang->flag }}" class="lang-flag">
+
+                                {{ $lang->label }}
                             </option>
                             @endforeach
                         </select>
                     </div>
+
 
                 </div>
 

@@ -33,8 +33,7 @@
 		if($('.mega-menu').length){
 			var menu_width = $('.mega-menu').attr("data-width");
 			$('.mega-menu').width(menu_width);
-			var menu_offset = $('.mega-menu').parent().offset();
-			$('.mega-menu').css({left: menu_offset.left});
+			
 		}
 	}
 	Mega_Menu();
