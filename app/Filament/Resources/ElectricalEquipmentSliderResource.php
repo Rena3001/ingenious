@@ -72,15 +72,42 @@ class ElectricalEquipmentSliderResource extends Resource
             Forms\Components\Textarea::make("description_$lang")->label('Description')->rows(3),
         ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('background_image')
+                    ->label('Background')
+                    ->disk('public')
+                    ->height(50),
+
+                Tables\Columns\ImageColumn::make('content_image')
+                    ->label('Content')
+                    ->disk('public')
+                    ->height(50),
+
+                Tables\Columns\TextColumn::make('title_az')
+                    ->label('Title (AZ)')
+                    ->limit(30)
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('sort_order')
+                    ->label('Order')
+                    ->sortable(),
+
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created')
+                    ->dateTime('d.m.Y')
+                    ->sortable(),
             ])
+            ->defaultSort('sort_order')
             ->filters([
-                //
+                Tables\Filters\TernaryFilter::make('is_active')
+                    ->label('Active'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -91,6 +118,7 @@ class ElectricalEquipmentSliderResource extends Resource
                 ]),
             ]);
     }
+
 
     public static function getRelations(): array
     {
