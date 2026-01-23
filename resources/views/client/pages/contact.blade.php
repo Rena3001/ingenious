@@ -3,8 +3,8 @@
 @section('content')
 
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 <!--Page Title-->
@@ -31,7 +31,7 @@
 
 
 <!-- Features Section Six  -->
-<section class="feaures-section-six">
+<section class="features-section-six">
     <div class="background-layers">
         <div class="cws-image-bg"></div>
     </div>
@@ -164,53 +164,74 @@
                 <div class="inner-column">
                     <div class="default-form contact-form-two">
 
-                        <form action="{{ route('contact.submit',['locale' => $locale]) }}" method="POST">
+                        <form action="{{ route('contact.submit', ['locale' => $locale]) }}" method="POST">
+
                             @csrf
 
-                            <div class="row mid-spacing">
-
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label>{{ Translation::getValue('contact_name', $locale) }}</label>
-                                    <input type="text" name="username" required>
-                                    @error('username')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label>{{ Translation::getValue('contact_email', $locale) }}</label>
-                                    <input type="email" name="email" required>
-                                    @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                    <label>{{ Translation::getValue('contact_message', $locale) }}</label>
-                                    <textarea name="contact_message" required></textarea>
-                                    @error('contact_message')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 text-center">
-                                    <button class="theme-btn btn-style-one" type="submit">
-                                        {{ Translation::getValue('contact_button', $locale) }}
-                                    </button>
-                                </div>
-
+                            <div class="form-group mb-0">
                                 @if(session('success'))
-                                    <div class="alert alert-success col-12 mt-3">
-                                        {{ session('success') }}
-                                    </div>
+                                <div class="alert alert-success">{{ session('success') }}</div>
                                 @endif
-
                                 @if(session('error'))
-                                    <div class="alert alert-danger col-12 mt-3">
-                                        {{ session('error') }}
-                                    </div>
+                                <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
+                            </div>
 
+                            {{-- Full Name --}}
+                            <div class="form-group">
+                                <label>{{ Translation::getValue('contact_name', $locale) }}</label>
+                                <input type="text" name="username" required>
+                                @error('username')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            {{-- Entity Type --}}
+                            <div class="form-group">
+                                <label>{{ Translation::getValue('contact_entity_type', $locale) }}</label>
+                                <select name="entity_type" required>
+                                    <option value="">{{ Translation::getValue('contact_select', $locale) }}</option>
+                                    <option value="company">{{ __('entity.company') }}</option>
+                                    <option value="individual">{{ __('entity.individual') }}</option>
+                                    <option value="legal_entity">{{ __('entity.legal_entity') }}</option>
+                                </select>
+                                @error('entity_type')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            {{-- Email --}}
+                            <div class="form-group">
+                                <label>{{ Translation::getValue('contact_email', $locale) }}</label>
+                                <input type="email" name="email" required>
+                                @error('email')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            {{-- Phone --}}
+                            <div class="form-group">
+                                <label>{{ Translation::getValue('contact_phone', $locale) }}</label>
+                                <input type="text" name="phone">
+                                @error('phone')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            {{-- Message --}}
+                            <div class="form-group">
+                                <label>{{ Translation::getValue('contact_message', $locale) }}</label>
+                                <textarea name="message" required></textarea>
+                                @error('message')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            {{-- Submit --}}
+                            <div class="form-group">
+                                <button class="theme-btn btn-style-three" type="submit">
+                                    {{ Translation::getValue('contact_button_text', $locale) }}
+                                </button>
                             </div>
 
                         </form>

@@ -13,5 +13,7 @@ class ContactMessage extends Model
         'username',
         'email',
         'message',
+        'entity_type',
+        'phone',
     ];
 }

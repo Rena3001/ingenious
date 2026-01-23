@@ -54,6 +54,6 @@ protected $fillable = [
     public function getShortDesc(?string $locale = null): ?string
     {
         $desc = $this->getDesc($locale);
-        return $desc ? substr($desc, 0, 100) : null;
+        return $desc ? substr($desc, 0, 500) : null;
     }
 }

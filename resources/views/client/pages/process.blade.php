@@ -171,59 +171,7 @@
 <!-- End Step Section -->
 
 <!-- Contact Section -->
-<section class="callback-section">
-    <div class="cws-background-image" style="background-image: url({{ asset('assets/images/background/5.png') }})"></div>
-    <div class="auto-container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12">
-
-                <div class="sec-title">
-                    <h3>{{ Translation::getValue('contact_title_request', $locale) }}</h3>
-                    <div class="text">
-                        {{ Translation::getValue('contact_description_request', $locale) }}
-                    </div>
-                </div>
-
-                <div class="default-form callback-form">
-
-                    @if(session('success'))
-                        <div class="alert alert-success mb-3">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    <form action="{{ route('contact.submit',['locale'=>$locale]) }}" method="POST">
-                        @csrf
-
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="username" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="contact_message"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <button class="theme-btn btn-style-three" type="submit">
-                                {{ Translation::getValue('contact_button_text', $locale) }}
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
+@include('components.callback')
 <!-- End Contact Section -->
 
 @endsection

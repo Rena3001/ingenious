@@ -117,7 +117,7 @@ Route::group([
     ])->name('technical.faq');
     Route::get('/technical-services/guidesandtutorials', [GuidesTutorialsController::class, 'index'])->name('technical.guidesandtutor');
 
-    Route::get('/warrantyandservices', [WarrantyController::class, 'index'])->name('warrantyandservices');
+    Route::get('/technical-services/warrantyandservices', [WarrantyController::class, 'index'])->name('warrantyandservices');
 
     Route::get('/partnership',[AboutController::class,'show'])->name('partnership');
     Route::get('/news',[NewsController::class,'index'])->name('news');

@@ -2,13 +2,13 @@
 @section('page_title', "__('Services')")
 @section('content')
 
-   @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
-    @endphp
+@php
+use App\Models\Translation;
+$locale = app()->getLocale();
+@endphp
 
-   <!--Page Title-->
-    <section class="page-title">
+<!--Page Title-->
+<section class="page-title">
     <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-image-bg" style="background-image: url({{asset('assets/images/background/30.jpg') }})">
@@ -28,180 +28,180 @@
             <li>{{ Translation::getValue('breadcrumb_services', $locale) }}</li>
         </ul>
     </div>
-    </section>
+</section>
 
-    <!--End Page Title-->
+<!--End Page Title-->
 
 
 <!-- Services Section Three -->
 
 
 @if(!$services)
-    {{-- Heç nə göstərmə, səhifə boş açılsın --}}
-    @php
-        $icons = [];
-    @endphp
+{{-- Heç nə göstərmə, səhifə boş açılsın --}}
+@php
+$icons = [];
+@endphp
 @else
-    @php
-    $locale = app()->getLocale(); 
-    $icons = $services->icons ?? []; // artıq array-dir
-    $list = $services->section2_list ?? [];
-    $bg = $services->section2_background ? asset($services->section2_background) : 'images/background/34.jpg';
-    $skills = $services->section3_skills ?? [];
-    $bg3 = $services->section3_background 
-        ? asset($services->section3_background)
-        : 'images/background/34.jpg';
+@php
+$locale = app()->getLocale();
+$icons = $services->icons ?? []; // artıq array-dir
+$list = $services->section2_list ?? [];
+$bg = $services->section2_background ? asset($services->section2_background) : 'images/background/34.jpg';
+$skills = $services->section3_skills ?? [];
+$bg3 = $services->section3_background
+? asset($services->section3_background)
+: 'images/background/34.jpg';
 @endphp
 
 @endif
 
 
-    <section class="services-section-three">
-        <!-- Background Layers -->
-        <div class="background-layers">
-            <div class="cws-image-bg" style="background-image: url(images/background/29.jpg)">
-                <div class="cws-overlay-bg"></div>
+<section class="services-section-three">
+    <!-- Background Layers -->
+    <div class="background-layers">
+        <div class="cws-image-bg" style="background-image: url(images/background/29.jpg)">
+            <div class="cws-overlay-bg"></div>
+        </div>
+        <div class="cws-triangle-overlay bottom-right"></div>
+    </div>
+
+    <div class="auto-container">
+
+        @if($services)
+        <!-- Başlıq və açıqlama -->
+        <div class="sec-title text-center">
+            <h2>{{ $services->{"title_$locale"} }}</h2>
+
+            <div class="text">
+                {{ $services->{"description_$locale"} }}
             </div>
-            <div class="cws-triangle-overlay bottom-right"></div>
+        </div>
+        @endif
+
+        <div class="row">
+
+            @foreach($icons as $icon)
+            <div class="service-block-four col-lg-3 col-md-6 col-sm-12">
+                <div class="inner-box">
+
+                    <div class="icon-box">
+                        <span class="icon {{ $icon['icon'] }}"></span>
+                    </div>
+
+                    @if(!empty($icon["icon_title_$locale"]))
+                    <h4>{{ $icon["icon_title_$locale"] }}</h4>
+                    @endif
+
+                </div>
+            </div>
+            @endforeach
+
         </div>
 
-        <div class="auto-container">
+    </div>
+</section>
 
-            @if($services)
-                <!-- Başlıq və açıqlama -->
-                <div class="sec-title text-center">
-                    <h2>{{ $services->{"title_$locale"} }}</h2>
+<!-- End Services Section Three -->
 
-                    <div class="text">
-                        {{ $services->{"description_$locale"} }}
+
+
+<!-- Fluid Section One -->
+
+
+<section class="fluid-section-one">
+
+    <div class="background-layers">
+        <div class="cws-image-bg" style="background-image: url({{ $bg }})">
+            <div class="cws-overlay-bg"></div>
+            <div class="cws-triangle-overlay"></div>
+        </div>
+        <div class="cws-triangle-overlay bottom-left"></div>
+    </div>
+
+    <div class="auto-container">
+        <div class="row">
+            <div class="content-column col-lg-5 col-md-12 col-sm-12 offset-7">
+                <div class="inner-column">
+
+                    <div class="sec-title">
+                        <h2>{{ $services->{"section2_title_$locale"} }}</h2>
+                        <div class="text">{{ $services->{"section2_description_$locale"} }}</div>
                     </div>
-                </div>
-            @endif
 
+                    <ul class="list-style-two">
+                        @foreach($list as $item)
+                        <li>{{ $item["text_$locale"] ?? '' }}</li>
+                        @endforeach
+                    </ul>
+
+                    @if($services->{"section2_button_text_$locale"})
+                    <div class="btn-box">
+                        <a href="{{ $services->section2_button_link }}" class="theme-btn btn-style-one large">
+                            {{ $services->{"section2_button_text_$locale"} }}
+                        </a>
+                    </div>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Fluid Section One -->
+
+<!-- Skills Section -->
+<section class="skills-section">
+
+    <div class="background-layers">
+        <div class="cws-image-bg" style="background-image: url({{ $bg3 }})">
+            <div class="cws-overlay-bg"></div>
+            <div class="cws-triangle-overlay"></div>
+        </div>
+        <div class="cws-triangle-overlay bottom-right"></div>
+    </div>
+
+    <div class="auto-container">
+
+        <div class="sec-title text-center">
+            <h2>{{ $services->{"section3_title_$locale"} }}</h2>
+            <div class="text">
+                {{ $services->{"section3_description_$locale"} }}
+            </div>
+        </div>
+
+        <div class="skills-outer">
             <div class="row">
 
-                @foreach($icons as $icon)
-                    <div class="service-block-four col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-
-                            <div class="icon-box">
-                                <span class="icon {{ $icon['icon'] }}"></span>
-                            </div>
-
-                            @if(!empty($icon["icon_title_$locale"]))
-                                <h4>{{ $icon["icon_title_$locale"] }}</h4>
-                            @endif
-
+                @foreach($skills as $skill)
+                <div class="pie-graph col-lg-3 col-md-3 col-sm-6">
+                    <div class="graph-outer">
+                        <input type="text"
+                            class="dial"
+                            data-fgColor="#539760"
+                            data-bgColor="#c6dac9"
+                            data-width="136"
+                            data-height="136"
+                            value="{{ $skill['percent'] }}">
+                        <div class="inner-text count-box">
+                            <span class="count-text txt"
+                                data-stop="{{ $skill['percent'] }}"
+                                data-speed="2000"></span>%
                         </div>
                     </div>
+
+                    <h4>{{ $skill["title_$locale"] ?? '' }}</h4>
+                </div>
                 @endforeach
 
             </div>
-
-        </div>
-    </section>
-
-    <!-- End Services Section Three -->
-
-
-
-    <!-- Fluid Section One -->
-
-
-    <section class="fluid-section-one">
-
-        <div class="background-layers">
-            <div class="cws-image-bg" style="background-image: url({{ $bg }})">
-                <div class="cws-overlay-bg"></div>
-                <div class="cws-triangle-overlay"></div>
-            </div>
-            <div class="cws-triangle-overlay bottom-left"></div>
         </div>
 
-        <div class="auto-container">
-            <div class="row">
-                <div class="content-column col-lg-5 col-md-12 col-sm-12 offset-7">
-                    <div class="inner-column">
+    </div>
+</section>
+<!-- Skills Section -->
 
-                        <div class="sec-title">
-                            <h2>{{ $services->{"section2_title_$locale"} }}</h2>
-                            <div class="text">{{ $services->{"section2_description_$locale"} }}</div>
-                        </div>
-
-                        <ul class="list-style-two">
-                            @foreach($list as $item)
-                                <li>{{ $item["text_$locale"] ?? '' }}</li>
-                            @endforeach
-                        </ul>
-
-                        @if($services->{"section2_button_text_$locale"})
-                            <div class="btn-box">
-                                <a href="{{ $services->section2_button_link }}" class="theme-btn btn-style-one large">
-                                    {{ $services->{"section2_button_text_$locale"} }}
-                                </a>
-                            </div>
-                        @endif
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- End Fluid Section One --> 
-
-    <!-- Skills Section -->
-    <section class="skills-section">
-
-        <div class="background-layers">
-            <div class="cws-image-bg" style="background-image: url({{ $bg3 }})">
-                <div class="cws-overlay-bg"></div>
-                <div class="cws-triangle-overlay"></div>
-            </div>
-            <div class="cws-triangle-overlay bottom-right"></div>
-        </div>
-
-        <div class="auto-container">
-
-            <div class="sec-title text-center">
-                <h2>{{ $services->{"section3_title_$locale"} }}</h2>
-                <div class="text">
-                    {{ $services->{"section3_description_$locale"} }}
-                </div>
-            </div>
-
-            <div class="skills-outer">
-                <div class="row">
-
-                    @foreach($skills as $skill)
-                        <div class="pie-graph col-lg-3 col-md-3 col-sm-6">
-                            <div class="graph-outer">
-                                <input type="text"
-                                    class="dial"
-                                    data-fgColor="#539760"
-                                    data-bgColor="#c6dac9"
-                                    data-width="136"
-                                    data-height="136"
-                                    value="{{ $skill['percent'] }}">
-                                <div class="inner-text count-box">
-                                    <span class="count-text txt"
-                                        data-stop="{{ $skill['percent'] }}"
-                                        data-speed="2000"></span>%
-                                </div>
-                            </div>
-
-                            <h4>{{ $skill["title_$locale"] ?? '' }}</h4>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- Skills Section -->
-
-    <!-- Contact Section -->
+<!-- Contact Section -->
 <section class="contact-section">
     <div class="auto-container">
 
@@ -216,40 +216,90 @@
 
         <!-- CONTACT FORM -->
         <div class="default-form contact-form">
-           <form action="{{ route('contact.submit',['locale' => $locale]) }}" method="post">
-            @csrf
+            <form action="{{ route('contact.submit', ['locale' => $locale]) }}" method="POST">
 
-            <div class="form-group">
-                <label>{{ Translation::getValue('contact_form_name', $locale) }}</label>
-                <input type="text" name="username" required>
-            </div>
+                @csrf
 
-            <div class="form-group">
-                <label>{{ Translation::getValue('contact_form_email', $locale) }}</label>
-                <input type="email" name="email" required>
-            </div>
+                <div class="form-group mb-0">
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                </div>
 
-            <div class="form-group">
-                <label>{{ Translation::getValue('contact_form_message', $locale) }}</label>
-                <textarea name="contact_message" required></textarea>
-            </div>
+                {{-- Full Name --}}
+                <div class="form-group">
+                    <label>{{ Translation::getValue('contact_name', $locale) }}</label>
+                    <input type="text" name="username" required>
+                    @error('username')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
 
-            <button type="submit" class="theme-btn btn-style-three">
-                {{ Translation::getValue('contact_button_text', $locale) }}
-            </button>
-        </form>
+                {{-- Entity Type --}}
+                <div class="form-group">
+                    <label>{{ Translation::getValue('contact_entity_type', $locale) }}</label>
+                    <select name="entity_type" required>
+                        <option value="">{{ Translation::getValue('contact_select', $locale) }}</option>
+                        <option value="company">{{ __('entity.company') }}</option>
+                        <option value="individual">{{ __('entity.individual') }}</option>
+                        <option value="legal_entity">{{ __('entity.legal_entity') }}</option>
+                    </select>
+                    @error('entity_type')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
 
-        @if(session('success'))
+                {{-- Email --}}
+                <div class="form-group">
+                    <label>{{ Translation::getValue('contact_email', $locale) }}</label>
+                    <input type="email" name="email" required>
+                    @error('email')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                {{-- Phone --}}
+                <div class="form-group">
+                    <label>{{ Translation::getValue('contact_phone', $locale) }}</label>
+                    <input type="text" name="phone">
+                    @error('phone')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                {{-- Message --}}
+                <div class="form-group">
+                    <label>{{ Translation::getValue('contact_message', $locale) }}</label>
+                    <textarea name="message" required></textarea>
+                    @error('message')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                {{-- Submit --}}
+                <div class="form-group">
+                    <button class="theme-btn btn-style-three" type="submit">
+                        {{ Translation::getValue('contact_button_text', $locale) }}
+                    </button>
+                </div>
+
+            </form>
+
+
+            @if(session('success'))
             <div class="alert alert-success mt-3" style="color:white; background:#28a745; padding:10px 20px; border-radius:6px;">
                 {{ session('success') }}
             </div>
-        @endif
+            @endif
 
-        @if(session('error'))
+            @if(session('error'))
             <div class="alert alert-danger mt-3" style="color:white; background:#dc3545; padding:10px 20px; border-radius:6px;">
                 {{ session('error') }}
             </div>
-        @endif
+            @endif
 
         </div>
 
@@ -262,6 +312,6 @@
 
     </div>
 </section>
-    <!-- End Contact Section -->
+<!-- End Contact Section -->
 
 @endsection

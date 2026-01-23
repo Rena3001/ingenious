@@ -42,10 +42,28 @@ class ContactMessageResource extends Resource
                 Forms\Components\TextInput::make('username')
                     ->required()
                     ->maxLength(255),
+
+                Forms\Components\Select::make('entity_type')
+                    ->label(__('Entity Type'))
+                    ->options([
+                        'company' => __('entity.company'),
+                        'individual' => __('entity.individual'),
+                        'legal_entity' => __('entity.legal_entity'),
+                    ])
+                    ->disabled() // admin dəyişməsin
+                    ->dehydrated(false), // DB-yə yazmasın (view-only)
+
+
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
+
+                Forms\Components\TextInput::make('phone')
+                    ->label(__('Contact Number'))
+                    ->disabled()
+                    ->dehydrated(false),
+
                 Forms\Components\Textarea::make('message')
                     ->required()
                     ->columnSpanFull(),
@@ -58,29 +76,37 @@ class ContactMessageResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('username')
                     ->searchable(),
+
+                Tables\Columns\TextColumn::make('entity_type')
+                    ->label(__('Entity Type'))
+                    ->formatStateUsing(fn($state) => $state ? __('entity.' . $state) : '-')
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label(__('Contact Number'))
+                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->actions([]) // edit yoxdur
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
+
 
     public static function getRelations(): array
     {

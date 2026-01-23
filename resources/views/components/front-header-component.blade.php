@@ -61,11 +61,43 @@
                                                         {{ Translation::getValue('consumer_electronics', $locale) }}
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li class="dropdown has-mega-menu">
                                                     <a href="{{ route('technical.services', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('technical_services', $locale) }}
                                                     </a>
+
+                                                    <div class="mega-menu mega-menu-technical" data-width="0px">
+                                                        <div class="mega-menu-bar row">
+                                                            <div class="column col-lg-12">
+                                                                <ul>
+
+                                                                    {{-- FAQ --}}
+                                                                    <li>
+                                                                        <a href="{{ route('technical.faq', ['locale' => $locale]) }}">
+                                                                            {{ Translation::getValue('technical_faq', $locale) }}
+                                                                        </a>
+                                                                    </li>
+
+                                                                    {{-- Guides & Tutorials --}}
+                                                                    <li>
+                                                                        <a href="{{ route('technical.guidesandtutor', ['locale' => $locale]) }}">
+                                                                            {{ Translation::getValue('technical_guides_tutorials', $locale) }}
+                                                                        </a>
+                                                                    </li>
+
+                                                                    {{-- Warranty & Service --}}
+                                                                    <li>
+                                                                        <a href="{{ route('warrantyandservices', ['locale' => $locale]) }}">
+                                                                            {{ Translation::getValue('technical_warranty_service', $locale) }}
+                                                                        </a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </li>
+
 
                                             </ul>
                                         </div>
@@ -145,7 +177,7 @@
                     <!-- Search Btn -->
                     <div class="search-box">
                         <button class="search-btn" data-target=".search-popup">
-                            <i class="fa fa-search"></i>
+                            <i class="fa fa-search" style="color: #1b5e8a;"></i>
                         </button>
                     </div>
                     <!-- <div class="cart-btn">
@@ -182,9 +214,9 @@
                             @foreach($languages as $lang)
 
                             <option value="/{{ $lang->code }}{{ $cleanPath }}"
-                            
+
                                 {{ app()->getLocale() === $lang->code ? 'selected' : '' }}>
-                        <img src="{{ $currentLang->flag }}" class="lang-flag">
+                                <img src="{{ $currentLang->flag }}" class="lang-flag">
 
                                 {{ $lang->label }}
                             </option>

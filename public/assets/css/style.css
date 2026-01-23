@@ -1146,8 +1146,8 @@ hr.thick {
     height: 47px;
     width: 47px;
     line-height: 41px;
-    color: #59ab66;
-    border: 3px solid #59ab66;
+    color: #1b5e8a;
+    border: 3px solid #1b5e8a;
     border-radius: 50px;
 }
 
@@ -1298,8 +1298,8 @@ hr.thick {
 
 .btn-style-four:hover {
     color: #ffffff;
-    background-color: #59ab66;
-    border: 3px solid #59ab66;
+    background-color: #1b5e8a;
+    border: 3px solid #1b5e8a;
 }
 
 /* Btn Style five */
@@ -3188,7 +3188,7 @@ hr {
     color: #e0e6ea;
     width: 100%;
     background-color: transparent;
-    border-bottom: 2px solid #59ab66;
+    border-bottom: 2px solid #1b5e8a;;
     -webkit-transition: all 500ms ease;
     -moz-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
@@ -4739,6 +4739,10 @@ hr {
     -ms-transition: all 300ms ease;
     -o-transition: all 300ms ease;
     transition: all 300ms ease;
+}
+
+.feature-block .icon-box i{
+    font-size: 84px;
 }
 
 .feature-block .icon {
@@ -7065,7 +7069,7 @@ hr {
         50% calc(100% - 60px),
         0% 100%
     );
-    background: rgba(130, 177, 138, 0.7);
+    background: linear-gradient(135deg, rgba(10, 61, 98, 0.85) 0%, rgba(27, 94, 138, 0.75) 40%, rgba(58, 137, 201, 0.55) 100%);
 }
 
 .portfolio-section .carousel-outer {
