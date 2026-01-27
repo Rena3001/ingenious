@@ -240,9 +240,9 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <!-- Btn Box -->
 
                 <div class="btn-box">
-                    <a href="{{ route('technical.services', ['locale' => $locale]) }}"
+                    <a href="{{ route('about', ['locale' => $locale]) }}"
                         class="theme-btn large btn-style-one">
-                        {{ $homeAbout->getButtonText($locale) }}
+                        {{ Translation::getValue('why_bamoone',$locale) }}
                     </a>
                 </div>
 
