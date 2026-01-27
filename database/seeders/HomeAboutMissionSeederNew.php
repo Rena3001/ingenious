@@ -6,7 +6,7 @@ use App\Models\AboutMissionItem;
 use Illuminate\Database\Seeder;
 use App\Models\HomeAboutMission;
 
-class HomeAboutMissionSeeder extends Seeder
+class HomeAboutMissionSeederNew extends Seeder
 {
     public function run(): void
     {

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\HomeAbout;
 
-class HomeAboutSeeder extends Seeder
+class HomeAboutSeederNew extends Seeder
 {
     public function run(): void
     {
