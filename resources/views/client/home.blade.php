@@ -195,11 +195,11 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <div class="sec-title">
                     <h2>{{ $homeAbout->getTitle($locale) }}</h2>
 
-                    
+
                     <div class="text">
                         {!! $homeAbout->getShortDesc($locale) !!}
                     </div>
-                    
+
                 </div>
 
                 <div class="row">
@@ -409,14 +409,11 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <div class="inner-column">
                     <div class="sec-title light text-right">
                         <h2>
-                            {!! $homeAbout->getTranslation('title', $locale)
-                            ?? '?? How to use this section' !!}
+                            {{ Translation::getValue('why_bamoone',$locale) }}
+
                         </h2>
 
-                        <div class="text">
-                            {!! $homeAbout->getTranslation('desc', $locale)
-                            ?? '?? This content will be filled from admin panel later.' !!}
-                        </div>
+
                     </div>
                 </div>
             </div>
