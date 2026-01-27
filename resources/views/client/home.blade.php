@@ -195,11 +195,11 @@ $icons = $services->icons ?? []; // artıq array-dir
                 <div class="sec-title">
                     <h2>{{ $homeAbout->getTitle($locale) }}</h2>
 
-                    @if($homeAbout->getShortDesc($locale))
+                    
                     <div class="text">
                         {!! $homeAbout->getShortDesc($locale) !!}
                     </div>
-                    @endif
+                    
                 </div>
 
                 <div class="row">
