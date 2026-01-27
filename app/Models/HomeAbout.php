@@ -56,4 +56,8 @@ protected $fillable = [
         $desc = $this->getDesc($locale);
         return $desc ? substr($desc, 0, 500) : null;
     }
+    public function getButtonText(?string $locale = null): ?string
+    {
+        return $this->getTranslation('button_text', $locale);
+    }
 }

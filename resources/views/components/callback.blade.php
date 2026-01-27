@@ -50,9 +50,9 @@ $locale = app()->getLocale();
                             <label>{{ Translation::getValue('contact_entity_type', $locale) }}</label>
                             <select name="entity_type" required>
                                 <option value="">{{ Translation::getValue('contact_select', $locale) }}</option>
-                                <option value="company">{{ __('entity.company') }}</option>
-                                <option value="individual">{{ __('entity.individual') }}</option>
-                                <option value="legal_entity">{{ __('entity.legal_entity') }}</option>
+                                <option value="company">{{ Translation::getValue('entity_company', $locale) }}</option>
+                                <option value="individual">{{ Translation::getValue('entity_individual', $locale) }}</option>
+                                <option value="legal_entity">{{ Translation::getValue('entity_legal_entity', $locale) }}</option>
                             </select>
                             @error('entity_type')
                             <small class="text-danger">{{ $message }}</small>

@@ -48,26 +48,26 @@ $icons = $services->icons ?? []; // artıq array-dir
                         data-basealign="slide"
                         data-responsive_offset="on"
                         data-frames='[
-         {"delay":10,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeOut"},
-         {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;","ease":"Power2.easeIn"}
-     ]'
+                            {"delay":10,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;"},
+                            {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;"}
+                        ]'
                         style="
-         z-index:5;
-         background: linear-gradient(
-              135deg,
-              rgba(10, 61, 98, 0.85) 0%,      /* Dark Brand Blue */
-              rgba(27, 94, 138, 0.75) 40%,   /* Mid Blue */
-              rgba(58, 137, 201, 0.55) 100%  /* Soft Blue Highlight */
-         );
-     ">
-                        <img src="{{ asset('assets/images/main-slider/pattern/1.png') }}" alt=""
+                            z-index:5;
+                            background: linear-gradient(
+                                135deg,
+                                rgba(10,61,98,0.85) 0%,
+                                rgba(27,94,138,0.75) 40%,
+                                rgba(58,137,201,0.55) 100%
+                            );
+                        ">
+                        <img src="{{ asset('assets/images/main-slider/pattern/1.png') }}"
+                            alt=""
                             data-ww="full-proportional"
                             data-hh="full-proportional"
                             width="1920"
                             height="1080"
                             data-no-retina>
                     </div>
-
 
                     <!-- TITLE -->
                     @if($title)
@@ -79,22 +79,23 @@ $icons = $services->icons ?? []; // artıq array-dir
                     @endphp
                     <div class="tp-caption tp-resizeme slide-title"
                         data-x="center"
-                        data-y="center"
-                        data-voffset="-80"
+                        data-y="top"
+                        data-voffset="['170','150','130','100']"
+
                         data-frames='[
-                                {"delay":400,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeOut"},
-                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
-                            ]'
+                            {"delay":400,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
+                            {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
+                        ]'
                         style="
-                                z-index:6;
-                                max-width: 900px;
-                                text-align:center !important;
-                                font-size:65px;
-                                font-weight:800;
-                                color:#fff;
-                                line-height:72px;
-                                text-transform:uppercase;
-                            ">
+                            z-index:6;
+                            max-width:900px;
+                            text-align:center;
+                            font-size:65px;
+                            font-weight:800;
+                            color:#fff;
+                            line-height:72px;
+                            text-transform:uppercase;
+                        ">
                         <h1 class="slider-title-text">
                             {{ $line1 }}<br>{{ $line2 }}
                         </h1>
@@ -105,57 +106,70 @@ $icons = $services->icons ?? []; // artıq array-dir
                     @if($description)
                     @php
                     $words = explode(' ', $description);
-                    $half = ceil(count($words) / 2);
-                    $line1 = implode(' ', array_slice($words, 0, $half));
-                    $line2 = implode(' ', array_slice($words, $half));
+
+                    // mobil üçün təhlükəsiz limit
+                    $perLine = 5; // istəsən 6 edə bilərsən
+
+                    $line1 = implode(' ', array_slice($words, 0, $perLine));
+                    $line2 = implode(' ', array_slice($words, $perLine, $perLine));
+                    $line3 = implode(' ', array_slice($words, $perLine * 2, $perLine));
+                    $line4 = implode(' ', array_slice($words, $perLine * 3, $perLine));
                     @endphp
+
+
+
                     <div class="tp-caption tp-resizeme slide-desc"
                         data-x="center"
-                        data-y="center"
-                        data-width="['750','750','90%','90%']"
-                        data-voffset="60"
-                        data-hoffset="50"
+                        data-y="top"
+                        data-voffset="['260','240','220','170']"
+
+                        data-width="['750','720','88%','82%']"
                         data-frames='[
-        {"delay":500,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
-        {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
-    ]'
+                            {"delay":500,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
+                            {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
+                        ]'
                         style="
-        z-index:7;
-        max-width:750px;
-        text-align:center;
-        line-height:36px;
-    ">
-
-                        <p class="slider-desc-text" style="">
-                            {{ $description}}
+                            padding:25px 150px;
+                            z-index:7;
+                            max-width:750px;
+                            text-align:center;
+                            line-height:36px;
+                        "
+                        data-padding="['10','51','10','51']">
+                        <p class="slider-desc-text">
+                            {{ $line1 }}<br>
+                            {{ $line2 }}<br>
+                            {{ $line3 }}
+                            @if(!empty($line4))
+                            <br>{{ $line4 }}
+                            @endif
                         </p>
-
                     </div>
+
                     @endif
 
-
                     <!-- BUTTON -->
-
                     <a href="{{ $button_url }}">
                         <div class="tp-caption rev-btn tp-resizeme slide-btn"
                             data-x="center"
-                            data-y="center"
-                            data-voffset="250"
+                            data-y="bottom"
+                            data-voffset="['340','320','300','240']"
+
                             data-frames='[
-                                    {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
-                                    {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
-                                    {"frame":"hover","speed":300,"to":"bg:rgba(255,255,255,1);c:#ff6c3a;"}
-                                ]'
+                                {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
+                                {"frame":"hover","speed":300,"to":"bg:rgba(255,255,255,1);c:#ff6c3a;"}
+                            ]'
                             style="
-                                    z-index:8;
-                                    padding:6px 35px;
-                                    background:#ff6c3a;
-                                    color:#fff;
-                                    font-size:17px;
-                                    font-weight:700;
-                                    border-radius:30px;
-                                    margin-top: 28px;
-                                ">
+                                z-index:8;
+                                padding:6px 35px;
+                                background:#ff6c3a;
+                                color:#fff;
+                                font-size:17px;
+                                font-weight:700;
+                                border-radius:30px;
+                                margin-top:20px;
+                            ">
                             {{ Translation::getValue('read_more',$locale) }}
                         </div>
                     </a>
@@ -224,14 +238,14 @@ $icons = $services->icons ?? []; // artıq array-dir
                 </div>
 
                 <!-- Btn Box -->
-                @if($homeAbout->button_key)
+
                 <div class="btn-box">
-                    <a href="{{ route('services', ['locale' => $locale]) }}"
+                    <a href="{{ route('technical.services', ['locale' => $locale]) }}"
                         class="theme-btn large btn-style-one">
                         {{ $homeAbout->getButtonText($locale) }}
                     </a>
                 </div>
-                @endif
+
 
             </div>
         </div>
@@ -444,3 +458,31 @@ $icons = $services->icons ?? []; // artıq array-dir
 <!--End Clients Section-->
 
 @endsection
+
+@push('styles')
+<style>
+    @media (max-width: 768px) {
+        .slider-title-text {
+            font-size: 34px;
+            line-height: 42px;
+        }
+
+        .slider-desc-text {
+            font-size: 15px;
+            line-height: 26px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slider-title-text {
+            font-size: 26px;
+            line-height: 34px;
+        }
+
+        .slider-desc-text {
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+</style>
+@endpush
