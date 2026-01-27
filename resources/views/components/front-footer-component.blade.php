@@ -36,28 +36,10 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
                             {{ Translation::getValue('footer_latest_posts_title', $locale) }}
                         </h4>
 
-                        @if($latestPost)
-                        <div class="widget-content">
-                            <article class="post">
-                                <div class="thumb">
-                                    <a href="{{ route('blog.detail', ['locale' => $locale, 'id' => $latestPost->id]) }}">
-                                        <img src="{{ asset('storage/' . $latestPost->image) }}" alt="">
-                                    </a>
-                                </div>
-
-                                <h5>
-                                    <a href="{{ route('blog.detail', ['locale' => $locale, 'id' => $latestPost->id]) }}">
-                                        {{ $latestPost->getTranslation('title', $locale)}}
-                                    </a>
-                                </h5>
-
-                                <div class="text">
-                                    {{ \Illuminate\Support\Str::limit($latestPost->getTranslation('description', $locale), 180) }}
-                                </div>
-                            </article>
-                        </div>
-                        @endif
-
+                        <h2 >
+                            {{ Translation::getValue('footer_atalar_title', $locale) }}
+                        </h2>
+                        
                     </div>
                 </div>
 
