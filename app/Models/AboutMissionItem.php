@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AboutMissionItem extends Model
 {
     protected $fillable = [
-        'about_section_id',
         'icon',
-        'title_az', 'title_en', 'title_ru',
-        'text_az', 'text_en', 'text_ru',
+        'title_az', 'title_en', 'title_ru', 'title_de', 'title_es', 'title_fr', 'title_zh',
     ];
 
     public function section()

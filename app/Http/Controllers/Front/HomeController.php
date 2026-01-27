@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutMissionItem;
 use App\Models\AboutSection;
 use App\Models\Category;
 use App\Models\ContactPage;
@@ -23,9 +24,7 @@ class HomeController extends Controller
         $settings = Setting::first();
         $sliders = Slider::where('is_active', true)->orderBy('order')->get();
         $about = AboutSection::with('missionItems')
-            ->where('is_active', true)
-            ->get()
-            ->keyBy('type');
+            ->where('is_active', true);
         $services = Service::first();
         $contact = ContactPage::first();
         $section = AboutSection::where('type', 'home_about')->first();
@@ -35,7 +34,8 @@ class HomeController extends Controller
         $roadmap = RoadmapItem::where('is_active', true)
             ->orderBy('order')
             ->get();
-        $homeAbout = HomeAbout::with('missionItems')->where('is_active', true)->first();
+        $missionItems = AboutMissionItem::get();
+        $homeAbout = HomeAbout::first();
         $categories = Category::withCount('products')->get();
         
 
@@ -51,7 +51,8 @@ class HomeController extends Controller
             'products',
             'roadmap',
             'homeAbout',
-            'categories'
+            'categories',
+            'missionItems'
             
         ));
     }

@@ -83,8 +83,7 @@ class DatabaseSeeder extends Seeder
             AnnouncementSeeder::class,
             SecurityFeatureSeeder::class,
             LanguageSeeder::class,
-            HomeAboutMissionSeederNew::class,
-            HomeAboutSeederNew::class,
+            AboutMissionItemSeeder::class,
         ]);
     }
 }

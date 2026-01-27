@@ -77,29 +77,22 @@ $icons = $services->icons ?? []; // artıq array-dir
                     $line1 = implode(' ', array_slice($words, 0, $half));
                     $line2 = implode(' ', array_slice($words, $half));
                     @endphp
-                    <div class="tp-caption tp-resizeme slide-title"
+                    <div class="tp-caption tp-resizeme"
                         data-x="center"
-                        data-y="top"
-                        data-voffset="['170','150','130','100']"
-
+                        data-y="center"
+                        data-voffset="['-160','-130','-110','-90']"
+                        data-width="['900','800','620','340']"
+                        data-fontsize="['64','52','42','30']"
+                        data-lineheight="['74','62','52','38']"
+                        data-textalign="['center','center','center','center']"
                         data-frames='[
-                            {"delay":400,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
-                            {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
-                        ]'
-                        style="
-                            z-index:6;
-                            max-width:900px;
-                            text-align:center;
-                            font-size:65px;
-                            font-weight:800;
-                            color:#fff;
-                            line-height:72px;
-                            text-transform:uppercase;
-                        ">
-                        <h1 class="slider-title-text">
-                            {{ $line1 }}<br>{{ $line2 }}
-                        </h1>
+       {"delay":300,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
+     ]'
+                        style="z-index:6;font-weight:800;color:#fff;text-transform:uppercase;">
+                        {{ $line1 }}<br>
+                        {{ $line2 }}
                     </div>
+
                     @endif
 
                     <!-- DESCRIPTION -->
@@ -117,62 +110,53 @@ $icons = $services->icons ?? []; // artıq array-dir
                     @endphp
 
 
-
-                    <div class="tp-caption tp-resizeme slide-desc"
+                    <div class="tp-caption tp-resizeme"
                         data-x="center"
-                        data-y="top"
-                        data-voffset="['260','240','220','170']"
-
-                        data-width="['750','720','88%','82%']"
+                        data-y="center"
+                        data-voffset="['-20','0','20','30']"
+                        data-width="['640','600','480','320']"
+                        data-fontsize="['18','17','16','14']"
+                        data-lineheight="['30','28','26','22']"
+                        data-padding="[
+       '16px 40px 16px 40px',
+       '16px 36px 16px 36px',
+       '14px 28px 14px 28px',
+       '12px 20px 12px 20px'
+     ]"
+                        data-textalign="['center','center','center','center']"
                         data-frames='[
-                            {"delay":500,"speed":600,"frame":"0","from":"opacity:0;","to":"o:1;"},
-                            {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"}
-                        ]'
-                        style="
-                            padding:25px 150px;
-                            z-index:7;
-                            max-width:750px;
-                            text-align:center;
-                            line-height:36px;
-                        "
-                        data-padding="['10','51','10','51']">
-                        <p class="slider-desc-text">
-                            {{ $line1 }}<br>
-                            {{ $line2 }}<br>
-                            {{ $line3 }}
-                            @if(!empty($line4))
-                            <br>{{ $line4 }}
-                            @endif
-                        </p>
+       {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
+     ]'
+                        style="z-index:7;color:#fff;">
+                        {{ $line1 }}<br>
+                        {{ $line2 }}<br>
+                        {{ $line3 }}
                     </div>
+
 
                     @endif
 
                     <!-- BUTTON -->
                     <a href="{{ $button_url }}">
-                        <div class="tp-caption rev-btn tp-resizeme slide-btn"
+                        <div class="tp-caption rev-btn"
                             data-x="center"
-                            data-y="bottom"
-                            data-voffset="['340','320','300','240']"
-
+                            data-y="center"
+                            data-voffset="['140','160','180','190']"
+                            data-padding="[
+           '14px 36px',
+           '14px 34px',
+           '12px 30px',
+           '12px 28px'
+         ]"
+                            data-fontsize="['16','16','15','14']"
                             data-frames='[
-                                {"delay":600,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;"},
-                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;"},
-                                {"frame":"hover","speed":300,"to":"bg:rgba(255,255,255,1);c:#ff6c3a;"}
-                            ]'
-                            style="
-                                z-index:8;
-                                padding:6px 35px;
-                                background:#ff6c3a;
-                                color:#fff;
-                                font-size:17px;
-                                font-weight:700;
-                                border-radius:30px;
-                                margin-top:20px;
-                            ">
+           {"delay":600,"speed":500,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
+         ]'
+                            style="z-index:8;background:#ff6c3a;color:#fff;border-radius:30px;font-weight:700;">
                             {{ Translation::getValue('read_more',$locale) }}
                         </div>
                     </a>
+
 
                 </li>
                 @endforeach
@@ -211,13 +195,13 @@ $icons = $services->icons ?? []; // artıq array-dir
 
 
                     <div class="text">
-                        {!! $homeAbout->getShortDesc($locale) !!}
+                        {{Translation::getValue('home_about_desc', $locale)}}
                     </div>
 
                 </div>
 
                 <div class="row">
-                    @foreach($homeAbout->missionItems as $item)
+                    @foreach($missionItems as $item)
                     <!-- Feature Block -->
                     <div class="feature-block col-lg-4 col-md-4 col-sm-12">
                         <div class="inner-box">
@@ -458,31 +442,3 @@ $icons = $services->icons ?? []; // artıq array-dir
 <!--End Clients Section-->
 
 @endsection
-
-@push('styles')
-<style>
-    @media (max-width: 768px) {
-        .slider-title-text {
-            font-size: 34px;
-            line-height: 42px;
-        }
-
-        .slider-desc-text {
-            font-size: 15px;
-            line-height: 26px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .slider-title-text {
-            font-size: 26px;
-            line-height: 34px;
-        }
-
-        .slider-desc-text {
-            font-size: 14px;
-            line-height: 24px;
-        }
-    }
-</style>
-@endpush
