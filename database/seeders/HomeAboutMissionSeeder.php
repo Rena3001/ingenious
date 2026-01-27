@@ -14,7 +14,7 @@ class HomeAboutMissionSeeder extends Seeder
 
         AboutMissionItem::insert([
             [
-                'about_section_id' => 1,
+                'about_section_id' => 2,
                 'title_az' => 'Missiyamız',
                 'title_en' => 'Our Mission',
                 'title_ru' => 'Наша миссия',
@@ -23,7 +23,7 @@ class HomeAboutMissionSeeder extends Seeder
                 
             ],
             [
-                'about_section_id' => 1,
+                'about_section_id' => 2,
                 'title_az' => 'Vizyonumuz',
                 'title_en' => 'Our Vision',
                 'title_ru' => 'Наше видение',
@@ -32,7 +32,7 @@ class HomeAboutMissionSeeder extends Seeder
                 
             ],
             [
-                'about_section_id' => 1,
+                'about_section_id' => 2,
                 'title_az' => 'Dəyərlərimiz',
                 'title_en' => 'Our Values',
                 'title_ru' => 'Наши ценности',
