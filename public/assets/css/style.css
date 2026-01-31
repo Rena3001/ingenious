@@ -11713,7 +11713,7 @@ hr {
     bottom: -5px;
 }
 
-.main-footer .about-widget .text {
+.main-footer .about-widget .text, .recent-posts .text {
     color: #b0b0b0;
     font-size: 15px;
 }

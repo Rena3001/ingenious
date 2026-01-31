@@ -130,7 +130,8 @@ $icons = $services->icons ?? []; // artıq array-dir
                         style="z-index:7;color:#fff;">
                         {{ $line1 }}<br>
                         {{ $line2 }}<br>
-                        {{ $line3 }}
+                        {{ $line3 }}<br>
+                        {{ $line4 }}
                     </div>
 
 
@@ -352,10 +353,10 @@ $icons = $services->icons ?? []; // artıq array-dir
                             <img src="{{ asset('storage/' . $item->image) }}"
                                 alt="{{ $item->getTranslation('title', $locale) }}">
                         </figure>
-
+ 
                         <div class="overlay">
                             <div class="desc">
-                                {!! $item->getTranslation('title', $locale) !!}
+                                {!! $item->getTranslation('desc', $locale) !!}
                             </div>
                         </div>
                     </div>

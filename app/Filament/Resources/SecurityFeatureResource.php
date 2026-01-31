@@ -23,7 +23,7 @@ class SecurityFeatureResource extends Resource
 
     public static function form(Forms\Form $form): Forms\Form
 {
-    return $form->schema([
+    return $form->schema([ 
 
         Forms\Components\TextInput::make('icon')
             ->required()
@@ -60,7 +60,19 @@ class SecurityFeatureResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('icon')
+                    ->label('Icon')
+                    ->sortable()
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('title_az')
+                    ->label('Title (AZ)')
+                    ->sortable()
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('description_az')
+                    ->label('Description (AZ)')
+                    ->limit(50),
             ])
             ->filters([
                 //

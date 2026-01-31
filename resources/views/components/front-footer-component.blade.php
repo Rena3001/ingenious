@@ -36,9 +36,9 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
                             {{ Translation::getValue('footer_latest_posts_title', $locale) }}
                         </h4>
 
-                        <h2 class="widget-title">
+                        <div class="text">
                             {{ Translation::getValue('footer_atalar_title', $locale) }}
-                        </h2>
+                        </div>
                         
                     </div>
                 </div>

@@ -30,10 +30,12 @@ class ProductHighlightResource extends Resource
         return $form->schema([
 
             Select::make('product_id')
-                ->relationship('product', 'title')
+                ->relationship('product', 'name_az')
                 ->required()
                 ->searchable()
+                ->preload()
                 ->label('Məhsul'),
+
 
             Toggle::make('is_active')
                 ->default(true)
