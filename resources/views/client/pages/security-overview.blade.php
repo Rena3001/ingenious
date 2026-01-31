@@ -72,7 +72,8 @@ use App\Models\Translation;
                         data-paddingright="[0,0,0,0]"
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
-                        style="z-index: 7; white-space: nowrap; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); font-family:Catamaran;">{!! nl2br($slider->getDescription($locale)) !!}
+                        style="z-index: 7; white-space: nowrap; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); font-family:Catamaran;">
+                        {!! nl2br($slider->getDescription($locale)) !!}
 
                     </div>
 

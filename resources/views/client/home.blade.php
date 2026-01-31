@@ -107,7 +107,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                     $line2 = implode(' ', array_slice($words, $perLine, $perLine));
                     $line3 = implode(' ', array_slice($words, $perLine * 2, $perLine));
                     $line4 = implode(' ', array_slice($words, $perLine * 3, $perLine));
-                    $line5 = implode(' ', array_slice($words, $perLine * 4, $perLine));
+                    
                     @endphp
 
 
@@ -115,7 +115,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                         data-x="center"
                         data-y="center"
                         data-voffset="['-20','0','20','30']"
-                        data-width="['640','600','480','320']"
+                        data-width="['700','600','480','320']"
                         data-fontsize="['18','17','16','14']"
                         data-lineheight="['30','28','26','22']"
                         data-padding="[
@@ -132,8 +132,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                         {{ $line1 }}<br>
                         {{ $line2 }}<br>
                         {{ $line3 }}<br>
-                        {{ $line4 }}<br>
-                        {{ $line5 }}
+                        {{ $line4 }}
                     </div>
 
 
