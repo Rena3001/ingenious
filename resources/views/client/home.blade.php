@@ -107,6 +107,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                     $line2 = implode(' ', array_slice($words, $perLine, $perLine));
                     $line3 = implode(' ', array_slice($words, $perLine * 2, $perLine));
                     $line4 = implode(' ', array_slice($words, $perLine * 3, $perLine));
+                    $line5 = implode(' ', array_slice($words, $perLine * 4, $perLine));
                     @endphp
 
 
@@ -131,7 +132,8 @@ $icons = $services->icons ?? []; // artıq array-dir
                         {{ $line1 }}<br>
                         {{ $line2 }}<br>
                         {{ $line3 }}<br>
-                        {{ $line4 }}
+                        {{ $line4 }}<br>
+                        {{ $line5 }}
                     </div>
 
 
