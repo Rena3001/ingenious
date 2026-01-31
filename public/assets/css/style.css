@@ -3084,6 +3084,9 @@ hr {
     cursor: pointer;
     font-size: 19px;
     line-height: 40px;
+        background: white;
+    padding: 4px 8px;
+    border-radius: 76px;
 }
 
 .language-switcher {
