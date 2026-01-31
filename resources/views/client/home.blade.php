@@ -111,29 +111,29 @@ $icons = $services->icons ?? []; // artıq array-dir
                     @endphp
 
 
-                    <div class="tp-caption tp-resizeme"
-                        data-x="center"
-                        data-y="center"
-                        data-voffset="['-20','0','20','30']"
-                        data-width="['700','600','480','320']"
-                        data-fontsize="['18','17','16','14']"
-                        data-lineheight="['30','28','26','22']"
-                        data-padding="[
-       '16px 40px 16px 40px',
-       '16px 36px 16px 36px',
-       '14px 28px 14px 28px',
-       '12px 20px 12px 20px'
-     ]"
-                        data-textalign="['center','center','center','center']"
-                        data-frames='[
-       {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
-     ]'
-                        style="z-index:7;color:#fff;">
-                        {{ $line1 }}<br>
-                        {{ $line2 }}<br>
-                        {{ $line3 }}<br>
-                        {{ $line4 }}
-                    </div>
+                  <div class="tp-caption tp-resizeme"
+    data-x="center"
+    data-y="center"
+    data-voffset="['-20','0','20','30']"
+    data-width="['700','600','480','320']"
+    data-fontsize="['18','17','16','14']"
+    data-lineheight="['30','28','26','22']"
+    data-whitespace="normal"
+    data-textalign="['center','center','center','center']"
+    data-padding="[ '16px 40px 16px 40px', '16px 36px 16px 36px', '14px 28px 14px 28px', '12px 20px 12px 20px' ]"
+    data-frames='[
+        {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
+    ]'
+    style="
+        z-index:7;
+        color:#fff;
+        white-space: normal;
+        max-width:700px;
+        padding-top:50px;
+    ">
+    {{ $description }}
+</div>
+
 
 
                     @endif

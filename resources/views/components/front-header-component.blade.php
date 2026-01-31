@@ -61,41 +61,30 @@
                                                         {{ Translation::getValue('consumer_electronics', $locale) }}
                                                     </a>
                                                 </li>
-                                                <li class="dropdown has-mega-menu">
+                                                <li class="tech-dropdown">
                                                     <a href="{{ route('technical.services', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('technical_services', $locale) }}
                                                     </a>
 
-                                                    <div class="mega-menu mega-menu-technical" data-width="0px">
-                                                        <div class="mega-menu-bar row">
-                                                            <div class="column col-lg-12">
-                                                                <ul>
+                                                    <ul class="tech-dropdown-menu">
+                                                        <li>
+                                                            <a href="{{ route('technical.faq', ['locale' => $locale]) }}">
+                                                                {{ Translation::getValue('technical_faq', $locale) }}
+                                                            </a>
+                                                        </li>
 
-                                                                    {{-- FAQ --}}
-                                                                    <li>
-                                                                        <a href="{{ route('technical.faq', ['locale' => $locale]) }}">
-                                                                            {{ Translation::getValue('technical_faq', $locale) }}
-                                                                        </a>
-                                                                    </li>
+                                                        <li>
+                                                            <a href="{{ route('technical.guidesandtutor', ['locale' => $locale]) }}">
+                                                                {{ Translation::getValue('technical_guides_tutorials', $locale) }}
+                                                            </a>
+                                                        </li>
 
-                                                                    {{-- Guides & Tutorials --}}
-                                                                    <li>
-                                                                        <a href="{{ route('technical.guidesandtutor', ['locale' => $locale]) }}">
-                                                                            {{ Translation::getValue('technical_guides_tutorials', $locale) }}
-                                                                        </a>
-                                                                    </li>
-
-                                                                    {{-- Warranty & Service --}}
-                                                                    <li>
-                                                                        <a href="{{ route('warrantyandservices', ['locale' => $locale]) }}">
-                                                                            {{ Translation::getValue('technical_warranty_service', $locale) }}
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        <li>
+                                                            <a href="{{ route('warrantyandservices', ['locale' => $locale]) }}">
+                                                                {{ Translation::getValue('technical_warranty_service', $locale) }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
 
 
@@ -146,9 +135,7 @@
                                                         {{ Translation::getValue('menu_partnership', $locale) }}
                                                     </a></li>
 
-                                                <li><a href="{{ route('announcements', ['locale' => $locale]) }}">
-                                                        {{ Translation::getValue('menu_announcements', $locale) }}
-                                                    </a></li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -157,9 +144,24 @@
 
 
 
-                            <li><a href="{{ route('news', ['locale' => $locale]) }}">
+                            <li class="dropdown has-mega-menu">
+                                <a href="{{ route('news', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_news', $locale) }}
-                                </a></li>
+                                </a>
+                                <div class="mega-menu mega-menu-news" data-width="200px">
+                                    <div class="mega-menu-bar row">
+                                        <div class="column col-lg-12">
+                                            <ul>
+                                                <li><a href="{{ route('announcements', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('menu_announcements', $locale) }}
+                                                    </a></li>
+
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
                             <li><a href="{{ route('contact', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_contact', $locale) }}
