@@ -143,7 +143,7 @@
 /* Hover effect */
 .tech-dropdown-menu li a:hover {
     background: #f5f5f5;
-    color: #1e7f4f;
+    color: #1b5e8a;
 }
 
 </style>
