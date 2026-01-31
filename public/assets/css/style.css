@@ -2923,16 +2923,16 @@ hr {
     box-shadow: 0px 7px 10px -1px rgba(0, 0, 0, 0.2);
 }
 .mega-menu-home {
-    left: 45% !important;
+    left: 50% !important;
 }
 .mega-menu-shop {
-    left: 55% !important;
+    left: 60% !important;
 }
 .mega-menu-about {
-    left: 65% !important;
+    left: 70% !important;
 }
 .mega-menu-news {
-    left: 75% !important;
+    left: 80% !important;
 }
 
 .main-menu .navigation > li:hover > .mega-menu {
