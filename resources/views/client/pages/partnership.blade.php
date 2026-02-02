@@ -70,13 +70,13 @@ use App\Models\Translation;
                             <strong>{{ $page->intro_text }}</strong>
                         </p>
                         @endif
-
-                        {{-- Description --}}
+                        {{-- Description Text --}}
                         @if($page->description_text)
                         <div class="text">
-                            {!! nl2br(e($page->description_text)) !!}
+                            {!! $page->description_text !!}
                         </div>
                         @endif
+
 
                         {{-- Collaboration Types --}}
                         @if($page->collaboration_types_localized->isNotEmpty())

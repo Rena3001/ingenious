@@ -11,7 +11,7 @@ class Setting extends Model
         'phone',
         'email',
         'map_iframe',
-     // Contact titles
+        // Contact titles
         'contact_title_az',
         'contact_title_en',
         'contact_title_ru',
@@ -38,5 +38,10 @@ class Setting extends Model
         'linkedin',
         'twitter',
         'telegram',
+
+        'contact_orders_icon',
+        'contact_project_icon',
+        'contact_support_icon',
+        'contact_partner_icon',
     ];
 }

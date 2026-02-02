@@ -6,6 +6,7 @@ use App\Filament\Resources\SettingsResource\Pages;
 use App\Models\Setting;
 use Filament\Resources\Resource;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -61,6 +62,21 @@ class SettingsResource extends Resource
                     Forms\Components\Textarea::make('contact_desc_zh')->label('Description (ZH)'),
 
                 ]),
+            TextInput::make('contact_orders_icon')
+                ->label('Contact Orders Icon (Flaticon class)')
+                ->placeholder('flaticon-shopping-cart-2'),
+
+            TextInput::make('contact_project_icon')
+                ->label('Contact Project Icon')
+                ->placeholder('flaticon-browser-2'),
+
+            TextInput::make('contact_support_icon')
+                ->label('Contact Support Icon')
+                ->placeholder('flaticon-headset-2'),
+
+            TextInput::make('contact_partner_icon')
+                ->label('Contact Partner Icon')
+                ->placeholder('flaticon-devices-1'),
             Forms\Components\FileUpload::make('logo')
                 ->label('Logo (Dark)')
                 ->directory('settings')
@@ -97,6 +113,12 @@ class SettingsResource extends Resource
         return $table->columns([
             Tables\Columns\TextColumn::make('email'),
             Tables\Columns\TextColumn::make('phone'),
+            Tables\Columns\TextColumn::make('address'),
+            Tables\Columns\TextColumn::make('facebook')->label('Facebook'),
+            Tables\Columns\TextColumn::make('instagram')->label('Instagram'),
+            Tables\Columns\TextColumn::make('linkedin')->label('LinkedIn'),
+            Tables\Columns\TextColumn::make('twitter')->label('Twitter'),
+            Tables\Columns\TextColumn::make('telegram')->label('Telegram'),
         ]);
     }
 

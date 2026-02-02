@@ -41,31 +41,40 @@ $locale = app()->getLocale();
 
             <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
-                    <div class="icon-box"><span class="icon flaticon-shopping-cart-2"></span></div>
-                    <h4>{{ Translation::getValue('contact_orders', $locale) }}</h4>
+                    <div class="icon-box">
+                        <span class="icon {{ $settings->contact_orders_icon }}"></span>
+                    </div>
+                    <h4>{{ Translation::getValue('contact_orders', app()->getLocale()) }}</h4>
                 </div>
             </div>
 
             <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
-                    <div class="icon-box"><span class="icon flaticon-browser-2"></span></div>
-                    <h4>{{ Translation::getValue('contact_project', $locale) }}</h4>
+                    <div class="icon-box">
+                        <span class="icon {{ $settings->contact_project_icon }}"></span>
+                    </div>
+                    <h4>{{ Translation::getValue('contact_project', app()->getLocale()) }}</h4>
                 </div>
             </div>
 
             <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
-                    <div class="icon-box"><span class="icon flaticon-headset-2"></span></div>
-                    <h4>{{ Translation::getValue('contact_support', $locale) }}</h4>
+                    <div class="icon-box">
+                        <span class="icon {{ $settings->contact_support_icon }}"></span>
+                    </div>
+                    <h4>{{ Translation::getValue('contact_support', app()->getLocale()) }}</h4>
                 </div>
             </div>
 
             <div class="feature-block-nine col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
-                    <div class="icon-box"><span class="icon flaticon-devices-1"></span></div>
-                    <h4>{{ Translation::getValue('contact_partner', $locale) }}</h4>
+                    <div class="icon-box">
+                        <span class="icon {{ $settings->contact_partner_icon }}"></span>
+                    </div>
+                    <h4>{{ Translation::getValue('contact_partner', app()->getLocale()) }}</h4>
                 </div>
             </div>
+
 
         </div>
     </div>
