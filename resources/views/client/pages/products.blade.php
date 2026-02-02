@@ -16,7 +16,13 @@ $locale = app()->getLocale();
     </div>
 
     <div class="auto-container">
-        <h1>{{ Translation::getValue('shop_items_title', $locale) }}</h1>
+        <h1>
+            @isset($currentCategory)
+            {{ $currentCategory->{'name_'.$locale} ?? $currentCategory->name_az }}
+            @else
+            {{ Translation::getValue('shop_items_title', $locale) }}
+            @endisset
+        </h1>
 
         <ul class="page-breadcrumb">
             <li>
@@ -55,7 +61,7 @@ $locale = app()->getLocale();
                         <div class="orderby">
                             <form method="GET">
                                 @foreach(request()->except('orderby') as $key => $value)
-                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                                 @endforeach
 
                                 <select name="orderby" class="sortby-select" onchange="this.form.submit()">
@@ -77,9 +83,9 @@ $locale = app()->getLocale();
                     <div class="row clearfix">
 
                         @if($products->count() === 0)
-                            <div class="no-results text-center p-5">
-                                <h3>{{ Translation::getValue('no_results', $locale) }}</h3>
-                            </div>
+                        <div class="no-results text-center p-5">
+                            <h3>{{ Translation::getValue('no_results', $locale) }}</h3>
+                        </div>
                         @endif
 
                         @foreach($products as $product)
@@ -91,10 +97,10 @@ $locale = app()->getLocale();
 
                                     {{-- BADGES --}}
                                     @if($product->is_new)
-                                        <span class="badge badge-new">New</span>
+                                    <span class="badge badge-new">New</span>
                                     @endif
                                     @if($product->is_top_seller)
-                                        <span class="badge badge-top">Top Seller</span>
+                                    <span class="badge badge-top">Top Seller</span>
                                     @endif
 
                                     <figure class="image">

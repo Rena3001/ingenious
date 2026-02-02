@@ -105,11 +105,12 @@
                                                 @foreach($categories as $category)
                                                 <li>
                                                     <a href="{{ route('products.byCategory', [
-                                                           'locale' => $locale,
-    'category' => $category
+                                                        'locale' => $locale,
+                                                        'category' => $category->id
                                                     ]) }}">
-                                                        {{ $category->{'name_'.$locale} ?? $category->name_az }}
+                                                        {{ $category->getTranslation('name', $locale) }}
                                                     </a>
+
                                                 </li>
                                                 @endforeach
                                             </ul>

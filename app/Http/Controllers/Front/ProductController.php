@@ -19,10 +19,15 @@ class ProductController extends Controller
         $query = Product::query();
 
         if ($request->search) {
-            $query->where(function($q) use ($request) {
-                $q->where('name_az', 'LIKE', '%'.$request->search.'%')
-                  ->orWhere('name_en', 'LIKE', '%'.$request->search.'%')
-                  ->orWhere('name_ru', 'LIKE', '%'.$request->search.'%');
+            $query->where(function ($q) use ($request) {
+                $q->where('name_az', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_en', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_ru', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_de', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_es', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_fr', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('name_zh', 'LIKE', '%' . $request->search . '%');
+
             });
         }
 
@@ -49,39 +54,48 @@ class ProductController extends Controller
     // ===============================
     // 📌 2. CATEGORY PRODUCTS
     // ===============================
-public function byCategory(Request $request, $category)
-{
-    $query = Product::where('category_id', $category);
+      public function byCategory(Request $request, string $locale, int $category)
+    {
+        app()->setLocale($locale);
 
-    if ($request->search) {
-        $query->where(function ($q) use ($request) {
-            $q->where('name_az', 'LIKE', '%'.$request->search.'%')
-              ->orWhere('name_en', 'LIKE', '%'.$request->search.'%')
-              ->orWhere('name_ru', 'LIKE', '%'.$request->search.'%');
-        });
+        $currentCategory = Category::findOrFail($category);
+
+        $query = Product::where('category_id', $currentCategory->id);
+
+        // 🔍 Search
+        if ($request->filled('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('name_az', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_en', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_ru', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_de', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_es', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_fr', 'LIKE', "%{$request->search}%")
+                  ->orWhere('name_zh', 'LIKE', "%{$request->search}%");
+            });
+        }
+
+        // 🔃 Sorting
+        match ($request->orderby) {
+            'price'      => $query->orderBy('price', 'asc'),
+            'price-desc' => $query->orderBy('price', 'desc'),
+            default      => $query->orderBy('created_at', 'desc'),
+        };
+
+        return view('client.pages.products', [
+            'products'        => $query->get(),
+            'categories'      => Category::withCount('products')->get(),
+            'currentCategory' => $currentCategory,
+            'locale'          => $locale,
+            'search'          => $request->search,
+        ]);
     }
-
-    if ($request->orderby === 'price') {
-        $query->orderBy('price', 'asc');
-    } elseif ($request->orderby === 'price-desc') {
-        $query->orderBy('price', 'desc');
-    } else {
-        $query->orderBy('created_at', 'desc');
-    }
-
-    return view('client.pages.products', [
-        'products'   => $query->get(),
-        'categories' => Category::withCount('products')->get(),
-        'locale'     => app()->getLocale(),
-        'search'     => $request->search, // 🔥 BUNU UNUTMA
-    ]);
-}
 
 
     // ===============================
     // 📌 3. PRODUCT DETAIL
     // ===============================
-    public function show(string $locale,Product $product)
+    public function show(string $locale, Product $product)
     {
         app()->setLocale($locale);
         $categories = Category::withCount('products')->get();
