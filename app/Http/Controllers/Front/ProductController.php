@@ -49,27 +49,34 @@ class ProductController extends Controller
     // ===============================
     // 📌 2. CATEGORY PRODUCTS
     // ===============================
-    public function byCategory(Request $request, Category $category)
-    {
-        $query = Product::where('category_id', $category->id);
+public function byCategory(Request $request, $category)
+{
+    $query = Product::where('category_id', $category);
 
-        if ($request->orderby === 'price') {
-            $query->orderBy('price', 'asc');
-        } elseif ($request->orderby === 'price-desc') {
-            $query->orderBy('price', 'desc');
-        } else {
-            $query->orderBy('created_at', 'desc');
-        }
-
-        $products = $query->get();
-        $categories = Category::withCount('products')->get();
-
-        return view('client.pages.products', [
-            'products'   => $products,
-            'categories' => $categories,
-            'locale'     => app()->getLocale(),
-        ]);
+    if ($request->search) {
+        $query->where(function ($q) use ($request) {
+            $q->where('name_az', 'LIKE', '%'.$request->search.'%')
+              ->orWhere('name_en', 'LIKE', '%'.$request->search.'%')
+              ->orWhere('name_ru', 'LIKE', '%'.$request->search.'%');
+        });
     }
+
+    if ($request->orderby === 'price') {
+        $query->orderBy('price', 'asc');
+    } elseif ($request->orderby === 'price-desc') {
+        $query->orderBy('price', 'desc');
+    } else {
+        $query->orderBy('created_at', 'desc');
+    }
+
+    return view('client.pages.products', [
+        'products'   => $query->get(),
+        'categories' => Category::withCount('products')->get(),
+        'locale'     => app()->getLocale(),
+        'search'     => $request->search, // 🔥 BUNU UNUTMA
+    ]);
+}
+
 
     // ===============================
     // 📌 3. PRODUCT DETAIL

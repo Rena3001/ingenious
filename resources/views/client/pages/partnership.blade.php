@@ -54,56 +54,66 @@ use App\Models\Translation;
                 <aside class="sidebar theiaStickySidebar portfolio-single-sidebar">
                     <div class="sticky-sidebar">
 
+                        {{-- Sidebar Title --}}
+                        @if($page->sidebar_title)
                         <h3>{{ $page->sidebar_title }}</h3>
+                        @endif
 
+                        {{-- Category --}}
                         @if($page->category)
                         <span class="cat">{{ $page->category }}</span>
                         @endif
 
+                        {{-- Intro Text --}}
                         @if($page->intro_text)
-                        <p><strong>{{ $page->intro_text }}</strong></p>
+                        <p>
+                            <strong>{{ $page->intro_text }}</strong>
+                        </p>
                         @endif
 
+                        {{-- Description --}}
                         @if($page->description_text)
                         <div class="text">
                             {!! nl2br(e($page->description_text)) !!}
                         </div>
                         @endif
 
-                        @if(!empty($page->collaboration_types))
-                        <h5 style="margin-top:20px;">
-                            {{ Translation::getValue('collaboration_forms', $locale) }}
+                        {{-- Collaboration Types --}}
+                        @if($page->collaboration_types_localized->isNotEmpty())
+                        <h5 class="mt-4">
+                            {{ Translation::getValue('collaboration_forms', app()->getLocale()) }}
                         </h5>
                         <ul class="list-style-three">
-                            @foreach($page->collaboration_types as $item)
-                            <li>{{ $item['value'] }}</li>
+                            @foreach($page->collaboration_types_localized as $value)
+                            <li>{{ $value }}</li>
                             @endforeach
                         </ul>
                         @endif
 
-                        @if(!empty($page->principles))
-                        <h5 style="margin-top:20px;">
-                            {{ Translation::getValue('partnership_principles', $locale) }}
+                        {{-- Principles --}}
+                        @if($page->principles_localized->isNotEmpty())
+                        <h5 class="mt-4">
+                            {{ Translation::getValue('partnership_principles', app()->getLocale()) }}
                         </h5>
                         <ul class="list-style-three">
-                            @foreach($page->principles as $item)
-                            <li>{{ $item['value'] }}</li>
+                            @foreach($page->principles_localized as $value)
+                            <li>{{ $value }}</li>
                             @endforeach
                         </ul>
                         @endif
 
+
+                        {{-- CTA Button --}}
                         @if($page->cta_button_link)
                         <a href="{{ url($page->cta_button_link) }}"
-                            class="theme-btn btn-style-one"
-                            style="margin-top:25px;">
-                            {{ Translation::getValue('contact_partnership_team', $locale) }}
+                            class="theme-btn btn-style-one mt-4">
+                            {{ Translation::getValue('contact_partnership_team', app()->getLocale()) }}
                         </a>
                         @endif
 
                     </div>
                 </aside>
             </div>
-
 
         </div>
     </div>

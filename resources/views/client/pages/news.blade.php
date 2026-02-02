@@ -37,7 +37,7 @@ $locale = app()->getLocale();
                     {{ Translation::getValue('all', $locale) }}
                 </li>
                 <li class="filter" data-filter=".news">
-                    {{ Translation::getValue('news', $locale) }}
+                    {{ Translation::getValue('news_title', $locale) }}
                 </li>
                 <li class="filter" data-filter=".press">
                     {{ Translation::getValue('press', $locale) }}

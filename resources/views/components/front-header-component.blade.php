@@ -106,7 +106,7 @@
                                                 <li>
                                                     <a href="{{ route('products.byCategory', [
                                                            'locale' => $locale,
-    'category' => $category->id
+    'category' => $category
                                                     ]) }}">
                                                         {{ $category->{'name_'.$locale} ?? $category->name_az }}
                                                     </a>
@@ -135,7 +135,7 @@
                                                         {{ Translation::getValue('menu_partnership', $locale) }}
                                                     </a></li>
 
-                                                
+
                                             </ul>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@
                                                         {{ Translation::getValue('menu_announcements', $locale) }}
                                                     </a></li>
 
-                                                
+
                                             </ul>
                                         </div>
                                     </div>

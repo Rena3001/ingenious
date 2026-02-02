@@ -114,4 +114,23 @@ class PartnershipPage extends Model
     {
         return $this->getLocalizedField('description_text');
     }
+    public function getCollaborationTypesLocalizedAttribute()
+    {
+        $locale = app()->getLocale();
+
+        return collect($this->collaboration_types ?? [])
+            ->map(fn($item) => $item[$locale] ?? $item['en'] ?? null)
+            ->filter()
+            ->values();
+    }
+
+    public function getPrinciplesLocalizedAttribute()
+    {
+        $locale = app()->getLocale();
+
+        return collect($this->principles ?? [])
+            ->map(fn($item) => $item[$locale] ?? $item['en'] ?? null)
+            ->filter()
+            ->values();
+    }
 }

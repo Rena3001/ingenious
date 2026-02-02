@@ -5,7 +5,12 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PartnershipPageResource\Pages;
 use App\Models\PartnershipPage;
 use Filament\Forms;
+use Filament\Forms\Components\Repeater;
+
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -41,27 +46,22 @@ class PartnershipPageResource extends Resource
                 /* =========================
                  | Lists
                  ========================= */
-                Forms\Components\Section::make('Lists')
-                    ->schema([
-                        Forms\Components\Repeater::make('collaboration_types')
-                            ->label('Collaboration Types')
-                            ->schema([
-                                Forms\Components\TextInput::make('value')
-                                    ->label('Item')
-                                    ->required(),
-                            ])
-                            ->columnSpanFull(),
+                Repeater::make('collaboration_types')
+                    ->label('Collaboration Types')
+                    ->schema(self::multilangRepeaterSchema())
+                    ->collapsed()
+                    ->addActionLabel('Add collaboration type')
+                    ->columnSpanFull(),
 
-                        Forms\Components\Repeater::make('principles')
-                            ->label('Partnership Principles')
-                            ->schema([
-                                Forms\Components\TextInput::make('value')
-                                    ->label('Item')
-                                    ->required(),
-                            ])
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(1),
+                /* ===============================
+             | PRINCIPLES (7 DIL JSON)
+             =============================== */
+                Repeater::make('principles')
+                    ->label('Partnership Principles')
+                    ->schema(self::multilangRepeaterSchema())
+                    ->collapsed()
+                    ->addActionLabel('Add principle')
+                    ->columnSpanFull(),
 
                 /* =========================
                  | CTA
@@ -105,6 +105,35 @@ class PartnershipPageResource extends Resource
     /* =========================
      | Language Tab generator
      ========================= */
+     protected static function multilangRepeaterSchema(): array
+{
+    return [
+        Tabs::make('Languages')->tabs([
+            Tab::make('AZ')->schema([
+                TextInput::make('az')->label('AZ')->required(),
+            ]),
+            Tab::make('EN')->schema([
+                TextInput::make('en')->label('EN')->required(),
+            ]),
+            Tab::make('RU')->schema([
+                TextInput::make('ru')->label('RU'),
+            ]),
+            Tab::make('DE')->schema([
+                TextInput::make('de')->label('DE'),
+            ]),
+            Tab::make('FR')->schema([
+                TextInput::make('fr')->label('FR'),
+            ]),
+            Tab::make('ES')->schema([
+                TextInput::make('es')->label('ES'),
+            ]),
+            Tab::make('ZH')->schema([
+                TextInput::make('zh')->label('ZH'),
+            ]),
+        ])
+    ];
+}
+
     protected static function languageTab(string $label, string $locale): Forms\Components\Tabs\Tab
     {
         return Forms\Components\Tabs\Tab::make($label)
