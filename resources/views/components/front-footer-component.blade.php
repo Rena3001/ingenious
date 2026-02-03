@@ -60,16 +60,16 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
 
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
+                                    <a href="https://wa.me/{{ $settings->phone }}" target="_blank">{{ $settings->phone }}</a>
                                 </li>
 
-                                <li>
+                                <li> 
                                     <div class="social-icon">
                                         @if($settings->facebook)
                                             <a href="{{ $settings->facebook }}"><i class="fab fa-facebook-f"></i></a>
                                         @endif
                                         @if($settings->twitter)
-                                            <a href="{{ $settings->twitter }}"><i class="fab fa-twitter"></i></a>
+                                            <a href="{{ $settings->twitter }}"><i class="fab fa-youtube"></i></a>
                                         @endif
                                         @if($settings->instagram)
                                             <a href="{{ $settings->instagram }}"><i class="fab fa-instagram"></i></a>
@@ -78,7 +78,7 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
                                             <a href="{{ $settings->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
                                         @endif
                                         @if($settings->telegram)
-                                            <a href="{{ $settings->telegram }}"><i class="fa fa-signal"></i></a>
+                                            <a href="{{ $settings->telegram }}"><i class="fab fa-tiktok"></i></a>
                                         @endif
                                     </div>
                                 </li>

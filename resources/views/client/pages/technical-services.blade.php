@@ -638,7 +638,12 @@ use App\Models\Translation;
     </div>
 
     <div class="auto-container">
+         <div class="sec-title text-center light">
+            <h2>{{Translation::getValue('support_resources_title', $locale)}}</h2>
+        </div>
         <div class="row clearfix">
+           
+
 
             <!-- Column 1 -->
             <div class="counter-column col-lg-4 col-md-6 col-sm-12">

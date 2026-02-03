@@ -117,8 +117,8 @@ class SettingsResource extends Resource
             Tables\Columns\TextColumn::make('facebook')->label('Facebook'),
             Tables\Columns\TextColumn::make('instagram')->label('Instagram'),
             Tables\Columns\TextColumn::make('linkedin')->label('LinkedIn'),
-            Tables\Columns\TextColumn::make('twitter')->label('Twitter'),
-            Tables\Columns\TextColumn::make('telegram')->label('Telegram'),
+            Tables\Columns\TextColumn::make('twitter')->label('Youtube'),
+            Tables\Columns\TextColumn::make('telegram')->label('Tiktok'),
         ]);
     }
 

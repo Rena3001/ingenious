@@ -10,7 +10,7 @@ class Language extends Model
         'code',
         'label',
         'name',
-        'flag',
+        'flag', 
         'is_active',
         'order'
     ];

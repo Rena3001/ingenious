@@ -127,8 +127,8 @@ $locale = app()->getLocale();
                             <div class="inner">
                                 <span class="icon fa fa-phone"></span>
                                 <h5>{{ Translation::getValue('contact_details', $locale) }}</h5>
-                                <p>{{ $settings->phone }}</p>
-                                <p>{{ $settings->email }}</p>
+                                <a href="https://wa.me/{{ $settings->phone }}" target="_blank"><p>{{ $settings->phone }}</p></a> 
+                                <a href="mailto:{{ $settings->email }}"><p>{{ $settings->email }}</p></a>
                             </div>
                         </div>
 

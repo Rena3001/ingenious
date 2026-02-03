@@ -224,7 +224,7 @@
                                 {{ $lang->label }}
                             </option>
                             @endforeach
-                        </select>
+                        </select> 
                     </div>
 
 
