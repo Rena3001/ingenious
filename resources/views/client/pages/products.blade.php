@@ -31,7 +31,11 @@ $locale = app()->getLocale();
                 </a>
             </li>
             <li>
-                {{ Translation::getValue('breadcrumb_shop_items', $locale) }}
+                @isset($currentCategory)
+            {{ $currentCategory->{'name_'.$locale} ?? $currentCategory->name_az }}
+            @else
+            {{ Translation::getValue('shop_items_title', $locale) }}
+            @endisset
             </li>
         </ul>
     </div>
