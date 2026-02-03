@@ -3,43 +3,87 @@
 namespace App\Filament\Resources\InstallationServiceResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Tabs;
 
 class IconsRelationManager extends RelationManager
 {
     protected static string $relationship = 'icons';
-    protected static ?string $title = 'Service Icons (20.3)';
 
-    public function form(Forms\Form $form): Forms\Form
+    protected static ?string $title = 'Service Icons';
+
+    public function form(Form $form): Form
     {
         return $form->schema([
+
             TextInput::make('icon')
-                ->label('Flaticon class')
-                ->placeholder('flaticon-shield'),
+                ->label('Icon class')
+                ->placeholder('flaticon-shield / fa fa-lock')
+                ->required(),
 
-            TextInput::make('title_az')->label('AZ'),
-            TextInput::make('title_en')->label('EN'),
-            TextInput::make('title_ru')->label('RU'),
-            TextInput::make('title_de')->label('DE'),
-            TextInput::make('title_fr')->label('FR'),
-            TextInput::make('title_es')->label('ES'),
-            TextInput::make('title_zh')->label('ZH'),
+            TextInput::make('order')
+                ->numeric()
+                ->default(0)
+                ->label('Order'),
 
-            TextInput::make('order')->numeric()->default(0),
+            Tabs::make('Titles')->tabs([
+
+                Tabs\Tab::make('AZ')->schema([
+                    TextInput::make('title_az')->label('Title AZ'),
+                ]),
+
+                Tabs\Tab::make('EN')->schema([
+                    TextInput::make('title_en')->label('Title EN'),
+                ]),
+
+                Tabs\Tab::make('RU')->schema([
+                    TextInput::make('title_ru')->label('Title RU'),
+                ]),
+
+                Tabs\Tab::make('DE')->schema([
+                    TextInput::make('title_de')->label('Title DE'),
+                ]),
+
+                Tabs\Tab::make('FR')->schema([
+                    TextInput::make('title_fr')->label('Title FR'),
+                ]),
+
+                Tabs\Tab::make('ES')->schema([
+                    TextInput::make('title_es')->label('Title ES'),
+                ]),
+
+                Tabs\Tab::make('ZH')->schema([
+                    TextInput::make('title_zh')->label('Title ZH'),
+                ]),
+            ]),
         ]);
     }
 
-    public function table(Tables\Table $table): Tables\Table
+    public function table(Table $table): Table
     {
         return $table
+            ->reorderable('order') // 🔥 drag & drop
+            ->defaultSort('order')
             ->columns([
-                Tables\Columns\TextColumn::make('icon'),
-                Tables\Columns\TextColumn::make('title_az')->label('AZ'),
-                Tables\Columns\TextColumn::make('order')->sortable(),
+
+                Tables\Columns\TextColumn::make('icon')
+                    ->label('Icon')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('title_az')
+                    ->label('Title (AZ)')
+                    ->limit(30),
+
+                Tables\Columns\TextColumn::make('order')
+                    ->sortable(),
             ])
-            ->reorderable('order')
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
