@@ -5,13 +5,7 @@
 
 <div class="preloader">
         <div class="cws_loader">
+            <img src="{{asset('assets/images/icons/bamoone.png')}}" alt="">
             <span>{{Translation::getValue('loading', $locale)}}...</span>
-            <div class="hex"></div>
-            <div class="hex"></div>
-            <div class="hex"></div>
-            <div class="hex"></div>
-            <div class="hex"></div>
-            <div class="hex"></div>
-            <div class="hex"></div>
         </div>
     </div>
