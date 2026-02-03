@@ -39,7 +39,7 @@ $locale = app()->getLocale();
                         {{-- Full Name --}}
                         <div class="form-group">
                             <label>{{ Translation::getValue('contact_name', $locale) }}</label>
-                            <input type="text" name="username" required>
+                            <input type="text" name="username" required> 
                             @error('username')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
