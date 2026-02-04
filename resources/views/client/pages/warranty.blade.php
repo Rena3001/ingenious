@@ -58,7 +58,7 @@ $locale = app()->getLocale();
                     </div>
 
                     <!-- LAYER NR. 3 -->
-                    <div class="tp-caption   tp-resizeme"
+                        <div class="tp-caption   tp-resizeme"
                         id="slide-14-layer-33"
                         data-x="center" data-hoffset=""
                         data-y="center" data-voffset=""
@@ -73,7 +73,7 @@ $locale = app()->getLocale();
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
                         style="z-index: 7; white-space: nowrap; font-size: 48px; line-height: 48px; font-weight: 700; color: rgba(255,255,255,1);font-family:Catamaran;">
-                        {{ $slide->{'subtitle_' . $locale} }}
+                        {!! nl2br(e($slide->{'subtitle_' . $locale})) !!}
                     </div>
 
                     <!-- LAYER NR. 4 -->
