@@ -60,20 +60,27 @@ $locale = app()->getLocale();
                     <!-- LAYER NR. 3 -->
                         <div class="tp-caption   tp-resizeme"
                         id="slide-14-layer-33"
-                        data-x="center" data-hoffset=""
-                        data-y="center" data-voffset=""
-                        data-width="['auto']"
-                        data-height="['auto']"
-                        data-type="text"
-                        data-responsive_offset="on"
-                        data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]'
-                        data-textAlign="['inherit','inherit','inherit','inherit']"
-                        data-paddingtop="[0,0,0,0]"
-                        data-paddingright="[0,0,0,0]"
-                        data-paddingbottom="[0,0,0,0]"
-                        data-paddingleft="[0,0,0,0]"
+                        d data-x="center"
+    data-y="center"
+    data-voffset="['-20','0','20','30']"
+    data-width="['700','600','480','320']"
+    data-fontsize="['18','17','16','14']"
+    data-lineheight="['30','28','26','22']"
+    data-whitespace="normal"
+    data-textalign="['center','center','center','center']"
+    data-padding="[ '16px 40px 16px 40px', '16px 36px 16px 36px', '14px 28px 14px 28px', '12px 20px 12px 20px' ]"
+    data-frames='[
+        {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
+    ]'
+    style="
+        z-index:7;
+        color:#fff;
+        white-space: normal;
+        max-width:700px;
+        padding-top:50px;
+    "
                         style="z-index: 7; white-space: nowrap; font-size: 48px; line-height: 48px; font-weight: 700; color: rgba(255,255,255,1);font-family:Catamaran;">
-                        {!! nl2br(e($slide->{'subtitle_' . $locale})) !!}
+                        {{ $slide->{'subtitle_' . $locale} }}
                     </div>
 
                     <!-- LAYER NR. 4 -->
