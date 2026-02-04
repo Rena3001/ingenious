@@ -1,10 +1,12 @@
 @extends('client.layout.master')
-@section('page_title', __('Overview'))
-@section('content')
 @php
-use App\Models\Translation;
-$locale = app()->getLocale();
+    use App\Models\Translation;
+    $locale = app()->getLocale();
 @endphp
+
+@section('title', Translation::getValue('overview_title', $locale))
+@section('content')
+
 
 <section class="page-title">
     <div class="background-layers">

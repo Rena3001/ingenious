@@ -1,5 +1,10 @@
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
 <meta charset="utf-8">
-<title>@yield('title', __('your_title'))</title>
+<title>@yield('title', Translation::getValue('your_title', $locale))</title>
 
 <!-- Stylesheets -->
 <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">

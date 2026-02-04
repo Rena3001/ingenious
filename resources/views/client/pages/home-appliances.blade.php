@@ -1,11 +1,12 @@
 @extends('client.layout.master')
-@section('page_title', __('Home Appliances'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('home_appliances', $locale))
 @section('content')
 
-@php
-use App\Models\Translation;
-$locale = app()->getLocale();
-@endphp
 
 
 <!--Main Slider-->

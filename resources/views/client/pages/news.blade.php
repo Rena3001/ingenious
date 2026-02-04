@@ -1,11 +1,13 @@
 @extends('client.layout.master')
-@section('page_title', __('News'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('news_title', $locale))
 @section('content')
 
-@php
-use App\Models\Translation;
-$locale = app()->getLocale();
-@endphp
+
 
 
 

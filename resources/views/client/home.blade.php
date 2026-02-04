@@ -1,10 +1,13 @@
 @extends('client.layout.master')
-@section('page_title', 'Ingenious')
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('home_title', $locale))
 
 @section('content')
 @php
-use App\Models\Translation;
-$locale = app()->getLocale();
 $icons = $services->icons ?? []; // artıq array-dir
 @endphp
 

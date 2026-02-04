@@ -1,12 +1,15 @@
 @extends('client.layout.master')
 
-@section('page_title', __('FAQ'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('faq_title', $locale))
 
 @section('content')
 @php
 use Illuminate\Support\Str;
-use App\Models\Translation;
-$locale = app()->getLocale();
 @endphp
 
 <!-- PAGE TITLE -->

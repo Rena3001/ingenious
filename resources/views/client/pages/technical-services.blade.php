@@ -1,10 +1,11 @@
 @extends('client.layout.master')
-@section('page_title', __('Tecnical Services'))
-@section('content')
 @php
-$locale = app()->getLocale(); // en, es, de, fr, ru, zh
-use App\Models\Translation;
+    use App\Models\Translation;
+    $locale = app()->getLocale();
 @endphp
+
+@section('title', Translation::getValue('technical_services', $locale))
+@section('content')
 
 <!--Main Slider-->
 <section class="main-slider">

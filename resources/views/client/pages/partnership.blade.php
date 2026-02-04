@@ -1,12 +1,14 @@
 @extends('client.layout.master')
 
-@section('page_title', __('Cooperation and Partnership'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('partnership_title', $locale))
 
 @section('content')
-@php
-$locale = app()->getLocale();
-use App\Models\Translation;
-@endphp
+
 
 <!-- Page Title -->
 <section class="page-title">

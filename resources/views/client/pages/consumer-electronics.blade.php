@@ -1,5 +1,10 @@
 @extends('client.layout.master')
-@section('page_title', __('Consumer Electronics'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('consumer_electronics', $locale))
 @section('content')
 @php
 $locale = app()->getLocale(); // en, es, de, fr, ru, zh

@@ -1,13 +1,14 @@
 @extends('client.layout.master')
-
-@section('page_title', 'Process')
-
-@section('content')
-
 @php
     use App\Models\Translation;
     $locale = app()->getLocale();
 @endphp
+
+@section('title', Translation::getValue('process_title', $locale))
+
+@section('content')
+
+
 
 <!-- Page Title -->
 <section class="page-title">

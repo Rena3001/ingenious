@@ -1,12 +1,15 @@
 @extends('client.layout.master')
 
-@section('page_title', __('Guides & Tutorials'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('guides_title', $locale))
 
 @section('content')
 @php
 use Illuminate\Support\Str;
-use App\Models\Translation;
-$locale = app()->getLocale();
 @endphp
 
 <!-- Page Title -->

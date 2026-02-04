@@ -1,5 +1,10 @@
 @extends('client.layout.master')
-@section('page_title', __('Announcements & Campaigns'))
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
+
+@section('title', Translation::getValue('announcements_campaigns', $locale))
 @section('content')
 
 @php

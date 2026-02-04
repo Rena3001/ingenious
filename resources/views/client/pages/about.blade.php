@@ -1,6 +1,10 @@
 @extends('client.layout.master')
+@php
+    use App\Models\Translation;
+    $locale = app()->getLocale();
+@endphp
 
-@section('page_title', $about->getTranslation('title', $locale))
+@section('title', Translation::getValue('about_title', $locale))
 
 @section('content')
 
@@ -81,7 +85,7 @@
 <!-- END ABOUT CONTENT -->
 
 
-<!-- CEO MESSAGE -->
+<!-- CEO MESSAGE --> 
 @if($about->ceoMessage)
 <section class="about-ceo-message">
     <div class="auto-container">

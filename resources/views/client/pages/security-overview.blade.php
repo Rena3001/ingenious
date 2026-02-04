@@ -1,10 +1,12 @@
 @extends('client.layout.master')
-@section('page_title', __('Security Overview'))
-@section('content')
 @php
-$locale = app()->getLocale(); // en, es, de, fr, ru, zh
-use App\Models\Translation;
+    use App\Models\Translation;
+    $locale = app()->getLocale();
 @endphp
+
+@section('title', Translation::getValue('security_overview', $locale))
+@section('content')
+
 
 
 <!--Main Slider-->
