@@ -11,16 +11,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Tabs;
 
-class QualityEquipmentSectionResource extends Resource
+class QualityConsumerEquipmentSectionResource extends Resource
 {
     protected static ?string $model = QualityConsumerEquipmentSection::class;
-
+ 
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
     protected static ?string $navigationGroup = 'Site Sections';
-    protected static ?string $navigationLabel = 'Quality Equipment';
+    protected static ?string $navigationLabel = 'Quality Consumer Equipment';
     protected static ?string $modelLabel = 'Quality Equipment';
     protected static ?string $pluralModelLabel = 'Quality Equipment';
-
+ 
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -56,6 +56,11 @@ class QualityEquipmentSectionResource extends Resource
                                     self::langTab('az'),
                                     self::langTab('en'),
                                     self::langTab('ru'),
+                                    self::langTab('de'),
+                                    self::langTab('fr'),    
+                                    self::langTab('es'),
+                                    self::langTab('zh'),
+                                    
                                 ])
                                 ->columnSpanFull(),
                         ]),

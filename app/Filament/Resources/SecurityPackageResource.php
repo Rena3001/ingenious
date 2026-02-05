@@ -11,7 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use App\Models\SecurityPackage;
 use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Select; 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -23,16 +23,17 @@ class SecurityPackageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
     protected static ?string $navigationLabel = 'Security Package';
-    protected static ?string $navigationGroup = 'Security';
+    protected static ?string $navigationGroup = 'Security Overview';
 
     public static function form(Form $form): Form
     {
         return $form->schema([
 
             Select::make('product_id')
-                ->relationship('product', 'title')
+                ->relationship('product', 'name_az')
                 ->required()
                 ->searchable()
+                ->preload()
                 ->label('Məhsul'),
 
             Toggle::make('is_active')

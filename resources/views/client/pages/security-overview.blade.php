@@ -175,7 +175,7 @@
     style="background-image: url('{{ asset('storage/'.$package->background_image) }}');"
     @endif
     >
-
+ 
     <div class="auto-container">
         <div class="row">
 

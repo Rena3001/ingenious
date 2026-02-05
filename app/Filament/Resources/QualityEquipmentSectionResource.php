@@ -21,7 +21,7 @@ class QualityEquipmentSectionResource extends Resource
     protected static ?string $model = QualityEquipmentSection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
-    protected static ?string $navigationLabel = 'Quality Equipment';
+    protected static ?string $navigationLabel = 'Quality Equipment security overview';
     protected static ?string $navigationGroup = 'Security Overview';
 
 

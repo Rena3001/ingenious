@@ -23,7 +23,7 @@ class ProductHighlightResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
     protected static ?string $navigationGroup = 'Security Overview';
-    protected static ?string $navigationLabel = 'Product Highlight';
+    protected static ?string $navigationLabel = 'Product Highlight real time';
 
     public static function form(Form $form): Form
     {

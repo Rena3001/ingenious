@@ -97,7 +97,7 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
     <div class="footer-bottom">
         <div class="auto-container">
             <div class="copyright-text">
-                <a href="{{ url('/sayt.az') }}">{{ Translation::getValue('footer_site', $locale) }}</a>
+                <a href="{{ url('https://sayt.az/') }}">{{ Translation::getValue('footer_site', $locale) }}</a>
                 <p>{{ Translation::getValue('footer_about_title', $locale) }} © {{ date('Y') }}</p>
             </div>
         </div>
