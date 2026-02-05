@@ -85,14 +85,14 @@
                             data-type="button"
                             data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":"","speed":"700","ease":"Linear.easeNone"}]'
                             data-responsive_offset="on"
-                            data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(3,200,173,1);bg:rgba(255,255,255,1);"}]'
+                            data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:#1b5e8a;bg:rgba(255,255,255,1);"}]'
                             data-textAlign="['inherit','inherit','inherit','inherit']"
                             data-paddingtop="[20,20,20,20]"
                             data-paddingright="[50,50,50,50]"
                             data-paddingbottom="[20,20,20,20]"
                             data-paddingleft="[50,50,50,50]"
 
-                            style="z-index: 8; white-space: nowrap; font-size: 16px; line-height: 17px; font-weight: 700; color: rgba(255,255,255,1); ;font-family:Catamaran;background-color:rgba(3,200,173,1);border-color:rgba(3,200,173,1);border-style:solid;border-width:0px;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
+                            style="z-index: 8; white-space: nowrap; font-size: 16px; line-height: 17px; font-weight: 700; color: rgba(255,255,255,1); ;font-family:Catamaran;background-color:#1b5e8a;border-color:#1b5e8a;border-style:solid;border-width:0px;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
                             {{Translation::getValue('learn_more', $locale)}}
                         </div>
                     </a>

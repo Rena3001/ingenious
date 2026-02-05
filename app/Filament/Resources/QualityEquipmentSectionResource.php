@@ -30,10 +30,11 @@ class QualityEquipmentSectionResource extends Resource
         return $form->schema([
 
             Select::make('product_id')
-                ->relationship('product', 'title')
+                ->relationship('product', 'name_az')
+                ->required()
                 ->searchable()
-                ->label('Əlaqəli məhsul')
-                ->nullable(),
+                ->preload()
+                ->label('Məhsul'),
 
             Toggle::make('is_active')
                 ->label('Aktiv')
