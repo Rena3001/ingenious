@@ -6,10 +6,7 @@
 
 @section('title', Translation::getValue('consumer_electronics', $locale))
 @section('content')
-@php
-$locale = app()->getLocale(); // en, es, de, fr, ru, zh
-use App\Models\Translation;
-@endphp
+
 
 
 
