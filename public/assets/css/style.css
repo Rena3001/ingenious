@@ -4626,7 +4626,7 @@ hr {
 .sec-title h2 {
     position: relative;
     display: block;
-    font-size: 60px;
+    font-size: 40px;
     line-height: 1.2em;
     color: #363636;
     font-weight: 800;
@@ -5619,6 +5619,10 @@ hr {
 
 .features-section .sec-title .text {
     margin-top: 35px;
+    font-size: 14px;
+}
+.features-section p {
+    font-size: 14px;
 }
 
 .feature-block-four {

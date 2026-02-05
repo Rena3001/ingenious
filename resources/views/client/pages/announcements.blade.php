@@ -7,11 +7,6 @@
 @section('title', Translation::getValue('announcements_campaigns', $locale))
 @section('content')
 
-@php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
-@endphp
-
 
 <!-- Page Title -->
 <section class="page-title">
