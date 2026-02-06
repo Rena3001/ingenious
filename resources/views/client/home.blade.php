@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 @section('title', Translation::getValue('home_title', $locale))
@@ -110,32 +110,32 @@ $icons = $services->icons ?? []; // artıq array-dir
                     $line2 = implode(' ', array_slice($words, $perLine, $perLine));
                     $line3 = implode(' ', array_slice($words, $perLine * 2, $perLine));
                     $line4 = implode(' ', array_slice($words, $perLine * 3, $perLine));
-                    
+
                     @endphp
 
 
-                  <div class="tp-caption tp-resizeme"
-    data-x="center"
-    data-y="center"
-    data-voffset="['-20','0','20','30']"
-    data-width="['700','600','480','320']"
-    data-fontsize="['18','17','16','14']"
-    data-lineheight="['30','28','26','22']"
-    data-whitespace="normal"
-    data-textalign="['center','center','center','center']"
-    data-padding="[ '16px 40px 16px 40px', '16px 36px 16px 36px', '14px 28px 14px 28px', '12px 20px 12px 20px' ]"
-    data-frames='[
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center"
+                        data-y="center"
+                        data-voffset="['-20','0','20','30']"
+                        data-width="['700','600','480','320']"
+                        data-fontsize="['18','17','16','14']"
+                        data-lineheight="['30','28','26','22']"
+                        data-whitespace="normal"
+                        data-textalign="['center','center','center','center']"
+                        data-padding="[ '16px 40px 16px 40px', '16px 36px 16px 36px', '14px 28px 14px 28px', '12px 20px 12px 20px' ]"
+                        data-frames='[
         {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
     ]'
-    style="
+                        style="
         z-index:7;
         color:#fff;
         white-space: normal;
         max-width:700px;
         padding-top:50px;
     ">
-    {{ $description }}
-</div>
+                        {{ $description }}
+                    </div>
 
 
 
@@ -184,10 +184,10 @@ $icons = $services->icons ?? []; // artıq array-dir
 
         <div class="cws-image-bg"
             style="background-image: url('{{ 
-                $homeAbout->background_image 
-                ? asset('storage/' . $homeAbout->background_image) 
-                : asset('assets/images/background/1.jpg') 
-            }}')">
+        $home2nd && $home2nd->background_image
+            ? asset('storage/'.$home2nd->background_image)
+            : asset('assets/images/default/home-bg.jpg')
+    }}')">
         </div>
     </div>
 
@@ -357,7 +357,7 @@ $icons = $services->icons ?? []; // artıq array-dir
                             <img src="{{ asset('storage/' . $item->image) }}"
                                 alt="{{ $item->getTranslation('title', $locale) }}">
                         </figure>
- 
+
                         <div class="overlay">
                             <div class="desc">
                                 {!! $item->getTranslation('desc', $locale) !!}

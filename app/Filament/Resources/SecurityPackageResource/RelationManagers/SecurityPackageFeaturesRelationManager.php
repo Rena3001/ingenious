@@ -36,6 +36,12 @@ class SecurityPackageFeaturesRelationManager extends RelationManager
             ])
             ->defaultSort('order')
             ->reorderable('order')
+
+            // ✅ CREATE DÜYMƏSİ BURADA
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
+
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

@@ -69,10 +69,26 @@ class SecurityPackageResource extends Resource
                     TextInput::make('features_title_az')
                         ->default('Təhlükəsizlik Paketi')
                         ->label('Başlıq (AZ)'),
-
                     TextInput::make('features_title_en')
-                        ->default('Security Package')
-                        ->label('Title (EN)'),
+                        ->default('Təhlükəsizlik Paketi')
+                        ->label('Başlıq (EN)'),
+
+                    TextInput::make('features_title_ru')
+                        ->default('Пакет безопасности')
+                        ->label('Заголовок (RU)'),
+                    TextInput::make('features_title_de')
+                        ->default('Sicherheits-Paket')
+                        ->label('Titel (DE)'),
+                    TextInput::make('features_title_fr')
+                        ->default('Forfait de sécurité')
+                        ->label('Titre (FR)'),
+                    TextInput::make('features_title_es')
+                        ->default('Paquete de seguridad')
+                        ->label('Título (ES)'),
+                    TextInput::make('features_title_zh')
+                        ->default('安全套餐')
+                        ->label('标题 (ZH)'),
+
                 ]),
 
                 // 🔹 MEDIA (11)

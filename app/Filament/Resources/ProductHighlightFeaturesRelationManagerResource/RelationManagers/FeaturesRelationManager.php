@@ -41,6 +41,9 @@ class ProductHighlightFeaturesRelationManager extends RelationManager
             ])
             ->defaultSort('order')
             ->reorderable('order')
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
