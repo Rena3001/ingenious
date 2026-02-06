@@ -7,6 +7,7 @@ use App\Models\AboutMissionItem;
 use App\Models\AboutSection;
 use App\Models\Category;
 use App\Models\ContactPage;
+use App\Models\Home2ndSection;
 use App\Models\HomeAbout;
 use App\Models\Product;
 use App\Models\RoadmapItem;
@@ -36,6 +37,7 @@ class HomeController extends Controller
             ->get();
         $missionItems = AboutMissionItem::get();
         $homeAbout = HomeAbout::first();
+        $home2nd = Home2ndSection::where('is_active', true)->first();
         $categories = Category::withCount('products')->get();
         
 
@@ -52,7 +54,8 @@ class HomeController extends Controller
             'roadmap',
             'homeAbout',
             'categories',
-            'missionItems'
+            'missionItems',
+            'home2nd'
             
         ));
     }
