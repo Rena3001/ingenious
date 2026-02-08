@@ -19,7 +19,7 @@ class ProductHighlight extends Model
     /* =====================
        RELATIONS
     ====================== */
-    public function product()
+    public function product() 
     {
         return $this->belongsTo(Product::class);
     }

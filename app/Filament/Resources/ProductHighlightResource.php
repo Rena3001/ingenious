@@ -52,7 +52,7 @@ class ProductHighlightResource extends Resource
                     TextInput::make('title_fr')->label('FR'),
                     TextInput::make('title_es')->label('ES'),
                     TextInput::make('title_zh')->label('ZH'),
-                ]),
+                ]), 
 
                 // 12.1 — Qısa izah
                 Tabs\Tab::make('Açıqlama')->schema([
