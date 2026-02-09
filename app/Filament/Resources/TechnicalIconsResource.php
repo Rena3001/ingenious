@@ -54,6 +54,16 @@ class TechnicalIconsResource extends Resource
 
                 Forms\Components\TextInput::make("icon_{$i}_title_en")
                     ->label('Title (EN)'),
+                Forms\Components\TextInput::make("icon_{$i}_title_ru")
+                    ->label('Title (RU)'),
+                Forms\Components\TextInput::make("icon_{$i}_title_de")
+                    ->label('Title (DE)'),
+                Forms\Components\TextInput::make("icon_{$i}_title_es")
+                    ->label('Title (ES)'),
+                Forms\Components\TextInput::make("icon_{$i}_title_fr")
+                    ->label('Title (FR)'),
+                Forms\Components\TextInput::make("icon_{$i}_title_zh")
+                    ->label('Title (ZH)'),
             ])
             ->columns(2)
             ->columnSpanFull();
