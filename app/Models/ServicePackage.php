@@ -43,10 +43,13 @@ class ServicePackage extends Model
     /* ======================
        RELATIONS
     ====================== */
-    public function section()
-    {
-        return $this->belongsTo(ServicePackageSection::class);
-    }
+  public function section()
+{
+    return $this->belongsTo(
+        ServicePackageSection::class,
+        'service_package_section_id' // 👈 AÇIQ DEYİRİK
+    );
+}
 
     /* ======================
        HELPERS
