@@ -41,7 +41,7 @@ class ProductController extends Controller
         }
 
         $products = $query->get();
-        $categories = Category::withCount('products')->get();
+        $categories = Category::where('is_active', true)->withCount('products')->get();
 
         return view('client.pages.products', [
             'products'   => $products,
@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         app()->setLocale($locale);
 
-        $currentCategory = Category::findOrFail($category);
+        $currentCategory = Category::where('is_active', true)->findOrFail($category);
 
         $query = Product::where('category_id', $currentCategory->id);
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
 
         return view('client.pages.products', [
             'products'        => $query->get(),
-            'categories'      => Category::withCount('products')->get(),
+            'categories'      => Category::where('is_active', true)->withCount('products')->get(),
             'currentCategory' => $currentCategory,
             'locale'          => $locale,
             'search'          => $request->search,
@@ -98,7 +98,7 @@ class ProductController extends Controller
     public function show(string $locale, Product $product)
     {
         app()->setLocale($locale);
-        $categories = Category::withCount('products')->get();
+        $categories = Category::where('is_active', true)->withCount('products')->get();
 
         $related = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)

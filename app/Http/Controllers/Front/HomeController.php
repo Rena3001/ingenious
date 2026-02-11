@@ -38,7 +38,7 @@ class HomeController extends Controller
         $missionItems = AboutMissionItem::get();
         $homeAbout = HomeAbout::first();
         $home2nd = Home2ndSection::where('is_active', true)->first();
-        $categories = Category::withCount('products')->get();
+        $categories = Category::where('is_active', true)->withCount('products')->get();
         
 
 
