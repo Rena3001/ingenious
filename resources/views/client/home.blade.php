@@ -81,21 +81,21 @@ $icons = $services->icons ?? []; // artıq array-dir
                     $line2 = implode(' ', array_slice($words, $half));
                     @endphp
                     <div class="tp-caption tp-resizeme"
-    data-x="center"
+                        data-x="center"
 
-    
-    data-y="center"
-    data-voffset="['-160','-130','-110','-90']"
-    data-width="['auto','auto','auto','auto']"
-data-hoffset="0"
 
-    data-fontsize="['64','52','42','30']"
-    data-lineheight="['74','62','52','38']"
-    data-textalign="['center','center','center','center']"
-    data-frames='[
+                        data-y="center"
+                        data-voffset="['-160','-130','-110','-90']"
+                        data-width="['auto','auto','auto','auto']"
+                        data-hoffset="0"
+
+                        data-fontsize="['64','52','42','30']"
+                        data-lineheight="['74','62','52','38']"
+                        data-textalign="['center','center','center','center']"
+                        data-frames='[
        {"delay":300,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
      ]'
-    style="
+                        style="
         z-index:6;
         font-weight:800;
         color:#fff;
@@ -104,9 +104,9 @@ data-hoffset="0"
         margin:0 auto;
         display:block;
     ">
-    {{ $line1 }}<br>
-    {{ $line2 }}
-</div>
+                        {{ $line1 }}<br>
+                        {{ $line2 }}
+                    </div>
 
 
                     @endif

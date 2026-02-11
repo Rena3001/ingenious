@@ -3087,7 +3087,7 @@ hr {
     cursor: pointer;
     font-size: 19px;
     line-height: 40px;
-        background: white;
+    background: white;
     padding: 4px 14px;
     border-radius: 76px;
 }
@@ -4633,6 +4633,9 @@ hr {
     line-height: 1.2em;
     color: #363636;
     font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sec-title h3 {
@@ -8364,7 +8367,7 @@ hr {
 
 .services-section.style-two .service-block .overlay:before,
 .services-section.style-two .service-block .icon-box {
-    background-color: #1b5e8a; 
+    background-color: #1b5e8a;
 }
 
 /*** 
@@ -9232,7 +9235,6 @@ hr {
         45deg,
         rgba(0, 5, 22, 0.8),
         rgba(12, 55, 114, 0.8)
-    
     );
     border-color: transparent;
     -webkit-background-clip: border;
@@ -11686,7 +11688,6 @@ hr {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
 
 .main-footer:before {
@@ -11731,7 +11732,8 @@ hr {
     bottom: -5px;
 }
 
-.main-footer .about-widget .text, .recent-posts .text {
+.main-footer .about-widget .text,
+.recent-posts .text {
     color: #b0b0b0;
     font-size: 15px;
 }
