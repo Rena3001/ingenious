@@ -132,11 +132,11 @@ $icons = $services->icons ?? []; // artıq array-dir
                         data-y="center"
                         data-voffset="['-20','0','20','30']"
                         data-width="['700','600','480','320']"
-                        data-fontsize="['25','24','23','20']"
+                        data-fontsize="['18','17','16','14']"
                         data-lineheight="['30','28','26','22']"
                         data-whitespace="normal"
                         data-textalign="['center','center','center','center']"
-                        data-padding="[ '16px 40px 18px 40px', '16px 36px 18px 36px', '14px 28px 16px 28px', '12px 20px 14px 20px' ]"
+                        data-padding="[ '16px 40px 16px 40px', '16px 36px 16px 36px', '14px 28px 14px 28px', '12px 20px 12px 20px' ]"
                         data-frames='[
         {"delay":450,"speed":600,"frame":"0","from":"opacity:0;y:20;","to":"o:1;y:0;"}
     ]'
