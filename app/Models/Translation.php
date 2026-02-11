@@ -18,12 +18,18 @@ class Translation extends Model
     ];
 
 
-    public static function getValue(string $key, string $locale = null): string
-    {
-        $locale = $locale ?? app()->getLocale();
-        $column = 'value_' . $locale;
- 
-        $translation = static::where('key', $key)->first();
-        return $translation?->$column ?? $key;
+public static function getValue(?string $key, ?string $locale = null): string
+{
+    if (!$key) {
+        return '';
     }
+
+    $locale = $locale ?? app()->getLocale();
+    $column = 'value_' . $locale;
+
+    $translation = static::where('key', $key)->first();
+
+    return $translation?->$column ?? $key;
+}
+
 }

@@ -107,7 +107,7 @@
 
                         {{-- CTA Button --}}
                         @if($page->cta_button_link)
-                        <a href="{{ url($page->cta_button_link) }}"
+                        <a href="{{ $page->cta_button_link}}"
                             class="theme-btn btn-style-one mt-4">
                             {{ Translation::getValue('contact_partnership_team', app()->getLocale()) }}
                         </a>
