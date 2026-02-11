@@ -296,15 +296,14 @@ $icons = $services->icons ?? []; // artıq array-dir
 
                         <div class="image-box">
                             <figure class="image">
-                                <img src="{{ asset('storage/' . $product->image) }}"
-                                    alt="{{ $product->getTranslation('name', $locale) }}">
-                            </figure>
-
-                            <div class="overlay">
                                 <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
                                      target="_blank">
+                                     <img src="{{ asset('storage/' . $product->image) }}"
+                                    alt="{{ $product->getTranslation('name', $locale) }}">
                                 </a>
-                            </div>
+                            </figure>
+
+                          
                         </div>
 
                         <div class="lower-content">
