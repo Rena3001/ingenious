@@ -19,7 +19,7 @@ $clients = \App\Models\Client::where('is_active', 1)
                         @if(Str::contains($client->image, '<svg'))
                             {!! $client->image !!}
                             @else
-                            <span class="icon {{ $client->image }}" style="font-size: 128px;"></span>
+                            <span class="icon {{ $client->image }}" style="font-size: 128px;    color: white;"></span>
                             @endif
                     </a>
                 </figure>

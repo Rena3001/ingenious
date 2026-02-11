@@ -4825,6 +4825,9 @@ hr {
 
 .about-section .btn-box {
     margin-top: 30px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*** 
@@ -8755,7 +8758,7 @@ hr {
 
 .callback-section {
     position: relative;
-    padding: 0 20px;
+    padding: 20px 20px;
 }
 
 .callback-section .sec-title .text {
