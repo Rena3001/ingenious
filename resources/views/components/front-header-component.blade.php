@@ -39,8 +39,8 @@
                                         <div class="column col-lg-12">
 
                                             <ul>
-                                                <li>
-                                                    <a class="menu-disabled" href="{{ route('home.appliances', ['locale' => $locale]) }}">
+                                                <li class="menu-disabled">
+                                                    <a href="{{ route('home.appliances', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('home_appliances', $locale) }}
                                                     </a>
                                                 </li>
@@ -50,14 +50,14 @@
                                                         {{ Translation::getValue('security_overview', $locale) }}
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a class="menu-disabled" href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
+                                                <li class="menu-disabled">
+                                                    <a  href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('electrical_equipment', $locale) }}
                                                     </a>
                                                 </li>
 
-                                                <li>
-                                                    <a class="menu-disabled" href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
+                                                <li class="menu-disabled">
+                                                    <a href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('consumer_electronics', $locale) }}
                                                     </a>
                                                 </li>
