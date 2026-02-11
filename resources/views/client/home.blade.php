@@ -99,7 +99,7 @@ $icons = $services->icons ?? []; // artıq array-dir
         z-index:6;
         font-weight:800;
         color:#fff;
-        text-transform:uppercase;
+
         text-align:center;
         margin:0 auto;
         display:block;
@@ -297,13 +297,13 @@ $icons = $services->icons ?? []; // artıq array-dir
                         <div class="image-box">
                             <figure class="image">
                                 <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}"
-                                     target="_blank">
-                                     <img src="{{ asset('storage/' . $product->image) }}"
-                                    alt="{{ $product->getTranslation('name', $locale) }}">
+                                    target="_blank">
+                                    <img src="{{ asset('storage/' . $product->image) }}"
+                                        alt="{{ $product->getTranslation('name', $locale) }}">
                                 </a>
                             </figure>
 
-                          
+
                         </div>
 
                         <div class="lower-content">
@@ -427,6 +427,8 @@ $icons = $services->icons ?? []; // artıq array-dir
                             {{ Translation::getValue('why_bamoone',$locale) }}
 
                         </h2>
+                        <div class="text">{{ Translation::getValue('why_shortdesc',$locale) }}
+                        </div>
 
 
                     </div>
