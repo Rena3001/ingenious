@@ -21,11 +21,9 @@ class ClientResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\FileUpload::make('image')
-                ->label('Loqo')
-                ->image()
-                ->directory('clients')
-                ->required(),
+            Forms\Components\Textarea::make('image')
+                ->label('İkon (SVG və ya class)')
+                ->rows(3),
 
             Forms\Components\TextInput::make('url')
                 ->label('URL')
@@ -47,7 +45,7 @@ class ClientResource extends Resource
     {
         return $table->columns([
             Tables\Columns\ImageColumn::make('image')
-                ->label('Loqo')
+                ->label('İkon (SVG və ya class)')
                 ->width(80),
 
             Tables\Columns\TextColumn::make('url')

@@ -12,7 +12,11 @@
                 <li class="slide-item">
                     <figure class="image-box">
                         <a href="{{ $client->url}}" target="_blank">
-                            <img src="{{ asset('storage/' . $client->image) }}" alt="client logo">
+                             @if(Str::contains($client->image, '<svg'))
+                                {!! $client->image !!}
+                                @else
+                                <span class="icon {{ $client->image }}"></span>
+                                @endif
                         </a>
                     </figure>
                 </li>
@@ -21,3 +25,4 @@
         </ul>
     </div>
 </section>
+ 
