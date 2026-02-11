@@ -249,8 +249,7 @@ li {
     margin: 0px;
 }
 .menu-disabled {
-    pointer-events: none;
-    opacity: 0.4;
+    display: none;
 }
 
 .fancybox-can-drag .fancybox-image-wrap {

@@ -103,16 +103,16 @@
                                         <div class="column col-lg-12">
                                             <ul>
                                                 @foreach($categories as $category)
-                                                <li>
+                                                <li class="{{ $category->is_active ? '' : 'menu-disabled' }}">
                                                     <a href="{{ route('products.byCategory', [
                                                         'locale' => $locale,
                                                         'category' => $category->id
                                                     ]) }}">
                                                         {{ $category->getTranslation('name', $locale) }}
                                                     </a>
-
                                                 </li>
                                                 @endforeach
+
                                             </ul>
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@
                                 {{ $lang->label }}
                             </option>
                             @endforeach
-                        </select> 
+                        </select>
                     </div>
 
 
