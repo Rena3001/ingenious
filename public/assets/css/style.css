@@ -143,6 +143,7 @@ a {
     text-decoration: none;
     cursor: pointer;
     font-family: "Poppins", sans-serif !important;
+        color: black;
 }
 
 a:hover,

@@ -33,7 +33,7 @@
             </li>
             <li>{{ $product->getTranslation('name', $locale) }}</li>
         </ul>
-    </div>
+    </div> 
 </section>
 
 <!-- Sidebar Page Container -->
@@ -99,13 +99,13 @@
                                         </div>
 
                                         {{-- AMAZON CTA --}}
-                                        @if($product->amazon_link)
+                                      
                                             <a href="{{ $product->amazon_link }}"
                                                target="_blank"
                                                class="theme-btn btn-style-one bg-green">
                                                 {{ Translation::getValue('buy_on_amazon', $locale) }}
                                             </a>
-                                        @endif
+                                      
 
                                     </div>
 

@@ -207,10 +207,10 @@
                 {{-- 10. CTA BUTTON --}}
                 <div class="btn-box">
                     <a href="{{ 
-        optional(optional($package)->product)->id
+        optional(optional($package)->product)->slug
             ? route('product.detail', [
                 'locale'  => app()->getLocale(),
-                'product' => optional($package->product)->id
+                'product' => optional($package->product)->slug
             ])
             : '#'
     }}"
@@ -412,7 +412,7 @@
             <a
                 href="{{ route('product.detail', [
                 'locale'  => $locale,
-                'product' => $qualityEquipment->product->id
+                'product' => $qualityEquipment->product->slug
             ]) }}"
                 class="theme-btn btn-style-one large bg-purple">
                 {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
