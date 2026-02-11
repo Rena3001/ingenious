@@ -51,7 +51,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="menu-disabled">
-                                                    <a  href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
+                                                    <a href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('electrical_equipment', $locale) }}
                                                     </a>
                                                 </li>
@@ -153,9 +153,17 @@
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
                                             <ul>
-                                                <li><a href="{{ route('announcements', ['locale' => $locale]) }}">
+                                                <li>
+                                                    <a href="{{ route('news', ['locale' => $locale]) }}">
+                                                        {{ Translation::getValue('menu_newstitle', $locale) }}
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('announcements', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('menu_announcements', $locale) }}
-                                                    </a></li>
+                                                    </a>
+                                                </li>
 
 
                                             </ul>
