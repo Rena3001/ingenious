@@ -13,7 +13,8 @@ class Category extends Model
         'name_de',
         'name_es',
         'name_fr',
-        'name_zh'
+        'name_zh',
+        'is_active'
     ];
     public function products()
     {

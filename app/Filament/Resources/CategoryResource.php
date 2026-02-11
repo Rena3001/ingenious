@@ -20,7 +20,7 @@ class CategoryResource extends Resource
     protected static ?string $pluralModelLabel = 'Kateqoriyalar';
 
     public static function form(Form $form): Form
-    {
+    { 
         return $form->schema([
 
             Forms\Components\Tabs::make('LangTabs')->tabs([
@@ -62,6 +62,9 @@ class CategoryResource extends Resource
                     Forms\Components\TextInput::make('name_zh')
                         ->label('分类 (ZH)'),
                 ]),
+                Forms\Components\Toggle::make('is_active')
+    ->label('Active')
+    ->default(true),
 
 
             ])->columnSpanFull(),
@@ -83,6 +86,9 @@ class CategoryResource extends Resource
             Tables\Columns\TextColumn::make('created_at')
                 ->label('Tarix')
                 ->dateTime('d.m.Y'),
+                Tables\Columns\IconColumn::make('is_active')
+    ->boolean()
+    ->label('Active'),
         ]);
     }
 
