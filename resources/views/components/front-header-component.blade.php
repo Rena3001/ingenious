@@ -40,7 +40,7 @@
 
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('home.appliances', ['locale' => $locale]) }}">
+                                                    <a class="menu-disabled" href="{{ route('home.appliances', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('home_appliances', $locale) }}
                                                     </a>
                                                 </li>
@@ -51,13 +51,13 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
+                                                    <a class="menu-disabled" href="{{ route('electrical.equipment', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('electrical_equipment', $locale) }}
                                                     </a>
                                                 </li>
 
                                                 <li>
-                                                    <a href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
+                                                    <a class="menu-disabled" href="{{ route('consumer.electronics', ['locale' => $locale]) }}">
                                                         {{ Translation::getValue('consumer_electronics', $locale) }}
                                                     </a>
                                                 </li>
@@ -129,7 +129,7 @@
                                         <div class="column col-lg-12">
                                             <ul>
                                                 <li><a href="{{ route('about', ['locale' => $locale]) }}">
-                                                        {{ Translation::getValue('menu_about', $locale) }}
+                                                        {{ Translation::getValue('menu_bamooone', $locale) }}
                                                     </a></li>
 
                                                 <li><a href="{{ route('partnership', ['locale' => $locale]) }}">

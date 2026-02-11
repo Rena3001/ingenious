@@ -248,6 +248,10 @@ li {
     padding: 0px;
     margin: 0px;
 }
+.menu-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
 
 .fancybox-can-drag .fancybox-image-wrap {
     border: 10px solid #ffffff;
@@ -2923,16 +2927,16 @@ hr {
     box-shadow: 0px 7px 10px -1px rgba(0, 0, 0, 0.2);
 }
 .mega-menu-home {
-    left: 50% !important;
+    left: 52% !important;
 }
 .mega-menu-shop {
-    left: 60% !important;
+    left: 59.5% !important;
 }
 .mega-menu-about {
-    left: 70% !important;
+    left: 67% !important;
 }
 .mega-menu-news {
-    left: 80% !important;
+    left: 74% !important;
 }
 
 .main-menu .navigation > li:hover > .mega-menu {

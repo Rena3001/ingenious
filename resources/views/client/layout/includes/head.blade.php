@@ -93,7 +93,7 @@
     position: absolute;
     top: 0;
     left: 100%;
-    min-width: 260px;
+    min-width: 221px;
     background: #fff;
     padding: 8px 0;
     margin-left: 10px;
