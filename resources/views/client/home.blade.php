@@ -296,7 +296,7 @@ $icons = $services->icons ?? []; // artıq array-dir
 
                         <div class="image-box">
                             <figure class="image">
-                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
+                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}"
                                      target="_blank">
                                      <img src="{{ asset('storage/' . $product->image) }}"
                                     alt="{{ $product->getTranslation('name', $locale) }}">
@@ -308,14 +308,14 @@ $icons = $services->icons ?? []; // artıq array-dir
 
                         <div class="lower-content">
                             <h4>
-                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
+                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}"
                                     target="_blank">
                                     {{ $product->getTranslation('name', $locale) }}
                                 </a>
                             </h4>
 
                             <div class="cat">
-                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}">{{ $product->getTranslation('category_name', $locale) }}</a>
+                                <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}">{{ $product->getTranslation('category_name', $locale) }}</a>
                             </div>
 
                             <div class="text">
