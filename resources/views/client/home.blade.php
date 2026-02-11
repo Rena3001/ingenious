@@ -302,7 +302,7 @@ $icons = $services->icons ?? []; // artıq array-dir
 
                             <div class="overlay">
                                 <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->id]) }}"
-                                    class="lightbox-image" target="_blank">
+                                     target="_blank">
                                 </a>
                             </div>
                         </div>
