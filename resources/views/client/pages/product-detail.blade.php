@@ -110,7 +110,7 @@
                                     </div>
 
                                     {{-- META --}}
-                                    <ul class="product-meta mt-4">
+                                    <ul class="product-meta mt-4"> 
                                         <li>
                                             {{ Translation::getValue('product_category', $locale) }}:
                                             <a href="{{ route('products.byCategory', ['locale'=>$locale,'category'=>$product->category->id]) }}">
@@ -253,19 +253,38 @@
 
 
             <!-- ================= SIDEBAR ================= -->
-            <div class="sidebar-side col-lg-3 col-md-12 col-sm-12">
-                <aside class="sidebar">
-                    <h3>{{ Translation::getValue('categories_title', $locale) }}</h3>
-                    <ul class="categories-list">
-                        @foreach($categories as $category)
-                            <li>
-                                <a href="{{ route('products.byCategory',['locale'=>$locale,'category'=>$category->id]) }}">
-                                    {{ $category->getTranslation('name',$locale) }}
-                                    <span>({{ $category->products_count }})</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+          <div class="sidebar-side sticky-container col-lg-3 col-md-12 col-sm-12">
+                <aside class="sidebar theiaStickySidebar">
+                    <div class="sticky-sidebar">
+
+                        <!-- CATEGORIES -->
+                        <div class="sidebar-widget category-widget">
+                            <h3 class="widget-title">
+                                {{ Translation::getValue('categories_title', $locale) }}
+                            </h3>
+
+                            <ul class="categories-list">
+
+                                {{-- RESET --}}
+                                <li>
+                                    <a href="{{ route('products', ['locale' => $locale]) }}">
+                                        {{ Translation::getValue('all_products', $locale) }}
+                                    </a>
+                                </li>
+ 
+                                @foreach($categories as $category)
+                                <li>
+                                    <a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => $category->id]) }}">
+                                        {{ $category->getTranslation('name', $locale) }}
+                                        <span>({{ $category->products_count }})</span>
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+
+                    </div>
                 </aside>
             </div>
 

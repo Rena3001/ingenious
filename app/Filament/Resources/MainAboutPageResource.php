@@ -72,7 +72,7 @@ class MainAboutPageResource extends Resource
             MainAboutPageResource\RelationManagers\CeoMessageRelationManager::class,
         ];
     }
-
+ 
     public static function getPages(): array
     {
         return [
@@ -85,9 +85,27 @@ class MainAboutPageResource extends Resource
     protected static function langTab(string $label, string $locale)
     {
         return Forms\Components\Tabs\Tab::make($label)->schema([
-            Forms\Components\TextInput::make("title_$locale")->label("Title ($label)"),
-            Forms\Components\Textarea::make("subtitle_$locale")->label("Subtitle ($label)")->rows(2),
-            Forms\Components\Textarea::make("intro_$locale")->label("Intro ($label)")->rows(4),
+         Forms\Components\RichEditor::make("title_$locale")
+        ->label("Title ($label)")
+        ->columnSpanFull()
+        ->toolbarButtons([
+            'bold',
+            'italic',
+            'underline',
+        ]),
+
+    Forms\Components\RichEditor::make("subtitle_$locale")
+        ->label("Subtitle ($label)")
+        ->columnSpanFull()
+        ->toolbarButtons([
+            'bold',
+            'italic',
+            'underline',
+        ]),
+
+    Forms\Components\RichEditor::make("intro_$locale")
+        ->label("Intro ($label)")
+        ->columnSpanFull(),
         ]);
     }
 }

@@ -20,6 +20,10 @@ class CeoMessageRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('title_az')->label('Title'),
                 Tables\Columns\TextColumn::make('signature')->label('Signature'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public')
+                    ->label('Image')
+                    ->square(),
             ])
             ->headerActions([
                 CreateAction::make(),
@@ -31,7 +35,13 @@ class CeoMessageRelationManager extends RelationManager
     public function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
-
+            Forms\Components\FileUpload::make('image')
+                ->label('CEO Image')
+                ->disk('public')
+                ->directory('about/ceo')
+                ->image()
+                ->imageEditor()
+                ->maxSize(2048),
             Forms\Components\TextInput::make('signature')
                 ->label('Signature / CEO Name'),
 
@@ -50,8 +60,28 @@ class CeoMessageRelationManager extends RelationManager
     protected static function langTab(string $label, string $locale)
     {
         return Forms\Components\Tabs\Tab::make($label)->schema([
-            Forms\Components\TextInput::make("title_$locale")->label("Title ($label)"),
-            Forms\Components\Textarea::make("message_$locale")->label("Message ($label)")->rows(6),
+            Forms\Components\RichEditor::make("title_$locale")
+                ->label("Title ($label)")
+                ->columnSpanFull()
+                ->toolbarButtons([
+                    'bold',
+                    'italic',
+                    'underline',
+                ]),
+
+            Forms\Components\RichEditor::make("message_$locale")
+                ->label("Message ($label)")
+                ->columnSpanFull()
+                ->toolbarButtons([
+                    'bold',
+                    'italic',
+                    'underline',
+                    'strike',
+                    'bulletList',
+                    'orderedList',
+                    'link',
+                    'blockquote',
+                ]),
         ]);
     }
 

@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 @section('title', Translation::getValue('about_title', $locale))
@@ -38,15 +38,15 @@
         @if($about->galleries->count())
         <div class="gallery-images row mid-spacing">
             @foreach($about->galleries as $image)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <figure class="image">
-                        <a href="{{ asset('storage/'.$image->image) }}"
-                           class="lightbox-image"
-                           data-fancybox="about-gallery">
-                            <img src="{{ asset('storage/'.$image->image) }}" alt="">
-                        </a>
-                    </figure>
-                </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <figure class="image">
+                    <a href="{{ asset('storage/'.$image->image) }}"
+                        class="lightbox-image"
+                        data-fancybox="about-gallery">
+                        <img src="{{ asset('storage/'.$image->image) }}" alt="">
+                    </a>
+                </figure>
+            </div>
             @endforeach
         </div>
         @endif
@@ -56,26 +56,29 @@
         <div class="portfolio-single">
 
             @if($about->getTranslation('subtitle', $locale))
-                <h3>{{ $about->getTranslation('subtitle', $locale) }}</h3>
+            <h3>
+               {!! str_replace(['<p>', '</p>'], '', $about->getTranslation('subtitle', $locale)) !!}
+
+            </h3>
             @endif
 
             @if($about->getTranslation('intro', $locale))
-                <p>
-                    {!! nl2br(e($about->getTranslation('intro', $locale))) !!}
-                </p>
+            <div class="intro-text">
+                {!! $about->getTranslation('intro', $locale) !!}
+            </div>
             @endif
 
 
             <!-- CORE SECTIONS -->
             @foreach($about->sections as $section)
 
-                <h4 class="mt-4">
-                    {{ $section->getTranslation('title', $locale) }}
-                </h4>
+            <h4 class="mt-4">
+                {!! str_replace(['<p>', '</p>'], '', $section->getTranslation('title', $locale)) !!}
+            </h4>
 
-                <p>
-                    {!! nl2br(e($section->getTranslation('content', $locale))) !!}
-                </p>
+            <p>
+                {!! $section->getTranslation('content', $locale) !!}
+            </p>
 
             @endforeach
 
@@ -85,28 +88,38 @@
 <!-- END ABOUT CONTENT -->
 
 
-<!-- CEO MESSAGE --> 
+<!-- CEO MESSAGE -->
 @if($about->ceoMessage)
 <section class="about-ceo-message">
-    <div class="auto-container">
+    <div class="auto-container ceo-wrapper">
 
-        <h3>
-            {{ $about->ceoMessage->getTranslation('title', $locale) }}
+        @if($about->ceoMessage->image)
+        <div class="ceo-image">
+            <img src="{{ asset('storage/' . $about->ceoMessage->image) }}"
+                alt="CEO"
+                class="ceo-img">
+        </div>
+        @endif
+
+        <h3 style="margin-bottom:25px;">
+            {!! strip_tags($about->ceoMessage->getTranslation('title', $locale), '<strong><em>') !!}
         </h3>
 
         <p>
-            {!! nl2br(e($about->ceoMessage->getTranslation('message', $locale))) !!}
+            {!! $about->ceoMessage->getTranslation('message', $locale) !!}
+
         </p>
 
         @if($about->ceoMessage->signature)
-            <strong class="d-block mt-3">
-                {{ $about->ceoMessage->signature }}
-            </strong>
+        <strong class="d-block mt-3">
+            {{ $about->ceoMessage->signature }}
+        </strong>
         @endif
 
     </div>
 </section>
 @endif
+
 <!-- END CEO MESSAGE -->
 <!-- PRODUCTS -->
 @if($products->count())
@@ -117,41 +130,40 @@
 
             <div class="row">
                 @foreach($products as $product)
-                    <div class="portfolio-block-two col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image-box">
+                <div class="portfolio-block-two col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image-box">
 
-                                <figure class="image">
-                                    <img
-                                        src="{{ asset('storage/'.$product->image) }}"
-                                        alt="{{ $product->getTranslation('name', $locale) }}"
-                                    >
-                                </figure>
+                            <figure class="image">
+                                <img
+                                    src="{{ asset('storage/'.$product->image) }}"
+                                    alt="{{ $product->getTranslation('name', $locale) }}">
+                            </figure>
 
-                                <div class="overlay">
-                                    <a href="{{ route('product.detail', [
+                            <div class="overlay">
+                                <a href="{{ route('product.detail', [
                                         'locale' => $locale,
                                         'product' => $product->slug
                                     ]) }}">
-                                        <span class="icon fa fa-link"></span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            <div class="content-box text-center mt-3">
-                                <h5>
-                                    {{ $product->getTranslation('name', $locale) }}
-                                </h5>
-
-                                <span class="price">
-                                    {{ number_format($product->price, 2) }}
-                                    {{ $product->currency }}
-                                </span>
+                                    <span class="icon fa fa-link"></span>
+                                </a>
                             </div>
 
                         </div>
+
+                        <div class="content-box text-center mt-3">
+                            <h5>
+                                {{ $product->getTranslation('name', $locale) }}
+                            </h5>
+
+                            <span class="price">
+                                {{ number_format($product->price, 2) }}
+                                {{ $product->currency }}
+                            </span>
+                        </div>
+
                     </div>
+                </div>
                 @endforeach
             </div>
 

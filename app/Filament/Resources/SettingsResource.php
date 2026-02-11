@@ -26,6 +26,7 @@ class SettingsResource extends Resource
                 ->schema([
                     Forms\Components\TextInput::make('phone'),
                     Forms\Components\TextInput::make('email'),
+                    Forms\Components\TextInput::make('support_email'),
                     Forms\Components\TextInput::make('address'),
                     Forms\Components\Textarea::make('map_iframe'),
                 ]),
@@ -112,6 +113,7 @@ class SettingsResource extends Resource
     {
         return $table->columns([
             Tables\Columns\TextColumn::make('email'),
+            Tables\Columns\TextColumn::make('support_email'),
             Tables\Columns\TextColumn::make('phone'),
             Tables\Columns\TextColumn::make('address'),
             Tables\Columns\TextColumn::make('facebook')->label('Facebook'),

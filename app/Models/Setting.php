@@ -10,6 +10,7 @@ class Setting extends Model
         'address',
         'phone',
         'email',
+        'support_email',
         'map_iframe',
         // Contact titles
         'contact_title_az',

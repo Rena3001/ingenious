@@ -136,7 +136,7 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title_en')
+                Tables\Columns\TextColumn::make('title_az')
                     ->label('Title')
                     ->searchable()
                     ->limit(40),

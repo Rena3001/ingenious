@@ -165,7 +165,7 @@
                                         {{ Translation::getValue('all_products', $locale) }}
                                     </a>
                                 </li>
-
+ 
                                 @foreach($categories as $category)
                                 <li>
                                     <a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => $category->id]) }}">

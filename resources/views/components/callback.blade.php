@@ -53,7 +53,7 @@ $locale = app()->getLocale();
                                 <option value="company">{{ Translation::getValue('entity_company', $locale) }}</option>
                                 <option value="individual">{{ Translation::getValue('entity_individual', $locale) }}</option>
                                 <option value="legal_entity">{{ Translation::getValue('entity_legal_entity', $locale) }}</option>
-                            </select>
+                            </select> 
                             @error('entity_type')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror

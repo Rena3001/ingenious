@@ -37,7 +37,7 @@
             <ul class="filter-tabs filter-btns clearfix">
                 <li class="filter active" data-filter="all">
                     {{ Translation::getValue('all', $locale) }}
-                </li>
+                </li> 
                 <li class="filter" data-filter=".news">
                     {{ Translation::getValue('news_title', $locale) }}
                 </li>
@@ -57,7 +57,7 @@
                     <div class="inner-box">
 
                         <div class="image-box">
-                            <figure class="image">
+                            <figure class="image news-image">
                                 <img src="{{ asset('storage/'.$item->main_image) }}" alt="{{ $item->title }}">
                             </figure>
                             <div class="overlay">

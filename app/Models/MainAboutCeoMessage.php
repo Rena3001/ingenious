@@ -16,6 +16,7 @@ class MainAboutCeoMessage extends Model
         'message_es', 'message_fr', 'message_zh',
 
         'signature',
+        'image'
     ];
 
     public function page()
