@@ -35,11 +35,29 @@ $locale = app()->getLocale();
                             <div class="alert alert-danger">{{ session('error') }}</div>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label>{{ Translation::getValue('contact_request_type', $locale)}}</label>
 
+                            <select name="type" required>
+                                <option value="">{{ Translation::getValue('contact_select_option', $locale)}}</option>
+
+                                <option value="partnership">
+                                    {{ Translation::getValue('contact_partnership', $locale)}}
+                                </option>
+
+                                <option value="support">
+                                    {{ Translation::getValue('contact_support', $locale)}}
+                                </option>
+                            </select>
+
+                            @error('type')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                         {{-- Full Name --}}
                         <div class="form-group">
                             <label>{{ Translation::getValue('contact_name', $locale) }}</label>
-                            <input type="text" name="username" required> 
+                            <input type="text" name="username" required>
                             @error('username')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -48,12 +66,7 @@ $locale = app()->getLocale();
                         {{-- Entity Type --}}
                         <div class="form-group">
                             <label>{{ Translation::getValue('contact_entity_type', $locale) }}</label>
-                            <select name="entity_type" required>
-                                <option value="">{{ Translation::getValue('contact_select', $locale) }}</option>
-                                <option value="company">{{ Translation::getValue('entity_company', $locale) }}</option>
-                                <option value="individual">{{ Translation::getValue('entity_individual', $locale) }}</option>
-                                <option value="legal_entity">{{ Translation::getValue('entity_legal_entity', $locale) }}</option>
-                            </select> 
+                            <input type="text" name="entity_type">
                             @error('entity_type')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror

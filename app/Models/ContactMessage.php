@@ -10,10 +10,11 @@ class ContactMessage extends Model
     use HasFactory;
 
     protected $fillable = [
+        'type',
         'username',
         'email',
-        'message',
-        'entity_type',
         'phone',
+        'entity_type',
+        'message',
     ];
 }
