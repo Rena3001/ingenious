@@ -23,7 +23,7 @@ use App\Http\Controllers\SubscribeController;
 
 // Root redirect → default language
 Route::get('/', function () {
-    return redirect('/'. app()->getLocale());
+    return redirect('/' . app()->getLocale());
 });
 
 // LOCALE GROUP
@@ -77,20 +77,6 @@ Route::group([
     Route::get('/overview/{slug}', [OverviewController::class, 'show'])
         ->name('overview');
 
-
-
-
-
-
-    ///////TEZE///////////
-
-
-
-
-
-
-
-
     Route::get('/security-overview', [SecurityOverviewController::class, 'index'])
         ->name('security.overview');
 
@@ -119,10 +105,9 @@ Route::group([
 
     Route::get('/technical-services/warrantyandservices', [WarrantyController::class, 'index'])->name('warrantyandservices');
 
-    Route::get('/partnership',[AboutController::class,'show'])->name('partnership');
-    Route::get('/news',[NewsController::class,'index'])->name('news');
+    Route::get('/partnership', [AboutController::class, 'show'])->name('partnership');
+    Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'show'])
-    ->name('news-detail');
-    Route::get('/announcementsandcampaigns',[AnnouncementsController::class,'index'])->name('announcements');
-
+        ->name('news-detail');
+    Route::get('/announcementsandcampaigns', [AnnouncementsController::class, 'index'])->name('announcements');
 });
