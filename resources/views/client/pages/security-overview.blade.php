@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 @section('title', Translation::getValue('security_overview', $locale))
@@ -20,7 +20,7 @@
                     <!-- MAIN IMAGE -->
                     <img src="{{ asset('storage/' . $slider->image) }}" alt="" title="Interactive Security" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
- 
+
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption   tp-resizeme"
                         id="slide-10-layer-38"
@@ -64,7 +64,7 @@
                         id="slide-10-layer-33"
                         data-x="center" data-hoffset=""
                         data-y="center" data-voffset="200"
-                        data-width="['auto']"
+                        data-width="['800','700','90%','90%']"
                         data-height="['auto']"
                         data-type="text"
                         data-responsive_offset="on"
@@ -74,7 +74,8 @@
                         data-paddingright="[0,0,0,0]"
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
-                        style="z-index: 7; white-space: nowrap; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); font-family:Catamaran;">
+                        style="z-index: 7; white-space: normal;   word-break: break-word;
+    text-align:center; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); font-family:Catamaran;">
                         {!! nl2br($slider->getDescription($locale)) !!}
 
                     </div>
@@ -175,7 +176,7 @@
     style="background-image: url('{{ asset('storage/'.$package->background_image) }}');"
     @endif
     >
- 
+
     <div class="auto-container">
         <div class="row">
 
@@ -497,32 +498,32 @@ $installCta = optional($installationService)->cta_link ?? '#';
 </section>
 
 @php
-    $psBg = optional($productShowcase)->image
-        ? asset('storage/'.optional($productShowcase)->image)
-        : asset('assets/images/default/product-showcase-bg.jpg');
+$psBg = optional($productShowcase)->image
+? asset('storage/'.optional($productShowcase)->image)
+: asset('assets/images/default/product-showcase-bg.jpg');
 
-    $psTitle = $productShowcase->{'title_'.$locale}
-        ?? 'Why Customers Choose Our Solutions';
+$psTitle = $productShowcase->{'title_'.$locale}
+?? 'Why Customers Choose Our Solutions';
 
-    $psDesc = $productShowcase->{'description_'.$locale}
-        ?? 'Smart design, reliable technology, and proven performance for modern security needs.';
+$psDesc = $productShowcase->{'description_'.$locale}
+?? 'Smart design, reliable technology, and proven performance for modern security needs.';
 
-    $psButton = optional($productShowcase)->button_link ?? '#';
+$psButton = optional($productShowcase)->button_link ?? '#';
 
-    $icons = [
-        [
-            'img'  => optional($productShowcase)->icon_1,
-            'text' => $productShowcase->{'icon_1_text_'.$locale} ?? 'Smart Technology',
-        ],
-        [
-            'img'  => optional($productShowcase)->icon_2,
-            'text' => $productShowcase->{'icon_2_text_'.$locale} ?? 'Reliable Protection',
-        ],
-        [
-            'img'  => optional($productShowcase)->icon_3,
-            'text' => $productShowcase->{'icon_3_text_'.$locale} ?? 'Easy Integration',
-        ],
-    ];
+$icons = [
+[
+'img' => optional($productShowcase)->icon_1,
+'text' => $productShowcase->{'icon_1_text_'.$locale} ?? 'Smart Technology',
+],
+[
+'img' => optional($productShowcase)->icon_2,
+'text' => $productShowcase->{'icon_2_text_'.$locale} ?? 'Reliable Protection',
+],
+[
+'img' => optional($productShowcase)->icon_3,
+'text' => $productShowcase->{'icon_3_text_'.$locale} ?? 'Easy Integration',
+],
+];
 @endphp
 
 <section class="why-choose-us product-showcase">
@@ -530,7 +531,7 @@ $installCta = optional($installationService)->cta_link ?? '#';
     <!-- Background Layers -->
     <div class="background-layers">
         <div class="cws-image-bg style-six"
-             style="background-image: url('{{ $psBg }}');">
+            style="background-image: url('{{ $psBg }}');">
             <div class="cws-overlay-bg bg-gradient"></div>
         </div>
         <div class="cws-triangle-overlay bottom-right"></div>
@@ -552,24 +553,24 @@ $installCta = optional($installationService)->cta_link ?? '#';
                     <!-- ICON FEATURES -->
                     <div class="row pie-graphs">
                         @foreach($icons as $item)
-                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
-                                <div class="graph-outer icon-box">
-                                    <img
-                                        src="{{ $item['img']
+                        <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
+                            <div class="graph-outer icon-box">
+                                <img
+                                    src="{{ $item['img']
                                             ? asset('storage/'.$item['img'])
                                             : asset('assets/images/default/feature-icon.png') }}"
-                                        alt="{{ $item['text'] }}"
-                                        class="feature-icon">
-                                </div>
-                                <h4>{{ $item['text'] }}</h4>
+                                    alt="{{ $item['text'] }}"
+                                    class="feature-icon">
                             </div>
+                            <h4>{{ $item['text'] }}</h4>
+                        </div>
                         @endforeach
                     </div>
 
                     <!-- BUTTON -->
                     <div class="btn-box">
                         <a href="{{ $psButton }}"
-                           class="theme-btn btn-style-one large">
+                            class="theme-btn btn-style-one large">
                             {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
                         </a>
                     </div>
@@ -585,29 +586,29 @@ $installCta = optional($installationService)->cta_link ?? '#';
 
 
 @php
-    $appBg = optional($appProductSection)->image
-        ? asset('storage/'.optional($appProductSection)->image)
-        : asset('assets/images/default/app-bg.jpg');
+$appBg = optional($appProductSection)->image
+? asset('storage/'.optional($appProductSection)->image)
+: asset('assets/images/default/app-bg.jpg');
 
-    $appTitle = $appProductSection->{'title_'.$locale}
-        ?? 'Smart Mobile Application';
+$appTitle = $appProductSection->{'title_'.$locale}
+?? 'Smart Mobile Application';
 
-    $appDesc = $appProductSection->{'description_'.$locale}
-        ?? 'Manage your system easily with our modern and user-friendly mobile application.';
+$appDesc = $appProductSection->{'description_'.$locale}
+?? 'Manage your system easily with our modern and user-friendly mobile application.';
 
-    $appBtn = optional($appProductSection)->button_link ?? '#';
+$appBtn = optional($appProductSection)->button_link ?? '#';
 
-    $appIcons = [
-        optional($appProductSection)->icon_1 ?? 'fa fa-mobile',
-        optional($appProductSection)->icon_2 ?? 'fa fa-bell',
-        optional($appProductSection)->icon_3 ?? 'fa fa-lock',
-    ];
+$appIcons = [
+optional($appProductSection)->icon_1 ?? 'fa fa-mobile',
+optional($appProductSection)->icon_2 ?? 'fa fa-bell',
+optional($appProductSection)->icon_3 ?? 'fa fa-lock',
+];
 @endphp
 
 <!-- App Download -->
 <section class="app-download">
     <div class="cws-background-image"
-         style="background-image: url('{{ $appBg }}');"></div>
+        style="background-image: url('{{ $appBg }}');"></div>
 
     <div class="auto-container">
         <div class="row">
@@ -624,18 +625,18 @@ $installCta = optional($installationService)->cta_link ?? '#';
                         <!-- ICON FEATURES -->
                         <div class="row pie-graphs">
                             @foreach($appIcons as $icon)
-                                <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
-                                    <h3 class="m-0">
-                                        <span class="icon {{ $icon }}"></span>
-                                    </h3>
-                                </div>
+                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
+                                <h3 class="m-0">
+                                    <span class="icon {{ $icon }}"></span>
+                                </h3>
+                            </div>
                             @endforeach
                         </div>
 
                         <!-- BUTTON -->
                         <div class="btn-box">
                             <a href="{{ $appBtn }}"
-                               class="theme-btn btn-style-one large">
+                                class="theme-btn btn-style-one large">
                                 {{ Translation::getValue('go_to_product', $locale) ?? 'View Product' }}
                             </a>
                         </div>

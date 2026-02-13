@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 @section('title', Translation::getValue('technical_services', $locale))
@@ -41,7 +41,8 @@
                     <div class="tp-caption   tp-resizeme"
                         id="slide-7-layer-31"
                         data-x="center" data-hoffset=""
-                        data-y="center" data-voffset="-130"
+                   data-y="center"
+data-voffset="['-180','-250','-230','-190']"
                         data-width="['623']"
                         data-height="['auto']"
                         data-type="text"
@@ -60,18 +61,22 @@
                     <div class="tp-caption   tp-resizeme"
                         id="slide-7-layer-33"
                         data-x="center" data-hoffset=""
-                        data-y="center" data-voffset=""
-                        data-width="['auto']"
+                 data-y="center"
+data-voffset="['0','0','0','0']"
+
+
+                        data-width="['800','700','90%','90%']"
+
                         data-height="['auto']"
                         data-type="text"
                         data-responsive_offset="on"
                         data-frames='[{"delay":500,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"nothing"}]'
                         data-textAlign="['center','center','center','center']"
-                        data-paddingtop="[0,0,0,0]"
+                        data-paddingtop="[20px]"
                         data-paddingright="[0,0,0,0]"
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
-                        style="z-index: 7; white-space: nowrap; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); ;font-family:Catamaran;">
+                        style="z-index: 7; white-space: normal; font-size: 24px; line-height: 40px; font-weight: 400; color: rgba(255,255,255,1); ;font-family:Catamaran;">
                         {!!nl2br($slider->getDescription($locale))!!}</div>
 
                     <!-- LAYER NR. 4 -->
@@ -79,7 +84,10 @@
                         <div class="tp-caption rev-btn  tp-resizeme"
                             id="slide-7-layer-36"
                             data-x="center" data-hoffset=""
-                            data-y="center" data-voffset="100"
+                     data-y="center"
+data-voffset="['120','110','100','90']"
+
+
                             data-width="['auto']"
                             data-height="['auto']"
                             data-type="button"
@@ -639,11 +647,11 @@
     </div>
 
     <div class="auto-container">
-         <div class="sec-title text-center light">
+        <div class="sec-title text-center light">
             <h2>{{Translation::getValue('support_resources_title', $locale)}}</h2>
         </div>
         <div class="row clearfix">
-           
+
 
 
             <!-- Column 1 -->
@@ -876,7 +884,7 @@
 
                         <div class="btn-box">
                             <a href="#technical-support"
-                               class="theme-btn btn-style-one {{ $package->is_featured ? 'bg-purple' : 'bg-caribbean' }}">
+                                class="theme-btn btn-style-one {{ $package->is_featured ? 'bg-purple' : 'bg-caribbean' }}">
                                 {{ \App\Models\Translation::getValue('activate', $locale) }}
                             </a>
                         </div>
@@ -895,7 +903,7 @@
 
 
 
-    <!-- Callback Section -->
+<!-- Callback Section -->
 @include('components.callback')
 <!--End Reservation Section -->
 

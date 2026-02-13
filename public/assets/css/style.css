@@ -5210,7 +5210,7 @@ hr {
 
 .security-features {
     position: relative;
-    padding: 65px 0 120px;
+    padding: 65px 20px 120px;
     margin-top: -120px;
     z-index: 1;
 }
@@ -5334,7 +5334,7 @@ hr {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding: 180px 0 0;
+    padding: 180px 27px 0;
     margin-top: -120px;
 }
 
@@ -5391,7 +5391,7 @@ hr {
 
 .realtime-response {
     position: relative;
-    padding: 125px 0 150px;
+    padding: 125px 40px 150px;
     margin-top: -65px;
 }
 
@@ -6048,7 +6048,7 @@ hr {
 
 .features-section-five {
     position: relative;
-    padding: 160px 0;
+    padding: 160px 26px;
     margin-top: -60px;
     z-index: 1;
 }
@@ -6249,7 +6249,7 @@ hr {
 
 .installation-service {
     position: relative;
-    padding: 175px 0 150px;
+    padding: 175px 20px 150px;
     margin-top: -75px;
 }
 
@@ -6762,7 +6762,7 @@ hr {
 
 .why-choose-us {
     position: relative;
-    padding: 150px 0 175px;
+    padding: 150px 20px 175px;
     margin-top: -122px;
 }
 
@@ -7117,7 +7117,7 @@ hr {
 .app-download {
     position: relative;
     margin-top: 45px;
-    padding: 75px 0 100px;
+    padding: 75px 20px 100px;
 }
 
 .app-download .sec-title {
@@ -7724,7 +7724,7 @@ hr {
 
 .projects-section {
     position: relative;
-    padding: 180px 0 110px;
+    padding: 180px 30px 110px;
     margin-top: -120px;
 }
 
@@ -7957,7 +7957,9 @@ hr {
     font-size: 16px;
     opacity: 0.8;
 }
-
+.about-ceo-message{
+        padding: 0 20px;
+}
 /*** 
 
 ====================================================================
@@ -7971,7 +7973,7 @@ hr {
 }
 .portfolio-single-section {
     position: relative;
-    padding: 90px 0 30px;
+    padding: 90px 17px 30px;
     margin-top: -60px;
 }
 
@@ -8259,6 +8261,7 @@ hr {
 
 .related-projects {
     position: relative;
+        padding: 0 20px;
 }
 
 .related-projects .outer-box {
@@ -8423,7 +8426,7 @@ hr {
 
 .services-section-two {
     position: relative;
-    padding: 180px 0;
+    padding: 180px 20px;
     margin-top: -120px;
 }
 
@@ -9053,7 +9056,7 @@ hr {
 
 .process-section-two {
     position: relative;
-    padding: 180px 0 160px;
+    padding: 180px 20px 160px;
     z-index: 0;
 }
 
@@ -9936,10 +9939,11 @@ hr {
 
 .our-shop {
     position: relative;
+    padding: 20px;
 }
 
 .our-shop.alternate {
-    padding: 70px 0 40px;
+    padding: 70px 7px 40px;
 }
 .our-shop .image-box img {
     width: 100%;
@@ -10290,7 +10294,7 @@ hr {
 
 .call-to-action-three {
     position: relative;
-    padding: 200px 0;
+    padding: 200px 15px;
     text-align: center;
     margin-top: -120px;
 }
@@ -11385,7 +11389,9 @@ hr {
 .blog-list.large-images .news-block {
     margin-bottom: 50px;
 }
-
+.features-section-six{
+    padding: 0 20px; 
+}
 /***
 
 ==================================================================
@@ -11396,7 +11402,7 @@ hr {
 
 .blog-single {
     position: relative;
-    padding: 120px 0 40px;
+    padding: 120px 28px 40px;
     margin-top: -90px;
     overflow: hidden;
 }
@@ -11991,7 +11997,7 @@ hr {
 
 .sidebar-page-container {
     position: relative;
-    padding: 120px 0 40px;
+    padding: 120px 16px 40px;
     margin-top: -90px;
     overflow: hidden;
 }
@@ -12000,7 +12006,11 @@ hr {
 .sidebar-page-container .content-side {
     position: relative;
     margin-bottom: 50px;
-    padding-right: 40px;
+
+    /* padding-right: 40px; */
+}
+.content-side .partnership{
+    padding: 0 13px;
 }
 
 .sidebar-page-container .sidebar {

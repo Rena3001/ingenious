@@ -34,7 +34,7 @@
         <div class="row clearfix">
 
             <!-- Content Side -->
-            <div class="content-side col-lg-8 col-md-12 col-sm-12">
+            <div class="content-side col-lg-8 col-md-12 col-sm-12 partnership">
                 <div class="portfolio-single-images">
 
                     @foreach([1,2,3] as $i)

@@ -199,12 +199,15 @@
     /*=== End Mega Menu Style ===*/
 
     .about-section {
-        padding: 210px 0;
+        padding: 210px 20px;
         text-align: center;
     }
 
     .sec-title .text br {
         display: none;
+    }
+    .how-to-use {
+        padding: 180px 30px;
     }
 
     .how-to-use .content-column .sec-title .text,
@@ -218,6 +221,7 @@
     }
 
     .callback-section {
+        padding: 0 20px;
         padding-bottom: 80px;
     }
 
@@ -226,6 +230,10 @@
         flex-direction: column;
     }
 
+    .slide-item {
+        display: flex;
+        justify-content: center;
+    }
     .pie-graphs > div,
     .services-icons > div {
         -ms-flex: 0 0 100%;
@@ -408,7 +416,7 @@
     }
 
     .pricing-section {
-        padding: 200px 0 150px;
+        padding: 200px 10px 150px;
     }
 
     .call-to-action-three h2 {
@@ -596,7 +604,7 @@
     }
 
     .security-package {
-        padding-bottom: 0;
+        padding-bottom: 100px;
     }
 
     .security-package .content-column {
