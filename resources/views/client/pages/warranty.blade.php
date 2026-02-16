@@ -53,7 +53,7 @@
                         data-paddingright="[0,0,0,0]"
                         data-paddingbottom="[0,0,0,0]"
                         data-paddingleft="[0,0,0,0]"
-                        style="z-index: 6; min-width: 904px; max-width: 904px; max-width: 73px; max-width: 73px; white-space: normal; font-size: 72px; line-height: 72px; font-weight: 800; color: rgba(255,255,255,1);font-family:Catamaran;text-transform:uppercase;">
+                        style="z-index: 6; min-width: 904px; max-width: 904px; max-width: 73px; max-width: 73px; white-space: normal; font-size: 72px; line-height: 72px; font-weight: 800; color: rgba(255,255,255,1);font-family:Catamaran;">
                         {{ $slide->{'title_' . $locale} }}
                     </div>
 

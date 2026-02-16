@@ -94,7 +94,7 @@
                         @endif
 
                         @foreach($products as $product)
-                        <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                        <div class="shop-item col-lg-4 col-md-6 col-sm-12">
                             <div class="inner-box">
 
                                 <!-- IMAGE -->
