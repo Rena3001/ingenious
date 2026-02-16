@@ -7831,9 +7831,19 @@ hr {
     position: relative;
     margin-bottom: 0;
 }
+.techical-image {
+    width: 462px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .project-block img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .project-block .overlay a,
@@ -7957,8 +7967,8 @@ hr {
     font-size: 16px;
     opacity: 0.8;
 }
-.about-ceo-message{
-        padding: 0 20px;
+.about-ceo-message {
+    padding: 0 20px;
 }
 /*** 
 
@@ -8261,7 +8271,7 @@ hr {
 
 .related-projects {
     position: relative;
-        padding: 0 20px;
+    padding: 0 20px;
 }
 
 .related-projects .outer-box {
@@ -11389,8 +11399,8 @@ hr {
 .blog-list.large-images .news-block {
     margin-bottom: 50px;
 }
-.features-section-six{
-    padding: 0 20px; 
+.features-section-six {
+    padding: 0 20px;
 }
 /***
 
@@ -11406,7 +11416,7 @@ hr {
     margin-top: -90px;
     overflow: hidden;
 }
-.blog-single-content{
+.blog-single-content {
     display: flex;
     flex-direction: column;
     gap: 19px;
@@ -12009,7 +12019,7 @@ hr {
 
     /* padding-right: 40px; */
 }
-.content-side .partnership{
+.content-side .partnership {
     padding: 0 13px;
 }
 

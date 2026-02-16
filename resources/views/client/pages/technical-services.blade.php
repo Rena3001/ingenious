@@ -463,7 +463,7 @@ data-voffset="['120','110','100','90']"
                     <div class="project-block col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="image-box">
-                                <figure class="image">
+                                <figure class="image techical-image">
                                     <img src="{{ asset('storage/' . $item->image) }}"
                                         alt="{{ $item->getTitle() }}">
                                 </figure>
