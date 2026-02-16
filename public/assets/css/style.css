@@ -3018,7 +3018,9 @@ hr {
     line-height: 16px;
     color: #1b5e8a;
 }
-
+.main-menu .navigation > li .mega-menu-bar .column > ul > .tech-dropdown > a:before{
+    top: 57%;
+}
 .main-menu .navigation > li .mega-menu-bar .column > ul > li > a:after {
     background-color: #1b5e8a;
     content: "";
