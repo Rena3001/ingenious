@@ -871,7 +871,7 @@ $locale = app()->getLocale();
 
                             @if($package->icon)
                             <div class="icon-box package-div">
-                                <img src="{{asset('/storage' . $package->icon )}}" alt="">
+                                <img src="{{asset('/storage/' . $package->icon )}}" alt="">
                             </div>
                             @endif
                         </div>
