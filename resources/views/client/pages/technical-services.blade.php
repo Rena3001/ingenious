@@ -903,9 +903,7 @@ $locale = app()->getLocale();
 
 
 
-<!-- Callback Section -->
-<!-- @include('components.callback') -->
-<!--End Reservation Section -->
+
 
 <!--Clients Section-->
 @include('components.client')
