@@ -47,13 +47,23 @@ class ProductShowcaseResource extends Resource
                             self::langTab('zh', '中文'),
                         ]),
                 ]),
-
             Forms\Components\Section::make('İkonlar')
                 ->schema([
-                    Forms\Components\FileUpload::make('icon_1')->label('İkon 1')->directory('icons'),
-                    Forms\Components\FileUpload::make('icon_2')->label('İkon 2')->directory('icons'),
-                    Forms\Components\FileUpload::make('icon_3')->label('İkon 3')->directory('icons'),
-                ])->columns(3),
+
+                    Forms\Components\TextInput::make('icon_1')
+                        ->label('İkon 1')
+                        ->placeholder('flaticon-shield / fa fa-lock'),
+
+                    Forms\Components\TextInput::make('icon_2')
+                        ->label('İkon 2')
+                        ->placeholder('flaticon-user / fa fa-key'),
+
+                    Forms\Components\TextInput::make('icon_3')
+                        ->label('İkon 3')
+                        ->placeholder('flaticon-security / fa fa-cog'),
+
+                ])
+                ->columns(3),
 
             Forms\Components\Section::make('Button')
                 ->schema([

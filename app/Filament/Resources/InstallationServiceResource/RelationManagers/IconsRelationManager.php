@@ -18,7 +18,7 @@ class IconsRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        return $form->schema([
+        return $form->schema([ 
 
             TextInput::make('icon')
                 ->label('Icon class')

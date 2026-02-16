@@ -31,7 +31,7 @@ class InstallationServiceResource extends Resource
             FileUpload::make('background_image')
                 ->directory('installation-service')
                 ->image()
-                ->label('Background (20)'),
+                ->label('Background (20)'), 
 
             Tabs::make('Content')->tabs([
 

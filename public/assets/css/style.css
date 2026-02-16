@@ -1511,6 +1511,7 @@ hr.thick {
 .pie-graph {
     position: relative;
     margin-bottom: 40px;
+    padding: 0;
 }
 
 .pie-graph .graph-outer {
@@ -4644,8 +4645,8 @@ hr {
     color: #363636;
     font-weight: 800;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .sec-title h3 {
@@ -4668,6 +4669,7 @@ hr {
 .sec-title .text {
     position: relative;
     margin-top: 24px;
+    margin-bottom: 32px;
 }
 
 .sec-title .divider {

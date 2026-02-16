@@ -626,6 +626,14 @@
 }
 .flaticon-shield:before {
     content: "\f1c6";
+
+}
+.graph-outer .icon{
+    font-size: 70px;
+    color: white;
+}
+.graph-outer .icon-black{
+    color: black;
 }
 .flaticon-safety-belt:before {
     content: "\f1c7";
