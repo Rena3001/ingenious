@@ -555,12 +555,8 @@ $icons = [
                         @foreach($icons as $item)
                         <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
                             <div class="graph-outer icon-box">
-                                <img
-                                    src="{{ $item['img']
-                                            ? asset('storage/'.$item['img'])
-                                            : asset('assets/images/default/feature-icon.png') }}"
-                                    alt="{{ $item['text'] }}"
-                                    class="feature-icon">
+                            <span class="icon {{ $item['img'] ?? 'fa fa-tools' }}"></span>
+                                
                             </div>
                             <h4>{{ $item['text'] }}</h4>
                         </div>
@@ -625,11 +621,12 @@ optional($appProductSection)->icon_3 ?? 'fa fa-lock',
                         <!-- ICON FEATURES -->
                         <div class="row pie-graphs">
                             @foreach($appIcons as $icon)
-                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12 text-center">
-                                <h3 class="m-0">
-                                    <span class="icon {{ $icon }}"></span>
-                                </h3>
+                            <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
+                            <div class="graph-outer icon-box">
+                            <span class="icon icon-black {{ $icon ?? 'fa fa-tools' }}"></span>
+                                
                             </div>
+                        </div>
                             @endforeach
                         </div>
 
