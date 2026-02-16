@@ -468,7 +468,7 @@ $locale = app()->getLocale();
                                         alt="{{ $item->getTitle() }}">
                                 </figure>
                                 <div class="overlay">
-                                    <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}" target="_blank">
+                                    <a href="" target="_blank">
                                         <span class="icon fa fa-reply"></span>
                                     </a>
                                 </div>
@@ -476,7 +476,7 @@ $locale = app()->getLocale();
 
                             <div class="lower-content">
                                 <h4>
-                                    <a href="{{ route('product.detail', ['locale' => $locale, 'product' => $product->slug]) }}" target="_blank">
+                                    <a href="" target="_blank">
                                         {{ $item->getTitle() }}
                                     </a>
                                 </h4>
