@@ -4648,6 +4648,12 @@ hr {
     justify-content: center;
     align-items: center;
 }
+.install-title h2{
+    justify-content: start;
+}
+.ps-title h2{
+    justify-content: end;
+}
 
 .sec-title h3 {
     position: relative;

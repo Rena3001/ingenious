@@ -459,7 +459,7 @@ $installCta = optional($installationService)->cta_link ?? '#';
                 <div class="inner-column">
 
                     <!-- Title -->
-                    <div class="sec-title light">
+                    <div class="sec-title light install-title">
                         <h2>{{ $installTitle }}</h2>
                         <div class="text">{{ $installDesc }}</div>
                     </div>
@@ -545,7 +545,7 @@ $icons = [
                 <div class="inner-column">
 
                     <!-- Title -->
-                    <div class="sec-title light">
+                    <div class="sec-title light ps-title">
                         <h2>{{ $psTitle }}</h2>
                         <div class="text">{{ $psDesc }}</div>
                     </div>
@@ -610,7 +610,7 @@ optional($appProductSection)->icon_3 ?? 'fa fa-lock',
         <div class="row">
             <div class="content-column col-lg-6 offset-6 col-md-6 col-sm-12">
                 <div class="inner-column">
-                    <div class="sec-title">
+                    <div class="sec-title install-title">
 
                         <!-- Title -->
                         <h2>{{ $appTitle }}</h2>
