@@ -10523,6 +10523,20 @@ hr {
     justify-content: center;
     align-items: center;
 }
+.package-div{
+    width: 92px;
+    height: 92px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.package-div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .pricing-block .pricing_plan_price .icon-box .icon {
     position: relative;

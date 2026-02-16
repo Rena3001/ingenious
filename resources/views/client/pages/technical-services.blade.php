@@ -870,8 +870,8 @@ $locale = app()->getLocale();
                             </h4>
 
                             @if($package->icon)
-                            <div class="icon-box">
-                                <span class="icon {{ $package->icon }}"></span>
+                            <div class="icon-box package-div">
+                                <img src="{{asset('/storage' . $package->icon )}}" alt="">
                             </div>
                             @endif
                         </div>

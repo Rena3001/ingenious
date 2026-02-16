@@ -32,10 +32,15 @@ class ServicePackageResource extends Resource
                 ->numeric(),
 
             Forms\Components\TextInput::make('price_unit')
-                ->default('hr'),
+                ->default('hr'), 
 
-            Forms\Components\TextInput::make('icon')
-                ->placeholder('icon-class'),
+            Forms\Components\FileUpload::make('icon')
+    ->label('İkon şəkli')
+    ->image()
+    ->directory('icons')
+    ->imagePreviewHeight('120')
+    ->required(),
+
 
             Forms\Components\Toggle::make('is_featured')
                 ->label('Highlight (Middle Card)'),
