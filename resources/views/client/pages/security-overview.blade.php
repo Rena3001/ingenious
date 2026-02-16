@@ -348,11 +348,11 @@ $locale = app()->getLocale();
 
                 <!-- 16 CTA Button -->
                 <div class="btn-box">
-                    <a href="{{ 
-        optional($highlight)->product_id
+                  <a href="{{ 
+        optional(optional($package)->product)->slug
             ? route('product.detail', [
                 'locale'  => app()->getLocale(),
-                'product' => $highlight->product_id
+                'product' => optional($package->product)->slug
             ])
             : '#'
     }}"
