@@ -41,8 +41,8 @@ $locale = app()->getLocale();
                     <div class="tp-caption   tp-resizeme"
                         id="slide-7-layer-31"
                         data-x="center" data-hoffset=""
-                   data-y="center"
-data-voffset="['-180','-250','-230','-190']"
+                        data-y="center"
+                        data-voffset="['-180','-250','-230','-190']"
                         data-width="['623']"
                         data-height="['auto']"
                         data-type="text"
@@ -61,8 +61,8 @@ data-voffset="['-180','-250','-230','-190']"
                     <div class="tp-caption   tp-resizeme"
                         id="slide-7-layer-33"
                         data-x="center" data-hoffset=""
-                 data-y="center"
-data-voffset="['0','0','0','0']"
+                        data-y="center"
+                        data-voffset="['0','0','0','0']"
 
 
                         data-width="['800','700','90%','90%']"
@@ -84,8 +84,8 @@ data-voffset="['0','0','0','0']"
                         <div class="tp-caption rev-btn  tp-resizeme"
                             id="slide-7-layer-36"
                             data-x="center" data-hoffset=""
-                     data-y="center"
-data-voffset="['120','110','100','90']"
+                            data-y="center"
+                            data-voffset="['120','110','100','90']"
 
 
                             data-width="['auto']"
@@ -904,7 +904,7 @@ data-voffset="['120','110','100','90']"
 
 
 <!-- Callback Section -->
-@include('components.callback')
+<!-- @include('components.callback') -->
 <!--End Reservation Section -->
 
 <!--Clients Section-->
