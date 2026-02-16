@@ -4645,8 +4645,8 @@ hr {
     color: #363636;
     font-weight: 800;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 .sec-title h3 {
