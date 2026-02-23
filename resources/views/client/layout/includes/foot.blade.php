@@ -72,4 +72,25 @@ document.addEventListener('DOMContentLoaded', function () {
         list.classList.remove('show');
     });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const thumbs = document.querySelectorAll('.product-thumb');
+    const mainImage = document.getElementById('mainImage');
+    const mainLink = document.getElementById('mainImageLink');
+
+    thumbs.forEach(function(thumb){
+        thumb.addEventListener('click', function(){
+
+            const newSrc = this.getAttribute('data-image');
+
+            mainImage.src = newSrc;
+            mainLink.href = newSrc;
+
+        });
+    });
+
+});
 </script>

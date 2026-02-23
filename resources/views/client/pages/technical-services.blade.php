@@ -691,7 +691,7 @@ $locale = app()->getLocale();
 
 
 <!-- Our Shop -->
-<section class="our-shop alternate">
+<!-- <section class="our-shop alternate">
     <div class="auto-container">
 
         {{-- SECTION TITLE --}}
@@ -756,7 +756,7 @@ $locale = app()->getLocale();
         </div>
 
     </div>
-</section>
+</section> -->
 <!-- End Our Shop -->
 
 

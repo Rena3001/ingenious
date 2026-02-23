@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @php
-    use App\Models\Translation;
-    $locale = app()->getLocale();
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 @section('title', Translation::getValue('product_detail', $locale))
@@ -33,7 +33,7 @@
             </li>
             <li>{{ $product->getTranslation('name', $locale) }}</li>
         </ul>
-    </div> 
+    </div>
 </section>
 
 <!-- Sidebar Page Container -->
@@ -55,23 +55,26 @@
                                     <div class="product-gallery">
 
                                         {{-- Main image --}}
-                                        <figure class="image mb-3">
-                                            <a href="{{ asset('storage/'.$product->image) }}" class="lightbox-image">
-                                                <img src="{{ asset('storage/'.$product->image) }}" alt="">
+                                        <figure class="image mb-3 product_image-path">
+                                            <a id="mainImageLink" href="{{ asset('storage/'.$product->image) }}" class="lightbox-image">
+                                                <img id="mainImage" src="{{ asset('storage/'.$product->image) }}" alt="">
                                             </a>
                                         </figure>
 
                                         {{-- Extra images (max 9 total recommended) --}}
                                         @if($product->images && $product->images->count())
-                                            <div class="row clearfix">
-                                                @foreach($product->images as $img)
-                                                    <div class="col-4 mb-2">
-                                                        <a href="{{ asset('storage/'.$img->path) }}" class="lightbox-image">
-                                                            <img src="{{ asset('storage/'.$img->path) }}" class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                @endforeach
+                                        <div class="row clearfix">
+                                            @foreach($product->images as $img)
+                                            <div class="col-4 mb-2">
+                                                <img
+                                                    src="{{ asset('storage/'.$img->path) }}"
+                                                    class="img-fluid product-thumb"
+                                                    data-image="{{ asset('storage/'.$img->path) }}"
+                                                    alt=""
+                                                    style="cursor:pointer;">
                                             </div>
+                                            @endforeach
+                                        </div>
                                         @endif
 
                                     </div>
@@ -99,18 +102,18 @@
                                         </div>
 
                                         {{-- AMAZON CTA --}}
-                                      
-                                            <a href="{{ $product->amazon_link }}"
-                                               target="_blank"
-                                               class="theme-btn btn-style-one bg-green">
-                                                {{ Translation::getValue('buy_on_amazon', $locale) }}
-                                            </a>
-                                      
+
+                                        <a href="{{ $product->amazon_link }}"
+                                            target="_blank"
+                                            class="theme-btn btn-style-one bg-green">
+                                            {{ Translation::getValue('buy_on_amazon', $locale) }}
+                                        </a>
+
 
                                     </div>
 
                                     {{-- META --}}
-                                    <ul class="product-meta mt-4"> 
+                                    <ul class="product-meta mt-4">
                                         <li>
                                             {{ Translation::getValue('product_category', $locale) }}:
                                             <a href="{{ route('products.byCategory', ['locale'=>$locale,'category'=>$product->category->id]) }}">
@@ -153,12 +156,12 @@
 
                                         {{-- A+ CONTENT (optional images) --}}
                                         @if($product->aPlusContents && $product->aPlusContents->count())
-                                            @foreach($product->aPlusContents as $content)
-                                                <div class="a-plus-block mt-4">
-                                                    <img src="{{ asset('storage/'.$content->image) }}" class="img-fluid mb-2">
-                                                    <p>{{ $content->getTranslation('text', $locale) }}</p>
-                                                </div>
-                                            @endforeach
+                                        @foreach($product->aPlusContents as $content)
+                                        <div class="a-plus-block mt-4">
+                                            <img src="{{ asset('storage/'.$content->image) }}" class="img-fluid mb-2">
+                                            <p>{{ $content->getTranslation('text', $locale) }}</p>
+                                        </div>
+                                        @endforeach
                                         @endif
                                     </div>
 
@@ -168,14 +171,14 @@
 
                                         <table class="table table-bordered">
                                             @forelse($product->specs as $spec)
-                                                <tr>
-                                                    <th>{{ $spec->key }}</th>
-                                                    <td>{{ $spec->value }}</td>
-                                                </tr>
+                                            <tr>
+                                                <th>{{ $spec->key }}</th>
+                                                <td>{{ $spec->value }}</td>
+                                            </tr>
                                             @empty
-                                                <tr>
-                                                    <td colspan="2">No specifications available.</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="2">No specifications available.</td>
+                                            </tr>
                                             @endforelse
                                         </table>
                                     </div>
@@ -189,20 +192,20 @@
 
                                         <div class="comments-area">
                                             @forelse($product->reviews as $review)
-                                                <div class="comment-box">
-                                                    <strong>{{ $review->name }}</strong>
-                                                    <span class="date">{{ $review->created_at->format('M d, Y') }}</span>
-                                                    <p>{{ $review->message }}</p>
-                                                </div>
+                                            <div class="comment-box">
+                                                <strong>{{ $review->name }}</strong>
+                                                <span class="date">{{ $review->created_at->format('M d, Y') }}</span>
+                                                <p>{{ $review->message }}</p>
+                                            </div>
                                             @empty
-                                                <p>No reviews yet.</p>
+                                            <p>No reviews yet.</p>
                                             @endforelse
                                         </div>
 
                                         {{-- REVIEW FORM --}}
                                         <div class="comment-form default-form mt-4">
                                             <form method="POST"
-                                                  action="{{ route('product.storeReview',['locale'=>$locale,'product'=>$product->id]) }}">
+                                                action="{{ route('product.storeReview',['locale'=>$locale,'product'=>$product->id]) }}">
                                                 @csrf
 
                                                 <textarea name="message" required></textarea>
@@ -230,17 +233,17 @@
 
                             <div class="row">
                                 @foreach($related as $item)
-                                    <div class="shop-item col-lg-3 col-md-6 col-sm-12">
-                                        <div class="inner-box">
-                                            <figure class="image">
-                                                <a href="{{ route('product.detail',['locale'=>$locale,'product'=>$item->id]) }}">
-                                                    <img src="{{ asset('storage/'.$item->image) }}">
-                                                </a>
-                                            </figure>
-                                            <h4 class="name">{{ $item->getTranslation('name',$locale) }}</h4>
-                                            <div class="price">${{ $item->amazon_price ?? $item->price }}</div>
-                                        </div>
+                                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                                    <div class="inner-box">
+                                        <figure class="image">
+                                            <a href="{{ route('product.detail',['locale'=>$locale,'product'=>$item->id]) }}">
+                                                <img src="{{ asset('storage/'.$item->image) }}">
+                                            </a>
+                                        </figure>
+                                        <h4 class="name">{{ $item->getTranslation('name',$locale) }}</h4>
+                                        <div class="price">${{ $item->amazon_price ?? $item->price }}</div>
                                     </div>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -253,7 +256,7 @@
 
 
             <!-- ================= SIDEBAR ================= -->
-          <div class="sidebar-side sticky-container col-lg-3 col-md-12 col-sm-12">
+            <div class="sidebar-side sticky-container col-lg-3 col-md-12 col-sm-12">
                 <aside class="sidebar theiaStickySidebar">
                     <div class="sticky-sidebar">
 
@@ -271,7 +274,7 @@
                                         {{ Translation::getValue('all_products', $locale) }}
                                     </a>
                                 </li>
- 
+
                                 @foreach($categories as $category)
                                 <li>
                                     <a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => $category->id]) }}">
