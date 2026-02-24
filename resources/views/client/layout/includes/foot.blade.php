@@ -29,6 +29,7 @@
 <script src="{{asset('assets/js/select2.min.js')}}"></script>
 <script src="{{asset('assets/js/sticky_sidebar.min.js')}}"></script>
 <script src="{{asset('assets/js/script.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     function changeLang(lang) {
         let current = window.location.pathname; // /az/about   or   /en/products/3
@@ -92,5 +93,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+});
+
+
+new Swiper('.product-slider', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 4 }
+    }
 });
 </script>

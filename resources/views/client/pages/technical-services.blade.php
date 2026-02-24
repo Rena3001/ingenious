@@ -715,39 +715,37 @@ $locale = app()->getLocale();
         </div>
 
         {{-- PRODUCTS GRID --}}
-        <div class="row products-grid">
+        <div class="swiper product-slider">
+            <div class="swiper-wrapper">
 
-            @foreach($products as $product)
-            <div class="shop-item col-lg-3 col-md-6 col-sm-12"
-                data-category="{{ $product->category_id }}">
+                @foreach($products as $product)
+                <div class="swiper-slide">
 
-                <div class="inner-box">
+                    <div class="shop-item">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <a href="{{ $product->amazon_link }}" target="_blank">
+                                    <img src="{{ asset('storage/'.$product->image) }}">
+                                </a>
+                            </div>
 
-                    <div class="image-box">
-                        <a href="{{ $product->amazon_link }}" target="_blank">
-                            <img
-                                src="{{ asset('storage/'.$product->image) }}"
-                                alt="{{ $product->{'name_'.$locale} ?? $product->name_az }}"
-                                loading="lazy">
-                        </a>
-                    </div>
-
-                    <div class="lower-content">
-                        <h4 class="name">
-                            {{ $product->{'name_'.$locale} ?? $product->name_az }}
-                        </h4>
-
-                        <div class="price">
-                            ${{ number_format($product->price, 2) }}
+                            <div class="lower-content text-center">
+                                <h4>{{ $product->{'name_'.$locale} ?? $product->name_az }}</h4>
+                                <div class="price">
+                                    ${{ number_format($product->price, 2) }}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+                @endforeach
+
             </div>
-            @endforeach
 
+            <div class="swiper-button-prev" style="color: black;"></div>
+            <div class="swiper-button-next" style="color: black;"></div>
         </div>
-
     </div>
 </section>
 <!-- End Our Shop -->
