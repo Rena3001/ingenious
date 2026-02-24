@@ -415,9 +415,9 @@ $locale = app()->getLocale();
 
 @if($productVideoSection)
 <!-- Projects Section -->
-<section class="projects-section">
+<!-- <section class="projects-section">
 
-    <!-- Background Layers -->
+    
     <div class="background-layers">
         <div class="cws-image-bg" style="background-image: url({{ asset('storage/' . $productVideoSection->background_image) }});">
             <div class="cws-overlay-bg"></div>
@@ -425,7 +425,6 @@ $locale = app()->getLocale();
         <div class="cws-triangle-overlay bottom-left"></div>
     </div>
 
-    <!-- Section Title -->
     <div class="auto-container">
         <div class="sec-title light text-center">
             <h2>{{ $productVideoSection->getTitle($locale) }}</h2>
@@ -435,10 +434,8 @@ $locale = app()->getLocale();
         </div>
     </div>
 
-    <!-- Tabs -->
     <div class="projects-tabs tabs-box">
 
-        <!-- Tab Buttons -->
         <ul class="tab-buttons clearfix">
             <li class="tab-btn active-btn" data-tab="#tab-all">
                 {{ $productVideoSection->filter_all_label ?? 'All' }}
@@ -453,10 +450,8 @@ $locale = app()->getLocale();
             </li>
         </ul>
 
-        <!-- Tabs Content -->
         <div class="tabs-content">
 
-            <!-- ALL -->
             <div class="tab active-tab" id="tab-all">
                 <div class="row">
                     @foreach($productVideoSection->items as $item)
@@ -496,7 +491,6 @@ $locale = app()->getLocale();
                 </div>
             </div>
 
-            <!-- SECURITY -->
             <div class="tab" id="tab-security">
                 <div class="row">
                     @foreach($productVideoSection->items->where('category','security') as $item)
@@ -536,7 +530,6 @@ $locale = app()->getLocale();
                 </div>
             </div>
 
-            <!-- ENERGY -->
             <div class="tab" id="tab-energy">
                 <div class="row">
                     @foreach($productVideoSection->items->where('category','energy') as $item)
@@ -578,7 +571,7 @@ $locale = app()->getLocale();
 
         </div>
     </div>
-</section>
+</section> -->
 <!-- End Projects Section -->
 @endif
 
@@ -691,7 +684,7 @@ $locale = app()->getLocale();
 
 
 <!-- Our Shop -->
-<!-- <section class="our-shop alternate">
+<section class="our-shop alternate">
     <div class="auto-container">
 
         {{-- SECTION TITLE --}}
@@ -756,7 +749,7 @@ $locale = app()->getLocale();
         </div>
 
     </div>
-</section> -->
+</section>
 <!-- End Our Shop -->
 
 
