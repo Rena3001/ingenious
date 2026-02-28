@@ -10070,6 +10070,8 @@ hr {
 .shop-item .image-box {
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .shop-item .sale-tag {
