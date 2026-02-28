@@ -4648,10 +4648,10 @@ hr {
     justify-content: center;
     align-items: center;
 }
-.install-title h2{
+.install-title h2 {
     justify-content: start;
 }
-.ps-title h2{
+.ps-title h2 {
     justify-content: end;
 }
 
@@ -4775,18 +4775,17 @@ hr {
 .ceo-wrapper {
     position: relative;
 }
-.ceo-wrapper h3{
+.ceo-wrapper h3 {
     background: linear-gradient(90deg, #ffffff, #62b0e3);
     padding: 20px;
     border-radius: 20px;
     width: max-content;
 }
-.ceo-wrapper p{
+.ceo-wrapper p {
     padding: 20px;
     border-radius: 20px;
-     background: linear-gradient(90deg, #ffffff, #62b0e3);
+    background: linear-gradient(90deg, #ffffff, #62b0e3);
 }
-
 
 .ceo-image {
     float: right;
@@ -9400,16 +9399,14 @@ hr {
     color: #ffffff;
 }
 
-
-.product_image-path{
+.product_image-path {
     width: 453px;
     height: 255px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.product_image-path img{
+.product_image-path img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -10096,8 +10093,9 @@ hr {
     position: relative;
     overflow: hidden;
     margin-bottom: 0;
-    width: 270px;
-    height: 270px;
+    width: 267px;
+    height: 267px;
+
     display: flex;
     text-align: center;
     justify-content: center;
@@ -10550,15 +10548,14 @@ hr {
     justify-content: center;
     align-items: center;
 }
-.package-div{
+.package-div {
     width: 92px;
     height: 92px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.package-div img{
+.package-div img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -10585,7 +10582,7 @@ hr {
 .pricing-block .btn-box {
     position: relative;
     z-index: 1;
-        opacity: 0;
+    opacity: 0;
     padding: 20px 30px 40px 30px;
     text-align: center;
 }
@@ -10976,7 +10973,7 @@ hr {
 .contact-info .contact-block p {
     font-size: 17px;
     line-height: 1.4em;
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
 }
 
 /***
