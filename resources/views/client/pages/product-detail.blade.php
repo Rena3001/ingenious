@@ -233,7 +233,7 @@ $locale = app()->getLocale();
 
                             <div class="row">
                                 @foreach($related as $item)
-                                <div class="shop-item col-lg-3 col-md-6 col-sm-12">
+                                <div class="shop-item col-lg-4 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <figure class="image">
                                             <a href="{{ route('product.detail',['locale'=>$locale,'product'=>$item->id]) }}">
