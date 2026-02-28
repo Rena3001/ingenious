@@ -4775,6 +4775,18 @@ hr {
 .ceo-wrapper {
     position: relative;
 }
+.ceo-wrapper h3{
+    background: linear-gradient(90deg, #ffffff, #62b0e3);
+    padding: 20px;
+    border-radius: 20px;
+    width: max-content;
+}
+.ceo-wrapper p{
+    padding: 20px;
+    border-radius: 20px;
+     background: linear-gradient(90deg, #ffffff, #62b0e3);
+}
+
 
 .ceo-image {
     float: right;
