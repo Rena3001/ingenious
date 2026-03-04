@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Language;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -27,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
                 'categories',
                 Category::withCount('products')->get()
             );
+        });
+        View::composer('*', function ($view) {
+            $view->with('settings', Setting::first());
         });
         View::composer('*', function ($view) {
 
