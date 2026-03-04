@@ -348,14 +348,10 @@ $locale = app()->getLocale();
 
                 <!-- 16 CTA Button -->
                 <div class="btn-box">
-                  <a href="{{ 
-        optional(optional($package)->product)->slug
-            ? route('product.detail', [
-                'locale'  => app()->getLocale(),
-                'product' => optional($package->product)->slug
-            ])
-            : '#'
-    }}"
+                    <a href="{{ route('product.detail', [
+                'locale'  => $locale,
+                'product' => $highlight->product->slug
+            ]) }}"
                         class="theme-btn btn-style-one large bg-purple">
 
                         <i class="fa fa-arrow-right"></i>
@@ -555,8 +551,8 @@ $icons = [
                         @foreach($icons as $item)
                         <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
                             <div class="graph-outer icon-box">
-                            <span class="icon {{ $item['img'] ?? 'fa fa-tools' }}"></span>
-                                
+                                <span class="icon {{ $item['img'] ?? 'fa fa-tools' }}"></span>
+
                             </div>
                             <h4>{{ $item['text'] }}</h4>
                         </div>
@@ -622,11 +618,11 @@ optional($appProductSection)->icon_3 ?? 'fa fa-lock',
                         <div class="row pie-graphs">
                             @foreach($appIcons as $icon)
                             <div class="pie-graph col-lg-4 col-md-4 col-sm-12">
-                            <div class="graph-outer icon-box">
-                            <span class="icon icon-black {{ $icon ?? 'fa fa-tools' }}"></span>
-                                
+                                <div class="graph-outer icon-box">
+                                    <span class="icon icon-black {{ $icon ?? 'fa fa-tools' }}"></span>
+
+                                </div>
                             </div>
-                        </div>
                             @endforeach
                         </div>
 

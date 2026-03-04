@@ -34,7 +34,8 @@ class ProductHighlightResource extends Resource
                 ->required()
                 ->searchable()
                 ->preload()
-                ->label('Məhsul'),
+                ->reactive()
+                ->label('Məhsul')->afterStateUpdated(fn ($state) => logger($state)),
 
 
             Toggle::make('is_active')
@@ -52,7 +53,7 @@ class ProductHighlightResource extends Resource
                     TextInput::make('title_fr')->label('FR'),
                     TextInput::make('title_es')->label('ES'),
                     TextInput::make('title_zh')->label('ZH'),
-                ]), 
+                ]),
 
                 // 12.1 — Qısa izah
                 Tabs\Tab::make('Açıqlama')->schema([
@@ -85,6 +86,9 @@ class ProductHighlightResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('title_az')
+                    ->label('Başlıq')
+                    ->limit(30),
                 Tables\Columns\TextColumn::make('product.title')->label('Məhsul'),
                 Tables\Columns\IconColumn::make('is_active')->boolean(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
