@@ -39,7 +39,7 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
                         <div class="text">
                             {{ Translation::getValue('footer_atalar_title', $locale) }}
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -57,28 +57,30 @@ $latestPost = Blog::orderBy('created_at', 'desc')->first();
                                     <i class="far fa-envelope"></i>
                                     <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a>
                                 </li>
-
+                                @php
+                                $cleanPhone = preg_replace('/[^0-9]/', '', $settings->phone);
+                                @endphp
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <a href="https://wa.me/{{ $settings->phone }}" target="_blank">{{ $settings->phone }}</a>
+                                    <a href="https://wa.me/{{ $cleanPhone }}" target="_blank">{{ $settings->phone }}</a>
                                 </li>
 
-                                <li> 
+                                <li>
                                     <div class="social-icon">
                                         @if($settings->facebook)
-                                            <a href="{{ $settings->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="{{ $settings->facebook }}"><i class="fab fa-facebook-f"></i></a>
                                         @endif
                                         @if($settings->twitter)
-                                            <a href="{{ $settings->twitter }}"><i class="fab fa-youtube"></i></a>
+                                        <a href="{{ $settings->twitter }}"><i class="fab fa-youtube"></i></a>
                                         @endif
                                         @if($settings->instagram)
-                                            <a href="{{ $settings->instagram }}"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{ $settings->instagram }}"><i class="fab fa-instagram"></i></a>
                                         @endif
                                         @if($settings->linkedin)
-                                            <a href="{{ $settings->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="{{ $settings->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
                                         @endif
                                         @if($settings->telegram)
-                                            <a href="{{ $settings->telegram }}"><i class="fab fa-tiktok"></i></a>
+                                        <a href="{{ $settings->telegram }}"><i class="fab fa-tiktok"></i></a>
                                         @endif
                                     </div>
                                 </li>
