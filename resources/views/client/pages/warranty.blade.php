@@ -101,7 +101,7 @@ $locale = app()->getLocale();
                                color:#fff;
                                white-space:normal;
                                max-width:700px;
-                               padding-top:50px;
+                               padding-top:20px;
                                text-align:center;">
 
                         {{ $slide->{'subtitle_' . $locale} }}
@@ -125,7 +125,7 @@ $locale = app()->getLocale();
                                font-weight:700;
                                color:#fff;
                                background-color:rgb(70,70,70);
-                               padding:20px 50px;
+                               padding:20px 20px;
                                border-radius:30px;
                                cursor:pointer;">
 
