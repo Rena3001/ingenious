@@ -299,7 +299,7 @@ $locale = app()->getLocale();
                                 </a>
                             </h4>
                             <div class="text">
-                                {{ $product->{'description_' . $locale} }}
+                                {{ \Illuminate\Support\Str::limit(strip_tags($product->{'description_' . $locale}), 160, '...') }}
                             </div>
                         </div>
 
