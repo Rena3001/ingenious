@@ -79,7 +79,7 @@ $locale = app()->getLocale();
                         {!! nl2br($slider->getDescription($locale)) !!}
 
                     </div>
-
+<a href="{{ route('products.byCategory', ['locale' => $locale, 'category' => 1]) }}">
                     <!-- LAYER NR. 4 -->
                     <div class="tp-caption rev-btn  tp-resizeme"
                         id="slide-10-layer-36"
@@ -97,8 +97,10 @@ $locale = app()->getLocale();
                         data-paddingleft="[50,50,50,50]"
 
                         style="z-index: 8; white-space: nowrap; font-size: 16px; line-height: 17px; font-weight: 700; color: rgba(255,255,255,1); font-family:Catamaran;background-color:rgba(104,107,184,1);border-color:rgba(104,107,184,1);border-style:solid;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-                        {{ Translation::getValue('go_to_products', $locale) }}
-                    </div>
+                        
+                            {{ Translation::getValue('go_to_products', $locale) }}
+                        </div>
+                    </a>
                 </li>
                 @endforeach
 

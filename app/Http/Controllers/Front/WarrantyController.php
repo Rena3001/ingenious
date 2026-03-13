@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\WarrantyAccordionSection;
 use App\Models\WarrantyContactCtaSection;
 use App\Models\WarrantyFeatureSection;
@@ -40,7 +41,9 @@ class WarrantyController extends Controller
         $featureSectionTwo = WarrantyFeatureSectionTwo::where('is_active', true)->first();
         $processSection = WarrantyProcessSection::where('is_active', true)->first();
         $contactCta = WarrantyContactCtaSection::where('is_active',true)->first();
+        $products=Product::where('is_active', true)->get();
 
-        return view('client.pages.warranty', compact('slides', 'featureSection', 'accordionSection', 'portfolioSection', 'featureSectionTwo', 'processSection','contactCta'));
+
+        return view('client.pages.warranty', compact('slides', 'featureSection', 'accordionSection', 'portfolioSection', 'featureSectionTwo', 'processSection','contactCta','products'));
     }
 }

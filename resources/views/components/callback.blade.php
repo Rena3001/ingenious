@@ -4,7 +4,7 @@ $locale = app()->getLocale();
 @endphp
 
 
-<section class="callback-section">
+<section id="callback" class="callback-section">
     <div class="cws-background-image"
         style="background-image: url('{{ asset('storage/' . $settings->contact_background_image) }}')"></div>
 
@@ -114,3 +114,12 @@ $locale = app()->getLocale();
         </div>
     </div>
 </section>
+@push('scripts')
+<script>
+    if(window.location.hash === "#callback"){
+    document.querySelector('#callback').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+</script>
+@endpush

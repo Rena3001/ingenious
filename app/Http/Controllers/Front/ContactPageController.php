@@ -48,6 +48,7 @@ class ContactPageController extends Controller
 
         Ad: {$request->username}
         Email: {$request->email}
+        Müraciət növü: {$request->type}
         Telefon: {$request->phone}
         Mesaj: {$request->message}
     ", function ($message) use ($toEmail) {
@@ -59,14 +60,14 @@ class ContactPageController extends Controller
             return back()->with(
                 'success',
                 Translation::getValue('contact_success', app()->getLocale())
-            );
+            ) ->withFragment('callback');
         } catch (\Exception $e) {
         
             // Uğursuz mesaj
             return back()->with(
                 'error',
                 Translation::getValue('contact_failed', app()->getLocale())
-            );
+            ) ->withFragment('callback');
         }
     }
 }

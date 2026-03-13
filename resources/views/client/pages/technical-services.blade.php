@@ -295,7 +295,7 @@ $locale = app()->getLocale();
                             </li>
                         </ul>
 
-                        <div class="btn-box"><a href="{{$faqSection->button_url}}" class="theme-btn btn-style-one large bg-caribbean">{{Translation::getValue('request_a_free_brochure', $locale)}}</a></div>
+                        <div class="btn-box"><a href="{{route('technical.faq', ['locale' => $locale])}}" class="theme-btn btn-style-one large bg-caribbean">{{Translation::getValue('request_a_free_brochure', $locale)}}</a></div>
                     </div>
                 </div>
 
@@ -310,6 +310,60 @@ $locale = app()->getLocale();
     </div>
 </section>
 <!-- End Features Section Five-->
+
+<!-- Fun Fact Section -->
+<section class="fun-fact-section">
+    <!-- Background Layers -->
+    <div class="background-layers">
+        <div class="cws-image-bg" style="background-image: url({{ asset('assets/images/background/27.jpg') }});">
+            <div class="cws-overlay-bg"></div>
+        </div>
+        <div class="cws-triangle-overlay bottom-right"></div>
+    </div>
+
+    <div class="auto-container">
+        <div class="sec-title text-center light">
+            <h2>{{Translation::getValue('support_resources_title', $locale)}}</h2>
+        </div>
+        <div class="row clearfix">
+
+
+
+            <!-- Column 1 -->
+            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
+                <div class="count-text">
+                    <i class="{{ $supportResourcesSection->getItemIcon(1) }} fa-solid"></i>
+                </div>
+                <h4 class="counter-title">
+                    {{ $supportResourcesSection->getItemTitle(1, $locale) }}
+                </h4>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
+                <div class="count-text">
+                    <i class="{{ $supportResourcesSection->getItemIcon(2) }} fa-solid"></i>
+                </div>
+                <h4 class="counter-title">
+                    {{ $supportResourcesSection->getItemTitle(2, $locale) }}
+                </h4>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
+                <div class="count-text">
+                    <i class="{{ $supportResourcesSection->getItemIcon(3) }} fa-solid"></i>
+                </div>
+                <h4 class="counter-title">
+                    {{ $supportResourcesSection->getItemTitle(3, $locale) }}
+                </h4>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End Fun Fact Section -->
+
 
 
 <!-- Services Section Two -->
@@ -629,58 +683,7 @@ $locale = app()->getLocale();
 </section>
 <!-- End Testimonial Section -->
 
-<!-- Fun Fact Section -->
-<section class="fun-fact-section">
-    <!-- Background Layers -->
-    <div class="background-layers">
-        <div class="cws-image-bg" style="background-image: url({{ asset('assets/images/background/27.jpg') }});">
-            <div class="cws-overlay-bg"></div>
-        </div>
-        <div class="cws-triangle-overlay bottom-right"></div>
-    </div>
 
-    <div class="auto-container">
-        <div class="sec-title text-center light">
-            <h2>{{Translation::getValue('support_resources_title', $locale)}}</h2>
-        </div>
-        <div class="row clearfix">
-
-
-
-            <!-- Column 1 -->
-            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
-                <div class="count-text">
-                    <i class="{{ $supportResourcesSection->getItemIcon(1) }} fa-solid"></i>
-                </div>
-                <h4 class="counter-title">
-                    {{ $supportResourcesSection->getItemTitle(1, $locale) }}
-                </h4>
-            </div>
-
-            <!-- Column 2 -->
-            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
-                <div class="count-text">
-                    <i class="{{ $supportResourcesSection->getItemIcon(2) }} fa-solid"></i>
-                </div>
-                <h4 class="counter-title">
-                    {{ $supportResourcesSection->getItemTitle(2, $locale) }}
-                </h4>
-            </div>
-
-            <!-- Column 3 -->
-            <div class="counter-column col-lg-4 col-md-6 col-sm-12">
-                <div class="count-text">
-                    <i class="{{ $supportResourcesSection->getItemIcon(3) }} fa-solid"></i>
-                </div>
-                <h4 class="counter-title">
-                    {{ $supportResourcesSection->getItemTitle(3, $locale) }}
-                </h4>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!--End Fun Fact Section -->
 
 
 <!-- Our Shop -->

@@ -268,7 +268,7 @@ $locale = app()->getLocale();
         <div class="carousel-outer">
             <div class="portfolio-carousel owl-carousel owl-theme default-dots sky-dots">
 
-                @foreach($portfolioSection->items as $item)
+                @foreach($products as $product)
                 <div class="portfolio-block">
                     <div class="inner-box">
 
@@ -276,14 +276,14 @@ $locale = app()->getLocale();
                         <div class="image-box">
                             <figure class="image">
                                 <img
-                                    src="{{ asset('storage/' . $item->image) }}"
-                                    alt="{{ $item->{'title_' . $locale} }}">
+                                    src="{{ asset('storage/' . $product->image) }}"
+                                    alt="{{ $product->{'title_' . $locale} }}">
                             </figure>
 
                             {{-- LIGHTBOX --}}
                             <div class="overlay">
                                 <a
-                                    href="{{ asset('storage/' . $item->image) }}"
+                                    href="{{ asset('storage/' . $product->image) }}"
                                     class="lightbox-image"
                                     data-fancybox="gallery">
                                     <span class="icon fa fa-expand-arrows-alt"></span>
@@ -294,12 +294,12 @@ $locale = app()->getLocale();
                         {{-- CONTENT --}}
                         <div class="lower-content">
                             <h4>
-                                <a href="{{ $item->link }}">
-                                    {{ $item->{'title_' . $locale} }}
+                                <a href="{{ $product->link }}">
+                                    {{ $product->{'title_' . $locale} }}
                                 </a>
                             </h4>
                             <div class="text">
-                                {{ $item->{'description_' . $locale} }}
+                                {{ $product->{'description_' . $locale} }}
                             </div>
                         </div>
 
