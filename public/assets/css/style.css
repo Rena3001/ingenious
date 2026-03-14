@@ -2596,7 +2596,7 @@ hr {
 
 .main-menu .navigation > li.dropdown > a:after {
     position: absolute;
-    right: 5px;
+    right: 0px;
     top: 50%;
     margin-top: -10px;
     font-family: "Font Awesome 5 Free";
