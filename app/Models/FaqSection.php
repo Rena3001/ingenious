@@ -52,6 +52,13 @@ class FaqSection extends Model
         'feature_2_title_de',
         'feature_2_title_fr',
         'feature_2_title_zh',
+        'feature_2_text_az',
+        'feature_2_text_en',
+        'feature_2_text_ru',
+        'feature_2_text_es',
+        'feature_2_text_de',
+        'feature_2_text_fr',
+        'feature_2_text_zh',
 
         'feature_3_icon',
         'feature_3_title_az',
@@ -61,6 +68,13 @@ class FaqSection extends Model
         'feature_3_title_de',
         'feature_3_title_fr',
         'feature_3_title_zh',
+        'feature_3_text_az',
+        'feature_3_text_en',
+        'feature_3_text_ru',
+        'feature_3_text_es',
+        'feature_3_text_de',
+        'feature_3_text_fr',
+        'feature_3_text_zh',
 
 
         // Similarly for feature 2 and feature 3...

@@ -78,8 +78,8 @@ class FaqSectionResource extends Resource
                     Tabs\Tab::make('FAQ Categories')
                         ->schema([
                             self::featureBlock(1, true),
-                            self::featureBlock(2, false),
-                            self::featureBlock(3, false),
+                            self::featureBlock(2, true),
+                            self::featureBlock(3, true),
                         ]),
                 ])
                 ->columnSpanFull(),
