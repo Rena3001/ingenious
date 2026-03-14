@@ -95,6 +95,12 @@ class SettingsResource extends Resource
                 ->imageResizeMode('cover')
                 ->maxSize(2048) // 2MB
                 ->helperText('Contact səhifəsi üçün background şəkil'),
+            forms\Components\FileUpload::make('shortcut_icon')
+                ->label('Shortcut Icon (Favicon)')
+                ->directory('settings/shortcut')
+                ->image()
+                ->maxSize(1024) // 1MB
+                ->helperText('Brauzer tabında görünən ikon (favicon)'),
             Forms\Components\Section::make('Social Media Links')
                 ->schema([
                     Forms\Components\TextInput::make('facebook')->label('Facebook URL'),

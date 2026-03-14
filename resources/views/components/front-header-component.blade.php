@@ -34,7 +34,7 @@
                                 <a href="{{ route('home', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_home', $locale) }}
                                 </a>
-                                <div class="mega-menu mega-menu-home" data-width="250px">
+                                <div class="mega-menu mega-menu-home" data-width="280px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
 
@@ -124,7 +124,7 @@
                                     {{ Translation::getValue('menu_about', $locale) }}
                                 </a>
 
-                                <div class="mega-menu mega-menu-about" data-width="200px">
+                                <div class="mega-menu mega-menu-about" data-width="280px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
                                             <ul>
@@ -149,7 +149,7 @@
                                 <a href="{{ route('news', ['locale' => $locale]) }}">
                                     {{ Translation::getValue('menu_news', $locale) }}
                                 </a>
-                                <div class="mega-menu mega-menu-news" data-width="200px">
+                                <div class="mega-menu mega-menu-news" data-width="260px">
                                     <div class="mega-menu-bar row">
                                         <div class="column col-lg-12">
                                             <ul>

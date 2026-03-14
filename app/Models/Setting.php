@@ -33,6 +33,7 @@ class Setting extends Model
         'logo',
         'logo_white',
         'contact_background_image',
+        'shortcut_icon',
 
         'facebook',
         'instagram',
